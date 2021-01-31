@@ -6,7 +6,7 @@
 
 define("USER", "root");
 define("SERVER", "localhost");
-define("BD", "fashionbd");
+define("BD", "socidem_bd");
 define("PASS", "");
 
 /* Clase para ejecutar las consultas a la Base de Datos*/

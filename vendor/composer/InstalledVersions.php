@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '4d6a28f166ab972c9b0848899186f1b08c391ec5',
+    'reference' => 'b1d4de92046a39cfee3a1bc33502c6184bd5520e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '4d6a28f166ab972c9b0848899186f1b08c391ec5',
+      'reference' => 'b1d4de92046a39cfee3a1bc33502c6184bd5520e',
     ),
     'firebase/php-jwt' => 
     array (
@@ -41,6 +41,24 @@ private static $installed = array (
       array (
       ),
       'reference' => 'fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1',
+    ),
+    'google/apiclient' => 
+    array (
+      'pretty_version' => 'v2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cd4d61678bc26267f3e5371735ae3f579709ea30',
+    ),
+    'google/apiclient-services' => 
+    array (
+      'pretty_version' => 'v0.157.1',
+      'version' => '0.157.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9482a187d6e921b134b7ac5ca6171a1b57de5ef2',
     ),
     'google/auth' => 
     array (
@@ -89,12 +107,12 @@ private static $installed = array (
     ),
     'phpseclib/phpseclib' => 
     array (
-      'pretty_version' => '2.0.29',
-      'version' => '2.0.29.0',
+      'pretty_version' => '2.0.30',
+      'version' => '2.0.30.0',
       'aliases' => 
       array (
       ),
-      'reference' => '497856a8d997f640b4a516062f84228a772a48a8',
+      'reference' => '136b9ca7eebef78be14abf90d65c5e57b6bc5d36',
     ),
     'psr/cache' => 
     array (
