@@ -1,0 +1,8 @@
+cliente@gmail.com
+vendedor@gmail.com
+clave : admin
+
+http://localhost/FashionStore3/back-end/adminDash-login
+credenciales ADMIN
+master
+admin
