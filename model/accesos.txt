@@ -1,8 +1,9 @@
-cliente@gmail.com
-vendedor@gmail.com
-clave : admin
+paciente@gmail.com
+clave : paciente
+medico@gmail.com
+clave : medico
 
-http://localhost/FashionStore3/back-end/adminDash-login
+http://localhost/
 credenciales ADMIN
 master
 admin
