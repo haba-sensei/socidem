@@ -7,7 +7,7 @@ error_reporting(E_ALL ^ E_NOTICE);
     $nombre_ = $_SESSION['nombre'];
     $apellido_ = $_SESSION["apellido"];
     $correo_ = $_SESSION['correo'];
-    $perfil_ = $_SESSION["perfil"]; 
+    $rol_ = $_SESSION["rol"]; 
     $telefono_  = $_SESSION["telefono"];
     $pais_ = $_SESSION["pais"];
     $ciudad_ = $_SESSION["ciudad"];

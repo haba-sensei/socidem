@@ -10,17 +10,15 @@ $routes = explode("-", $_GET["ruta"]);
 
 	switch ($routes[0]) {
 		case 'adminDash':
-			include 'adminP/views/components/header.php';
+			include 'adminP/headers/header_base.php';
+			include "adminP/headers/cabezera.php";
 			
 		break;
-		case 'dashboard':
-			include 'views/headers/cabezeraAdmin.php';
-			// include 'views/models/cabezera.php';
-		break;
+		 
 
 		default:
 			include 'views/headers/header_base.php';
-			// include 'views/models/cabezera.php';
+			include "views/headers/cabezera.php";
 		break;
 	}
 
@@ -30,7 +28,7 @@ $routes = explode("-", $_GET["ruta"]);
 ?>
 
 
-<body >
+<body class="account-page">
  
 
     <?php
@@ -43,7 +41,14 @@ $routes = explode("-", $_GET["ruta"]);
 		 
 		 if($routes[0] == "inicio" || 
 			$routes[0] == "login" || 
-			 
+			$routes[0] == "salir" || 
+			$routes[0] == "registro" || 
+			$routes[0] == "registroDoc" || 
+			$routes[0] == "faqs" || 
+			$routes[0] == "servicios" || 
+			$routes[0] == "contacto" || 
+			$routes[0] == "medico" || 
+			$routes[0] == "loginMed" || 
 			$routes[0] == "dashboard" || 
 			 
 			/*=============================================
@@ -58,7 +63,7 @@ $routes = explode("-", $_GET["ruta"]);
 						RUTAS INTERNAS ADMIN
 						=============================================*/
 						if ($routes[1] == "login" || 
-							$routes[1] == "dashboard" 
+							$routes[1] == "inicio" 
 							 
 
 						){
@@ -74,7 +79,11 @@ $routes = explode("-", $_GET["ruta"]);
 					 
 					
 					default:
+					 
+						
 						include "models/".$routes[0].".php";
+						
+					 
 					break;
 				}
 			
@@ -100,15 +109,13 @@ $routes = explode("-", $_GET["ruta"]);
 
 	switch ($routes[0]) {
 	case 'adminDash':
-		 
+		include 'adminP/footers/footer_base.php';
+		include "adminP/footers/footer.php";
 	break;
-	case 'dashboard':
-		 
-		
-			
-	break;
+	 
 	default:
 		include 'views/footers/footer_base.php';
+		include "views/footers/footer.php";
 		echo "</body>";
 		
 		

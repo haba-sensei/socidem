@@ -29,9 +29,9 @@ if (isset($_GET['code'])){
 
 if (!$correo == "" && !$clave == "") {
     if (isset($_GET['code'])){  
-        $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `perfil`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` LEFT JOIN `perfil` ON `perfil`.`id` = `pacientes`.`id` WHERE `pacientes`.`correo` = '$correo'");
+        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`id` = `medicos`.`id` WHERE `medicos`.`correo` = '$correo'");
     }else {
-        $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `perfil`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` LEFT JOIN `perfil` ON `perfil`.`id` = `pacientes`.`id` WHERE `pacientes`.`correo` = '$correo' AND `pacientes`.`pass` = '$clave';");
+        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`id` = `medicos`.`id` WHERE `medicos`.`correo` = '$correo' AND `medicos`.`pass` = '$clave';");
     }
     
     
@@ -40,7 +40,7 @@ if (!$correo == "" && !$clave == "") {
     while($datos_usuario=mysqli_fetch_assoc($verAfil)){
         $id_usuario=$datos_usuario['id'];
          
-        $nombre=$datos_usuario['nombre'];
+        $nombre=$datos_usuario['nombre_completo'];
      
         $correo=$datos_usuario['correo'];
         $rol=$datos_usuario['rol'];
@@ -75,7 +75,7 @@ if (!$correo == "" && !$clave == "") {
         $last_login_up = date('l jS F Y h:i:s A');
              
              
-            consultasSQL::UpdateSQL("pacientes", "correo='$correo', last_login='$last_login_up' ", "correo='$correo'");
+            consultasSQL::UpdateSQL("medicos", "correo='$correo', last_login='$last_login_up' ", "correo='$correo'");
             if (isset($_GET['code'])){ 
                 echo '<script> 	window.location = "../inicio"; </script>';
             }else{
