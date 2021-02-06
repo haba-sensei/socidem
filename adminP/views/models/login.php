@@ -11,7 +11,8 @@
                         <p class="account-subtitle">Access to our dashboard</p>
 
                         <!-- Form -->
-                        <form action="index.html">
+                        <form action="adminP/controller/login.controlador.php" method="post" role="form"
+					class="margin-bottom-0 Login-Form"  data-form="login">
                             <div class="form-group">
                                 <input class="form-control" type="text" placeholder="Email">
                             </div>
@@ -19,7 +20,7 @@
                                 <input class="form-control" type="text" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary btn-block" type="submit">Login</button>
+                                <a href="adminDash-inicio" class="btn btn-primary btn-block" >Login</a>
                             </div>
                         </form>
                         <!-- /Form -->
@@ -33,7 +34,7 @@
                         <!-- Social Login -->
                         <div class="social-login">
                             <span>Login with</span>
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" class="google"><i
+                            <a href="" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" class="google"><i
                                     class="fa fa-google"></i></a>
                         </div>
                         <!-- /Social Login -->
