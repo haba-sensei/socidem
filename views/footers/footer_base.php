@@ -5,8 +5,11 @@
     <script src="views/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
     <script src="views/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
     <script src="views/assets/js/circle-progress.min.js"></script>
+    <script src="views/assets/plugins/select2/js/select2.min.js"></script>
+	<script src="views/assets/js/moment.min.js"></script>
+	<script src="views/assets/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="views/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
     <script src="views/assets/js/script.js"></script>
-
     <script>
 $(document).ready(function() {
     

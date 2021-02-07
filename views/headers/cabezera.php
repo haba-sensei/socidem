@@ -38,6 +38,10 @@
 
                 </li>
                 <li class="has-submenu">
+                    <a href="busqueda">Encuentra un Doctor</a>
+
+                </li>
+                <li class="has-submenu">
                     <a href="contacto">Contacto</a>
 
                 </li>

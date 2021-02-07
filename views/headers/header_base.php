@@ -9,5 +9,10 @@
 	    <link rel="stylesheet" href="views/assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="views/assets/plugins/fontawesome/css/fontawesome.min.css">
 		<link rel="stylesheet" href="views/assets/plugins/fontawesome/css/all.min.css">
+		<link rel="stylesheet" href="views/assets/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="views/assets/plugins/daterangepicker/daterangepicker.css">
+		<link rel="stylesheet" href="views/assets/plugins/select2/css/select2.min.css">
+		<link rel="stylesheet" href="views/assets/plugins/fancybox/jquery.fancybox.min.css">
 	    <link rel="stylesheet" href="views/assets/css/style.css">
+		
 </head>
