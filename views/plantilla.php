@@ -45,6 +45,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "registro" || 
 			$routes[0] == "registroDoc" || 
 			$routes[0] == "faqs" || 
+			$routes[0] == "test" || 
 			$routes[0] == "busqueda" || 
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "cita" || 
