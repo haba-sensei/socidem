@@ -29,9 +29,10 @@ if (isset($_GET['code'])){
 
 if (!$correo == "" && !$clave == "") {
     if (isset($_GET['code'])){  
-        $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `perfil`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` LEFT JOIN `perfil` ON `perfil`.`id` = `pacientes`.`id` WHERE `pacientes`.`correo` = '$correo'");
+        
+        $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `pacientes`.`correo` FROM `pacientes` WHERE `pacientes`.`correo` = '$correo' ");
     }else {
-        $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `perfil`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` LEFT JOIN `perfil` ON `perfil`.`id` = `pacientes`.`id` WHERE `pacientes`.`correo` = '$correo' AND `pacientes`.`pass` = '$clave';");
+        $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` WHERE `pacientes`.`correo` = '$correo' AND `pacientes`.`pass` = '$clave';");
     }
     
     
@@ -39,13 +40,10 @@ if (!$correo == "" && !$clave == "") {
     
     while($datos_usuario=mysqli_fetch_assoc($verAfil)){
         $id_usuario=$datos_usuario['id'];
-         
         $nombre=$datos_usuario['nombre'];
-     
         $correo=$datos_usuario['correo'];
         $rol=$datos_usuario['rol'];
         $telefono=$datos_usuario['telefono'];
-         
         $estado=$datos_usuario['estado']; 
         $last_login=$datos_usuario['last_login'];
        
@@ -54,13 +52,10 @@ if (!$correo == "" && !$clave == "") {
     $AfilC = mysqli_num_rows($verAfil);
         if ($AfilC > 0) {
         $_SESSION['id'] = $id_usuario;
-       
         $_SESSION['nombre'] = $nombre;
-        
         $_SESSION['correo'] = $correo;
         $_SESSION["rol"] = $rol;
         $_SESSION['telefono'] = $telefono;
-        
         $_SESSION['estado'] = $estado;
         $_SESSION['last_login'] = $last_login;
          

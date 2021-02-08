@@ -16,23 +16,29 @@
                             </div>
 
                             <!-- Register Form -->
-                            <form action="https://doccure-html.dreamguystech.com/template/doctor-dashboard.html">
+                            <form class="theme-form Login-Form" action="controller/registro.controlador.php" method="post" role="form"
+                          data-form="registro">
                                 <div class="form-group form-focus">
-                                    <input type="text" class="form-control floating">
-                                    <label class="focus-label">Name</label>
+                                    <input type="text" name="nombre-reg" class="form-control floating">
+                                    <label class="focus-label">Nombre</label>
                                 </div>
                                 <div class="form-group form-focus">
-                                    <input type="text" class="form-control floating">
-                                    <label class="focus-label">Mobile Number</label>
+                                    <input type="text" name="correo-reg" class="form-control floating">
+                                    <label class="focus-label">Email</label>
                                 </div>
                                 <div class="form-group form-focus">
-                                    <input type="password" class="form-control floating">
-                                    <label class="focus-label">Create Password</label>
+                                    <input type="text" name="tel-reg" class="form-control floating">
+                                    <label class="focus-label">Telefono</label>
+                                </div>
+                                <div class="form-group form-focus">
+                                    <input type="password" name="pass-reg" class="form-control floating">
+                                    <label class="focus-label">Contraseña</label>
                                 </div>
                                 <div class="text-right">
-                                    <a class="forgot-link" href="login.html">Already have an account?</a>
+                                    <a class="forgot-link" href="login">Ya tienes una cuenta?</a>
                                 </div>
-                                <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Signup</button>
+                                <div class="res-registro animated fadeInDown"> </div>
+                                <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Registrarme</button>
                                 <div class="login-or">
                                     <span class="or-line"></span>
                                     <span class="span-or">or</span>
@@ -40,11 +46,15 @@
                                 <div class="row form-row social-login">
                                     <div class="col-6">
                                         <a href="#" class="btn btn-facebook btn-block"><i
-                                                class="mr-1 fab fa-facebook-f"></i> Login</a>
+                                                class="mr-1 fab fa-facebook-f"></i> Facebook</a>
                                     </div>
                                     <div class="col-6">
-                                        <a href="#" class="btn btn-google btn-block"><i class="mr-1 fab fa-google"></i>
-                                            Login</a>
+                                    <?php 
+                                    require_once 'model/credencialesReg.php';
+                                    echo "<a href='".$client->createAuthUrl()."' class='btn btn-google btn-block'><i class='mr-1 fab fa-google'></i>
+                                        Gmail</a>
+                                        ";
+                                        ?>
                                     </div>
                                 </div>
                             </form>

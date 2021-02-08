@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '0e971a495eb528d71785c14341da0a712d434ace',
+    'reference' => '4d0a178cc4cfb0c1e8e2858f32ee77708d529873',
     'name' => 'socidem/haba',
   ),
   'versions' => 
@@ -92,6 +92,15 @@
       ),
       'reference' => 'fa587178be682efe90d005e3a322590d6ebb59a5',
     ),
+    'facebook/graph-sdk' => 
+    array (
+      'pretty_version' => '5.7.0',
+      'version' => '5.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2d8250638b33d73e7a87add65f47fabf91f8ad9b',
+    ),
     'firebase/php-jwt' => 
     array (
       'pretty_version' => 'v5.2.0',
@@ -127,6 +136,15 @@
       array (
       ),
       'reference' => 'b346c07de6613e26443d7b4830e5e1933b830dc4',
+    ),
+    'griffinledingham/php-apple-signin' => 
+    array (
+      'pretty_version' => '1.1',
+      'version' => '1.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '069e79b7ca2366fdebd3f92289281912849e0cb1',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -273,7 +291,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '0e971a495eb528d71785c14341da0a712d434ace',
+      'reference' => '4d0a178cc4cfb0c1e8e2858f32ee77708d529873',
     ),
   ),
 );

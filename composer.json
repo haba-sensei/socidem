@@ -3,6 +3,8 @@
     "description": "sistema de citas medicas",
     "require": {
         "google/apiclient": "2.9.1",
-        "mercadopago/dx-php": "2.2.1"
+        "mercadopago/dx-php": "2.2.1",
+        "griffinledingham/php-apple-signin": "^1.1",
+        "facebook/graph-sdk": "^5.7"
     }
 }

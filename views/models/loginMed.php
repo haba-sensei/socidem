@@ -46,8 +46,12 @@
                                                 class="mr-1 fab fa-facebook-f"></i> Facebook</a>
                                     </div>
                                     <div class="col-6">
-                                        <a href="#" class="btn btn-google btn-block"><i class="mr-1 fab fa-google"></i>
-                                            Gmail</a>
+                                    <?php 
+                                    require_once 'model/credencialesLogMed.php';
+                                    echo "<a href='".$client->createAuthUrl()."' class='btn btn-google btn-block'><i class='mr-1 fab fa-google'></i>
+                                        Gmail</a>
+                                        ";
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="text-center dont-have">No tengo una cuenta? <a
