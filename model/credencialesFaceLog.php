@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php'; 
-
 $fb = new Facebook\Facebook([
     'app_id' => '170568131242133',
     'app_secret' => '2058350975fdcb641245bc2cba3af3a3',
@@ -10,6 +8,6 @@ $fb = new Facebook\Facebook([
   $helper = $fb->getRedirectLoginHelper();
   
   $permissions = ['email']; // Optional permissions
-  $loginUrl = $helper->getLoginUrl('https://localhost/socidem/controller/login_med.controlador.php', $permissions);
-  
-  echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
+  $loginUrl = $helper->getLoginUrl('http://localhost/socidem/controller/login_pac_face.controlador.php', $permissions);
+   
+

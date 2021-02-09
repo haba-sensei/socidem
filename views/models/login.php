@@ -12,7 +12,7 @@
                         </div>
                         <div class="col-md-12 col-lg-6 login-right">
                             <div class="login-header">
-                                <h3>Ingreso Pacientes</h3>
+                                <h3>Ingreso Pacientes <a href="loginMed">Eres un Medico?</a></h3>
                             </div>
                             <form action="controller/login.controlador.php" method="post" role="form"
                                 class="theme-form Login-Form" data-form="login">
@@ -42,8 +42,13 @@
                                 </div>
                                 <div class="row form-row social-login">
                                     <div class="col-6">
-                                        <a href="#" class="btn btn-facebook btn-block"><i
-                                                class="mr-1 fab fa-facebook-f"></i> Facebook</a>
+                                    <?php 
+                                    require_once 'model/credencialesFaceLog.php';
+                                    echo "<a href='".$loginUrl."' class='btn btn-facebook btn-block'><i
+                                    class='mr-1 fab fa-facebook-f'></i> Facebook</a>
+                                        ";
+                                    ?>
+                                        
                                     </div>
                                     <div class="col-6">
                                     <?php 
@@ -55,10 +60,7 @@
                                     </div>
                                 </div>
                                 
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
+ 
                                 <div class="text-center dont-have">No tengo una cuenta? <a
                                         href="registro">Registro</a></div>
                             </form>
@@ -72,33 +74,7 @@
 
     </div>
 
-
-    
-<script>
-
-    
-
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '170568131242133',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v9.0'
-    });
-      
-    FB.AppEvents.logPageView();   
-    
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
+ 
 
 
 

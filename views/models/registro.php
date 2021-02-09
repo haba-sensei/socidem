@@ -45,8 +45,12 @@
                                 </div>
                                 <div class="row form-row social-login">
                                     <div class="col-6">
-                                        <a href="#" class="btn btn-facebook btn-block"><i
-                                                class="mr-1 fab fa-facebook-f"></i> Facebook</a>
+                                    <?php 
+                                    require_once 'model/credencialesRegFace.php';
+                                    echo "<a href='".$loginUrl."' class='btn btn-facebook btn-block'><i
+                                    class='mr-1 fab fa-facebook-f'></i> Facebook</a>
+                                        ";
+                                    ?>
                                     </div>
                                     <div class="col-6">
                                     <?php 

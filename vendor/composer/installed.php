@@ -6,11 +6,20 @@
     'aliases' => 
     array (
     ),
-    'reference' => '4d0a178cc4cfb0c1e8e2858f32ee77708d529873',
+    'reference' => '9233fef666d635c2ed17e1005ddb63216b4a43d1',
     'name' => 'socidem/haba',
   ),
   'versions' => 
   array (
+    'container-interop/container-interop' => 
+    array (
+      'pretty_version' => '1.2.0',
+      'version' => '1.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '79cbf1341c22ec75643d841642dd5d6acd83bdb8',
+    ),
     'doctrine/annotations' => 
     array (
       'pretty_version' => '1.11.1',
@@ -227,6 +236,15 @@
       ),
       'reference' => 'd11b50ad223250cf17b86e38383413f5a6764bf8',
     ),
+    'psr/container' => 
+    array (
+      'pretty_version' => '1.0.0',
+      'version' => '1.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b7ce3b176482dbbc1245ebf52b181af44c2cf55f',
+    ),
     'psr/http-client' => 
     array (
       'pretty_version' => '1.0.1',
@@ -273,6 +291,7 @@
       'provided' => 
       array (
         0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'ralouphie/getallheaders' => 
@@ -284,6 +303,15 @@
       ),
       'reference' => '120b605dfeb996808c31b6477290a714d356e822',
     ),
+    'sly/notification-pusher' => 
+    array (
+      'pretty_version' => 'v2.3.7',
+      'version' => '2.3.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9faecc6b1bcacfcd36fba59191fdd5f5a08589ee',
+    ),
     'socidem/haba' => 
     array (
       'pretty_version' => 'dev-main',
@@ -291,7 +319,178 @@
       'aliases' => 
       array (
       ),
-      'reference' => '4d0a178cc4cfb0c1e8e2858f32ee77708d529873',
+      'reference' => '9233fef666d635c2ed17e1005ddb63216b4a43d1',
+    ),
+    'symfony/console' => 
+    array (
+      'pretty_version' => 'v4.4.19',
+      'version' => '4.4.19.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '24026c44fc37099fa145707fecd43672831b837a',
+    ),
+    'symfony/debug' => 
+    array (
+      'pretty_version' => 'v4.4.19',
+      'version' => '4.4.19.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'af4987aa4a5630e9615be9d9c3ed1b0f24ca449c',
+    ),
+    'symfony/filesystem' => 
+    array (
+      'pretty_version' => 'v4.4.19',
+      'version' => '4.4.19.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '83a6feed14846d2d9f3916adbaf838819e4e3380',
+    ),
+    'symfony/options-resolver' => 
+    array (
+      'pretty_version' => 'v4.4.19',
+      'version' => '4.4.19.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cd8c6a2778d5f8b5e8fc4b7abdf126790b5d5095',
+    ),
+    'symfony/polyfill-ctype' => 
+    array (
+      'pretty_version' => 'v1.22.0',
+      'version' => '1.22.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c6c942b1ac76c82448322025e084cadc56048b4e',
+    ),
+    'symfony/polyfill-mbstring' => 
+    array (
+      'pretty_version' => 'v1.22.0',
+      'version' => '1.22.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f377a3dd1fde44d37b9831d68dc8dea3ffd28e13',
+    ),
+    'symfony/polyfill-php73' => 
+    array (
+      'pretty_version' => 'v1.22.0',
+      'version' => '1.22.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a678b42e92f86eca04b7fa4c0f6f19d097fb69e2',
+    ),
+    'symfony/polyfill-php80' => 
+    array (
+      'pretty_version' => 'v1.22.0',
+      'version' => '1.22.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
+    ),
+    'symfony/process' => 
+    array (
+      'pretty_version' => 'v4.4.19',
+      'version' => '4.4.19.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7e950b6366d4da90292c2e7fa820b3c1842b965a',
+    ),
+    'symfony/service-contracts' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd15da7ba4957ffb8f1747218be9e1a121fd298a1',
+    ),
+    'zendframework/zend-escaper' => 
+    array (
+      'pretty_version' => '2.6.1',
+      'version' => '2.6.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3801caa21b0ca6aca57fa1c42b08d35c395ebd5f',
+    ),
+    'zendframework/zend-http' => 
+    array (
+      'pretty_version' => '2.11.2',
+      'version' => '2.11.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e15e0ce45a2a4f642cd0b7b4f4d4d0366b729a1a',
+    ),
+    'zendframework/zend-json' => 
+    array (
+      'pretty_version' => '3.1.2',
+      'version' => '3.1.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e9ddb1192d93fe7fff846ac895249c39db75132b',
+    ),
+    'zendframework/zend-loader' => 
+    array (
+      'pretty_version' => '2.6.1',
+      'version' => '2.6.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '91da574d29b58547385b2298c020b257310898c6',
+    ),
+    'zendframework/zend-stdlib' => 
+    array (
+      'pretty_version' => '3.2.1',
+      'version' => '3.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '66536006722aff9e62d1b331025089b7ec71c065',
+    ),
+    'zendframework/zend-uri' => 
+    array (
+      'pretty_version' => '2.7.1',
+      'version' => '2.7.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'bfc4a5b9a309711e968d7c72afae4ac50c650083',
+    ),
+    'zendframework/zend-validator' => 
+    array (
+      'pretty_version' => '2.13.0',
+      'version' => '2.13.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b54acef1f407741c5347f2a97f899ab21f2229ef',
+    ),
+    'zendframework/zendservice-apple-apns' => 
+    array (
+      'pretty_version' => '1.4.1',
+      'version' => '1.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a8919519edf9ac4658e7f61cb39c4dfe65b5bd49',
+    ),
+    'zendframework/zendservice-google-gcm' => 
+    array (
+      'pretty_version' => '2.1.1',
+      'version' => '2.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '141ac74b4a76656dac48bb97c7be4fc336d075ae',
     ),
   ),
 );

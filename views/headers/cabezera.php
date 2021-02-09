@@ -64,7 +64,7 @@
                 
                     <div class="header-contact-detail">
                         <a href="javascript:">
-                            <p href="login" class="contact-header">'.$nombre_.'</p>
+                            <p href="login" class="contact-header" style="text-transform: capitalize;">'.$nombre_.'</p>
                         </a>
                         <a href="salir">
                             <p class="contact-header">Cerrar Session</p>
@@ -88,7 +88,7 @@
                 
                     <div class="header-contact-detail">
                         <a href="javascript:">
-                            <p href="login" class="contact-header">'.$nombre_.'</p>
+                            <p href="login" class="contact-header" style="text-transform: capitalize;">'.$nombre_.'</p>
                         </a>
                         <a href="salir">
                             <p class="contact-header">Cerrar Session</p>

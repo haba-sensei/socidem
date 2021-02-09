@@ -44,7 +44,7 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
     $AfilC = mysqli_num_rows($BuscaAfil);
          
         if ($AfilC > 0 ) {
-            echo '<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%">Este correo ya esta registrado </div> </div>';
+            echo '<script> alert("Este correo ya esta registrado"); 	window.location = "../registro"; </script>';
         }
          
         else {
@@ -81,5 +81,5 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
             
         }
     } else {
-    echo '<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%">Campos Vacios</div> </div>';
+    echo '<script> alert("Campos Vacios"); 	window.location = "registro"; </script>';
 }

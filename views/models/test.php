@@ -49,28 +49,47 @@ data-preference-id="<?php echo $preference->id; ?>">
 
 <?php 
  
-use AppleSignIn\ASDecoder;
+// use AppleSignIn\ASDecoder;
 
-$clientUser = "example_client_user";
-$identityToken = "example_encoded_jwt";
+// $clientUser = "example_client_user";
+// $identityToken = "example_encoded_jwt";
 
-$appleSignInPayload = ASDecoder::getAppleSignInPayload($identityToken);
+// $appleSignInPayload = ASDecoder::getAppleSignInPayload($identityToken);
 
-/**
- * Obtain the Sign In with Apple email and user creds.
- */
-$email = $appleSignInPayload->getEmail();
-$user = $appleSignInPayload->getUser();
+// /**
+//  * Obtain the Sign In with Apple email and user creds.
+//  */
+// $email = $appleSignInPayload->getEmail();
+// $user = $appleSignInPayload->getUser();
 
-/**
- * Determine whether the client-provided user is valid.
- */
-$isValid = $appleSignInPayload->verifyUser($clientUser);
+// /**
+//  * Determine whether the client-provided user is valid.
+//  */
+// $isValid = $appleSignInPayload->verifyUser($clientUser);
+
+
+// if($_SESSION['fb_id']) {
+// echo "
+//   <div class = 'container'>
+//      <div class = 'jumbotron'>
+//         <h1>Hello ".$_SESSION['fb_name']." </h1>
+//         <p>Welcome to Cloudways</p>
+//      </div>
+//         <ul class = 'nav nav-list'>
+//            <h4>Image</h4>
+//            <li> ".$_SESSION['fb_pic']." </li>
+//            <h4>Facebook ID</h4>
+//            <li> ".$_SESSION['fb_id']." </li>
+//            <h4>Facebook fullname</h4>
+//            <li> ".$_SESSION['fb_name']." </li>
+//            <h4>Facebook Email</h4>
+//            <li> ".$_SESSION['fb_email']." </li>
+//         </ul>
+//     </div>
+//     ";
+//  }  
+
 
 ?>
 
-
-
-
-
-?>
+ 

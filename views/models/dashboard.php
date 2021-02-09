@@ -2,7 +2,12 @@
 
 switch ($rol_) {
     case 1:
-        include 'views/admin/dashboard_med.php';
+        if($estado_ == 0){
+            include 'views/onboarding/perfil.php';
+        }else {
+            include 'views/admin/dashboard_med.php';
+        }
+      
     break;
 
     case 2:
