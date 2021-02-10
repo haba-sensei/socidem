@@ -8,13 +8,14 @@ $correo_doc = $_POST['email_doc'];
 $especialidad_doc = $_POST['especialidad'];
 $pass_doc = md5($_POST['pass_doc']);
 $rol_doc = "1";
+$foto_doc = "1.jpg";
 $estado_doc = 0;
 date_default_timezone_set('America/Lima');
 setlocale(LC_TIME, 'es_ES.UTF-8');
 setlocale(LC_TIME, 'spanish');       
 $last_login_doc = date('l jS F Y h:i:s A');
 
-if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == ""  && !$especialidad_doc == "" && !$rol_doc == "" && !$last_login_doc == "") {
+if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$foto_doc == ""  && !$especialidad_doc == "" && !$rol_doc == "" && !$last_login_doc == "") {
      
     $BuscaAfil = ejecutarSQL::consultar("select * from medicos where correo='$correo_doc' ");
    
@@ -27,7 +28,7 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == ""  && !$especial
         else {
 
             $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc' "); 
-            $regPerfil = consultasSQL::InsertSQL("perfil", "correo, documento, telefono, num_colegiatura, especialidad, servicios, educacion, ubicacion, localizaciones, sobre_mi ",  "'$correo_doc', '', '', NULL, '$especialidad_doc', '', '', '', '', '' "); 
+            $regPerfil = consultasSQL::InsertSQL("perfil", "correo, documento, foto, telefono, num_colegiatura, especialidad, servicios, titulo, universidad, años, ubicacion, sobre_mi, nombre_clinica, direccion_clinica, precio_consulta", "'$correo_doc', '', '$foto_doc', '',  NULL, '$especialidad_doc', '', '', '', '', '', '', '', '', ''"); 
 
 
 

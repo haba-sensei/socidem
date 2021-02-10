@@ -3,7 +3,9 @@
 switch ($rol_) {
     case 1:
         if($estado_ == 0){
-            include 'views/onboarding/perfil.php';
+            
+           echo '<script>  window.location = "perfilMed"; </script>';
+           
         }else {
             include 'views/admin/dashboard_med.php';
         }

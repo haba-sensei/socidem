@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="views/assets/plugins/daterangepicker/daterangepicker.css">
 		<link rel="stylesheet" href="views/assets/plugins/select2/css/select2.min.css">
 		<link rel="stylesheet" href="views/assets/plugins/fancybox/jquery.fancybox.min.css">
+		<link rel="stylesheet" href="views/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
+		<link rel="stylesheet" href="views/assets/plugins/dropzone/dropzone.min.css">
 	    <link rel="stylesheet" href="views/assets/css/style.css">
 		
 </head>

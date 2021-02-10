@@ -16,8 +16,8 @@
                             </div>
 
                             <!-- Register Form -->
-                            <form class="theme-form Login-Form" action="controller/registro_med.controlador.php" method="post" role="form"
-                          data-form="registro">
+                            <form class="theme-form Login-Form" action="controller/registro_med.controlador.php"
+                                method="post" role="form" data-form="registro">
                                 <div class="form-group form-focus">
 
                                     <label class="focus-label">Especialidad</label>
