@@ -12,10 +12,13 @@
     <script src="views/assets/plugins/dropzone/dropzone.min.js"></script>
 		<script src="views/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
 		<script src="views/assets/js/profile-settings.js"></script>
+    <script src="views/assets/js/jplist/jplist.min.js"></script>
     <script src="views/assets/js/script.js"></script>
     <script src="views/assets/js/scripts/ajax.js"></script>
+    <script src="views/assets/js/scripts/init.js"></script>
   
   <?php 
+  
   switch ($rol_) {
     case 1:
         if($estado_ == 0){

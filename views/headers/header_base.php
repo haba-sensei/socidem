@@ -16,5 +16,7 @@
 		<link rel="stylesheet" href="views/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
 		<link rel="stylesheet" href="views/assets/plugins/dropzone/dropzone.min.css">
 	    <link rel="stylesheet" href="views/assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="views/assets/js/jplist/jplist.styles.css">
+		<link rel="stylesheet" href="views/assets/css/style_search.css">
 		
 </head>

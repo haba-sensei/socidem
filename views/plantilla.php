@@ -15,7 +15,7 @@ $routes = explode("-", $_GET["ruta"]);
 			
 		break;
 		 
-
+			
 		default:
 			include 'views/headers/header_base.php';
 			include "views/headers/cabezera.php";

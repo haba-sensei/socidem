@@ -1,26 +1,21 @@
 <?php 
 /*=============================================
-SLIDER PRINCIPAL 
+CONTADOR DE MEDICOS
 =============================================*/
-
-
-
-
-
-
-//     $sliderP = ejecutarSQL::consultar("SELECT * FROM `slider_principal`");
-// /*=============================================
-// COLECCION PROMOCIONAL SLIDER 1
-// =============================================*/
-//     $colPromo = ejecutarSQL::consultar("SELECT `productos`.*, `moneda`.`moneda`, `productos`.`tipo` FROM `productos`, `moneda` WHERE `productos`.`tipo` = 'promocional' AND `productos`.`estado` = '1';");
-// /*=============================================
-// TODOS LOS PRODUCTOS + MONEDA
-// =============================================*/
-//     $allProd = ejecutarSQL::consultar("SELECT `productos`.*, `moneda`.`moneda`, `productos`.`id` AS idprod  FROM `productos` , `moneda` WHERE `productos`.`estado` = '1' ORDER BY `productos`.`id` DESC ");
-// /*=============================================
-// BANNER FASHION TRENDS 
-// =============================================*/
-//     $bannFashionTrends = ejecutarSQL::consultar("SELECT * FROM `fashion_trends` LIMIT 1");
+     $medCons = ejecutarSQL::consultar("SELECT * FROM `medicos`");
+     $medTotal = mysqli_num_rows($medCons);
+/*=============================================
+TODAS LAS ESPECIALIDADES
+=============================================*/
+     $espeCons = ejecutarSQL::consultar("SELECT * FROM `especialidades`");
+/*=============================================
+MINIMO Y MAXIMO RANGO DE PRECIOS CONSULTA
+=============================================*/
+     $maximoCons = ejecutarSQL::consultar("SELECT `perfil`.`precio_consulta` FROM `perfil` ORDER BY `perfil`.`precio_consulta` DESC LIMIT 1");
+/*=============================================
+BANNER FASHION TRENDS 
+=============================================*/
+     $listMedicos = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.*, `perfil`.`correo`, `medicos`.`estado` FROM `medicos` , `perfil` WHERE `perfil`.`correo` = `medicos`.`correo` AND `medicos`.`estado` = '1'");
 // /*=============================================
 // PRODUCTOS ESPECIALES NUEVOS
 // =============================================*/

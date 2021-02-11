@@ -93,7 +93,8 @@ if (!$correo == "" && !$especialidad == "" && !$nombre == "" && !$documento == "
 
             session_reset(); 
             $_SESSION["correo"] = $correo;  
-            $_SESSION["nombre"] = $nombre; 
+            $_SESSION["nombre"] = $nombre;
+            $_SESSION["estado"] = 1;
 
             echo '<script> 	window.location = "dashboard"; </script>';
            
@@ -130,7 +131,8 @@ if (!$correo == "" && !$especialidad == "" && !$nombre == "" && !$documento == "
 
             session_reset(); 
             $_SESSION["correo"] = $correo;  
-            $_SESSION["nombre"] = $nombre;  
+            $_SESSION["nombre"] = $nombre;
+            $_SESSION["estado"] = 1; 
 
            
               
