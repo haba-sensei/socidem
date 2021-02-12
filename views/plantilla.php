@@ -14,8 +14,7 @@ $routes = explode("-", $_GET["ruta"]);
 			include "adminP/headers/cabezera.php";
 			
 		break;
-		 
-			
+ 	
 		default:
 			include 'views/headers/header_base.php';
 			include "views/headers/cabezera.php";
@@ -125,6 +124,15 @@ $routes = explode("-", $_GET["ruta"]);
 		include "views/footers/footer.php";
 		include "views/footers/modal_onboarding.php";
 		include "views/footers/scripts_perfil.php";
+		echo "</body>";
+	break;
+
+	case 'cita':
+		include 'views/footers/footer_base.php';
+		include "views/footers/scripts_citas.php";
+		include "views/footers/footer.php";
+		include "views/footers/modal_onboarding.php";
+		
 		echo "</body>";
 	break;
 

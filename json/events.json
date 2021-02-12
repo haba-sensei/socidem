@@ -1,0 +1,103 @@
+[{
+        "id": "1",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Horario Libre",
+        "start": "2020-09-09T16:00:00-05:00",
+
+        "extendedProps": {
+            "status": "libre"
+        },
+
+        "borderColor": "white"
+    },
+    {
+        "id": "2",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Repeating Event",
+        "start": "2020-09-12T16:00:00-05:00",
+        "extendedProps": {
+            "status": "agendado"
+        },
+
+        "borderColor": "white"
+    },
+    {
+        "id": "3",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Meeting",
+        "start": "2020-09-12T10:30:00-05:00",
+        "end": "2020-09-12T12:30:00-05:00",
+        "extendedProps": {
+            "status": "libre"
+        },
+
+        "borderColor": "white"
+    },
+    {
+        "id": "4",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Lunch",
+        "start": "2020-09-12T12:00:00-05:00",
+        "extendedProps": {
+            "status": "agendado"
+        },
+
+        "borderColor": "white"
+    },
+    {
+        "id": "5",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Meeting",
+        "start": "2020-09-12T14:30:00-05:00",
+        "extendedProps": {
+            "status": "libre"
+        },
+
+        "borderColor": "white"
+    },
+    {
+        "id": "6",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Happy Hour",
+        "start": "2020-09-12T17:30:00-05:00",
+        "extendedProps": {
+            "status": "libre"
+        },
+
+        "borderColor": "white"
+    },
+    {
+        "id": "7",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Dinner",
+        "start": "2020-09-12T20:00:00",
+        "extendedProps": {
+            "status": "libre"
+        },
+
+        "borderColor": "white"
+    },
+    {
+        "id": "8",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Birthday Party",
+        "start": "2020-09-13T07:00:00-05:00",
+        "extendedProps": {
+            "status": "libre"
+        },
+
+        "borderColor": "white"
+    },
+    {
+        "id": "9",
+        "token": "4a813b86ddbe2e4375725e03c72e1009",
+        "title": "Click for Google",
+        "url": "http://google.com/",
+        "start": "2020-09-12",
+        "extendedProps": {
+            "status": "agendado"
+        },
+
+        "borderColor": "white"
+    }
+]

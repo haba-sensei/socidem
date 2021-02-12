@@ -18,5 +18,6 @@
 	    <link rel="stylesheet" href="views/assets/css/style.css">
 		<link rel="stylesheet" type="text/css" href="views/assets/js/jplist/jplist.styles.css">
 		<link rel="stylesheet" href="views/assets/css/style_search.css">
+		<link rel='stylesheet' href='views/assets/plugins/calendario/main.css' >
 		
 </head>
