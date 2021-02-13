@@ -56,7 +56,7 @@
 <?php 
 $codigoRef = $routes[1];
 
-$consMedico = ejecutarSQL::consultar("SELECT `perfil`.`codigo_referido`, `perfil`.`correo`, `medicos`.`correo`, `perfil`.`foto`, `perfil`.`nombre_clinica`, `perfil`.`direccion_clinica`, `medicos`.`nombre_completo` FROM `perfil`, `medicos` WHERE `perfil`.`codigo_referido` = '$codigoRef' AND `medicos`.`correo` = `perfil`.`correo`");
+$consMedico = ejecutarSQL::consultar("SELECT `perfil`.`codigo_referido`, `perfil`.`correo`, `medicos`.`correo`, `perfil`.`foto`, `perfil`.`nombre_clinica`, `perfil`.`especialidad`, `perfil`.`direccion_clinica`, `medicos`.`nombre_completo` FROM `perfil`, `medicos` WHERE `perfil`.`codigo_referido` = '$codigoRef' AND `medicos`.`correo` = `perfil`.`correo`");
 
 
  while($datos_med_C=mysqli_fetch_assoc($consMedico)){
@@ -64,7 +64,7 @@ $consMedico = ejecutarSQL::consultar("SELECT `perfil`.`codigo_referido`, `perfil
     $nombre_completo_med = $datos_med_C['nombre_completo'];
     $nombre_clinica_med = $datos_med_C['nombre_clinica'];
     $direccion_clinica_med = $datos_med_C['direccion_clinica'];
-
+    $especialidad_med = $datos_med_C['especialidad'];
 ?>
 <!-- Page Content -->
 <div class="content">
@@ -81,7 +81,7 @@ $consMedico = ejecutarSQL::consultar("SELECT `perfil`.`codigo_referido`, `perfil
                             </a>
                             <div class="booking-info">
                                 <h4><a href="perfil-<?=$codigoRef ?>">Dr. <?=$nombre_completo_med ?></a></h4>
-                                <p class="doc-speciality" style="text-transform: capitalize;">Médico Especialista en Traumatología y Cirugía Ort</p>
+                                <p class="doc-speciality" style="text-transform: capitalize;"><?=$especialidad_med ?></p>
                                 <p class="doc-department" style="color: #757575; font-weight: 500;">
                                     <img src="views/assets/img/hospital.png" class="img-fluid" alt="localizacion">
                                     Consultorio:

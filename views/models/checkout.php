@@ -1,205 +1,173 @@
+<?php require_once 'views/models/seguridad/payment.php'; ?> 
+
 <!-- Breadcrumb -->
 <div class="breadcrumb-bar">
-	<div class="container-fluid">
-		<div class="row align-items-center">
-			<div class="col-md-12 col-12">
-				<nav aria-label="breadcrumb" class="page-breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="inicio">Inicio</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Checkout</li>
-					</ol>
-				</nav>
-				<h2 class="breadcrumb-title">Checkout <?=$_SESSION['opcion']; ?></h2>
-			</div>
-		</div>
-	</div>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="inicio">Inicio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                    </ol>
+                </nav>
+                <h2 class="breadcrumb-title">Checkout </h2>
+            </div>
+        </div>
+    </div>
 </div>
-			<!-- /Breadcrumb -->
-			
-			<!-- Page Content -->
-			<div class="content">
-				<div class="container">
+<!-- /Breadcrumb -->
 
-					<div class="row">
-						<div class="col-md-7 col-lg-8">
-							<div class="card">
-								<div class="card-body">
-								
-									<!-- Checkout Form -->
-									<form action="">
-									
-										<!-- Personal Information -->
-										<div class="info-widget">
-											<h4 class="card-title">Personal Information</h4>
-											<div class="row">
-												<div class="col-md-6 col-sm-12">
-													<div class="form-group card-label">
-														<label>First Name</label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12">
-													<div class="form-group card-label">
-														<label>Last Name</label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12">
-													<div class="form-group card-label">
-														<label>Email</label>
-														<input class="form-control" type="email">
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-12">
-													<div class="form-group card-label">
-														<label>Phone</label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-											</div>
-											<div class="exist-customer">Existing Customer? <a href="#">Click here to login</a></div>
-										</div>
-										<!-- /Personal Information -->
-										
-										<div class="payment-widget">
-											<h4 class="card-title">Payment Method</h4>
-											
-											<!-- Credit Card Payment -->
-											<div class="payment-list">
-												<label class="payment-radio credit-card-option">
-													<input type="radio" name="radio" checked>
-													<span class="checkmark"></span>
-													Credit card
-												</label>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group card-label">
-															<label for="card_name">Name on Card</label>
-															<input class="form-control" id="card_name" type="text">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group card-label">
-															<label for="card_number">Card Number</label>
-															<input class="form-control" id="card_number" placeholder="1234  5678  9876  5432" type="text">
-														</div>
-													</div>
-													<div class="col-md-4">
-														<div class="form-group card-label">
-															<label for="expiry_month">Expiry Month</label>
-															<input class="form-control" id="expiry_month" placeholder="MM" type="text">
-														</div>
-													</div>
-													<div class="col-md-4">
-														<div class="form-group card-label">
-															<label for="expiry_year">Expiry Year</label>
-															<input class="form-control" id="expiry_year" placeholder="YY" type="text">
-														</div>
-													</div>
-													<div class="col-md-4">
-														<div class="form-group card-label">
-															<label for="cvv">CVV</label>
-															<input class="form-control" id="cvv" type="text">
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- /Credit Card Payment -->
-											
-											<!-- Paypal Payment -->
-											<div class="payment-list">
-												<label class="payment-radio paypal-option">
-													<input type="radio" name="radio">
-													<span class="checkmark"></span>
-													Paypal
-												</label>
-											</div>
-											<!-- /Paypal Payment -->
-											
-											<!-- Terms Accept -->
-											<div class="terms-accept">
-												<div class="custom-checkbox">
-												   <input type="checkbox" id="terms_accept">
-												   <label for="terms_accept">I have read and accept <a href="#">Terms &amp; Conditions</a></label>
-												</div>
-											</div>
-											<!-- /Terms Accept -->
-											
-											<!-- Submit Section -->
-											<div class="mt-4 submit-section">
-												<a href="checkExito" class="btn btn-primary submit-btn">Confirmar y Pagar</a>
-											</div>
-											<!-- /Submit Section -->
-											
-										</div>
-									</form>
-									<!-- /Checkout Form -->
-									
-								</div>
-							</div>
-							
-						</div>
+<!-- Page Content -->
+<div class="content">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-7 col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+
+                        <!-- Checkout Form -->
+						<form action="controller/dashboard/checkoutPaciente.controlador.php" method="post" role="form"
+                                class="theme-form checkout-Form" id="checkout_form">
+
+
+                            <div class="info-widget">
+                                <h4 class="card-title">Información del paciente</h4>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group card-label">
+                                            <label>Primer Nombre</label>
+                                            <input class="form-control" name="nombre_paciente" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group card-label">
+                                            <label>Apellido</label>
+                                            <input class="form-control" name="apellido_paciente" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group card-label">
+                                            <label>Email</label>
+                                            <input class="form-control" type="email" name="email_paciente"  required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group card-label">
+                                            <label>Telefono</label>
+                                            <input class="form-control" name="telefono_paciente" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group card-label">
+
+                                            <textarea placeholder="Detalles medicos de la consulta..." name="detalles_paciente" class="form-control" rows="4"
+                                                cols="50" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 submit-section">
+                                    <?php require_once 'controller/dashboard/mercadoPago.controlador.php'; ?>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                        <!-- /Checkout Form -->
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-5 col-lg-4 ">
+
+                <!-- Booking Summary -->
+                <div class="card booking-card">
+                    <div class="card-header">
+                        <h4 class="card-title">Resumen de pago</h4>
+                    </div>
+                    <div class="card-body">
+						<?php 
+						$token_v = $_SESSION['secur'];				
+						$checkMed = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.`codigo_referido`, `perfil`.`foto`, `perfil`.`nombre_clinica`, `perfil`.`direccion_clinica`, `perfil`.`correo` FROM `medicos`, `perfil` WHERE `perfil`.`codigo_referido` = '$token_v' AND `perfil`.`correo` = `medicos`.`correo`");
+
+						while($d=mysqli_fetch_assoc($checkMed)){
+						$nombre_completo=$d['nombre_completo'];
+						$foto=$d['foto'];
+						$nom_clinica=$d['nombre_clinica'];
+						$dir_clinica=$d['direccion_clinica'];
 						
-						<div class="col-md-5 col-lg-4 theiaStickySidebar">
-						
-							<!-- Booking Summary -->
-							<div class="card booking-card">
-								<div class="card-header">
-									<h4 class="card-title">Booking Summary</h4>
-								</div>
-								<div class="card-body">
-								
-									<!-- Booking Doctor Info -->
-									<div class="booking-doc-info">
-										<a href="doctor-profile.html" class="booking-doc-img">
-											<img src="views/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
-										</a>
-										<div class="booking-info">
-											<h4><a href="doctor-profile.html">Dr. Darren Elder</a></h4>
-											<div class="rating">
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star"></i>
-												<span class="d-inline-block average-rating">35</span>
-											</div>
-											<div class="clinic-details">
-												<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
-											</div>
-										</div>
-									</div>
-									<!-- Booking Doctor Info -->
+						?>
+                        <!-- Booking Doctor Info -->
+                        <div class="booking-doc-info">
+                            <a href="<?="perfil-".$_SESSION['secur']; ?>" class="booking-doc-img">
+                                <img src="views/assets/images/medicos/<?=$foto ?>" alt="User Image">
+                            </a>
+                            <div class="booking-info">
+                                <h4 style="text-transform: capitalize"><a href="<?="perfil-".$_SESSION['secur']; ?>"><?="Dr ".$nombre_completo ?></a></h4>
+								<div class="clini-infos">
+                                    <ul>
+                                        <li><i class="far fa-thumbs-up"></i> 98%</li>
+                                        <li><i class="far fa-comment"></i> 17 Comentarios</li>
+                                        <li><i class="fas fa-certificate"></i> Perfil Verificado</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Booking Doctor Info -->
+				<?php }  ?>
+                        <div class="booking-summary">
+                            <div class="booking-item-wrap">
+                                <ul class="booking-date">
+                                    <li>Fecha <span><?php 
+									$fechaEntera = strtotime($_SESSION['fecha_start']);
+									$fecha = date("Y-m-d", $fechaEntera);
+									echo $fecha;
 									
-									<div class="booking-summary">
-										<div class="booking-item-wrap">
-											<ul class="booking-date">
-												<li>Date <span>16 Nov 2019</span></li>
-												<li>Time <span>10:00 AM</span></li>
-											</ul>
-											<ul class="booking-fee">
-												<li>Consulting Fee <span>$100</span></li>
-												<li>Booking Fee <span>$10</span></li>
-												<li>Video Call <span>$50</span></li>
-											</ul>
-											<div class="booking-total">
-												<ul class="booking-total-list">
-													<li>
-														<span>Total</span>
-														<span class="total-cost">$160</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- /Booking Summary -->
-							
-						</div>
-					</div>
+									?> </span></li>
+                                    <li>Hora <span><?php 
+									$fecha_init = strtotime($_SESSION['fecha_start']);
+									$fecha_fin = strtotime($_SESSION['fecha_end']);
 
-				</div>
+									$init = date("g:ia", $fecha_init);
+									$end = date("g:ia", $fecha_fin);
+									
+									echo $init." - ".$end;
 
-			</div>		
-			<!-- /Page Content -->
+									?> </span></li>
+                                </ul>
+
+
+
+                                <ul class="booking-fee">
+                                    <li>Consulta <span>S/ <?=$_SESSION['precio_consulta'] ?></span></li>
+                                    <li>Tipo de consulta <span><?=$_SESSION['opcion'] ?> </span></li>
+
+                                </ul>
+                                <div class="booking-total">
+                                    <ul class="booking-total-list">
+                                        <li>
+                                            <span>Total</span>
+                                            <span class="total-cost">S/ <?=$_SESSION['precio_consulta'] ?></span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+								<div class="res-checkout animated fadeInDown"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Booking Summary -->
+				
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- /Page Content -->

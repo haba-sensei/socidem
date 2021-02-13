@@ -16,8 +16,7 @@
     <script src="views/assets/js/script.js"></script>
     <script src="views/assets/js/scripts/ajax.js"></script>
     <script src="views/assets/js/scripts/init.js"></script>
-  
-  <?php 
+    <?php 
   
   switch ($rol_) {
     case 1:

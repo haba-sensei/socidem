@@ -48,3 +48,35 @@
         </div> 
     </div>
 </div>
+
+
+<div class="modal fade" id="login_session" aria-hidden="true" role="dialog">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+        
+            <div class="modal-body">
+             
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                        <lottie-player src="https://assets7.lottiefiles.com/temp/lf20_qCBn5k.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+                        
+                        </div>
+                        <div class="col-md-6" style="text-align: center; position: relative; top: 55px; color: #005361;">
+
+                            <h3 >Bienvenido</h3>
+                             
+                             <h1>Para Continuar debes Iniciar Sessión</h1> 
+                             <br>
+                             <div class="clinic-booking">
+                                     <a class="apt-btn" href="login">Ingresar</a>
+                            </div>
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>

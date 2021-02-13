@@ -15,13 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
             var eventObj = info.event;
             var token = eventObj.extendedProps.token;
             var id = eventObj.id;
+            var fecha_start = eventObj.startStr;
+            var fecha_end = eventObj.endStr;
+             
             
-            modalCita(id, token);
+            modalCita(id, token, fecha_start, fecha_end);
             info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
          },
         // hiddenDays: [ ] ,
         timeZone: 'UTC',
-        initialDate: '2020-09-09',
+        initialDate: '2021-02-15',
         initialView: 'listWeek',
         editable: false,
         locale: initialLocaleCode,
@@ -48,12 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         },
-
+        
         nowIndicator: true,
         navLinks: false, // can click day/week names to navigate views
         dayMaxEvents: true, // allow "more" link when too many events
         events: {
-            url: 'php/get-events.php',
+            url: 'controller/dashboard/consulAgenda.controlador.php?token_med=<?=$routes[1] ?>',
             failure: function() {
 
             }
@@ -69,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function modalCita(id, token) {
+function modalCita(id, token, fecha_start, fecha_end) {
  
 
         $.ajax({
@@ -77,7 +80,9 @@ function modalCita(id, token) {
             url: "controller/dashboard/agenda.controlador.php",
             data: {
               valor: id,
-              secur: token
+              secur: token,
+              fecha_start: fecha_start,
+              fecha_end: fecha_end
             },            
             success: function(data) {
                 $('#cuerpo_cita').html(data);
@@ -87,7 +92,7 @@ function modalCita(id, token) {
 
 }
 
-function procesoCita(id, token) {
+function procesoCita(id, token, fecha_start, fecha_end) {
     var opcion = $('input:radio[name=radio]:checked').val();
 
     $.ajax({
@@ -96,10 +101,13 @@ function procesoCita(id, token) {
             data: {
               valor: id,
               secur: token,
-              opcion: opcion
+              opcion: opcion,
+              fecha_start: fecha_start,
+              fecha_end: fecha_end
             },            
             success: function(data) {
-                window.location = "checkout";
+                 
+                 window.location = "checkout";
             }
         });
 
