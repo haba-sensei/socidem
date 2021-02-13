@@ -1644,8 +1644,10 @@ A VERTICAL event
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    background: #cef1fe;
-    background: var(--fc-page-bg-color, #cef1fe);
+    background: #15558d;
+    background: var(--fc-page-bg-color, #15558d);
+    color: white;
+    text-transform: uppercase;
     /* for when headers are styled to be transparent and sticky */
 }
 

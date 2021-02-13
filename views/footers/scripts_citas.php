@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'listWeek'
+            right: 'dayGridMonth,listWeek'
         },
         eventClick: function(info) {
             var eventObj = info.event;
@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             switch (info.event.extendedProps.status) {
                 case "libre":
-                    info.el.style.cssText = "background-color: green;";
-                    info.event.backgroundColor = "green";
+                    info.el.style.cssText = "background-color: #0098c1;";
+                    info.event.backgroundColor = "#0098c1";
                      
                     break;
                 case "agendado":
-                    info.el.style.cssText = "background-color: red;";
-                    info.event.backgroundColor = "red";
+                    info.el.style.cssText = "background-color: #ff7c00;";
+                    info.event.backgroundColor = "#ff7c00";
                     
                     break;
             }
