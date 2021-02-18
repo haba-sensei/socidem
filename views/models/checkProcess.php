@@ -55,14 +55,14 @@
 														break;
 												 
 											}
-											date_default_timezone_set('America/Lima');
+											
 											setlocale(LC_TIME, 'es_ES.UTF-8');
 											setlocale(LC_TIME, 'spanish');
 											
 											$dia= date("d", strtotime($fecha_start)); 	
 											$anio = strftime("%Y", strtotime($fecha_start));  
-											$init_hora_min = date("g:ia", $fecha_start);
-											$end_hora_min = date("g:ia", $fecha_end);
+											$init_hora_min =date('h:i A', strtotime($fecha_start));
+                                            $end_hora_min = date('h:i A', strtotime($fecha_end));
 											$mes_texto = strftime("%B", strtotime($fecha_start) );  
 
 											 $fecha_result = $dia." ".$mes_texto." del ".$anio." <br><br> ".$init_hora_min." - ".$end_hora_min;									

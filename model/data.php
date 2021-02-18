@@ -16,14 +16,15 @@ MINIMO Y MAXIMO RANGO DE PRECIOS CONSULTA
 BANNER FASHION TRENDS 
 =============================================*/
      $listMedicos = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.*, `perfil`.`correo`, `medicos`.`estado` FROM `medicos` , `perfil` WHERE `perfil`.`correo` = `medicos`.`correo` AND `medicos`.`estado` = '1'");
-// /*=============================================
-// PRODUCTOS ESPECIALES NUEVOS
-// =============================================*/
-//     $prodEspNew = ejecutarSQL::consultar("SELECT `productos`.*, `moneda`.`moneda` FROM `productos` , `moneda` WHERE `productos`.`estado` = '1' ORDER BY `productos`.`id` DESC LIMIT 8");
-// /*=============================================
-// BANNERS HOMBRE Y MUJER 
-// =============================================*/
-//     $bannHM = ejecutarSQL::consultar("SELECT * FROM `bann_hm` LIMIT 2");
+/*=============================================
+LISTA DE CONSULTAS PACIENTE
+=============================================*/
+     $listConsultas = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda` , `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`email_usuario` = '$correo_' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
+/*=============================================
+TOTAL DE PACIENTES DASH MEDICO
+=============================================*/
+     $ConsPacientes = ejecutarSQL::consultar("SELECT DISTINCT email_usuario FROM agenda");
+     $totalPacientes = mysqli_num_rows($ConsPacientes);
 // /*=============================================
 // BANNERS PROMOCIONALES 3
 // =============================================*/

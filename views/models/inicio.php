@@ -36,8 +36,7 @@
 	    <!-- /Home Banner -->
 
 
-	    <!-- <iframe allow="camera; microphone; fullscreen; display-capture" src="https://meet.jit.si/holadssdsd" style="height: 100%; width: 100%; border: 0px;"></iframe>
-		  -->
+	    
 	    <!-- Category Section -->
 	    <section class="section home-tile-section">
 	        <div class="container">

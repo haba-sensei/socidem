@@ -4,6 +4,7 @@
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<meta name="theme-color" content="#083756" />
 		<title>Médicos en Directo</title>
 		<link type="image/x-icon" href="views/assets/img/favicon.png" rel="icon">
 	    <link rel="stylesheet" href="views/assets/css/bootstrap.min.css">
@@ -19,5 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="views/assets/js/jplist/jplist.styles.css">
 		<link rel="stylesheet" href="views/assets/css/style_search.css">
 		<link rel='stylesheet' href='views/assets/plugins/calendario/main.css' >
+		<script src="views/assets/js/jquery.min.js"></script>
+		<script src='views/assets/plugins/jitsi/external_api.js'></script>
 		
 </head>

@@ -131,9 +131,9 @@
                                                 </div>
                                             </div>
                                             <div class="dash-widget-info">
-                                                <h6>Total Patient</h6>
-                                                <h3>1500</h3>
-                                                <p class="text-muted">Till Today</p>
+                                                <h6>Total Pacientes</h6>
+                                                <h3><?= $totalPacientes  ?></h3>
+                                                <p class="text-muted">Lista General</p>
                                             </div>
                                         </div>
                                     </div>
@@ -146,8 +146,8 @@
                                                 </div>
                                             </div>
                                             <div class="dash-widget-info">
-                                                <h6>Today Patient</h6>
-                                                <h3>160</h3>
+                                                <h6>Agenda del Dia</h6>
+                                                <h3><?= $totalPacientes  ?></h3>
                                                 <p class="text-muted">06, Nov 2019</p>
                                             </div>
                                         </div>
@@ -161,8 +161,8 @@
                                                 </div>
                                             </div>
                                             <div class="dash-widget-info">
-                                                <h6>Appoinments</h6>
-                                                <h3>85</h3>
+                                                <h6>Agenda total</h6>
+                                                <h3><?= $totalPacientes  ?></h3>
                                                 <p class="text-muted">06, Apr 2019</p>
                                             </div>
                                         </div>
@@ -175,17 +175,17 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="mb-4">Patient Appoinment</h4>
+                        <h4 class="mb-4">Agenda de Pacientes</h4>
                         <div class="appointment-tab">
 
                             <!-- Appointment Tab -->
                             <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#upcoming-appointments"
-                                        data-toggle="tab">Upcoming</a>
+                                        data-toggle="tab">Agenda del dia</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#today-appointments" data-toggle="tab">Today</a>
+                                    <a class="nav-link" href="#today-appointments" data-toggle="tab">Agenda General</a>
                                 </li>
                             </ul>
                             <!-- /Appointment Tab -->

@@ -47,6 +47,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "busqueda" || 
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "cita" || 
+			$routes[0] == "lobby" || 
 			$routes[0] == "checkout" || 
 			$routes[0] == "checkProcess" || 
 			$routes[0] == "factura" || 
@@ -138,6 +139,23 @@ $routes = explode("-", $_GET["ruta"]);
 	case 'checkout':
 		include 'views/footers/footer_base.php';
 		include "views/footers/scripts_checkout.php";
+		include "views/footers/footer.php";
+		include "views/footers/modal_onboarding.php";
+		
+		echo "</body>";
+	break;
+
+	case 'lobby':
+		include 'views/footers/footer_base.php';
+		include "views/footers/footer.php";
+		include "views/footers/modal_onboarding.php";
+		
+		echo "</body>";
+	break;
+
+	case 'dashboard':
+		include 'views/footers/footer_base.php'; 
+		include "views/footers/scripts_dash.php";
 		include "views/footers/footer.php";
 		include "views/footers/modal_onboarding.php";
 		

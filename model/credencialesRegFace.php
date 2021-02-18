@@ -8,5 +8,5 @@ $fb = new Facebook\Facebook([
   $helper = $fb->getRedirectLoginHelper();
   
   $permissions = ['email']; // Optional permissions
-  $loginUrl = $helper->getLoginUrl('http://localhost/socidem/controller/registro_face.controlador.php', $permissions);
+  $loginUrl = $helper->getLoginUrl('https://medicos.stampiza2.com/controller/registro_face.controlador.php', $permissions);
    

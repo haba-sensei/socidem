@@ -12,9 +12,9 @@ $item->unit_price = $_SESSION['precio_consulta'];
 $preference->items = array($item);
 
 $preference->back_urls = array(
-    "success" => "http://localhost/socidem/controller/dashboard/crearPagoCita.controlador.php",
-    "failure" => "http://localhost/socidem/controller/dashboard/crearPagoCita.controlador.php", 
-    "pending" => "http://localhost/socidem/controller/dashboard/crearPagoCita.controlador.php"
+    "success" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoCita.controlador.php",
+    "failure" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoCita.controlador.php", 
+    "pending" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoCita.controlador.php"
 );
 $preference->auto_return = "approved"; 
 
