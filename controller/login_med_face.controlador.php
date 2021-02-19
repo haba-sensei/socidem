@@ -8,11 +8,8 @@ require_once '../vendor/autoload.php';
 
  if (isset($_GET['code'])){
     
-    $fb = new Facebook\Facebook([
-      'app_id' => '170568131242133',
-      'app_secret' => '2058350975fdcb641245bc2cba3af3a3',
-      'default_graph_version' => 'v2.10',
-      ]);
+      $type = 'LOGIN';
+      include '../model/config.php';
       
       
       $helper = $fb->getRedirectLoginHelper();
@@ -54,7 +51,7 @@ require_once '../vendor/autoload.php';
           $profile_request = $fb->get('/me?fields=name,first_name,last_name,email');
           $profile = $profile_request->getGraphUser();
                    
-          $correo  = $profile->getName('name');    
+          $correo  = $profile->getEmail('email');    
           $clave = md5($profile->getEmail('email'));  
           
           
@@ -74,6 +71,8 @@ require_once '../vendor/autoload.php';
               } 
               
               $AfilC = mysqli_num_rows($verAfil);
+
+              
                   if ($AfilC > 0) {
                   $_SESSION['id'] = $id_usuario;
                   $_SESSION['nombre'] = $nombre;

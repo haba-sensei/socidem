@@ -7,13 +7,9 @@ require_once '../vendor/autoload.php';
  
 
  if (isset($_GET['code'])){
-    
-    $fb = new Facebook\Facebook([
-      'app_id' => '170568131242133',
-      'app_secret' => '2058350975fdcb641245bc2cba3af3a3',
-      'default_graph_version' => 'v2.10',
-      ]);
-      
+   
+      $type = 'LOGIN';
+      include '../model/config.php';
       
       $helper = $fb->getRedirectLoginHelper();
       $permissions = ['email']; // optional

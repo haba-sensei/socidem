@@ -1,8 +1,8 @@
 <?php
-// define("USER", "vlrrywof_zkteco_user");
+// define("USER", "vlrrywof_user_med");
 // define("SERVER", "localhost");
-// define("BD", "vlrrywof_zkteco");
-// define("PASS", "?H)}pK&JUg3~");
+// define("BD", "vlrrywof_medicos");
+// define("PASS", "hpY@h*e@[PRZ");
 
 define("USER", "root");
 define("SERVER", "localhost");
