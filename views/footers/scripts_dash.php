@@ -17,6 +17,26 @@ function modalCred(id) {
  });
 
 }
+function modalDetalle(id) {
+   
+
+    $.ajax({
+        type: "POST",
+        url: "controller/dashboard/agendaMedListPacient.controlador.php",
+        data: {
+          id: id,
+           
+        },            
+        success: function(data) {
+            $('#cuerpo_detalles_paciente').html(data);
+            $('#detalles_med_paciente').modal('show');
+        }
+    });
+    
+   
+   }
+
+
  
 
 </script>

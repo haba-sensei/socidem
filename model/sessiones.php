@@ -6,6 +6,7 @@ error_reporting(E_ALL ^ E_NOTICE);
     $nombre_ = $_SESSION['nombre'];
     $correo_ = $_SESSION['correo'];
     $rol_ = $_SESSION["rol"]; 
+    $codigo_referido_ = $_SESSION["codigo_referido"]; 
     $telefono_  = $_SESSION["telefono"];
     $estado_ = $_SESSION["estado"]; 
     $last_login_ = $_SESSION["last_login"];

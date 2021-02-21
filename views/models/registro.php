@@ -53,7 +53,7 @@
                                     ?>
                                     </div>
                                     <div class="col-6">
-                                    <?php 
+                                    <?php  
                                     require_once 'model/credencialesReg.php';
                                     echo "<a href='".$client->createAuthUrl()."' class='btn btn-google btn-block'><i class='mr-1 fab fa-google'></i>
                                         Gmail</a>

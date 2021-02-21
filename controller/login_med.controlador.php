@@ -41,6 +41,7 @@ if (!$correo == "" && !$clave == "") {
         $nombre=$datos_usuario['nombre_completo'];
         $correo=$datos_usuario['correo'];
         $rol=$datos_usuario['rol'];
+        $codigo_referido=$datos_usuario['codigo_referido'];
         $estado=$datos_usuario['estado']; 
         $last_login=$datos_usuario['last_login'];
        
@@ -52,6 +53,7 @@ if (!$correo == "" && !$clave == "") {
         $_SESSION['nombre'] = $nombre;
         $_SESSION['correo'] = $correo;
         $_SESSION["rol"] = $rol;
+        $_SESSION["codigo_referido"] = $codigo_referido;
         $_SESSION['estado'] = $estado;
         $_SESSION['last_login'] = $last_login;
          

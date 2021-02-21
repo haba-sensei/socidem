@@ -25,10 +25,10 @@ TOTAL DE PACIENTES DASH MEDICO
 =============================================*/
      $ConsPacientes = ejecutarSQL::consultar("SELECT DISTINCT email_usuario FROM agenda");
      $totalPacientes = mysqli_num_rows($ConsPacientes);
-// /*=============================================
-// BANNERS PROMOCIONALES 3
-// =============================================*/
-//     $bannPR = ejecutarSQL::consultar("SELECT * FROM `bann_promo` LIMIT 3");
+/*=============================================
+LISTA DE CITAS EN LA AGENDA DEL MEDICO
+=============================================*/ 
+    $listaConsultasMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = 'f9999f8762b3bb2a0e27dc87feab1dda' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
 // /*=============================================
 // LISTA DE VENDEDORES INICIO
 // =============================================*/
