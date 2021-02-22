@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '9233fef666d635c2ed17e1005ddb63216b4a43d1',
+    'reference' => '8713fbd7e232fcdaab98a7d333f276c3c203e270',
     'name' => 'socidem/haba',
   ),
   'versions' => 
@@ -218,6 +218,15 @@
       ),
       'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
     ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.3.0',
+      'version' => '6.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb',
+    ),
     'phpseclib/phpseclib' => 
     array (
       'pretty_version' => '3.0.4',
@@ -319,7 +328,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '9233fef666d635c2ed17e1005ddb63216b4a43d1',
+      'reference' => '8713fbd7e232fcdaab98a7d333f276c3c203e270',
     ),
     'symfony/console' => 
     array (

@@ -23,5 +23,6 @@
 		<link rel='stylesheet' href='views/assets/plugins/calendario/main.css' >
 		<script src="views/assets/js/jquery.min.js"></script>
 		<script src='views/assets/plugins/jitsi/external_api.js'></script>
+		<link rel="stylesheet" href="views/assets/plugins/datatables/datatables.min.css">
 		
 </head>

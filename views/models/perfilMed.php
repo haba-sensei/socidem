@@ -288,7 +288,7 @@ require_once 'views/admin/breadcrumb.php';
                             </div>
 
                         </div>
-                    </div>
+                    </div> 
 
                     <div class="res-update animated fadeInDown"> </div>
                     <div class="submit-section submit-btn-bottom">

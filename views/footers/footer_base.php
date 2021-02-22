@@ -16,6 +16,8 @@
     <script src="views/assets/js/script.js"></script>
     <script src="views/assets/js/scripts/ajax.js"></script>
     <script src="views/assets/js/scripts/init.js"></script>
+    <script src="views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+		<script src="views/assets/plugins/datatables/datatables.min.js"></script>
     
     <?php 
   

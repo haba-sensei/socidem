@@ -87,6 +87,59 @@
     </div>
 </div>
 
+<div class="modal fade" id="confirm_cita_paciente" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-xs" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="container">
+                    <div class="row" id="cuerpo_confirm_paciente">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="re_asig_cita_paciente" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-top modal-xl" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="container">
+                    <div class="row" >
+                        <div class="table-responsive">
+                            <div class="table-responsive">
+                                <table class="table mb-0 datatable table-hover table-center" id="example_id">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Titulo</th>
+                                            <th>Fecha y Horario</th>
+                                            <th>Estatus</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cuerpo_citas_medico">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade" id="login_session" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

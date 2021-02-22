@@ -118,7 +118,7 @@
                             </div>
                         </div>
                         <!-- Booking Doctor Info -->
-				<?php }  ?>
+				<?php }  ?> 
                         <div class="booking-summary">
                             <div class="booking-item-wrap">
                                 <ul class="booking-date">

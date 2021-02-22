@@ -6,6 +6,7 @@
         "mercadopago/dx-php": "2.2.1",
         "griffinledingham/php-apple-signin": "^1.1",
         "facebook/graph-sdk": "^5.7",
-        "sly/notification-pusher": "^2.3"
+        "sly/notification-pusher": "^2.3",
+        "phpmailer/phpmailer": "^6.3"
     }
 }

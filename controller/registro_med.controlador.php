@@ -54,9 +54,9 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$foto_doc
             
            
             if (isset($_GET['code'])){ 
-                echo '<script> 	window.location = "../inicio"; </script>';
+                echo '<script> 	window.location = "../perfilMed"; </script>';
             }else{
-                echo '<script> 	window.location = "inicio"; </script>';
+                echo '<script> 	window.location = "perfilMed"; </script>';
             }
             
         }

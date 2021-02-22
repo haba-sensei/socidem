@@ -61,9 +61,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="chat-doctor">
+                                    <a href="perfilMed">
                                         <i class="fas fa-comments"></i>
-                                        <span>opcion 1</span>
+                                        <span>perfilMed</span>
 
                                     </a>
                                 </li>
@@ -163,9 +163,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Agenda del dia</a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" href="#today-appointments" data-toggle="tab">Agenda General</a>
-                                </li>
+                                </li> -->
                             </ul>
                             <!-- /Appointment Tab -->
 
@@ -191,91 +191,91 @@
 
                                                         <?php 
 
-                                                    while($datos_agenda_paciente=mysqli_fetch_assoc($listaConsultasMed)){
+                                                        while($datos_agenda_paciente=mysqli_fetch_assoc($listaConsultasMed)){
 
-                                                    $cod_medico =$datos_agenda_paciente['cod_medico']; 
-                                                    $especialidad =$datos_agenda_paciente['especialidad']; 
-                                                    $tipo_cita =$datos_agenda_paciente['tipo_cita']; 
-                                                    $precio_cita =$datos_agenda_paciente['precio_consulta']; 
-                                                    $estado =$datos_agenda_paciente['estado']; 
-                                                    $email_usuario =$datos_agenda_paciente['email_usuario']; 
-                                                    $foto_medico =$datos_agenda_paciente['foto']; 
-                                                    $cod_consulta =$datos_agenda_paciente['cod_consulta']; 
-                                                    $fecha_start = $datos_agenda_paciente['fecha_start'];
-                                                    $fecha_end = $datos_agenda_paciente['fecha_end'];
-                                                    $namePac = ejecutarSQL::consultar("SELECT `pacientes`.`correo`, `pacientes`.`nombre` FROM `pacientes` WHERE `pacientes`.`correo` = '$email_usuario';");
-                                                    while($dato_paciente_dash=mysqli_fetch_assoc($namePac)){ 
-                                                        $nombre_paciente =$dato_paciente_dash['nombre']; 
-                                                    }  
+                                                        $cod_medico =$datos_agenda_paciente['cod_medico']; 
+                                                        $especialidad =$datos_agenda_paciente['especialidad']; 
+                                                        $tipo_cita =$datos_agenda_paciente['tipo_cita']; 
+                                                        $precio_cita =$datos_agenda_paciente['precio_consulta']; 
+                                                        $estado =$datos_agenda_paciente['estado']; 
+                                                        $email_usuario =$datos_agenda_paciente['email_usuario']; 
+                                                        $foto_medico =$datos_agenda_paciente['foto']; 
+                                                        $cod_consulta =$datos_agenda_paciente['cod_consulta']; 
+                                                        $fecha_start = $datos_agenda_paciente['fecha_start'];
+                                                        $fecha_end = $datos_agenda_paciente['fecha_end'];
+                                                        $namePac = ejecutarSQL::consultar("SELECT `pacientes`.`correo`, `pacientes`.`nombre` FROM `pacientes` WHERE `pacientes`.`correo` = '$email_usuario';");
+                                                        while($dato_paciente_dash=mysqli_fetch_assoc($namePac)){ 
+                                                            $nombre_paciente =$dato_paciente_dash['nombre']; 
+                                                        }  
 
-                                                    setlocale(LC_TIME, 'es_ES.UTF-8');
-                                                    setlocale(LC_TIME, 'spanish');
+                                                        setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                        setlocale(LC_TIME, 'spanish');
 
-                                                    $dia= date("d", strtotime($fecha_start)); 	
-                                                    $anio = strftime("%Y", strtotime($fecha_start));  
-                                                    $init_hora_min =date('h:i A', strtotime($fecha_start));
-                                                    $end_hora_min = date('h:i A', strtotime($fecha_end));
-                                                    $mes_texto = strftime("%B", strtotime($fecha_start) ); 
+                                                        $dia= date("d", strtotime($fecha_start)); 	
+                                                        $anio = strftime("%Y", strtotime($fecha_start));  
+                                                        $init_hora_min =date('h:i A', strtotime($fecha_start));
+                                                        $end_hora_min = date('h:i A', strtotime($fecha_end));
+                                                        $mes_texto = strftime("%B", strtotime($fecha_start) ); 
 
-                                                    $fecha_format = $dia." ".$mes_texto." ".$anio;
-                                                    $hora_format = $init_hora_min." - ".$end_hora_min;
-                                                         ?>
+                                                        $fecha_format = $dia." ".$mes_texto." ".$anio;
+                                                        $hora_format = $init_hora_min." - ".$end_hora_min;
+                                                            ?>
 
-                                                        <tr>
-                                                            <td>
+                                                            <tr>
+                                                                <td>
 
-                                                                <h2 class="table-avatar">
+                                                                    <h2 class="table-avatar">
 
-                                                                    <?=$nombre_paciente ?>
+                                                                        <?=$nombre_paciente ?>
 
-                                                                </h2>
-                                                            </td>
-                                                            <td><?= $fecha_format ?> <span class="d-block text-info"><?=$hora_format ?> </span>
-                                                            </td>
-                                                            <td> <?= $tipo_cita ?> </td>
-                                                            <td> <a href="javascript:" onclick="modalDetalle('<?=$cod_consulta ?>')"
-                                                                    class="btn btn-sm bg-warning-light">
-                                                                    <i class="fas fa-id-card-alt"></i> Ver Mas
-                                                                </a></td>
+                                                                    </h2>
+                                                                </td>
+                                                                <td><?= $fecha_format ?> <span class="d-block text-info"><?=$hora_format ?> </span>
+                                                                </td>
+                                                                <td> <?= $tipo_cita ?> </td>
+                                                                <td> <a href="javascript:" onclick="modalDetalle('<?=$cod_consulta ?>')"
+                                                                        class="btn btn-sm bg-warning-light">
+                                                                        <i class="fas fa-id-card-alt"></i> Ver Mas
+                                                                    </a></td>
 
-                                                            <td>
-                                                                <?php 
+                                                                <td>
+                                                                    <?php 
 
-                                                                switch ($estado) {
-                                                                    case 1:
-                                                                    echo "<span class='badge badge-pill bg-warning-light'>Procesado";
-                                                                    break;
+                                                                    switch ($estado) {
+                                                                        case 1:
+                                                                        echo "<span class='badge badge-pill bg-warning-light'>Procesado";
+                                                                        break;
 
-                                                                    case 2:
-                                                                    echo "<span class='badge badge-pill bg-success-light'>Aprobado";
-                                                                    break;
+                                                                        case 2:
+                                                                        echo "<span class='badge badge-pill bg-success-light'>Aprobado";
+                                                                        break;
 
-                                                                    case 3:
-                                                                    echo "<span class='badge badge-pill bg-danger-light'>Re Asignado";
-                                                                    break;
-                                                                }
-
-
-                                                                ?>
-
-                                                                </span>
-                                                            <td class="text-left">
-                                                                <div class="table-action">
-
-                                                                    <a href='javascript:void(0);' class='btn btn-sm  bg-success-light'>
-                                                                        <i class='fas fa-check'></i> </a>
-                                                                    <a href='javascript:void(0);' class='btn btn-sm bg-danger-light'>
-                                                                        <i class='fas fa-window-restore'></i> </a>
+                                                                        case 3:
+                                                                        echo "<span class='badge badge-pill bg-success-light'>Re Asignado";
+                                                                        break;
+                                                                    }
 
 
+                                                                    ?>
 
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <?php 
+                                                                    </span>
+                                                                <td class="text-left">
+                                                                    <div class="table-action">
 
-                                                        }
-                                                        ?>
+                                                                        <a href='javascript:void(0);' onclick="modalConfirm('<?=$cod_consulta ?>')" class='btn btn-sm bg-success-light'>
+                                                                            <i class='fas fa-check'></i> </a>
+                                                                        <a href='javascript:void(0);' onclick="modalReasignar('<?=$cod_medico ?>')" class='btn btn-sm bg-danger-light'>
+                                                                            <i class='fas fa-window-restore'></i> </a>
+
+
+
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <?php 
+
+                                                            }
+                                                            ?>
 
                                                         <!-- <tr>
                                                             <td>
@@ -315,10 +315,12 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                 
                                 <!-- /Upcoming Appointment Tab -->
 
                                 <!-- Today Appointment Tab -->
-                                <div class="tab-pane" id="today-appointments">
+                                <!-- <div class="tab-pane" id="today-appointments">
                                     <div class="mb-0 card card-table">
                                         <div class="card-body">
                                             <div class="table-responsive">
@@ -519,7 +521,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- /Today Appointment Tab -->
 
                             </div>
