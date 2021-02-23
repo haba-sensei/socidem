@@ -12,14 +12,24 @@ document.addEventListener('DOMContentLoaded', function() {
             right: 'dayGridMonth,listWeek'
         },
         eventClick: function(info) {
+            
             var eventObj = info.event;
             var token = eventObj.extendedProps.token;
+            var estatus = eventObj.extendedProps.status;
             var id = eventObj.id;
-            var fecha_start = eventObj.startStr;
-            var fecha_end = eventObj.endStr;
-             
-            
-            modalCita(id, token, fecha_start, fecha_end);
+            var f_init = eventObj.startStr;
+            var f_end = eventObj.endStr;
+            var fecha_start = f_init.replace('Z', '');
+            var fecha_end = f_end.replace('Z', '');
+ 
+            if (estatus == "agendado"){ 
+                alert("CITA RESERVADA POR FAVOR ELIGA OTRA");
+
+            }else {
+                modalCita(id, token, fecha_start, fecha_end);
+            }
+           
+           
             info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
          },
         // hiddenDays: [ ] ,
@@ -94,10 +104,10 @@ function modalCita(id, token, fecha_start, fecha_end) {
 
 function procesoCita(id, token, fecha_start, fecha_end) {
     var opcion = $('input:radio[name=radio]:checked').val();
-
+ 
     $.ajax({
             type: "POST",
-            url: "controller/dashboard/CrearCita.controlador.php",
+            url: "controller/dashboard/crearCita.controlador.php",
             data: {
               valor: id,
               secur: token,

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 include '../../model/consulSQL.php';
@@ -77,7 +77,9 @@ $cita_obj = (json_encode($cita_array, true));
  
 $get_pago_id = md5($obj_json['id']);
 
-$varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, precio_consulta, pagoID, fecha_start, fecha_end, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$precio_consulta', '$get_pago_id', '$fecha_init', '$fecha_fin', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
+$cod_consulta  =  md5(uniqid(rand(), true));
+
+$varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_end, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$email_paciente_p', '', '', '$get_pago_id', '$precio_consulta',  '$fecha_init', '$fecha_fin', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
 
  
 

@@ -51,7 +51,7 @@ while($datos_agenda_paciente=mysqli_fetch_assoc($verAgenda)){
     $texto_saludo = "&amp;text=*HOLA+SU+CITA+HA+SIDO+APROBADA.".$texto_medico.$fecha_hora.$datos_sala.$link_sala.$nota_sala.$final_sala;
     
     $base = "https://api.whatsapp.com/send?phone=51".$var_telefono.$texto_saludo;
-}    
+}     
  
 // <span class="form-text text-danger">No Notificado</span>
 // <span class="form-text text-danger">No Notificado</span>

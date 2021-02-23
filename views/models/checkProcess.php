@@ -56,26 +56,31 @@
 												 
 											}
 											
-											setlocale(LC_TIME, 'es_ES.UTF-8');
+											setlocale(LC_TIME, 'es_ES');
 											setlocale(LC_TIME, 'spanish');
 											
+											 
+
+
 											$dia= date("d", strtotime($fecha_start)); 	
 											$anio = strftime("%Y", strtotime($fecha_start));  
-											$init_hora_min =date('h:i A', strtotime($fecha_start));
-                                            $end_hora_min = date('h:i A', strtotime($fecha_end));
+											$fecha_init = strtotime($fecha_start);
+											$fecha_fin = strtotime($fecha_end);
+											$init_hora_min =  date("g:ia", $fecha_init);
+                                            $end_hora_min = date("g:ia", $fecha_fin);
 											$mes_texto = strftime("%B", strtotime($fecha_start) );  
 
 											 $fecha_result = $dia." ".$mes_texto." del ".$anio." <br><br> ".$init_hora_min." - ".$end_hora_min;									
 										?>
 
 										
-										<h4> <strong>  Cita Agendada  </strong><br> <br><strong>Codigo: <?=$codigoRef ?></strong><br><br> <strong> <?=$fecha_result ?> </strong> <br><br></h4>
+										<h4> <strong>  Cita Agendada  </strong><br> <br><strong>Codigo: <?=$codigoRef ?></strong><br><br> <strong style="text-transform: capitalize;"> <?=$fecha_result  ?> </strong> <br><br></h4>
 										<a href="factura" class="btn btn-primary view-inv-btn">Ver Factura</a>
 									</div>
 								</div>
 							</div>
 							<!-- /Success Card -->
-							
+						
 						<?php }  ?> 
 						</div>
 					</div>
