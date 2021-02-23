@@ -5,7 +5,7 @@ CONTADOR DE MEDICOS
      $medCons = ejecutarSQL::consultar("SELECT * FROM `medicos`");
      $medTotal = mysqli_num_rows($medCons);
 /*=============================================
-TODAS LAS ESPECIALIDADES
+TODAS LAS ESPECIALIDADES 
 =============================================*/
      $espeCons = ejecutarSQL::consultar("SELECT * FROM `especialidades`");
 /*=============================================

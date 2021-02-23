@@ -5,7 +5,7 @@
     <script src="views/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
     <script src="views/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
     <script src="views/assets/js/circle-progress.min.js"></script>
-    <script src="views/assets/plugins/select2/js/select2.min.js"></script>
+    <script src="views/assets/plugins/select1/js/select2.min.js"></script>
     <script src="views/assets/js/moment.min.js"></script>
     <script src="views/assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="views/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
@@ -18,7 +18,21 @@
     <script src="views/assets/js/scripts/init.js"></script>
     <script src="views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 		<script src="views/assets/plugins/datatables/datatables.min.js"></script>
-    
+    <script>
+      
+
+        function cambio(){
+
+          $('.caja1').addClass('caja2').removeClass('caja1');
+
+          $('.caja3').addClass('caja1').removeClass('caja3');
+         
+           
+        }
+
+
+       
+    </script>
     <?php 
   
   switch ($rol_) {

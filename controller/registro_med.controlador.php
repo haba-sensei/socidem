@@ -4,6 +4,9 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 include '../model/consulSQL.php';
 
 $nombre_doc = $_POST['nombre_doc'];
+$ciudad_doc = $_POST['ciudad_doc'];
+$telefono_doc = $_POST['telefono_doc'];
+$num_colegiado_doc = $_POST['num_colegiado_doc'];
 $correo_doc = $_POST['email_doc'];
 $especialidad_doc = $_POST['especialidad'];
 $pass_doc = md5($_POST['pass_doc']);
@@ -16,7 +19,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
 setlocale(LC_TIME, 'spanish');       
 $last_login_doc = date('l jS F Y h:i:s A');
 
-if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$foto_doc == ""  && !$especialidad_doc == "" && !$rol_doc == "" && !$last_login_doc == ""  && !$cod_referido == "") {
+if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_doc == "" &&  !$num_colegiado_doc == "" &&  !$telefono_doc == "" &&  !$foto_doc == ""  && !$especialidad_doc == "" && !$rol_doc == "" && !$last_login_doc == ""  && !$cod_referido == "") {
      
     $BuscaAfil = ejecutarSQL::consultar("select * from medicos where correo='$correo_doc' ");
    
@@ -29,7 +32,7 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$foto_doc
         else {
 
             $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc' "); 
-            $regPerfil = consultasSQL::InsertSQL("perfil", "correo, documento, foto, telefono, num_colegiatura, especialidad, servicios, titulo, universidad, años, ubicacion, sobre_mi, nombre_clinica, direccion_clinica, precio_consulta, codigo_referido", "'$correo_doc', '', '$foto_doc', '',  NULL, '$especialidad_doc', '', '', '', '', '', '', '', '', '', '$cod_referido'"); 
+            $regPerfil = consultasSQL::InsertSQL("perfil", "correo, documento, foto, telefono, num_colegiatura, especialidad, servicios, titulo, universidad, años, ubicacion, sobre_mi, nombre_clinica, direccion_clinica, precio_consulta, codigo_referido", "'$correo_doc', '', '$foto_doc', '$telefono_doc', '$num_colegiado_doc', '$especialidad_doc', '', '', '', '', '$ciudad_doc', '', '', '', '', '$cod_referido'"); 
 
 
 
