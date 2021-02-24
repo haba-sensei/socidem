@@ -28,7 +28,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
     $fecha_end = $value['end'];
         
     $fechaEntera = strtotime($fecha_start);
-    $fecha_anual_format = date("Y/m/d", $fechaEntera);
+    $fecha_anual_format = date("d-m-Y", $fechaEntera);
     $fecha_init = strtotime($fecha_start);
     $fecha_fin = strtotime($fecha_end);
 
@@ -43,13 +43,13 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
 
             <th>'.$value['id'].'</th>
             <th>'.$value['title'].'</th>
-            <th>'.$init." - ".$end.'</th>
+            <th>( '.$fecha_anual_format.' )  -  ( '.$init." - ".$end.' )</th>
             <th>'.$value['extendedProps']['status'].'</th>
             <td class="text-left">
             <div class="table-action">
 
-            <a href="javascript:" onclick="actualizarAgenda(&apos;'.$id_cod_medico.'&apos; ,&apos;'.$id_cod_consulta.'&apos; , &apos;'.$value['id'].'&apos;)" class="btn btn-sm bg-success-light">
-            <i class="fas fa-check"></i> Re Asignar</a>
+            <a href="javascript:" onclick="actualizarAgenda(&apos;'.$id_cod_medico.'&apos; ,&apos;'.$id_cod_consulta.'&apos; , &apos;'.$value['id'].'&apos;)" class="btn btn-sm bg-primary-light">
+              Re Asignar</a>
 
             </div>
             </td>

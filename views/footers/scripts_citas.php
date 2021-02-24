@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
          },
         // hiddenDays: [ ] ,
         timeZone: 'UTC',
-        initialDate: '2021-02-15',
+        initialDate: '2021-02-24',
         initialView: 'listWeek',
         editable: false,
         locale: initialLocaleCode,
