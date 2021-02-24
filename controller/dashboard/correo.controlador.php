@@ -1,8 +1,11 @@
 <?php
+session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+include '../../model/consulSQL.php';
+include '../../model/sessiones.php';
 require '../../vendor/autoload.php'; 
 
 $id_codigo_agenda = $_POST['id'];
@@ -10,7 +13,7 @@ $id_codigo_agenda = $_POST['id'];
 $verAgenda = ejecutarSQL::consultar("SELECT `agenda`.`cod_consulta`, `agenda`.`estado`, `agenda`.`fecha_start`, `agenda`.`fecha_end`, `agenda`.`paciente` FROM `agenda` WHERE `agenda`.`cod_consulta` = '$id_codigo_agenda'");
 
 while($datos_agenda_paciente=mysqli_fetch_assoc($verAgenda)){
-    $objPaciente=$datos_agenda_paciente['paciente'];
+    $objPaciente=$datos_agenda_paciente['paciente']; 
 	$estado_cita_dato =$datos_agenda_paciente['estado'];
 
 	$fecha_start_dato =$datos_agenda_paciente['fecha_start'];
@@ -41,10 +44,10 @@ switch ($estado_cita_dato) {
 $nombre_paciente =  $var_nombre." ".$var_apellido; 
 $correo_paciente = $var_email;
 $url_cita = "https://medicos.stampiza2.com/lobby-".$id_codigo_agenda;
-$medico_cita = "nombre_test_medico";
+$medico_cita = $nombre_;
 
 $fechaEntera = strtotime($fecha_start_dato);
-    $fecha_anual_format = date("Y/m/d", $fechaEntera);
+    $fecha_anual_format = date("d/m/Y", $fechaEntera);
     $fecha_init = strtotime($fecha_start_dato);
     $fecha_fin = strtotime($fecha_end_dato);
 
@@ -52,7 +55,7 @@ $fechaEntera = strtotime($fecha_start_dato);
     $end = date("g:ia", $fecha_fin);
 
 
-$fecha_hora = $fecha_anual_format." ".$init." - ".$end;
+$fecha_hora = $fecha_anual_format." - - ".$init." - ".$end;
 
  
 

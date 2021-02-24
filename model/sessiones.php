@@ -7,10 +7,13 @@ error_reporting(E_ALL ^ E_NOTICE);
     $correo_ = $_SESSION['correo'];
     $rol_ = $_SESSION["rol"]; 
     $codigo_referido_ = $_SESSION["codigo_referido"]; 
+    $especialidad_ =  $_SESSION["especialidad"];
+    $foto_ =  $_SESSION["foto"];
+    $num_colegiatura_ = $_SESSION["num_colegiatura"];
     $telefono_  = $_SESSION["telefono"];
     $estado_ = $_SESSION["estado"]; 
     $last_login_ = $_SESSION["last_login"];
- 
+  
 
 
 ?>

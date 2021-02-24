@@ -56,14 +56,14 @@ function modalDetalle(id) {
   }
 
 
-  function modalReasignar(id){
-
+  function modalReasignar(cod_med, cod_consulta){
+     
     $.ajax({
        type: "POST",
        url: "controller/dashboard/reAsignarCita.controlador.php",
        data: {
-         id: id,
-          
+         cod_med: cod_med,
+         cod_consulta: cod_consulta
        },            
        success: function(data) {
            $('#cuerpo_citas_medico').html(data);
@@ -73,24 +73,26 @@ function modalDetalle(id) {
    });
         
   }
-/* AQUI ME QUEDE */ 
-  // function actualizarAgenda(id){
-
-  //     $.ajax({
-  //       type: "POST",
-  //       url: "controller/dashboard/actualizarAgendaCita.controlador.php",
-  //       data: {
-  //         id: id,
+ 
+  function actualizarAgenda(cod_med, cod_consulta, id){
+ 
+   
+      $.ajax({
+        type: "POST",
+        url: "controller/dashboard/actualizarAgendaCita.controlador.php",
+        data: {
+          cod_med: cod_med,
+          cod_consulta: cod_consulta,
+          id: id
             
-  //       },            
-  //       success: function(data) {
-  //           $('#cuerpo_citas_medico').html(data);
-  //           $('#example_id').DataTable({"destroy": true, "iDisplayLength": "5", "aLengthMenu": [5, 10, 15, 20, 50, 100], "lengthMenu": true});
-  //           $('#re_asig_cita_paciente').modal('show');
-  //       }
-  //   });
+        },            
+        success: function(data) {
+          alert(data);
+          window.location = "dashboard";
+        }
+    });
 
-  // }
+  }
 
   function enviarWhatsApp(id) {
 
@@ -104,7 +106,7 @@ function modalDetalle(id) {
 
 
   function enviarCorreo(id) {
- 
+  
     $.ajax({
        type: "POST",
        url: "controller/dashboard/correo.controlador.php",

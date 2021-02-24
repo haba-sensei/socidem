@@ -28,9 +28,9 @@ if (isset($_GET['code'])){
 
 if (!$correo == "" && !$clave == "") {
     if (isset($_GET['code'])){  
-        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`id` = `medicos`.`id` WHERE `medicos`.`correo` = '$correo'");
+        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`correo` = `medicos`.`correo` WHERE `medicos`.`correo` = '$correo' ");
     }else {
-        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`id` = `medicos`.`id` WHERE `medicos`.`correo` = '$correo' AND `medicos`.`pass` = '$clave';");
+        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`correo` = `medicos`.`correo` WHERE `medicos`.`correo` = '$correo' AND `medicos`.`pass` = '$clave';");
     }
     
     
@@ -42,6 +42,9 @@ if (!$correo == "" && !$clave == "") {
         $correo=$datos_usuario['correo'];
         $rol=$datos_usuario['rol'];
         $codigo_referido=$datos_usuario['codigo_referido'];
+        $especialidad=$datos_usuario['especialidad'];
+        $foto=$datos_usuario['foto'];
+        $num_colegiatura=$datos_usuario['num_colegiatura'];
         $estado=$datos_usuario['estado']; 
         $last_login=$datos_usuario['last_login'];
        
@@ -54,6 +57,9 @@ if (!$correo == "" && !$clave == "") {
         $_SESSION['correo'] = $correo;
         $_SESSION["rol"] = $rol;
         $_SESSION["codigo_referido"] = $codigo_referido;
+        $_SESSION["especialidad"] = $especialidad;
+        $_SESSION["foto"] = $foto;
+        $_SESSION["num_colegiatura"] = $num_colegiatura;
         $_SESSION['estado'] = $estado;
         $_SESSION['last_login'] = $last_login;
          

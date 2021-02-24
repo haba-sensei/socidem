@@ -41,9 +41,9 @@ echo '
     <div class="col-sm-6">
         <div class="form-group">
             <label>Email Paciente</label>
-            <div class="cal-icon">
+           
                 <input type="text" class="form-control" value="'.$var_email.'">
-            </div>
+            
         </div>
     </div>
     <div class="col-12 col-sm-6">

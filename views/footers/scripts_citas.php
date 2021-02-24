@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert("CITA RESERVADA POR FAVOR ELIGA OTRA");
 
             }else {
+                 
                 modalCita(id, token, fecha_start, fecha_end);
             }
            

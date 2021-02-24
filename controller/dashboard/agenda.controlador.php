@@ -25,7 +25,7 @@ echo '
             Agendar Cita Presencial
         </label>
          <br>
-         <br>
+         <br> 
          <br>
         <div class="clinic-booking">
         <a  onclick="procesoCita(&apos;'.$id_cita.'&apos; , &apos;'.$codigo_referido.'&apos; , &apos;'.$fecha_start.'&apos; , &apos;'.$fecha_end.'&apos;)"  class="apt-btn" href="javascript:">Continuar</a>

@@ -43,6 +43,10 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
                 $nombre=$datos_usuario['nombre_completo'];
                 $correo=$datos_usuario['correo'];
                 $rol=$datos_usuario['rol'];
+                $codigo_referido=$datos_usuario['codigo_referido'];
+                $especialidad=$datos_usuario['especialidad'];
+                $foto=$datos_usuario['foto'];
+                $num_colegiatura=$datos_usuario['num_colegiatura'];
                 $estado=$datos_usuario['estado']; 
                 $last_login=$datos_usuario['last_login'];
 
@@ -50,6 +54,10 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
                 
                 $_SESSION['nombre'] = $nombre;
                 $_SESSION['correo'] = $correo;
+                $_SESSION["codigo_referido"] = $codigo_referido;
+                $_SESSION["especialidad"] = $especialidad;
+                $_SESSION["foto"] = $foto;
+                $_SESSION["num_colegiatura"] = $num_colegiatura;
                 $_SESSION["rol"] = $rol;
                 $_SESSION['estado'] = $estado;
                 $_SESSION['last_login'] = $last_login;

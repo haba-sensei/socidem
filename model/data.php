@@ -17,7 +17,7 @@ BANNER FASHION TRENDS
 =============================================*/
      $listMedicos = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.*, `perfil`.`correo`, `medicos`.`estado` FROM `medicos` , `perfil` WHERE `perfil`.`correo` = `medicos`.`correo` AND `medicos`.`estado` = '1'");
 /*=============================================
-LISTA DE CONSULTAS PACIENTE
+LISTA DE CONSULTAS PACIENTE 
 =============================================*/
      $listConsultas = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda` , `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`email_usuario` = '$correo_' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
 /*=============================================
@@ -28,7 +28,7 @@ TOTAL DE PACIENTES DASH MEDICO
 /*=============================================
 LISTA DE CITAS EN LA AGENDA DEL MEDICO
 =============================================*/ 
-    $listaConsultasMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = 'f9999f8762b3bb2a0e27dc87feab1dda' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
+    $listaConsultasMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = '$codigo_referido_' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
 // /*=============================================
 // LISTA DE VENDEDORES INICIO
 // =============================================*/

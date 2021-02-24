@@ -26,14 +26,15 @@
                 <div class="profile-sidebar">
                     <div class="widget-profile pro-widget-content">
                         <div class="profile-info-widget">
-                            <a href="#" class="booking-doc-img">
-                                <img src="views/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                            <a href="javascript:" class="booking-doc-img">
+                                <img src="views/assets/images/medicos/<?=$foto_?>" alt="User Image">
                             </a>
                             <div class="profile-det-info">
-                                <h3>Dr. Darren Elder</h3>
+                                <h3>Dr. <?=$nombre_ ?></h3>
 
                                 <div class="patient-details">
-                                    <h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
+                                    <h4 class="mb-0"><?=$especialidad_ ?></h4>
+                                    <small class="mb-0"><?=$num_colegiatura_ ?></small>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +129,7 @@
                                             <div class="dash-widget-info">
                                                 <h6>Agenda del Dia</h6>
                                                 <h3><?= $totalPacientes  ?></h3>
-                                                <p class="text-muted">06, Nov 2019</p>
+                                                <p class="text-muted">23 Feb. 2021</p>
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +144,7 @@
                                             <div class="dash-widget-info">
                                                 <h6>Agenda total</h6>
                                                 <h3><?= $totalPacientes  ?></h3>
-                                                <p class="text-muted">06, Apr 2019</p>
+                                                <p class="text-muted">Febrero 2021</p>
                                             </div>
                                         </div>
                                     </div>
@@ -161,7 +162,7 @@
                             <!-- Appointment Tab -->
                             <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Agenda del dia</a>
+                                    <a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Agenda del dia  </a>
                                 </li>
                                 <!-- <li class="nav-item">
                                     <a class="nav-link" href="#today-appointments" data-toggle="tab">Agenda General</a>
@@ -179,10 +180,10 @@
                                                 <table class="table mb-0 table-hover table-center">
                                                     <thead>
                                                         <tr>
-                                                            <th>Paciente</th>
+                                                            <th>Usuario</th>
                                                             <th>Fecha y Hora</th>
                                                             <th>Tipo de Cita</th>
-                                                            <th>Detalles</th>
+                                                            <th>Info Paciente</th>
                                                             <th>Estado</th>
                                                             <th>Acciones </th>
                                                         </tr>
@@ -264,7 +265,7 @@
 
                                                                         <a href='javascript:void(0);' onclick="modalConfirm('<?=$cod_consulta ?>')" class='btn btn-sm bg-success-light'>
                                                                             <i class='fas fa-check'></i> </a>
-                                                                        <a href='javascript:void(0);' onclick="modalReasignar('<?=$cod_medico ?>')" class='btn btn-sm bg-danger-light'>
+                                                                        <a href='javascript:void(0);' onclick="modalReasignar('<?=$cod_medico ?>', '<?=$cod_consulta?>')" class='btn btn-sm bg-danger-light'>
                                                                             <i class='fas fa-window-restore'></i> </a>
 
 
