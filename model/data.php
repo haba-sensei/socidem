@@ -28,7 +28,7 @@ TOTAL DE PACIENTES DASH MEDICO
 /*=============================================
 LISTA DE CITAS EN LA AGENDA DEL MEDICO
 =============================================*/ 
-    $listaConsultasMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = '$codigo_referido_' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
+     $listaConsultasMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = '$codigo_referido_' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
 // /*=============================================
 // LISTA DE VENDEDORES INICIO
 // =============================================*/

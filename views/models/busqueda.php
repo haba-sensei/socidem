@@ -216,7 +216,7 @@
                                     }
                                     echo '
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                             <div class="doc-info-right">
                                 <div class="clini-infos">
