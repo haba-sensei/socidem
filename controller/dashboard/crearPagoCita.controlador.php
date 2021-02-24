@@ -11,7 +11,7 @@ include '../../model/sessiones.php';
         'MerchantOrder' => $_GET['merchant_order_id']        
     ); 
 
-
+ 
    $ch = curl_init();
 
    curl_setopt($ch, CURLOPT_URL, 'https://api.mercadopago.com/v1/payments/'.$respuesta['Payment']);
@@ -79,7 +79,7 @@ $get_pago_id = md5($obj_json['id']);
 
 $cod_consulta  =  md5(uniqid(rand(), true));
 
-$varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_end, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$email_paciente_p', '', '', '$get_pago_id', '$precio_consulta',  '$fecha_init', '$fecha_fin', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
+$varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_end, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '', '', '$get_pago_id', '$precio_consulta',  '$fecha_init', '$fecha_fin', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
 
   
 if ($obj_json['status'] == "approved") {
