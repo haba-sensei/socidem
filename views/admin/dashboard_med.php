@@ -267,7 +267,25 @@
                                                                             <i class='fas fa-check'></i> </a>
                                                                         <a href='javascript:void(0);' onclick="modalReasignar('<?=$cod_medico ?>', '<?=$cod_consulta?>')" class='btn btn-sm bg-danger-light'>
                                                                             <i class='fas fa-window-restore'></i> </a>
-
+                                                                        <?php 
+                                                                        
+                                                                        switch ($tipo_cita) {
+                                                                            case 'online':
+                                                                            echo "
+                                                                            <a href='lobby-".$cod_consulta."'  target='_blank' class='btn btn-sm bg-info-light'>
+                                                                            <i class='fas fa-eye'></i> </a>";
+                                                                            break;
+    
+                                                                            case 'presencial':
+                                                                            echo "
+                                                                            <a href='factura-".$cod_consulta."' target='_blank' class='btn btn-sm bg-info-light'>
+                                                                            <i class='fas fa-print'></i> </a>";
+                                                                            break;
+    
+                                                                             
+                                                                        }
+                                                                        
+                                                                        ?>
 
 
                                                                     </div>
