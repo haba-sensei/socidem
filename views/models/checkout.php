@@ -123,19 +123,13 @@
                             <div class="booking-item-wrap">
                                 <ul class="booking-date">
                                     <li>Fecha <span><?php 
-									$fechaEntera = strtotime($_SESSION['fecha_start']);
-									$fecha = date("Y-m-d", $fechaEntera);
-									echo $fecha;
+									 
+									echo $_SESSION['fecha'];
 									
 									?> </span></li>
                                     <li>Hora <span><?php 
-									$fecha_init = strtotime($_SESSION['fecha_start']);
-									$fecha_fin = strtotime($_SESSION['fecha_end']);
-
-									$init = date("g:ia", $fecha_init);
-									$end = date("g:ia", $fecha_fin);
-									
-									echo $init." - ".$end;
+									  
+									echo $_SESSION['hora'];
 
 									?> </span></li>
                                 </ul>
@@ -144,7 +138,7 @@
 
                                 <ul class="booking-fee">
                                     <li>Consulta <span>S/ <?=$_SESSION['precio_consulta'] ?></span></li>
-                                    <li>Tipo de consulta <span><?=$_SESSION['opcion'] ?> </span></li>
+                                    <li>Tipo de consulta <span><?=$_SESSION['tipo'] ?> </span></li>
 
                                 </ul>
                                 <div class="booking-total">

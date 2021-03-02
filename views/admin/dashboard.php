@@ -43,7 +43,7 @@
         <div class="row">
 
             <!-- Profile Sidebar -->
-            <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+            <div class="col-md-5 col-lg-4 col-xl-2 theiaStickySidebar">
                 <div class="profile-sidebar">
                     <div class="widget-profile pro-widget-content">
                         <div class="profile-info-widget">
@@ -87,7 +87,7 @@
             </div>
             <!-- / Profile Sidebar -->
 
-            <div class="col-md-7 col-lg-8 col-xl-9">
+            <div class="col-md-7 col-lg-8 col-xl-10">
                 <div class="card">
                     <div class="pt-0 card-body">
 
@@ -104,7 +104,15 @@
 
                         <!-- Tab Content -->
                         <div class="pt-0 tab-content">
+<style>
+.ajust_celda {
+    overflow: hidden;
+    
+      word-wrap: break-word;  
+      width: 17%;
+}
 
+</style>
                             <!-- Appointment Tab -->
                             <div id="pat_appointments" class="tab-pane fade show active">
                                 <div class="mb-0 card card-table">
@@ -115,7 +123,7 @@
                                                     <tr>
                                                         <th>Doctor</th>
                                                         <th>Fecha y Hora</th>
-                                                        <th>Tipo</th>
+                                                        <th >Tipo</th>
                                                         <th>Precio</th>
 
                                                         <th>Estatus</th>
@@ -136,7 +144,7 @@
                                                 $foto_medico =$datos_agenda_paciente['foto']; 
                                                 $cod_consulta =$datos_agenda_paciente['cod_consulta']; 
                                                 $fecha_start = $datos_agenda_paciente['fecha_start'];
-                                                $fecha_end = $datos_agenda_paciente['fecha_end'];
+                                                $fecha_hora = $datos_agenda_paciente['fecha_hora'];
                                                 $nameMed = ejecutarSQL::consultar("SELECT `medicos`.`correo`, `medicos`.`nombre_completo` FROM `medicos` WHERE `medicos`.`correo` = '$correo_med';");
                                                 while($dato_med_dash=mysqli_fetch_assoc($nameMed)){ 
                                                     $nombre_completo_med_dash =$dato_med_dash['nombre_completo']; 
@@ -146,17 +154,15 @@
                                                 setlocale(LC_TIME, 'spanish');
                                                 
                                                 $dia= date("d", strtotime($fecha_start)); 	
-                                                $anio = strftime("%Y", strtotime($fecha_start));  
-                                                $init_hora_min =date('h:i A', strtotime($fecha_start));
-                                                $end_hora_min = date('h:i A', strtotime($fecha_end));
+                                                $anio = strftime("%Y", strtotime($fecha_start));   
                                                 $mes_texto = strftime("%B", strtotime($fecha_start) ); 
 
                                                 $fecha_format = $dia." ".$mes_texto." ".$anio;
-                                                $hora_format = $init_hora_min." - ".$end_hora_min;
+                                                 
                                                 ?>
 
                                                     <tr>
-                                                        <td>
+                                                        <td class="ajust_celda">
                                                             <h2 class="table-avatar">
                                                                 <a href="perfil-<?=$cod_medico?>" class="mr-2 avatar avatar-sm">
                                                                     <img class="avatar-img rounded-circle"
@@ -166,9 +172,11 @@
                                                                     <span><?=$especialidad ?></span></a>
                                                             </h2>
                                                         </td>
-                                                        <td><?= $fecha_format ?> <span class="d-block text-info"><?=$hora_format ?> </span>
+                                                        <td class="ajust_celda" style="text-transform: capitalize;">
+                                                        <?= $fecha_format ?> 
+                                                        <span class="d-block text-info"><?=$fecha_hora ?> </span>
                                                         </td>
-                                                        <td> <?= $tipo_cita ?> </td>
+                                                        <td > <?= $tipo_cita ?> </td>
                                                         <td>S/ <?= $precio_cita ?> </td>
 
                                                         <td>
@@ -201,7 +209,7 @@
                                                             switch ($tipo_cita) {
                                                             case "presencial":
                                                             echo "<a href='factura-$cod_consulta' class='btn btn-sm bg-primary-light'>
-                                                            <i class='fas fa-print'></i> Imprimir Factura
+                                                            <i class='fas fa-print'></i> Imprimir
                                                             </a>";
                                                             break;
 

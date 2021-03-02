@@ -3,7 +3,7 @@ session_start();
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 include '../../model/consulSQL.php';
 include '../../model/sessiones.php';
-
+// header('Content-Type: application/json'); 
 
     $respuesta = array(
         'Payment' => $_GET['payment_id'],
@@ -11,7 +11,7 @@ include '../../model/sessiones.php';
         'MerchantOrder' => $_GET['merchant_order_id']        
     ); 
 
- 
+    
    $ch = curl_init();
 
    curl_setopt($ch, CURLOPT_URL, 'https://api.mercadopago.com/v1/payments/'.$respuesta['Payment']);
@@ -28,8 +28,9 @@ include '../../model/sessiones.php';
    if (curl_errno($ch)) {
        echo 'Error:' . curl_error($ch);
    }
-   
+//    var_dump($result);
    curl_close($ch);
+   
 
 $nombre_paciente_p = $_SESSION['nombre_']; 
 $apellido_paciente_p = $_SESSION['apellido_']; 
@@ -40,10 +41,10 @@ $detalles_paciente_p = $_SESSION['detalles_'];
 $estado = 1;
 $cod_id_json_cita = $_SESSION['valor'];
 $cod_medico = $_SESSION['secur'];
-$tipo_cita  = $_SESSION['opcion'];
+$tipo_cita  = $_SESSION['tipo'];
 $precio_consulta = $_SESSION['precio_consulta'];
-$fecha_init = $_SESSION['fecha_start'];
-$fecha_fin = $_SESSION['fecha_end'];
+$fecha_start = $_SESSION['fecha'];
+$fecha_hora = $_SESSION['hora'];
  
 
 $paciente_array = array(
@@ -79,11 +80,15 @@ $get_pago_id = md5($obj_json['id']);
 
 $cod_consulta  =  md5(uniqid(rand(), true));
 
-$varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_end, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '', '', '$get_pago_id', '$precio_consulta',  '$fecha_init', '$fecha_fin', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
+$nombre_room  =  md5(uniqid(rand(), true));
+$pass_room  =  md5(uniqid(rand(), true));
+
+$varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
 
   
-if ($obj_json['status'] == "approved") {
  
+ switch ($obj_json['status']) {
+     case "approved":
     $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
 
     while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
@@ -98,8 +103,8 @@ if ($obj_json['status'] == "approved") {
        
         if ($entry['id'] == $cod_id_json_cita) {
              
-            $agenda_full[$key]['extendedProps']['status']="agendado";
-            $agenda_full[$key]['extendedProps']['status'];
+            $agenda_full[$key]['estado']="agendado";
+            $agenda_full[$key]['estado'];
             $newJsonString = json_encode($agenda_full, JSON_UNESCAPED_UNICODE);
 
         }
@@ -109,13 +114,70 @@ if ($obj_json['status'] == "approved") {
 
 
     consultasSQL::UpdateSQL("agenda_medica", "agenda='$newJsonString'", "cod_medico='$cod_medico'");
+   
+    break;
+    case "pending":
+        $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
 
+        while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
+        
+        $objAgenda=$datos_agenda_medica['agenda'];
+         
+        $agenda_full = json_decode($objAgenda, true); 
+         
     
+        foreach ($agenda_full as $key => $entry) {
+            
+           
+            if ($entry['id'] == $cod_id_json_cita) {
+                 
+                $agenda_full[$key]['estado']="pendiente";
+                $agenda_full[$key]['estado'];
+                $newJsonString = json_encode($agenda_full, JSON_UNESCAPED_UNICODE);
+    
+            }
+    
+        } 
+    }    
+    
+    
+        consultasSQL::UpdateSQL("agenda_medica", "agenda='$newJsonString'", "cod_medico='$cod_medico'");
+       
+    break;
 
+    case "404":
+        $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
 
-
+        while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
+        
+        $objAgenda=$datos_agenda_medica['agenda'];
+         
+        $agenda_full = json_decode($objAgenda, true); 
+         
+    
+        foreach ($agenda_full as $key => $entry) {
+            
+           
+            if ($entry['id'] == $cod_id_json_cita) {
+                 
+                $agenda_full[$key]['estado']="404";
+                $agenda_full[$key]['estado'];
+                $newJsonString = json_encode($agenda_full, JSON_UNESCAPED_UNICODE);
+    
+            }
+    
+        } 
+    }    
+    
+    
+        consultasSQL::UpdateSQL("agenda_medica", "agenda='$newJsonString'", "cod_medico='$cod_medico'");
+       
+    break;
 
 }
+
+
+
 
 
 header('Location: ../../checkProcess-'.$get_pago_id);

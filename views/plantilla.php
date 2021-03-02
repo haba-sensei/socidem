@@ -48,6 +48,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "perfil" || 
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "cita" || 
+			$routes[0] == "test" || 
 			$routes[0] == "lobby" || 
 			$routes[0] == "checkout" || 
 			$routes[0] == "checkProcess" || 
@@ -128,17 +129,12 @@ $routes = explode("-", $_GET["ruta"]);
 		echo "</body>";
 	break;
 
-	case 'cita':
-		include 'views/footers/footer_base.php';
-		include "views/footers/scripts_citas.php";
-		include "views/footers/footer.php";
-		include "views/footers/modal_onboarding.php";
-		
-		echo "</body>";
-	break;
+	 
 
 	case 'checkout':
+	case 'busqueda':
 		include 'views/footers/footer_base.php';
+		include "views/footers/scripts_citas.php";
 		include "views/footers/scripts_checkout.php";
 		include "views/footers/footer.php";
 		include "views/footers/modal_onboarding.php";

@@ -33,7 +33,7 @@
 
 @media (orientation: landscape) {
     .call-wrapper {
-        height: calc(100vh - 2px);
+        height: calc(100vh - 145px)
     }
 }
 
@@ -67,7 +67,7 @@
                                 <div class='call-content-wrap'>
                                     <div class='voice-call-avatar'>
                                         <img src='views/assets/img/doctors/doctor-thumb-02.jpg' alt='User Image' class='call-avatar'>
-                                        <span class='username'>Dr. Darren Elder</span>
+                                        <span class='username'><?php   ?></span>
                             <?php 
 
                             $estado_cons = ejecutarSQL::consultar("SELECT `agenda`.`cod_consulta`, `agenda`.`estado` FROM `agenda` WHERE `agenda`.`cod_consulta` = '$codigoRef';");

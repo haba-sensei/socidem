@@ -35,7 +35,7 @@
 
                         <div class="filter-widget">
                             <h4>Busca por Especialidad</h4>
-                            <select class="form-control floating" data-jplist-control="select-filter" data-group="group1" data-name="name2"  >
+                            <select class="form-control floating" data-jplist-control="select-filter" data-group="group1" data-name="name2">
                                 <option value="0" data-path="default">Todas las Especialidades</option>
 
                                 <?php 
@@ -67,9 +67,9 @@
                                 <input type="text" class="form-control " data-jplist-control="textbox-filter" data-group="group1"
                                     data-name="my-filter-1" data-path=".doc-name" type="text" value="" data-clear-btn-id="name-clear-btn"
                                     placeholder="Busqueda por Nombre">
-                                    <div class="input-group-append">
-                               
-                            </div>
+                                <div class="input-group-append">
+
+                                </div>
                             </div>
                         </div>
 
@@ -102,8 +102,8 @@
                                 
                                 ?>
                                 <div data-jplist-control="slider-range-filter" data-path=".rango_price" data-group="group1"
-                                    data-name="width-range-slider" data-min="0" data-from="0" data-clear-btn-id="name-clear-btn" data-to="<?php echo $rago_Price_C; ?>"
-                                    data-max="<?php echo $rago_Price_C; ?>">
+                                    data-name="width-range-slider" data-min="0" data-from="0" data-clear-btn-id="name-clear-btn"
+                                    data-to="<?php echo $rago_Price_C; ?>" data-max="<?php echo $rago_Price_C; ?>">
 
                                     <span class="range-slider-value">
 
@@ -129,18 +129,18 @@
 
 
 
-                         
-                       
+
+
                     </div>
-                   
+
                 </div>
                 <!-- /Search Filter -->
 
             </div>
-
+            
 
             <div class="col-md-12 col-lg-8 col-xl-9" data-jplist-group="group1">
-            <?php  
+                <?php  
                 while($data_medicos_C=mysqli_fetch_assoc($listMedicos)){
                     $nombre_completo_C=$data_medicos_C['nombre_completo'];
                     $foto_C=$data_medicos_C['foto'];
@@ -158,16 +158,18 @@
                     
                     $servicios_C=$data_medicos_C['servicios'];
                     $titulo_C=$data_medicos_C['titulo'];
+                    $ubicacion_C=$data_medicos_C['ubicacion'];
                     $nombre_clinica_C=$data_medicos_C['nombre_clinica'];
                     $direccion_clinica_C=$data_medicos_C['direccion_clinica'];
                     $precio_consulta_C=$data_medicos_C['precio_consulta'];
+                    $precio_online_C=$data_medicos_C['precio_online'];
                     $codigo_referido_C=$data_medicos_C['codigo_referido'];
                     $separated = explode(',', $servicios_C);
-
+                    $track = md5($codigo_referido_C);
                     
                     echo '
                     <div class="card" data-jplist-item>
-                    <div class="card-body">
+                    <div class="card-body" >
                         <div class="doctor-widget">
                             <div class="doc-info-left">
                                 <div class="doctor-img">
@@ -176,67 +178,80 @@
                                     </a>
                                     <div class="doctor-action" style="position: absolute; bottom: -5px; left: 27px;">
 										 
-										<a href="chat.html" class="btn btn-white msg-btn" data-toggle="tooltip" title="Comentarios">
-											<i class="fas fa-comment-medical"></i>
-										</a>
-                                        <a href="chat.html" class="btn btn-white msg-btn" data-toggle="tooltip" title="Citas Presenciales">
-                                            <i class="fas fa-notes-medical"></i>
-                                        </a>
-										<a href="javascript:void(0)" class="btn btn-white call-btn" data-toggle="tooltip" title="Citas Virtuales">
-											<i class="fas fa-laptop-medical"></i>
-										</a>
+										
 									</div>
                                 </div>
                                 <div class="doc-info-cont">
                                     <h4 class="doc-name"><a href="perfil-'.$codigo_referido_C.'" style="text-transform: capitalize;">Dr. '.$nombre_completo_C.'</a></h4>
                                     <p class="doc-speciality" style="text-transform: capitalize;">'.$titulo_C.'</p>
                                     <h5 class="doc-department " style="color: #757575;">
-                                        <img src="views/assets/img/especial.png" class="img-fluid" alt="especialidad"> <span class="'.$slug_C.' ">Especialidad: '.$especialidad_C.'</span>
+                                        <img src="views/assets/img/especial.png" class="img-fluid" alt="especialidad"> <span class="'.$slug_C.' "> '.$especialidad_C.'</span>
                                     </h5>
                                     <h5 class="doc-department" style="color: #757575;">
-                                        <img src="views/assets/img/estetoscopio.png" class="img-fluid" alt="colegiatura" style="margin-right: 13px;">Colegiatura: '.$num_colegiatura_C.'
+                                        <img src="views/assets/img/estetoscopio.png" class="img-fluid" alt="colegiatura" style="margin-right: 13px;">#'.$num_colegiatura_C.'
                                     </h5>
-                                    <div class="clinic-details">
-                                        <p class="doc-department" style="color: #757575; font-weight: 500;">
-                                            <img src="views/assets/img/hospital.png" class="img-fluid" alt="localizacion">
-                                            Consultorio: 
-                                            <span class="doc-locate" style="color: #757575; font-weight: 500; text-transform: capitalize;">'.$nombre_clinica_C.'</span> 
-                                        </p>
-                                    </div>
-                                    <div class="clinic-details">
+                                    
+                                    <div class="clinic-details doc-servicio doc-locate">
                                         <p class="doc-department" style="color: #757575; font-weight: 500;">
                                             <img src="views/assets/img/marcador-de-posicion.png" class="img-fluid" alt="localizacion">
-                                            Dirección: 
-                                            <span class="" style="color: #757575; font-weight: 500; text-transform: capitalize;">'.$direccion_clinica_C.'</span> 
+                                            
+                                            <span class="" style="color: #757575; font-weight: 500; text-transform: capitalize;">'.$ubicacion_C.'</span> 
                                         </p>
                                     </div>
-                                    <div class="clinic-services" style="position: relative; bottom: -6px;">';
-                                    foreach ($separated as $servicios) { 
-                                        echo '<span class="doc-servicio" style="text-transform: capitalize;">'.$servicios.'</span>';
-                                    }
-                                    echo '
+                                
+                                    
+                                    <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded direccion_class">
+                                    <li class="nav-item" style="padding-right: 19px;"><a class="nav-link active" href="#presencial-'.$track.'" data-toggle="tab" style="    background-color: #FF7C00; color: white;  border-color: #FF7C00;"><i class="far fa-calendar"></i> Presencial </a></li>
+                                     <li class="nav-item"><a class="nav-link " style="background-color: #008292; color: white;" href="#online-'.$track.'" data-toggle="tab"><i class="fa fa-video"></i> Online</a></li>
+                                 </ul>
+                                <div class="tab-content content_class">
+                                    <div class="tab-pane show active" id="presencial-'.$track.'">
+                                    
+                                    <div class="d-flex align-items-top"  style="position: relative; bottom: -20px;">
+                                    <div class="pr-1">
+                                        <i class="svg-icon svg-icon-pin svg-icon-size-16 svg-icon-color-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8.5,0 C5.43694236,0 3,2.4812504 3,5.6 C3,10.4 8.5,16 8.5,16 C8.5,16 14,10.3187504 14,5.6 C14,2.4812504 11.5630584,0 8.5,0 Z M8.5,7.38461538 C7.47447953,7.38461538 6.66666667,6.57115422 6.66666667,5.53846154 C6.66666667,4.5057696 7.47447953,3.69230769 8.5,3.69230769 C9.5255212,3.69230769 10.3333333,4.5057696 10.3333333,5.53846154 C10.3333333,6.57115422 9.5255212,7.38461538 8.5,7.38461538 Z"></path></svg>
+                                    </i>
                                     </div>
+                                    <div class="address-name">
+                                    <p class="m-0 d-flex align-items-center">
+                                    <span class="text-ellipsis text-base-color" style="text-transform: capitalize;">'.$nombre_clinica_C.' -  '.$direccion_clinica_C.' </span>
+                                    
+                                     
+                                    
+                                    </a>
+                                    </p>
+                                    <p class="m-0 text-ellipsis  small" style="font-size: 15px;">
+                                                CONSULTA PRESENCIAL ( S/ '.$precio_consulta_C.'   )
+                                            </p>
+                                              
+                                       
+                                    </div>
+                                </div>
+                                    </div>
+                                    <div class="tab-pane" id="online-'.$track.'">
+                                    <p class="m-0 text-ellipsis ">
+                                    CONSULTA ONLINE ( S/ '.$precio_online_C.'   )
+                                </p>
+                                    </div>
+                                    
                                 </div> 
-                            </div>
-                            <div class="doc-info-right">
-                                <div class="clini-infos">
-                                    <ul>
-                                        <li><i class="far fa-thumbs-up"></i> 98%</li>
-                                        <li><i class="far fa-comment"></i> 17 Comentarios</li>
+                                    
+                                    
+                                    <input type="hidden" class="rango_price" value="45">
+                                    
+                                
 
-                                        <li><i class="far fa-money-bill-alt "></i>
-                                            S/ <span class="rango_price">'.$precio_consulta_C.'</span>
-                                            <i class="fas fa-info-circle" data-toggle="tooltip" title="Precio Por Cita"></i>
-                                        </li>
-                                        <li><i class="fas fa-certificate"></i> Perfil Verificado</li>
-                                    </ul>
-                                </div>
-                                <div class="clinic-booking">
-                                    <a class="view-pro-btn" href="perfil-'.$codigo_referido_C.'">Ver Perfil</a>
-                                    <a class="apt-btn" href="cita-'.$codigo_referido_C.'">Agendar Cita</a>
-                                </div>
+
+                              
+                                    </div>
+                                
+                            </div>
+                            
+                            <div class="doc-info-right  "wrapper">
+                            <div class="rescalendar" id="cal-'.$track.'"></div>
                             </div>
                         </div>
+                        <script> cargaCalendar("cal-'.$track.'","'.$codigo_referido_C.'") </script>
                     </div>
                 </div>
                 ';
@@ -244,13 +259,11 @@
                 }
             ?>
 
+
+
+
            
 
-
-
-                
-
-                
 
 
 
@@ -258,48 +271,48 @@
                     <h5>No se encontraron resultados</h5>
                 </div>
 
-                
+
             </div>
-                 <div class="product-pagination" style="margin-left: auto; margin-right: auto;">
-                    <div class="theme-paggination-block">
-                        <div class="row">
-                            <div class="col-xl-6 col-md-6 col-sm-12">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination ">
+            <div class="product-pagination" style="margin-left: auto; margin-right: auto;">
+                <div class="theme-paggination-block">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6 col-sm-12">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination ">
 
 
-                                        <li class="page-item" data-type="prev">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">
-                                                    <i class="fa fa-chevron-left" aria-hidden="true"></i></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <ul class="pagination justify-content-center info jplist-holder" data-type="pages">
-                                            <li class="page-item" data-type="page"><a class="page-link" href="#">{pageNumber}</a></li>
-                                        </ul>
-                                        <li class="page-item" data-type="next">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">
-                                                    <i class="fa fa-chevron-right" aria-hidden="true"></i></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
+                                    <li class="page-item" data-type="prev">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">
+                                                <i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    <ul class="pagination justify-content-center info jplist-holder" data-type="pages">
+                                        <li class="page-item" data-type="page"><a class="page-link" href="#">{pageNumber}</a></li>
                                     </ul>
-                                </nav>
-                            </div>
-                            <div class="col-xl-6 col-md-6 col-sm-12">
-                                <div class="product-search-count-bottom">
-                                    <h5 data-type="info"> Mostrando Resultados {startItem} - {endItem} De {itemsNumber}
-                                    </h5>
-                                </div>
+                                    <li class="page-item" data-type="next">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">
+                                                <i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-sm-12">
+                            <div class="product-search-count-bottom">
+                                <h5 data-type="info"> Mostrando Resultados {startItem} - {endItem} De {itemsNumber}
+                                </h5>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
         </div>
-                
+
     </div>
 
 </div>

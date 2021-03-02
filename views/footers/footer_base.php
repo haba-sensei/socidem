@@ -18,6 +18,8 @@
     <script src="views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="views/assets/plugins/datatables/datatables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+   
+   
     <script>
     var clipboard = new ClipboardJS('.btna');
 
