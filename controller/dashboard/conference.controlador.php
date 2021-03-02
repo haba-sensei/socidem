@@ -8,7 +8,7 @@ header("Content-Type: application/json", true);
 $id_cita = $_POST['id'];
 
     
-    $verConferencia = ejecutarSQL::consultar("SELECT `agenda`.`cod_consulta`, `agenda`.`email_usuario`, `agenda`.`nombre_room`, `agenda`.`pass_room`, `agenda`.`paciente`, `agenda`.`estado` FROM `agenda` WHERE `agenda`.`cod_consulta` = '$id_cita' AND `agenda`.`estado` >= '2' ");
+    $verConferencia = ejecutarSQL::consultar("SELECT `agenda`.`cod_consulta`, `agenda`.`cita`, `agenda`.`email_usuario`, `agenda`.`nombre_room`, `agenda`.`pass_room`, `agenda`.`paciente`, `agenda`.`estado` FROM `agenda` WHERE `agenda`.`cod_consulta` = '$id_cita'");
 
     while($datos_conferencia=mysqli_fetch_assoc( $verConferencia)){
                
@@ -18,6 +18,11 @@ $id_cita = $_POST['id'];
 
         $paciente_conferencia=$datos_conferencia['paciente']; 
         $jsonPaciente = json_decode($paciente_conferencia, true); 
+
+        $cita_conferencia=$datos_conferencia['cita']; 
+        $jsonCita = json_decode($cita_conferencia, true); 
+
+        $status_cita = $jsonCita['status'];
 
         $nombre_paciente_conferencia = $jsonPaciente['nombre_paciente'];
         $apellido_paciente_conferencia = $jsonPaciente['apellido_paciente'];
@@ -33,7 +38,8 @@ $output = array(
     'telefono' =>  $telefono_paciente_conferencia,
     'detalles' =>  $detalles_paciente_conferencia,
     'pass' => $pass_room_conferencia,
-    'estado' => $estado_conferencia
+    'estado_cita' => $estado_conferencia,
+    'estado' => $cita_conferencia
 );
 
 echo json_encode( $output );

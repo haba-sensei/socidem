@@ -17,8 +17,7 @@ function lobby(id) {
             $(".cargando").remove();
             $("#meet").addClass("ajust_height");
 
-            if (data['estado'] == 1) {
-
+            if (data['estado_cita'] == 2) {
 
                 alert("conferencia concluida");
 
@@ -46,8 +45,9 @@ function lobby(id) {
                 });
 
                 api.addEventListener('participantRoleChanged', function(event) {
+                    var pass = String(data['pass']);
                     if (event.role === 'moderator') {
-                        api.executeCommand('toggleLobby', true);
+                        api.executeCommand('password', pass);
                     }
                 });
 

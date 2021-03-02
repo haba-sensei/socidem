@@ -7,4 +7,28 @@
              
         }); 
     }
+
+    function servicio(ref){
+        $.ajax({
+       type: "POST",
+       url: "controller/dashboard/buscaServ.controlador.php",
+       data: {
+         ref: ref          
+       },            
+       success: function(data) {
+           $('#cuerpo_servicios').html(data);
+            
+           $('#servicios_check').modal('show');
+       }
+   });
+    }
+
+
+    function nombreServ(nombre) {
+
+        $('#servicios_content').html(nombre);
+        document.getElementById("servicios_content_value").value = nombre;
+        $('#servicios_check').modal('hide');
+
+    }
 </script>

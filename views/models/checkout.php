@@ -1,4 +1,4 @@
-<?php require_once 'views/models/seguridad/payment.php'; ?> 
+<?php require_once 'views/models/seguridad/payment.php'; ?>
 
 <!-- Breadcrumb -->
 <div class="breadcrumb-bar">
@@ -28,8 +28,8 @@
                     <div class="card-body">
 
                         <!-- Checkout Form -->
-						<form action="controller/dashboard/checkoutPaciente.controlador.php" method="post" role="form"
-                                class="theme-form checkout-Form" id="checkout_form">
+                        <form action="controller/dashboard/checkoutPaciente.controlador.php" method="post" role="form"
+                            class="theme-form checkout-Form" id="checkout_form">
 
 
                             <div class="info-widget">
@@ -50,7 +50,7 @@
                                     <div class="col-md-6 col-sm-12">
                                         <div class="form-group card-label">
                                             <label>Email</label>
-                                            <input class="form-control" type="email" name="email_paciente"  required>
+                                            <input class="form-control" type="email" name="email_paciente" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
@@ -59,11 +59,36 @@
                                             <input class="form-control" name="telefono_paciente" type="text" required>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-md-12 col-sm-12">
+                                    <h4 class="card-title">Elige tu servicio</h4>
+                                    <br>
+                                        <div style="background-color: #fff; border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .05);  display: block;  height: 50px;  margin-top: -13px;  padding: 5px 15px 0; transition: border-color .3s; width: 100%;"
+                                            class="card-body p-1 d-flex justify-content-between flex-column flex-md-row align-items-md-center">
+                                            <div data-v-04146088="" data-v-3ee56c44="" class="pr-2 ellipsis-flex-fix">
+                                                <div data-v-3ee56c44="">
+                                                    <p id="servicios_content" class="mb-0">&nbsp; Servicio General </p>
+                                                    <input type="hidden" name="servicios_content_value" id="servicios_content_value" value="Servicio General" required>
+                                                    <!---->
+                                                </div>
+                                            </div> <button type="button" onclick="servicio('<?=$_SESSION['secur']?>')" class="mt-1 mt-md-0 btn btn-primary"
+                                                >
+                                                <!---->
+                                                Cambiar
+                                                <!---->
+                                            </button>
+                                           
+                                        </div>
+                                    </div>
+                                    <br><br><br>
+                                    <div class="col-md-12 col-sm-12">
+                                  
+                                    <br>
+                                    <h4 class="card-title">Detalles Previos</h4>
                                         <div class="form-group card-label">
 
-                                            <textarea placeholder="Detalles medicos de la consulta..." name="detalles_paciente" class="form-control" rows="4"
-                                                cols="50" required></textarea>
+                                            <textarea placeholder="Detalles medicos de la consulta..." name="detalles_paciente" class="form-control"
+                                                rows="4" cols="50" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -90,12 +115,13 @@
                         <h4 class="card-title">Resumen de pago</h4>
                     </div>
                     <div class="card-body">
-						<?php 
+                        <?php 
 						$token_v = $_SESSION['secur'];				
-						$checkMed = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.`codigo_referido`, `perfil`.`foto`, `perfil`.`nombre_clinica`, `perfil`.`direccion_clinica`, `perfil`.`correo` FROM `medicos`, `perfil` WHERE `perfil`.`codigo_referido` = '$token_v' AND `perfil`.`correo` = `medicos`.`correo`");
+						$checkMed = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.`codigo_referido`, `perfil`.`especialidad`, `perfil`.`foto`, `perfil`.`nombre_clinica`, `perfil`.`direccion_clinica`, `perfil`.`correo` FROM `medicos`, `perfil` WHERE `perfil`.`codigo_referido` = '$token_v' AND `perfil`.`correo` = `medicos`.`correo`");
 
 						while($d=mysqli_fetch_assoc($checkMed)){
 						$nombre_completo=$d['nombre_completo'];
+                        $especialidad=$d['especialidad'];
 						$foto=$d['foto'];
 						$nom_clinica=$d['nombre_clinica'];
 						$dir_clinica=$d['direccion_clinica'];
@@ -107,37 +133,33 @@
                                 <img src="views/assets/images/medicos/<?=$foto ?>" alt="User Image">
                             </a>
                             <div class="booking-info">
-                                <h4 style="text-transform: capitalize"><a href="<?="perfil-".$_SESSION['secur']; ?>"><?="Dr ".$nombre_completo ?></a></h4>
-								<div class="clini-infos">
+                                <h4 style="text-transform: capitalize"><a href="<?="perfil-".$_SESSION['secur']; ?>"><?="Dr ".$nombre_completo ?></a>
+                                </h4>
+                                <div class="clini-infos">
                                     <ul>
-                                        <li><i class="far fa-thumbs-up"></i> 98%</li>
-                                        <li><i class="far fa-comment"></i> 17 Comentarios</li>
-                                        <li><i class="fas fa-certificate"></i> Perfil Verificado</li>
+                                        <li><i class="fa fa-address-card" style="color: #008298;"></i> <?=$especialidad  ?></li>
+                                        <li><i class="fa fa-check" style="color: #008298;"></i> Perfil Verificado</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <!-- Booking Doctor Info -->
-				<?php }  ?> 
+                        <?php }  ?>
                         <div class="booking-summary">
                             <div class="booking-item-wrap">
                                 <ul class="booking-date">
-                                    <li>Fecha <span><?php 
-									 
-									echo $_SESSION['fecha'];
-									
-									?> </span></li>
-                                    <li>Hora <span><?php 
-									  
-									echo $_SESSION['hora'];
+                                    <li><i class="fa fa-calendar" style="color: #008298;" aria-hidden="true"></i>
+                                        <?php echo $_SESSION['fecha'] ." , ". $_SESSION['hora']; ?> </li>
+                                    <li><i class="fa fa-map-marker" style="color: #008298;" aria-hidden="true"></i> <?php echo $nom_clinica ?> </li>
+                                    <li><i class="fa fa-map-marker" style="color: #008298;" aria-hidden="true"></i> <?php echo $dir_clinica ?> </li>
 
-									?> </span></li>
+
                                 </ul>
 
 
 
                                 <ul class="booking-fee">
-                                    <li>Consulta <span>S/ <?=$_SESSION['precio_consulta'] ?></span></li>
+                                    <li>Consulta <span>S/ <?=$_SESSION['precio_final'] ?></span></li>
                                     <li>Tipo de consulta <span><?=$_SESSION['tipo'] ?> </span></li>
 
                                 </ul>
@@ -145,19 +167,19 @@
                                     <ul class="booking-total-list">
                                         <li>
                                             <span>Total</span>
-                                            <span class="total-cost">S/ <?=$_SESSION['precio_consulta'] ?></span>
+                                            <span class="total-cost">S/ <?=$_SESSION['precio_final'] ?></span>
                                         </li>
                                     </ul>
                                 </div>
 
 
-								<div class="res-checkout animated fadeInDown"></div>
+                                <div class="res-checkout animated fadeInDown"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /Booking Summary -->
-				
+
             </div>
         </div>
 

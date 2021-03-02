@@ -9,6 +9,8 @@ $apellido_paciente = $_POST['apellido_paciente'];
 $email_paciente = $_POST['email_paciente'];
 $telefono_paciente = $_POST['telefono_paciente'];
 $detalles_paciente = $_POST['detalles_paciente'];
+$servicios_content_value = $_POST['servicios_content_value'];
+
 
 session_reset(); 
 
@@ -17,6 +19,6 @@ $_SESSION['apellido_'] = $apellido_paciente;
 $_SESSION['email_'] = $email_paciente; 
 $_SESSION['telefono_'] = $telefono_paciente; 
 $_SESSION['detalles_'] = $detalles_paciente; 
-
+$_SESSION['servicios_content_value_'] = $servicios_content_value; 
 
 ?>

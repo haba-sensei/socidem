@@ -125,18 +125,14 @@ function modalDetalle(id) {
 
   }
  
-  function updateRoom() {
-        
-        
-        var type = $('#update-video-conf').attr('method');
-        var url = $('#update-video-conf').attr('action');
-        var formType = $('#update-video-conf').attr('data-form');
-       
-        
+  function updateRoom(id) {
+         
         $.ajax({
-            type: type,
-            url: url,
-            data: $('#update-video-conf').serialize(),
+            type: "POST",
+            url: "controller/dashboard/upVideoConf.controlador.php",
+            data: {
+              id:id
+            },
             success: function(data) {
               alert(data);
               window.location = "dashboard";

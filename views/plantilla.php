@@ -133,6 +133,7 @@ $routes = explode("-", $_GET["ruta"]);
 
 	case 'checkout':
 	case 'busqueda':
+	case 'perfil':
 		include 'views/footers/footer_base.php';
 		include "views/footers/scripts_citas.php";
 		include "views/footers/scripts_checkout.php";

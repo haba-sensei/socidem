@@ -199,11 +199,12 @@
                                                         $tipo_cita =$datos_agenda_paciente['tipo_cita']; 
                                                         $precio_cita =$datos_agenda_paciente['precio_consulta']; 
                                                         $estado =$datos_agenda_paciente['estado']; 
+                                                        $objCita_de = json_decode($datos_agenda_paciente['cita'], true); 
                                                         $email_usuario =$datos_agenda_paciente['email_usuario']; 
                                                         $foto_medico =$datos_agenda_paciente['foto']; 
                                                         $cod_consulta =$datos_agenda_paciente['cod_consulta']; 
                                                         $fecha_start = $datos_agenda_paciente['fecha_start'];
-                                                        $fecha_end = $datos_agenda_paciente['fecha_end'];
+                                                        $fecha_hora = $datos_agenda_paciente['fecha_hora'];
                                                         $namePac = ejecutarSQL::consultar("SELECT `pacientes`.`correo`, `pacientes`.`nombre` FROM `pacientes` WHERE `pacientes`.`correo` = '$email_usuario';");
                                                         while($dato_paciente_dash=mysqli_fetch_assoc($namePac)){ 
                                                             $nombre_paciente =$dato_paciente_dash['nombre']; 
@@ -215,7 +216,7 @@
                                                         $dia= date("d", strtotime($fecha_start)); 	
                                                         $anio = strftime("%Y", strtotime($fecha_start));  
                                                         $init_hora_min =date('h:i A', strtotime($fecha_start));
-                                                        $end_hora_min = date('h:i A', strtotime($fecha_end));
+                                                        
                                                         $mes_texto = strftime("%B", strtotime($fecha_start) ); 
 
                                                         $fecha_format = $dia." ".$mes_texto." ".$anio;
@@ -223,38 +224,43 @@
                                                             ?>
 
                                                             <tr>
-                                                                <td>
+                                                                <td style="text-transform: capitalize">
 
-                                                                    <h2 class="table-avatar">
+                                                                    <h2 class="table-avatar" >
 
                                                                         <?=$nombre_paciente ?>
 
                                                                     </h2>
                                                                 </td>
-                                                                <td><?= $fecha_format ?> <span class="d-block text-info"><?=$hora_format ?> </span>
+                                                                <td><?= $fecha_format ?> <span class="d-block text-info"><?=$fecha_hora ?> </span>
                                                                 </td>
-                                                                <td> <?= $tipo_cita ?> </td>
+                                                                <td style="text-transform: capitalize"> <?= $tipo_cita ?> </td>
                                                                 <td> <a href="javascript:" onclick="modalDetalle('<?=$cod_consulta ?>')"
-                                                                        class="btn btn-sm bg-warning-light">
-                                                                        <i class="fas fa-id-card-alt"></i> Ver Mas
+                                                                        class="btn btn-sm bg-success-light">
+                                                                        <i class="fas fa-id-card-alt"></i> Ver Info
                                                                     </a></td>
 
                                                                 <td>
                                                                     <?php 
 
-                                                                    switch ($estado) {
-                                                                        case 1:
-                                                                        echo "<span class='badge badge-pill bg-warning-light'>Procesado";
+                                                                        switch ($objCita_de['status']) {
+                                                                            case "pending":
+                                                                        echo "<span class='badge badge-pill bg-warning-light'>PENDIENTE ";
                                                                         break;
 
-                                                                        case 2:
-                                                                        echo "<span class='badge badge-pill bg-success-light'>Aprobado";
+                                                                            case "approved":
+                                                                                if($estado == 2){
+                                                                                    echo "<span class='badge badge-pill bg-danger-light'>CERRADO";
+                                                                                }else {
+                                                                                    echo "<span class='badge badge-pill bg-success-light'>APROBADO";
+                                                                                }
+                                                                           
                                                                         break;
 
-                                                                        case 3:
-                                                                        echo "<span class='badge badge-pill bg-success-light'>Re Asignado";
+                                                                            case "404":
+                                                                            echo "<span class='badge badge-pill bg-danger-light'>RECHAZADO";
                                                                         break;
-                                                                    }
+                                                                        }
 
 
                                                                     ?>
@@ -263,23 +269,36 @@
                                                                 <td class="text-left">
                                                                     <div class="table-action">
 
-                                                                        <a href='javascript:void(0);' onclick="modalConfirm('<?=$cod_consulta ?>')" class='btn btn-sm bg-success-light'>
-                                                                            <i class='fas fa-check'></i> </a>
-                                                                        <a href='javascript:void(0);' onclick="modalReasignar('<?=$cod_medico ?>', '<?=$cod_consulta?>')" class='btn btn-sm bg-danger-light'>
-                                                                            <i class='fas fa-window-restore'></i> </a>
+                                                                        
+                                                                            
+                                                                        <!-- <a href='javascript:void(0);' onclick="modalReasignar('<?=$cod_medico ?>', '<?=$cod_consulta?>')" class='btn btn-sm bg-danger-light'>
+                                                                            <i class='fas fa-window-restore'></i> </a> -->
                                                                         <?php 
                                                                         
                                                                         switch ($tipo_cita) {
                                                                             case 'online':
-                                                                            echo "
-                                                                            <a href='lobby-".$cod_consulta."'  target='_blank' class='btn btn-sm bg-info-light'>
-                                                                            <i class='fas fa-eye'></i> </a>";
+                                                                                if($estado == 2){
+                                                                                    echo "<span class='badge badge-pill bg-danger-light'>CERRADO";
+                                                                                }else {
+                                                                                     
+                                                                                    echo "
+                                                                            
+                                                                                    <a href='lobby-".$cod_consulta."'  target='_blank' class='btn btn-sm bg-info-light'>
+                                                                                    <i class='fas fa-eye'></i> Ir a la Sala </a><br><br>
+                                                                                    <a href='javascript:' onclick='modalCred(&apos;$cod_consulta&apos;)' class='btn btn-sm bg-warning-light'>
+                                                                                    <i class= 'fa fa-lock'></i> Ver Password </a> <br><br>
+                                                                                    <a href='javascript:void(0);' onclick='modalConfirm(&apos;$cod_consulta&apos;)' class='btn btn-sm bg-danger-light'>
+                                                                                    <i class='fas fa-check'></i> Cerrar Cita </a>
+                                                                                    ";
+                                                                                    
+                                                                                }
+                                                                           
                                                                             break;
     
                                                                             case 'presencial':
                                                                             echo "
                                                                             <a href='factura-".$cod_consulta."' target='_blank' class='btn btn-sm bg-info-light'>
-                                                                            <i class='fas fa-print'></i> </a>";
+                                                                            <i class='fas fa-print'></i> Imprimir </a>";
                                                                             break;
     
                                                                              

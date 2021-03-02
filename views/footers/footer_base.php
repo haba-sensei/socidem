@@ -28,6 +28,13 @@
       
     });
 
+    var clipboard2 = new ClipboardJS('.btn_pass');
+
+    clipboard2.on('success', function(e) {
+      alert("Password Copiado");
+      
+    });
+
    
 
 function cambio() {

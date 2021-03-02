@@ -106,10 +106,9 @@
                         <div class="pt-0 tab-content">
 <style>
 .ajust_celda {
+    text-overflow: ellipsis;
+    white-space: nowrap;
     overflow: hidden;
-    
-      word-wrap: break-word;  
-      width: 17%;
 }
 
 </style>
@@ -121,8 +120,8 @@
                                             <table class="table mb-0 table-hover table-center">
                                                 <thead>
                                                     <tr>
-                                                        <th>Doctor</th>
-                                                        <th>Fecha y Hora</th>
+                                                        <th style="width: 35%;">Doctor</th>
+                                                        <th style="width: 15%;">Fecha y Hora</th>
                                                         <th >Tipo</th>
                                                         <th>Precio</th>
 
@@ -132,7 +131,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php 
-
+                                                    
                                                 while($datos_agenda_paciente=mysqli_fetch_assoc($listConsultas)){
 
                                                 $cod_medico =$datos_agenda_paciente['cod_medico']; 
@@ -145,6 +144,10 @@
                                                 $cod_consulta =$datos_agenda_paciente['cod_consulta']; 
                                                 $fecha_start = $datos_agenda_paciente['fecha_start'];
                                                 $fecha_hora = $datos_agenda_paciente['fecha_hora'];
+                                                
+                                                $objCita_de = json_decode($datos_agenda_paciente['cita'], true); 
+                                                
+                                                
                                                 $nameMed = ejecutarSQL::consultar("SELECT `medicos`.`correo`, `medicos`.`nombre_completo` FROM `medicos` WHERE `medicos`.`correo` = '$correo_med';");
                                                 while($dato_med_dash=mysqli_fetch_assoc($nameMed)){ 
                                                     $nombre_completo_med_dash =$dato_med_dash['nombre_completo']; 
@@ -162,8 +165,8 @@
                                                 ?>
 
                                                     <tr>
-                                                        <td class="ajust_celda">
-                                                            <h2 class="table-avatar">
+                                                        <td  style="width: 35%;">
+                                                            <h2 class="table-avatar ajust_celda" >
                                                                 <a href="perfil-<?=$cod_medico?>" class="mr-2 avatar avatar-sm">
                                                                     <img class="avatar-img rounded-circle"
                                                                         src="views/assets/images/medicos/<?=$foto_medico ?>" alt="User Image">
@@ -172,27 +175,31 @@
                                                                     <span><?=$especialidad ?></span></a>
                                                             </h2>
                                                         </td>
-                                                        <td class="ajust_celda" style="text-transform: capitalize;">
+                                                        <td   style="width: 15%; text-transform: capitalize;">
                                                         <?= $fecha_format ?> 
                                                         <span class="d-block text-info"><?=$fecha_hora ?> </span>
                                                         </td>
-                                                        <td > <?= $tipo_cita ?> </td>
+                                                        <td style="text-transform: capitalize"> <?= $tipo_cita ?> </td>
                                                         <td>S/ <?= $precio_cita ?> </td>
 
                                                         <td>
                                                             <?php 
                                                 
-                                                switch ($estado) {
-                                                    case 1:
-                                                    echo "<span class='badge badge-pill bg-warning-light'>Procesado";
+                                                switch ($objCita_de['status']) {
+                                                    case "pending":
+                                                    echo "<span class='badge badge-pill bg-warning-light'>PENDIENTE ";
                                                     break;
 
-                                                    case 2:
-                                                     echo "<span class='badge badge-pill bg-success-light'>Aprobado";
+                                                    case "approved":
+                                                        if($estado == 2){
+                                                            echo "<span class='badge badge-pill bg-danger-light'>CONCLUIDO";
+                                                        }else {
+                                                            echo "<span class='badge badge-pill bg-success-light'>APROBADO";
+                                                        }
                                                     break;
 
-                                                    case 3:
-                                                     echo "<span class='badge badge-pill bg-danger-light'>Re Asignado";
+                                                    case "404":
+                                                     echo "<span class='badge badge-pill bg-danger-light'>RECHAZADO";
                                                     break;
                                                 }
                                                 
@@ -208,20 +215,42 @@
 
                                                             switch ($tipo_cita) {
                                                             case "presencial":
-                                                            echo "<a href='factura-$cod_consulta' class='btn btn-sm bg-primary-light'>
-                                                            <i class='fas fa-print'></i> Imprimir
-                                                            </a>";
+                                                                if ($objCita_de['status'] == "404"){
+                                                                    echo "<a href='javascript:' class='btn btn-sm bg-danger-light'>
+                                                                    <i class='fas fa-minus'></i> Pago Rechazado
+                                                                    </a>";
+                                                                }else {
+                                                                    echo "<a href='factura-$cod_consulta' class='btn btn-sm bg-primary-light'>
+                                                                    <i class='fas fa-print'></i> Imprimir
+                                                                    </a>";
+                                                                }
+                                                            
                                                             break;
 
                                                             case "online":
-                                                            echo " <a href='lobby-$cod_consulta' onclick='' class='btn btn-sm bg-info-light'>
-                                                            <i class='far fa-eye'></i> Ir al Lobby
-                                                            </a> <a href='javascript:' onclick='modalCred(&apos;".$cod_consulta."&apos;)' class='btn btn-sm bg-warning-light'>
-                                                            <i class='fas fa-lock'></i>
-                                                            </a>";
+                                                                if($estado == 2){
+                                                                    echo "<span class='badge badge-pill bg-danger-light'>CONCLUIDO";
+                                                                }else {
+                                                                    
+                                                               
+                                                                if ($objCita_de['status'] == "404"){
+                                                                    echo "<a href='javascript:' class='btn btn-sm bg-danger-light'>
+                                                                    <i class='fas fa-minus'></i> Pago Rechazado
+                                                                    </a>";
+                                                                }else {
+                                                                    echo " <a href='lobby-$cod_consulta' onclick='' class='btn btn-sm bg-info-light'>
+                                                                    <i class='far fa-eye'></i> Ir al Lobby </a>
+                                                                    <br> <br>
+                                                                    <a href='javascript:' onclick='modalCred(&apos;$cod_consulta&apos;)' class='btn btn-sm bg-warning-light'>
+                                                                    <i class= 'fa fa-lock'></i>
+                                                                    Password
+                                                                    </a> 
+                                                                    ";
+                                                                }
+                                                            }
                                                             break;
 
-                                                             
+                                                            
                                                             }
 
 

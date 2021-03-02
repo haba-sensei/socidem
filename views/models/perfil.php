@@ -36,12 +36,31 @@
                 $años_med = $dato_med['años']; 
                 $ubicacion_med = $dato_med['ubicacion']; 
                 $sobre_mi_med = $dato_med['sobre_mi']; 
-                
+                $codigo_referido_C=$dato_med['codigo_referido'];
+                $track = md5($codigo_referido_C);
             }
             
             
             ?>
+<style>
 
+.doc-info-right {
+    margin-left: 3%;
+    -ms-flex: 0 0 200px;
+    flex: 0 0 420px;
+    max-width: 100%;
+    margin-right: 2%;
+    position: relative;
+    left: 4px;
+    padding-top: 0px;
+}
+.rescalendar_data_rows {
+    display: block;
+    max-height: 285px!important;
+    overflow-y: scroll;
+}
+
+</style>
 <!-- Page Content -->
 <div class="content">
     <div class="container">
@@ -94,25 +113,17 @@
                         </div>
                     </div>
                     <div class="doc-info-right">
-                        <div class="clini-infos">
-                            <ul>
-                                <li><i class="far fa-thumbs-up"></i> 98%</li>
-                                <li><i class="far fa-comment"></i> 17 Comentarios</li>
-                                <li style="text-transform: capitalize;"> <i class="fas fa-map-marker-alt"></i> <?= $ubicacion_med ?> , Perú</li>
-                                <li><i class="far fa-money-bill-alt"></i>
-                                    S/ <span class="rango_price"><?=$precio_consulta_med ?></span>
-                                    <i class="fas fa-info-circle" data-toggle="tooltip" title="Precio Por Cita"></i>
-                                </li>
-                                <li><i class="fas fa-certificate"></i> Perfil Verificado</li>
-                            </ul>
-                        </div>
-
-                        <div class="clinic-booking">
-                            <a class="apt-btn btna" id="btna" href="javascript:"
-                                data-clipboard-text="<?=$url_base?>perfil-<?=$codigoRef ?>">Compartir Link</a>
-                            <a class="apt-btn" href="cita-<?=$codigoRef ?>">Agendar Cita</a>
-                        </div>
+                    <?php  
+                                        
+                    echo '
+                    <div class="doc-info-right "wrapper">
+                    <div class="rescalendar" id="cal-'.$track.'"></div>
                     </div>
+                
+                    <script> cargaCalendar("cal-'.$track.'","'.$codigo_referido_C.'") </script>
+                    ';
+             
+            ?>
                 </div>
             </div>
         </div>

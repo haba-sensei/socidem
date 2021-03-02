@@ -37,12 +37,14 @@ $apellido_paciente_p = $_SESSION['apellido_'];
 $email_paciente_p = $_SESSION['email_']; 
 $telefono_paciente_p = $_SESSION['telefono_']; 
 $detalles_paciente_p = $_SESSION['detalles_']; 
+$servicios_content_value_p = $_SESSION['servicios_content_value_']; 
+
 
 $estado = 1;
 $cod_id_json_cita = $_SESSION['valor'];
 $cod_medico = $_SESSION['secur'];
 $tipo_cita  = $_SESSION['tipo'];
-$precio_consulta = $_SESSION['precio_consulta'];
+$precio_consulta = $_SESSION['precio_final'];
 $fecha_start = $_SESSION['fecha'];
 $fecha_hora = $_SESSION['hora'];
  
@@ -53,6 +55,7 @@ $paciente_array = array(
     'email_paciente' => $email_paciente_p,
     'telefono_paciente' => $telefono_paciente_p,
     'detalles_paciente' => $detalles_paciente_p,
+    'servicios_content_value_p' => $servicios_content_value_p
 ); 
 
 $paciente_obj = (json_encode($paciente_array, true));

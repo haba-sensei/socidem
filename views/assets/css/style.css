@@ -7135,7 +7135,7 @@ html.menu-opened body {
 .voice-call-avatar .call-avatar {
     margin: 15px;
     width: 150px;
-    height: 150px;
+    height: 200px;
     border-radius: 100%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 3px;

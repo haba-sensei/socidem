@@ -9,12 +9,12 @@ $preference = new MercadoPago\Preference();
 //       array("id" => "pagoefectivo_atm")
 //     ),
 //     "installments" => 1
-// ); 
-  
+// );  
+   
 $item = new MercadoPago\Item();
 $item->title = 'Agenda de Cita';
 $item->quantity = 1;
-$item->unit_price = $_SESSION['precio_consulta'];
+$item->unit_price = $_SESSION['precio_final'];
 
 $preference->items = array($item);
  

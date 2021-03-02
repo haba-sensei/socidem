@@ -7,7 +7,7 @@ include '../../model/sessiones.php';
  
 $id_cod_agenda = $_POST['id'];
 
-$verAgenda = ejecutarSQL::consultar("SELECT `agenda`.`cod_consulta`, `agenda`.`fecha_start`, `agenda`.`fecha_end`,  `agenda`.`cod_medico`,  `agenda`.`nombre_room`, `agenda`.`pass_room`, `agenda`.`tipo_cita`, `agenda`.`paciente` FROM `agenda` WHERE `agenda`.`cod_consulta` = '$id_cod_agenda'");
+$verAgenda = ejecutarSQL::consultar("SELECT `agenda`.`cod_consulta`, `agenda`.`fecha_start`, `agenda`.`fecha_hora`,  `agenda`.`cod_medico`,  `agenda`.`nombre_room`, `agenda`.`pass_room`, `agenda`.`tipo_cita`, `agenda`.`paciente` FROM `agenda` WHERE `agenda`.`cod_consulta` = '$id_cod_agenda'");
 
 while($datos_agenda_paciente=mysqli_fetch_assoc($verAgenda)){
     $objPaciente=$datos_agenda_paciente['paciente'];
@@ -15,7 +15,7 @@ while($datos_agenda_paciente=mysqli_fetch_assoc($verAgenda)){
     $cod_medico =$datos_agenda_paciente['cod_medico'];
 
     $fecha_start =$datos_agenda_paciente['fecha_start'];
-    $fecha_end =$datos_agenda_paciente['fecha_end'];
+    $fecha_end =$datos_agenda_paciente['fecha_hora'];
     
     $nombre_room_paciente=$datos_agenda_paciente['nombre_room'];
     $pass_room_paciente=$datos_agenda_paciente['pass_room'];
@@ -64,23 +64,8 @@ switch ($tipo_cita_paciente) {
       role="form"  >
       <div class="res-update animated fadeInDown"></div>
      
-        <div class="row form-row">
-        <h3 style="margin-left: auto; margin-right: auto; margin-bottom: 2rem;">Datos de la VideoConferencia</h3>
-            <div class="col-12 col-sm-6">
-                <div class="form-group">
-                    <label>Nombre </label>
-                    <input type="hidden" name="id_sala"  value="'.$id_cod_agenda.'">
-                    <input type="text" name="nombre_sala"   class="form-control" placeholder="Nombre de la sala" value="'.$nombre_room_paciente.'">
-                </div>
-            </div>
-            <div class="col-12 col-sm-6">
-                <div class="form-group">
-                    <label>Contraseña </label>
-                    <input type="text" name="pass_sala"   class="form-control" placeholder="Contraseña de la sala" value="'.$pass_room_paciente.'">
-                </div>
-            </div>
-            </div>
-             <span style="margin-left: auto; margin-right: auto; font-weight: 600;">Datos de Confirmación</span><br><br>
+        
+             <span style="margin-left: auto; margin-right: auto; font-weight: 600;">Datos de Contacto</span><br><br>
             <div class="row form-row">
             <div class="col-12 col-sm-6">
                 <div class="form-group">
@@ -111,12 +96,13 @@ switch ($tipo_cita_paciente) {
              Enviar Correo</button>
             </div>
             <br><br><br>
-            <span class=""><strong >Nota: </strong>si no tiene un nombre y contraseña la sala no podrá ser accedida por el paciente.</span><br 
-        </div>
+            <span class=""><strong >Nota: </strong>Al cerrar la cita se dara por terminado la sala de videoconferencia; De lo contrario podra seguir accediendo a dicha sala!</span><br 
+            <br><br>
+            </div>
        
         </div>
         
-        <button type="button" onclick="updateRoom()" class="btn btn-block" style="background: #0d3355; color: white;" >Aprobar Cita</button>
+        <button type="button" onclick="updateRoom(&apos;'.$id_cod_agenda.'&apos;)" class="btn btn-block" style="background: #0d3355; color: white;" >Cerrar Cita</button>
         </form>
       ';
         break;
