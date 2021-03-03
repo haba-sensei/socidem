@@ -188,7 +188,7 @@
                                                             <th>Acciones </th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody style="max-height: fit-content;">
 
                                                         <?php 
 
@@ -219,7 +219,7 @@
                                                         
                                                         $mes_texto = strftime("%B", strtotime($fecha_start) ); 
 
-                                                        $fecha_format = $dia." ".$mes_texto." ".$anio;
+                                                        $fecha_format = $fecha_start;
                                                         $hora_format = $init_hora_min." - ".$end_hora_min;
                                                             ?>
 

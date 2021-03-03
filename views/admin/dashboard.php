@@ -129,7 +129,7 @@
                                                         <th>Acciones</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody style="max-height: fit-content;">
                                                     <?php 
                                                     
                                                 while($datos_agenda_paciente=mysqli_fetch_assoc($listConsultas)){
@@ -152,15 +152,15 @@
                                                 while($dato_med_dash=mysqli_fetch_assoc($nameMed)){ 
                                                     $nombre_completo_med_dash =$dato_med_dash['nombre_completo']; 
                                                 }  
-
-                                                setlocale(LC_TIME, 'es_ES.UTF-8');
-                                                setlocale(LC_TIME, 'spanish');
+                                                // date_default_timezone_set('America/Lima');
+                                                // setlocale(LC_TIME, 'es_ES.UTF-8');
+                                                // setlocale(LC_TIME, 'spanish');
                                                 
-                                                $dia= date("d", strtotime($fecha_start)); 	
-                                                $anio = strftime("%Y", strtotime($fecha_start));   
-                                                $mes_texto = strftime("%B", strtotime($fecha_start) ); 
+                                                // $dia= date("d", strtotime($fecha_start)); 	
+                                                // $anio = strftime("%Y", strtotime($fecha_start));   
+                                                // $mes_texto = strftime("%B", strtotime($fecha_start) ); 
 
-                                                $fecha_format = $dia." ".$mes_texto." ".$anio;
+                                                $fecha_format = $fecha_start;
                                                  
                                                 ?>
 

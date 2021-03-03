@@ -1,8 +1,16 @@
 <?php
 session_start();
-error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+// error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 include '../../model/consulSQL.php';
 include '../../model/sessiones.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require '../../vendor/autoload.php'; 
+
+
 // header('Content-Type: application/json'); 
 
     $respuesta = array(
@@ -85,13 +93,11 @@ $cod_consulta  =  md5(uniqid(rand(), true));
 
 $nombre_room  =  md5(uniqid(rand(), true));
 $pass_room  =  md5(uniqid(rand(), true));
-
-$varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
-
-  
  
  switch ($obj_json['status']) {
      case "approved":
+    $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
+
     $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
 
     while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
@@ -117,9 +123,60 @@ $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, em
 
 
     consultasSQL::UpdateSQL("agenda_medica", "agenda='$newJsonString'", "cod_medico='$cod_medico'");
-   
+    
+    $estado_cita = "APROBADO";
+     
+    $nombre_paciente =  $nombre_paciente_p." ".$apellido_paciente_p; 
+    $correo_paciente = $email_paciente_p;
+    $url_cita = "https://medicos.stampiza2.com/lobby-".$cod_consulta;
+
+    $med_name = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.*, `perfil`.`correo`, `medicos`.`estado` FROM `medicos` , `perfil` WHERE `perfil`.`correo` = `medicos`.`correo` AND `perfil`.`codigo_referido` = '$cod_medico'");
+    while($datos_medico=mysqli_fetch_assoc($med_name)){ 
+        
+    $medico_cita = $datos_medico['nombre_completo'];
+    }
+
+
+    $fecha_hora_final = $fecha_start." - ".$fecha_hora;
+
+
+
+
+    $subject = "Estado de su Cita: ".$estado_cita;
+        
+    include 'plantillaCorreo.controler.php';
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+        $mail->isSMTP();                                            
+        $mail->Host       = 'mail.stampiza2.com';                 
+        $mail->SMTPAuth   = true;                                 
+        $mail->Username = "medicos@stampiza2.com";  
+        $mail->Password = "8p;D_eR2~7yz";                           
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+        $mail->Port       = 587;                                    
+
+        //Recipients
+        $mail->setFrom('medicos@stampiza2.com', 'Medicos En Directo ');
+        $mail->addAddress($email_paciente_p, 'Paciente');      
+            
+        
+        //Content
+        $mail->isHTML(true);                                   
+        $mail->Subject = $subject;
+        $mail->Body    = $body;
+        $mail->AltBody = "Enviado desde Medicos en Directo.";
+
+        $mail->send();
+        echo 'El Correo fue enviado con exito';
+    } catch (Exception $e) {
+        echo "El Correo no fue enviado. Mailer Error: {$mail->ErrorInfo}";
+    }
+
     break;
     case "pending":
+        $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
         $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
 
         while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
@@ -145,10 +202,63 @@ $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, em
     
     
         consultasSQL::UpdateSQL("agenda_medica", "agenda='$newJsonString'", "cod_medico='$cod_medico'");
-       
+         
+    
+        $estado_cita = "PENDIENTE";
+        
+        $nombre_paciente =  $nombre_paciente_p." ".$apellido_paciente_p; 
+        $correo_paciente = $email_paciente_p;
+        $url_cita = "https://medicos.stampiza2.com/lobby-".$cod_consulta;
+
+        $med_name = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.*, `perfil`.`correo`, `medicos`.`estado` FROM `medicos` , `perfil` WHERE `perfil`.`correo` = `medicos`.`correo` AND `perfil`.`codigo_referido` = '$cod_medico'");
+        while($datos_medico=mysqli_fetch_assoc($med_name)){ 
+            
+            $medico_cita = $datos_medico['nombre_completo'];
+        }
+        
+
+        $fecha_hora_final = $fecha_start." - ".$fecha_hora;
+
+        
+
+
+            $subject = "Estado de su Cita: ".$estado_cita;
+                
+            include 'plantillaCorreo.controler.php';
+            $mail = new PHPMailer(true);
+            try {
+                //Server settings
+                // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+                $mail->isSMTP();                                            
+                $mail->Host       = 'mail.stampiza2.com';                 
+                $mail->SMTPAuth   = true;                                 
+                $mail->Username = "medicos@stampiza2.com";  
+                $mail->Password = "8p;D_eR2~7yz";                           
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+                $mail->Port       = 587;                                    
+        
+                //Recipients
+                $mail->setFrom('medicos@stampiza2.com', 'Medicos En Directo ');
+                $mail->addAddress($email_paciente_p, 'Paciente');      
+                      
+                
+            
+                //Content
+                $mail->isHTML(true);                                   
+                $mail->Subject = $subject;
+                $mail->Body    = $body;
+                $mail->AltBody = "Enviado desde Medicos en Directo.";
+            
+                $mail->send();
+                echo 'El Correo fue enviado con exito';
+            } catch (Exception $e) {
+                echo "El Correo no fue enviado. Mailer Error: {$mail->ErrorInfo}";
+            }
+
     break;
 
     case "404":
+        $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
         $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
 
         while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){

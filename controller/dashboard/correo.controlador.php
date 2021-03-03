@@ -55,7 +55,7 @@ $fechaEntera = strtotime($fecha_start_dato);
     $end = date("g:ia", $fecha_fin);
 
 
-$fecha_hora = $fecha_anual_format." - - ".$init." - ".$end;
+$fecha_hora_final = $fecha_anual_format." - - ".$init." - ".$end;
 
  
 

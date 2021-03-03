@@ -754,7 +754,7 @@ background-position: center top;
                             color: #666666;
                           '
                         >
-                       <strong> Fecha y Hora : <span style='font-weight: 500;' >  $fecha_hora </span> </strong>
+                       <strong> Fecha y Hora : <span style='font-weight: 500;' >  $fecha_hora_final </span> </strong>
                         </p>
                       </td>
                     </tr>
