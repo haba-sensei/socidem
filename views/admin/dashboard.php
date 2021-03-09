@@ -172,7 +172,9 @@
                                                                         src="views/assets/images/medicos/<?=$foto_medico ?>" alt="User Image">
                                                                 </a>
                                                                 <a href="perfil-<?=$cod_medico?>"><?=$nombre_completo_med_dash ?>
-                                                                    <span><?=$especialidad ?></span></a>
+                                                                    <span><?=$especialidad ?></span>
+                                                                    <span>ID: <?=$cod_consulta ?></span>
+                                                                    </a>
                                                             </h2>
                                                         </td>
                                                         <td   style="width: 15%; text-transform: capitalize;">
@@ -229,7 +231,10 @@
 
                                                             case "online":
                                                                 if($estado == 2){
-                                                                    echo "<span class='badge badge-pill bg-danger-light'>CONCLUIDO";
+                                                                    echo "
+                                                                        <a href='javascript:' class='btn btn-sm bg-danger-light'>
+                                                                        <i class='fa fa-eye-slash' aria-hidden='true'></i> Sala Cerrada  </a>
+                                                                        ";
                                                                 }else {
                                                                     
                                                                
@@ -238,14 +243,18 @@
                                                                     <i class='fas fa-minus'></i> Pago Rechazado
                                                                     </a>";
                                                                 }else {
-                                                                    echo " <a href='lobby-$cod_consulta' onclick='' class='btn btn-sm bg-info-light'>
-                                                                    <i class='far fa-eye'></i> Ir al Lobby </a>
-                                                                    <br> <br>
-                                                                    <a href='javascript:' onclick='modalCred(&apos;$cod_consulta&apos;)' class='btn btn-sm bg-warning-light'>
-                                                                    <i class= 'fa fa-lock'></i>
-                                                                    Password
-                                                                    </a> 
-                                                                    ";
+                                                                    if($estado == 2){
+                                                                        echo "
+                                                                        <a href='javascript:' class='btn btn-sm bg-danger-light'>
+                                                                        <i class='fa fa-eye-slash' aria-hidden='true'></i> Sala Cerrada  </a>
+                                                                        ";
+                                                                    }else {
+                                                                        echo " <a href='lobby-$cod_consulta' onclick='' class='btn btn-sm bg-info-light'>
+                                                                        <i class='far fa-eye'></i> Sala Abierta  </a>
+                                                                        ";
+                                                                    }
+                                                                    
+                                                                   
                                                                 }
                                                             }
                                                             break;
@@ -264,7 +273,7 @@
                                                     <?php 
 
                                             }
-                                                ?>
+                                                ?> 
                                                 </tbody>
                                             </table>
                                         </div>

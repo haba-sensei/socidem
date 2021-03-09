@@ -6,7 +6,7 @@ function lobby(id) {
             id: id
         },
         beforeSend: function() {
-            $("#meet").html("<h1  class='cargando' style='color:red;'>LOADING</h1> ");
+
 
         },
         error: function() {
@@ -40,14 +40,14 @@ function lobby(id) {
                 api.addEventListener('participantRoleChanged', function(event) {
                     var pass = String(data['pass']);
                     if (event.role === "moderator") {
-                        api.executeCommand('password', pass);
+                        api.executeCommand('password', '');
                     }
                 });
 
                 api.addEventListener('participantRoleChanged', function(event) {
                     var pass = String(data['pass']);
                     if (event.role === 'moderator') {
-                        api.executeCommand('password', pass);
+                        api.executeCommand('password', '');
                     }
                 });
 

@@ -64,7 +64,7 @@
                                     <h4 class="card-title">Elige tu servicio</h4>
                                     <br>
                                         <div style="background-color: #fff; border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .05);  display: block;  height: 50px;  margin-top: -13px;  padding: 5px 15px 0; transition: border-color .3s; width: 100%;"
-                                            class="card-body p-1 d-flex justify-content-between flex-column flex-md-row align-items-md-center">
+                                            class="p-1 card-body d-flex justify-content-between flex-column flex-md-row align-items-md-center">
                                             <div data-v-04146088="" data-v-3ee56c44="" class="pr-2 ellipsis-flex-fix">
                                                 <div data-v-3ee56c44="">
                                                     <p id="servicios_content" class="mb-0">&nbsp; Servicio General </p>
@@ -138,7 +138,7 @@
                                 <div class="clini-infos">
                                     <ul>
                                         <li><i class="fa fa-address-card" style="color: #008298;"></i> <?=$especialidad  ?></li>
-                                        <li><i class="fa fa-check" style="color: #008298;"></i> Perfil Verificado</li>
+                                        <li><i class="fa fa-check" style="color: #008298;"></i> Perfil Verificado  </li>
                                     </ul>
                                 </div>
                             </div>
@@ -150,9 +150,17 @@
                                 <ul class="booking-date">
                                     <li><i class="fa fa-calendar" style="color: #008298;" aria-hidden="true"></i>
                                         <?php echo $_SESSION['fecha'] ." , ". $_SESSION['hora']; ?> </li>
+                                <?php 
+                                
+                                if($_SESSION['tipo'] == "presencial"){
+                                  
+                                ?> 
                                     <li><i class="fa fa-map-marker" style="color: #008298;" aria-hidden="true"></i> <?php echo $nom_clinica ?> </li>
                                     <li><i class="fa fa-map-marker" style="color: #008298;" aria-hidden="true"></i> <?php echo $dir_clinica ?> </li>
-
+                                
+                                <?php } else {
+                                    
+                                }?>
 
                                 </ul>
 

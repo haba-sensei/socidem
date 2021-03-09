@@ -266,7 +266,7 @@
                                                                     ?>
 
                                                                     </span>
-                                                                <td class="text-left">
+                                                                <td class="text-left" style="white-space: nowrap;">
                                                                     <div class="table-action">
 
                                                                         
@@ -278,17 +278,15 @@
                                                                         switch ($tipo_cita) {
                                                                             case 'online':
                                                                                 if($estado == 2){
-                                                                                    echo "<span class='badge badge-pill bg-danger-light'>CERRADO";
+                                                                                    echo "
+                                                                                    <a href='javascript:' class='btn btn-sm bg-danger-light'>
+                                                                                    <i class='fa fa-eye-slash' aria-hidden='true'></i> Sala Cerrada  </a>
+                                                                                    ";
                                                                                 }else {
                                                                                      
-                                                                                    echo "
-                                                                            
+                                                                                    echo " 
                                                                                     <a href='lobby-".$cod_consulta."'  target='_blank' class='btn btn-sm bg-info-light'>
-                                                                                    <i class='fas fa-eye'></i> Ir a la Sala </a><br><br>
-                                                                                    <a href='javascript:' onclick='modalCred(&apos;$cod_consulta&apos;)' class='btn btn-sm bg-warning-light'>
-                                                                                    <i class= 'fa fa-lock'></i> Ver Password </a> <br><br>
-                                                                                    <a href='javascript:void(0);' onclick='modalConfirm(&apos;$cod_consulta&apos;)' class='btn btn-sm bg-danger-light'>
-                                                                                    <i class='fas fa-check'></i> Cerrar Cita </a>
+                                                                                    <i class='fas fa-eye'></i> Sala Abierta </a>
                                                                                     ";
                                                                                     
                                                                                 }
@@ -314,7 +312,11 @@
 
                                                             }
                                                             ?>
-
+<br><br>
+        <!-- <a href='javascript:' onclick='modalCred(&apos;$cod_consulta&apos;)' class='btn btn-sm bg-warning-light'>
+        <i class= 'fa fa-lock'></i> Ver Password </a> <br><br>
+        <a href='javascript:void(0);' onclick='modalConfirm(&apos;$cod_consulta&apos;)' class='btn btn-sm bg-danger-light'>
+        <i class='fas fa-check'></i> Cerrar Cita </a> -->
                                                         <!-- <tr>
                                                             <td>
                                                                 <h2 class="table-avatar">

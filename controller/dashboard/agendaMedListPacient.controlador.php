@@ -45,14 +45,22 @@ echo '
                 <input type="text" class="form-control" value="'.$var_email.'">
             
         </div>
+        <button type="button" onclick="enviarCorreo(&apos;'.$id_cod_agenda.'&apos;)" class="btn btn-primary btn-block" >
+            <i class="far fa-envelope" ></i> 
+             Enviar Correo</button>
     </div>
     <div class="col-12 col-sm-6">
         <div class="form-group">
             <label>Telefono Paciente</label>
             <input type="email" class="form-control" value="'.$var_telefono.'">
         </div>
+        <a href="'.$base.'" target="_blank"  class="btn btn-primary btn-block"  style="background: green; color:white;"  >
+            <i class="fab fa-whatsapp"></i>
+            Enviar WhatsApp</a>
     </div>
+    
     <div class="col-12 ">
+    <br>
         <div class="form-group">
             <label>Detalles</label>
             <textarea  class="form-control">'.$var_detalle.'</textarea>
