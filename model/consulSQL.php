@@ -1,13 +1,24 @@
 <?php
-// define("USER", "vlrrywof_user_med");
-// define("SERVER", "localhost");
-// define("BD", "vlrrywof_medicos");
-// define("PASS", "hpY@h*e@[PRZ");
 
-define("USER", "root");
-define("SERVER", "localhost");
-define("BD", "socidem_bd");
-define("PASS", "");
+include 'config.php';
+
+switch ($conectame) {
+    case 'LOCAL':
+        define("USER", "root");
+        define("SERVER", "localhost");
+        define("BD", "socidem_bd");
+        define("PASS", "");
+    break;
+    
+    case 'LIVE':
+        define("USER", "vlrrywof_user_med");
+        define("SERVER", "localhost");
+        define("BD", "vlrrywof_medicos");
+        define("PASS", "hpY@h*e@[PRZ");
+    break;
+        
+}
+ 
 
 /* Clase para ejecutar las consultas a la Base de Datos*/
 class ejecutarSQL {

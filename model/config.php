@@ -1,9 +1,18 @@
 <?php 
     $enviroment = 'LOCAL';
+
+    if(isset($type)){
+
+    }else {
+        $type = "";
+    }
+   
     /* FILTRO SEGUN EL TIPO DE ENTORNO */
     switch ($enviroment) {
         case 'LIVE':
             $url_base = 'https://medicos.stampiza2.com/';
+            $conectame = "LIVE";
+           
             /* FILTRO SEGUN EL TIPO DE ELEMENTO */
             switch ($type) {
                 case 'LOGIN':
@@ -66,6 +75,8 @@
         case 'LOCAL':
             /* FILTRO SEGUN EL TIPO DE ELEMENTO */
             $url_base = 'http://localhost/socidem/';
+            
+            $conectame = "LOCAL";
             switch ($type) {
                 case 'LOGIN':
                    
