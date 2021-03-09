@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/vlrrywof/public_html/medicos/
+    - /bin/cp -R * $DEPLOYPATH

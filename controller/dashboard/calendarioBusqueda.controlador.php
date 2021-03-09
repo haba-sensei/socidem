@@ -18,11 +18,11 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
 
     $fecha_hoy = date('d/m/Y');
     
-    foreach( $objAgenda as $key=> $val){
+    foreach( $objAgenda as $key=> $val){ 
          
         if(strtotime($val['startDate']) >= date('d/m/Y')) {
  
-            $agenda_array = array(
+            $agenda_array = array( 
                 'id' => $val['id'],
                 'token' => $val['token'],
                 'name' => $val['name'],

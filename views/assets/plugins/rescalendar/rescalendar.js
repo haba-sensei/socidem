@@ -119,7 +119,7 @@
                         title = '';
                         date = arr_dates[j];
                         obj_data = dataInSet(data, name, date);
-
+                        var reserva_class = '';
                         if (typeof obj_data === 'object') {
 
                             if (obj_data.title) { title = ' title="' + obj_data.title + '" '; }

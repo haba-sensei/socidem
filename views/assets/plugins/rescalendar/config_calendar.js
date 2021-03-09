@@ -8,7 +8,7 @@
              id_ref: id_ref
          },
          success: function(data) {
-
+             //  alert(data['fecha_adelantada']);
              var fecha_init = data['fecha_adelantada'];
              var agenda = data['agenda'];
              $(id_calendar).rescalendar({
