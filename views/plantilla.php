@@ -4,7 +4,7 @@ require_once "model/consulSQL.php";
 include 'model/sessiones.php'; 
 include 'model/data.php';
 require_once 'vendor/autoload.php';
-
+date_default_timezone_set('America/Lima');
 $routes = array();
 $routes = explode("-", $_GET["ruta"]);
 
@@ -152,6 +152,7 @@ $routes = explode("-", $_GET["ruta"]);
 	break;
 
 	case 'dashboard':
+		
 		include 'views/footers/footer_base.php'; 
 		include "views/footers/scripts_dash.php";
 		include "views/footers/footer.php";

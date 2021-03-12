@@ -107,7 +107,7 @@ function modalDetalle(id) {
 
   function enviarCorreo(id) {
   
-    $.ajax({
+    $.ajax({ 
        type: "POST",
        url: "controller/dashboard/correo.controlador.php",
        data: {

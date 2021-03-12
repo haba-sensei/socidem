@@ -254,7 +254,7 @@
                                                                                 }else {
                                                                                     echo "<span class='badge badge-pill bg-success-light'>APROBADO";
                                                                                 }
-                                                                           
+                                                                            
                                                                         break;
 
                                                                             case "404":
@@ -284,11 +284,21 @@
                                                                                     ";
                                                                                 }else {
                                                                                      
-                                                                                    echo " 
-                                                                                    <a href='lobby-".$cod_consulta."'  target='_blank' class='btn btn-sm bg-info-light'>
-                                                                                    <i class='fas fa-eye'></i> Sala Abierta </a>
-                                                                                    ";
+                                                                                    $nuevafecha_init = strtotime ( '- 5 minutes' , strtotime ( $fecha_hora ) );
+                                                                                    $hora_actual_f = date("h:i A", $nuevafecha_init);
+                                                                                    $hora_actual = date("h:i A");
+                                                                                    $nuevafecha_end = strtotime ($hora_actual);
                                                                                     
+                                                                                    
+                                                                                    if($nuevafecha_end  >=  $nuevafecha_init ){
+                                                                                        echo " <a href='lobby-$cod_consulta' onclick='' class='btn btn-sm bg-info-light'>
+                                                                                        <i class='far fa-eye'></i> Sala Abierta  </a>
+                                                                                          ";
+                                                                                    }else {
+                                                                                        echo " <a href='javascript:' onclick='' class='btn btn-sm bg-warning-light'>
+                                                                                        <i class='far fa-eye-slash'></i> Sala en Espera </a>
+                                                                                          ";
+                                                                                    }
                                                                                 }
                                                                            
                                                                             break;

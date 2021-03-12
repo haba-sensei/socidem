@@ -41,7 +41,7 @@ function lobby(id, type) {
 
                 api.addEventListener('participantRoleChanged', function(event) {
                     var pass = String(data['pass']);
-                    if (event.role === "member") {
+                    if (event.role === "moderator") {
                         api.executeCommand('password', '');
                     }
                 });
@@ -80,23 +80,10 @@ function lobby(id, type) {
 
                         } else {
 
-                            var cont = "end";
-                            $.ajax({
-                                type: "POST",
-                                url: "controller/dashboard/closeConf.controlador.php",
-                                data: {
-                                    id: id,
-                                    cont: cont
-                                },
-                                success: function(data) {
-                                    alert(data);
-                                    clearInterval(countDown);
-                                    api.dispose();
-                                    countDiv.innerHTML = 'Cita terminada';
-                                    window.location = "dashboard";
-                                    return false;
-                                }
-                            })
+                            clearInterval(countDown);
+                            api.dispose();
+                            countDiv.innerHTML = 'countdown done';
+
                         }
                     }
                 });

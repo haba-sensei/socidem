@@ -19,31 +19,10 @@
     }
     
     .blueClass {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 9px;
-        user-select: none;
-        margin-bottom: 10px;
         background-color: #eef4fd;
         color: #1662c6;
-        border-color: transparent;
-        font-weight: 500;
-        height: 30px;
-        align-items: center;
-        display: inline-flex;
-        justify-content: center;
-        border-radius: 3px;
-        font-size: 15px;
-        line-height: 18px;
-        padding: 0 12px;
-        padding-bottom: 27px;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        touch-action: manipulation;
-        cursor: pointer;
-        background-image: none;
-        border: 1px solid transparent;
+        user-select: none;
+        width: 100px;
     }
     
     .firstColumn {
@@ -73,11 +52,11 @@
     }
     
     .rescalendar_day_cells td.middleDay {
-        border: 1px solid rgba(0, 0, 255, 0);
+        border: 1px solid rgb(0 0 0 / 23%);
     }
     
     .rescalendar_day_cells td.middleDay {
-        border: 1px solid rgba(0, 0, 255, 0);
+        border: 1px solid rgb(0 0 0 / 23%);
     }
     
     .dp-calendar .dp-carousel .dp-carousel-nav:hover:not([disabled]) {
@@ -145,7 +124,7 @@
     
     thead,
     tbody tr {
-        display: table;
+        display: inline-table;
         width: 100%;
         table-layout: fixed;
     }
@@ -158,6 +137,8 @@
         color: #ffffff;
         font-weight: 600;
         padding-top: 11px;
+        padding-bottom: 7px;
+        border: solid 1px white;
     }
     
      ::-webkit-scrollbar {
@@ -204,14 +185,15 @@
     
     .move_to_tomorrow {
         position: relative;
-        left: 309px;
+        left: 314px;
         top: 6px;
     }
     
     .rescalendar_day_cells td {
-        width: 22px;
+        width: auto;
         border-radius: 0px;
         background: #eeeeee;
+        border: 1px solid rgb(0 0 0 / 23%);
     }
     
     .data_cell {

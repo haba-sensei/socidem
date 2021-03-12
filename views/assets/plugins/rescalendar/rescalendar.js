@@ -119,7 +119,8 @@
                         title = '';
                         date = arr_dates[j];
                         obj_data = dataInSet(data, name, date);
-                        var reserva_class = '';
+
+                        // var reserva_class = '';
                         if (typeof obj_data === 'object') {
 
                             if (obj_data.title) { title = ' title="' + obj_data.title + '" '; }
@@ -135,8 +136,23 @@
                                     break;
 
                                 case 'libre':
-                                    desabled_class = '';
-                                    onclik_event = 'onclick="procesoCita(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; , &apos;' + obj_data.startDate + '&apos; , &apos;' + obj_data.title + '&apos; , &apos;' + obj_data.tipo + '&apos;)"';
+                                    var hora_init = moment(obj_data.title, 'h:mm A');
+                                    var hora_end = moment().format("h:mm A");
+
+
+                                    var et = moment().format("D/MM/Y");
+
+                                    if (hora_init.isBefore(hora_end) == false && obj_data.startDate >= et) {
+                                        reserva_class = '';
+                                        desabled_class = '';
+                                        onclik_event = 'onclick="procesoCita(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; , &apos;' + obj_data.startDate + '&apos; , &apos;' + obj_data.title + '&apos; , &apos;' + obj_data.tipo + '&apos;)"';
+
+                                    } else {
+                                        reserva_class = 'reservado';
+                                        desabled_class = 'disabled_class';
+                                        obj_data.url = 'javascript:';
+                                        onclik_event = '';
+                                    }
                                     break;
 
                                 case 'pendiente':
@@ -166,16 +182,16 @@
 
                         } else {
 
-                            content = '<a  class="no_data"> - </a> ';
+                            content = '<a  class="no_data"> - </a>';
                             hasEventClass = '';
                             customClass = '';
                             reserva_class = '';
 
                         }
 
+                        //  ' + customClass + ' 
 
-
-                        html += '<td data-date="' + date + '" data-name="' + name + '" class=" data_cell ' + hasEventClass + ' ' + customClass + ' ' + reserva_class + ' ">' + content + '</td>';
+                        html += '<td data-date="' + date + '" data-name="' + name + '" class=" data_cell ' + hasEventClass + ' ' + customClass + '  ' + reserva_class + ' ">' + content + '</td>';
                     }
 
                     html += '</tr>';
@@ -344,6 +360,7 @@
                         '<tbody class="rescalendar_data_rows"  id="caja">',
 
                         '</tbody>',
+
                         '</table>',
 
                         '</div>',

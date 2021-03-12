@@ -25,12 +25,12 @@ while($datos_agenda_paciente=mysqli_fetch_assoc($verAgenda)){
     $var_email = $paciente['email_paciente'];
     $var_telefono = $paciente['telefono_paciente'];
     $var_detalle = $paciente['detalles_paciente'];
-
+ 
     $namePac2 = ejecutarSQL::consultar("SELECT `perfil`.`codigo_referido`, `medicos`.`nombre_completo`, `medicos`.`correo` FROM `perfil` , `medicos` WHERE `perfil`.`codigo_referido` = '$cod_medico' AND `medicos`.`correo` = '$correo_'");
     while($dato_medico_dash=mysqli_fetch_assoc($namePac2)){ 
         $nombre_medico = $dato_medico_dash['nombre_completo']; 
     } 
-    
+     
     $fechaEntera = strtotime($fecha_start);
     $fecha_anual_format = date("Y/m/d", $fechaEntera);
     $fecha_init = strtotime($fecha_start);

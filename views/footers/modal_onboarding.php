@@ -177,7 +177,7 @@
 <div class="modal fade" id="servicios_check" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-xs" role="document">
         <div class="modal-content">
-
+ 
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
