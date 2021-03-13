@@ -12,13 +12,13 @@
     <script src="views/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
     <script src="views/assets/js/profile-settings.js"></script>
     <script src="views/assets/js/jplist/jplist.min.js"></script>
-    <script src="views/assets/js/script.js"></script>
+    
     <script src="views/assets/js/scripts/ajax.js"></script>
     <script src="views/assets/js/scripts/init.js"></script>
     <script src="views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="views/assets/plugins/datatables/datatables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
-   
+    <script src="views/assets/js/script.js"></script>
    
     <script>
     var clipboard = new ClipboardJS('.btna');

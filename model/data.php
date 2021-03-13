@@ -1,6 +1,8 @@
-<?php 
+<?php
+date_default_timezone_set('America/Lima');
+$fecha_nueva = date("d/m/Y"); 
 /*=============================================
-CONTADOR DE MEDICOS
+CONTADOR DE MEDICOS 
 =============================================*/
      $medCons = ejecutarSQL::consultar("SELECT * FROM `medicos`");
      $medTotal = mysqli_num_rows($medCons);
@@ -17,22 +19,26 @@ BANNER FASHION TRENDS
 =============================================*/
      $listMedicos = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `perfil`.*, `perfil`.`correo`, `medicos`.`estado` FROM `medicos` , `perfil` WHERE `perfil`.`correo` = `medicos`.`correo` AND `medicos`.`estado` = '1'");
 /*=============================================
-LISTA DE CONSULTAS PACIENTE 
+LISTA DE CONSULTAS PACIENTE ONLINE
 =============================================*/
-     $listConsultas = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda` , `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`email_usuario` = '$correo_' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
+     $listConsultasOnline = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`email_usuario` = '$correo_' AND `agenda`.`tipo_cita` = 'online' ORDER BY `agenda`.`fecha_start` DESC");
+/*=============================================
+LISTA DE CONSULTAS PACIENTE PRESENCIAL
+=============================================*/
+     $listConsultasPresencial = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`email_usuario` = '$correo_' AND `agenda`.`tipo_cita` = 'presencial' ORDER BY `agenda`.`fecha_start` DESC");
 /*=============================================
 TOTAL DE PACIENTES DASH MEDICO
 =============================================*/
      $ConsPacientes = ejecutarSQL::consultar("SELECT DISTINCT email_usuario FROM agenda");
      $totalPacientes = mysqli_num_rows($ConsPacientes);
 /*=============================================
-LISTA DE CITAS EN LA AGENDA DEL MEDICO
+LISTA DE CITAS DEL DIA AGENDA DEL MEDICO
 =============================================*/ 
-     $listaConsultasMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = '$codigo_referido_' ORDER BY `agenda`.`fecha_start` DESC LIMIT 10");
-// /*=============================================
-// LISTA DE VENDEDORES INICIO
-// =============================================*/
-//     $listVend = ejecutarSQL::consultar("SELECT `usuarios`.*, `perfil`.*, `usuarios`.`correo`, `usuarios`.`perfil`, `usuarios`.`id` AS idvend FROM `usuarios` LEFT JOIN `perfil` ON `perfil`.`id` = `usuarios`.`id` WHERE `usuarios`.`correo` = `perfil`.`correo` AND `usuarios`.`perfil` = 'vendedor'");
+     $consDiaAgendaMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = '$codigo_referido_' AND `agenda`.`fecha_start` = '$fecha_nueva' ORDER BY `agenda`.`fecha_start` DESC");
+/*=============================================
+LISTA DE CITAS GENERALES AGENDA MEDICO
+=============================================*/
+     $consGenralAgendaMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = '$codigo_referido_' ORDER BY `agenda`.`fecha_start` DESC");
 // /*=============================================
 // LISTA DE MARCAS
 // =============================================*/

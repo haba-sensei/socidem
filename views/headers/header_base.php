@@ -17,13 +17,14 @@
     <link rel="stylesheet" href="views/assets/plugins/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="views/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="views/assets/plugins/dropzone/dropzone.min.css">
+     <link rel="stylesheet" href="views/assets/plugins/datatables/datatables.min.css">
     <link rel="stylesheet" href="views/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="views/assets/js/jplist/jplist.styles.css">
     <link rel="stylesheet" href="views/assets/css/style_search.css">
     <link rel='stylesheet' href='views/assets/plugins/calendario/main.css'>
     <script src="views/assets/js/jquery.min.js"></script>
     <script src='views/assets/plugins/jitsi/external_api.js'></script>
-    <link rel="stylesheet" href="views/assets/plugins/datatables/datatables.min.css">
+   
     <link rel="stylesheet" href="views/assets/plugins/rescalendar/rescalendar.css">
     <link rel="stylesheet" href="views/assets/plugins/rescalendar/custom.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
