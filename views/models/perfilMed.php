@@ -11,19 +11,18 @@ require_once 'views/admin/breadcrumb.php';
             <?php require_once 'views/admin/sidebar.php';  ?>
             <div class="col-md-7 col-lg-8 col-xl-9">
 
-                <form class="theme-form update-Form" action="controller/dashboard/upPerfil.controlador.php" method="post"
-                    role="form" data-form="updatePerfil" enctype="multipart/form-data">
+                <form class="theme-form update-Form" action="controller/dashboard/upPerfil.controlador.php" method="post" role="form"
+                    data-form="updatePerfil" enctype="multipart/form-data">
 
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Información Basica  </h4>
+                            <h4 class="card-title">Información Basica </h4>
                             <div class="row form-row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="change-avatar">
-                                            <div class="profile-img" >
-                                                <img src="#" id="preview"
-                                                    alt="User Image">
+                                            <div class="profile-img">
+                                                <img src="#" id="preview" alt="User Image">
                                             </div>
                                             <div class="upload-img">
                                                 <div class="change-photo-btn">
@@ -70,8 +69,8 @@ require_once 'views/admin/breadcrumb.php';
                                     <div class="form-group">
                                         <label>Especialidad <span class="text-danger">*</span></label>
                                         <select class=" form-control floating" name="especialidad" id="especialidad">
-                                            <option value="default" >Elige</option>
-                                            <option value="Alergista" >Alergista</option>
+                                            <option value="default">Elige</option>
+                                            <option value="Alergista">Alergista</option>
                                             <option value="Anestesiólogo">Anestesiólogo </option>
                                             <option value="Cardiologo">Cardiólogo </option>
                                             <option value="Cirujano"> Cirujano</option>
@@ -191,7 +190,7 @@ require_once 'views/admin/breadcrumb.php';
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Dirección de la Clinica <span class="text-danger">*</span></label>
-                                        <input type="text" name="direccion_clinica"  id="direccion_clinica" class="form-control">
+                                        <input type="text" name="direccion_clinica" id="direccion_clinica" class="form-control">
                                     </div>
                                 </div>
 
@@ -201,26 +200,29 @@ require_once 'views/admin/breadcrumb.php';
 
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Precio de Consulta</h4>
+                            <h4 class="card-title">Precio de Consultas</h4>
+                            <div class="row form-row">
+                                <div class="col-md-6">
+                                     
 
-                            <div class="mb-0 form-group">
-                                <div id="pricing_select">
-
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="price_custom" name="rating_option" placeholder="20.00"
-                                            class="custom-control-input" checked>
-                                        <label class="custom-control-label" for="price_custom">Costo por Consulta <span
-                                                class="text-danger">*</span></label>
+                                    <div class="row custom_price_cont" id="custom_price_cont">
+                                        <div class="col-md-10">
+                                        <label>Consulta Online <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="precio_consulta_online" name="precio_consulta_online" placeholder="20.00">
+                                            <small class="form-text text-muted">Precio Expresado en Soles ( 000.00 )</small>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                     
 
-                            </div>
-
-                            <div class="row custom_price_cont" id="custom_price_cont">
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="precio_consulta"
-                                        name="precio_consulta"   placeholder="20.00">
-                                    <small class="form-text text-muted">Precio Expresado en Soles ( 000.00 )</small>
+                                    <div class="row custom_price_cont" id="custom_price_cont">
+                                        <div class="col-md-10">
+                                        <label>Consulta Presencial <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="precio_consulta_presencial" name="precio_consulta_presencial" placeholder="20.00">
+                                            <small class="form-text text-muted">Precio Expresado en Soles ( 000.00 )</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -232,8 +234,8 @@ require_once 'views/admin/breadcrumb.php';
                             <h4 class="card-title">Servicios <span class="text-danger">*</span></h4>
                             <div class="form-group">
 
-                                <input type="text" data-role="tagsinput" class="input-tags form-control"
-                                    placeholder="Tipea tus Servicios" name="services" id="services">
+                                <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Tipea tus Servicios"
+                                    name="services" id="services">
                                 <small class="form-text text-muted">Nota: Recomendamos un maximo de 3 servicios.</small>
                             </div>
 
@@ -262,7 +264,7 @@ require_once 'views/admin/breadcrumb.php';
                                             <div class="col-12 col-md-6 col-lg-4">
                                                 <div class="form-group">
                                                     <label>Años de Estudios</label>
-                                                    <input type="text" name="anio_exp" id="anio_exp"  class="form-control">
+                                                    <input type="text" name="anio_exp" id="anio_exp" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -288,7 +290,7 @@ require_once 'views/admin/breadcrumb.php';
                             </div>
 
                         </div>
-                    </div> 
+                    </div>
 
                     <div class="res-update animated fadeInDown"> </div>
                     <div class="submit-section submit-btn-bottom">

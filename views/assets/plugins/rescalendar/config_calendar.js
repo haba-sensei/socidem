@@ -1,4 +1,4 @@
- function cargaCalendar(id_cal, id_ref) {
+ function cargaCalendar(id_cal, id_ref, size, type) {
      var id_calendar = "#" + id_cal;
      $.ajax({
          type: 'POST',
@@ -18,7 +18,7 @@
                  id: id_cal,
                  format: 'DD/MM/YYYY',
                  jumpSize: 1,
-                 calSize: 3,
+                 calSize: size,
                  locale: 'es',
                  refDate: fecha_init,
                  lang: {
@@ -29,7 +29,8 @@
 
                  data: agenda,
                  dataKeyField: 'name',
-                 dataKeyValues: data['indices']
+                 dataKeyValues: data['indices'],
+                 type: type
 
              });
 
@@ -39,9 +40,5 @@
 
          }
      });
-
-
-
-
 
  }

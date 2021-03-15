@@ -46,8 +46,10 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "faqs" ||  
 			$routes[0] == "busqueda" || 
 			$routes[0] == "perfil" || 
+			$routes[0] == "pacientes" || 
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "cita" || 
+			$routes[0] == "agenda" || 
 			$routes[0] == "test" || 
 			$routes[0] == "lobby" || 
 			$routes[0] == "checkout" || 
@@ -152,6 +154,7 @@ $routes = explode("-", $_GET["ruta"]);
 	break;
 
 	case 'dashboard':
+	case 'agenda':
 		
 		include 'views/footers/footer_base.php'; 
 		include "views/footers/scripts_dash.php";
@@ -160,6 +163,7 @@ $routes = explode("-", $_GET["ruta"]);
 		
 		echo "</body>";
 	break;
+	
 
 	default:
 		include 'views/footers/footer_base.php';

@@ -247,7 +247,7 @@
                             <div class="rescalendar" id="cal-'.$track.'"></div>
                             </div>
                         </div>
-                        <script> cargaCalendar("cal-'.$track.'","'.$codigo_referido_C.'") </script>
+                        <script> cargaCalendar("cal-'.$track.'","'.$codigo_referido_C.'", 2, "paciente") </script>
                     </div>
                 </div>
                 ';

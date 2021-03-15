@@ -13,7 +13,7 @@
     <script defer src="views/assets/plugins/fontawesome/js/all.js"></script>
     <link rel="stylesheet" href="views/assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="views/assets/plugins/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="views/assets/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="views/assets/plugins/select1/css/select2.min.css">
     <link rel="stylesheet" href="views/assets/plugins/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="views/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="views/assets/plugins/dropzone/dropzone.min.css">
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="views/assets/css/style_search.css">
     <link rel='stylesheet' href='views/assets/plugins/calendario/main.css'>
     <script src="views/assets/js/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src='views/assets/plugins/jitsi/external_api.js'></script>
    
     <link rel="stylesheet" href="views/assets/plugins/rescalendar/rescalendar.css">

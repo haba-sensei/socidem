@@ -86,7 +86,7 @@
 
             }
 
-            function setData(targetObj, dataKeyValues, data) {
+            function setData(targetObj, dataKeyValues, data, type) {
 
                 var html = '',
                     dataKeyValues = settings.dataKeyValues,
@@ -97,7 +97,9 @@
                     hasEventClass = '',
                     customClass = '',
                     classInSet = false,
+                    tipo_calendario = settings.type,
                     obj_data = {};
+
 
                 targetObj.find('td.day_cell').each(function(index, value) {
 
@@ -112,7 +114,7 @@
                     name = dataKeyValues[i];
 
                     html += '<tr class="dataRow">';
-                    html += '<td class="firstColumn">' + name + '</td>';
+                    html += '<td class="firstColumn ajust_indice">' + name + '</td>';
 
                     for (var j = 0; j < arr_dates.length; j++) {
 
@@ -145,7 +147,16 @@
                                     if (hora_init.isBefore(hora_end) == false && obj_data.startDate >= et) {
                                         reserva_class = '';
                                         desabled_class = '';
-                                        onclik_event = 'onclick="procesoCita(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; , &apos;' + obj_data.startDate + '&apos; , &apos;' + obj_data.title + '&apos; , &apos;' + obj_data.tipo + '&apos;)"';
+                                        switch (tipo_calendario) {
+                                            case 'med':
+                                                onclik_event = 'onclick="elimAgenda(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; )"';
+                                                break;
+
+                                            case 'paciente':
+                                                onclik_event = 'onclick="procesoCita(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; , &apos;' + obj_data.startDate + '&apos; , &apos;' + obj_data.title + '&apos; , &apos;' + obj_data.tipo + '&apos;)"';
+                                                break;
+                                        }
+
 
                                     } else {
                                         reserva_class = 'reservado';
@@ -182,7 +193,18 @@
 
                         } else {
 
-                            content = '<a  class="no_data"> - </a>';
+                            switch (tipo_calendario) {
+                                case 'med':
+                                    content = '<a href="javascript:" onclick="AbrirAgenda(&apos;' + date + '&apos; , &apos;' + name + '&apos; )" class="no_data_new"> <i class="fas fa-folder-plus"></i> </a>';
+                                    break;
+
+                                case 'paciente':
+                                    content = '<a  class="no_data"> - </a>';
+                                    break;
+                            }
+
+
+
                             hasEventClass = '';
                             customClass = '';
                             reserva_class = '';
@@ -207,7 +229,7 @@
                     f_inicio = moment(refDate, format).subtract(settings.jumpSize, 'days'),
                     f_fin = moment(refDate, format).add(settings.jumpSize, 'days'),
                     today = moment().startOf('day'),
-                    html = '<td class="firstColumn"></td>',
+                    html = '<td class="firstColumn "></td>',
                     f_aux = '',
                     f_aux_format = '',
                     dia = '',

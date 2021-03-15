@@ -15,13 +15,15 @@ $ubicacion = $_POST['ubicacion'];
 $sobre_mi = $_POST['sobre_mi'];
 $nombre_clinica = $_POST['nombre_clinica'];
 $direccion_clinica = $_POST['direccion_clinica'];
-$precio_consulta = $_POST['precio_consulta'];
+$precio_consulta = $_POST['precio_consulta_presencial'];
+$precio_consulta_online = $_POST['precio_consulta_online'];
 $services = $_POST['services'];
 $titulo = $_POST['titulo'];
 $universidad = $_POST['universidad'];
 $años = $_POST['anio_exp'];
 
 $img =  $_FILES['foto']['name'];
+
 
 
 if( strlen($img) > 0){
@@ -87,16 +89,20 @@ if (!$correo == "" && !$especialidad == "" && !$nombre == "" && !$documento == "
             sobre_mi='$sobre_mi',
             nombre_clinica='$nombre_clinica',
             direccion_clinica='$direccion_clinica',
-            precio_consulta='$precio_consulta'
+            precio_consulta='$precio_consulta',
+            precio_online='$precio_consulta_online'
             ",
             "correo='$correo'");
 
             session_reset(); 
             $_SESSION["correo"] = $correo;  
             $_SESSION["nombre"] = $nombre;
+            $_SESSION["foto"] = $foto;
+            $_SESSION["especialidad"] = $especialidad;
+            $_SESSION["codigo_referido"] =  $codigo_referido_;
+            $_SESSION["num_colegiatura"] = $num_colegiatura;
             $_SESSION["estado"] = 1;
-
-            echo '<script> 	window.location = "dashboard"; </script>';
+            echo ' <script> window.location = "dashboard";  </script>';
            
         }elseif ($AfilC == 0 && $correo !== $correo_old) {
 
@@ -117,21 +123,26 @@ if (!$correo == "" && !$especialidad == "" && !$nombre == "" && !$documento == "
             num_colegiatura='$num_colegiatura',
             especialidad='$especialidad',
             servicios='$services',
-            titulo='$titulo',
+            titulo='$titulo', 
             universidad='$universidad',
             años='$años',
             ubicacion='$ubicacion',
             sobre_mi='$sobre_mi',
             nombre_clinica='$nombre_clinica',
             direccion_clinica='$direccion_clinica',
-            precio_consulta='$precio_consulta'
+            precio_consulta='$precio_consulta',
+            precio_online='$precio_consulta_online'
             ",
             "correo='$correo_'");
-
+ 
 
             session_reset(); 
             $_SESSION["correo"] = $correo;  
             $_SESSION["nombre"] = $nombre;
+            $_SESSION["foto"] = $foto;
+            $_SESSION["codigo_referido"] =  $codigo_referido_;
+            $_SESSION["especialidad"] = $especialidad;
+            $_SESSION["num_colegiatura"] = $num_colegiatura;
             $_SESSION["estado"] = 1; 
 
            

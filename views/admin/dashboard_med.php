@@ -8,7 +8,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
                 </nav>
-                <h2 class="breadcrumb-title">Dashboard</h2>
+                <h2 class="breadcrumb-title">Dashboard  </h2>
             </div>
         </div>
     </div>
@@ -16,86 +16,12 @@
 <!-- /Breadcrumb -->
 
 <!-- Page Content -->
-<div class="content">
+<div class="content"> 
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-
-                <!-- Profile Sidebar -->
-                <div class="profile-sidebar">
-                    <div class="widget-profile pro-widget-content">
-                        <div class="profile-info-widget">
-                            <a href="javascript:" class="booking-doc-img">
-                                <img src="views/assets/images/medicos/<?=$foto_?>" alt="User Image">
-                            </a>
-                            <div class="profile-det-info">
-                                <h3>Dr. <?=$nombre_ ?></h3>
-
-                                <div class="patient-details">
-                                    <h4 class="mb-0"><?=$especialidad_ ?></h4>
-                                    <small class="mb-0"><?=$num_colegiatura_ ?></small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dashboard-widget">
-                        <nav class="dashboard-menu">
-                            <ul>
-                                <li class="active">
-                                    <a href="dashboard">
-                                        <i class="fas fa-columns"></i>
-                                        <span>Dashboard</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="agenta">
-                                        <i class="fas fa-calendar-check"></i>
-                                        <span>Agenta</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="chat-doctor">
-                                        <i class="fas fa-comments"></i>
-                                        <span>Mensajes</span>
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="perfilMed">
-                                        <i class="fas fa-comments"></i>
-                                        <span>perfilMed</span>
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="chat-doctor">
-                                        <i class="fas fa-comments"></i>
-                                        <span>opcion 2</span>
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="chat-doctor">
-                                        <i class="fas fa-comments"></i>
-                                        <span>opcion 3</span>
-
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="salir">
-                                        <i class="fas fa-sign-out-alt"></i>
-                                        <span>Logout</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <!-- /Profile Sidebar -->
-
-            </div>
+            
+            <?php include 'views/admin/sidebar.php'; ?>
 
             <div class="col-md-7 col-lg-8 col-xl-9">
 
@@ -129,7 +55,7 @@
                                             <div class="dash-widget-info">
                                                 <h6>Agenda del Dia</h6>
                                                 <h3><?= $totalPacientes  ?></h3>
-                                                <p class="text-muted">23 Feb. 2021</p>
+                                                <p class="text-muted">14 Mar. 2021</p>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +70,7 @@
                                             <div class="dash-widget-info">
                                                 <h6>Agenda total</h6>
                                                 <h3><?= $totalPacientes  ?></h3>
-                                                <p class="text-muted">Febrero 2021</p>
+                                                <p class="text-muted">Marzo 2021</p>
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +104,7 @@
                                     <div class="mb-0 card card-table">
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table class="table mt-0 mb-0 datatable table-hover table-center">
+                                                <table id="datatable_med_dia" class="table mt-0 mb-0 table-hover table-center">
                                                     <thead>
                                                         <tr>
                                                             <th>Usuario</th>
@@ -338,7 +264,7 @@
                                         <div class="card-body">
                                             <div class="table-responsive">
 
-                                                <table class="table mt-0 mb-0 datatable table-hover table-center">
+                                                <table id="datatable_med_general" class="table mt-0 mb-0 table-hover table-center">
                                                     <thead>
                                                         <tr>
                                                             <th>Usuario</th>

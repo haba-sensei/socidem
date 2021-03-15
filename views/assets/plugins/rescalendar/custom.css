@@ -22,7 +22,8 @@
         background-color: #eef4fd;
         color: #1662c6;
         user-select: none;
-        width: 100px;
+        width: 134px;
+        padding-top: 1px;
     }
     
     .firstColumn {
@@ -212,16 +213,28 @@
         background: white!important;
     }
     
+    .no_data_new {
+        cursor: pointer!important;
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #15558d!important;
+        font-weight: 600;
+        padding-top: 11px;
+        background: white!important;
+    }
+    
     .reservado {
         text-decoration: line-through;
-        background: #eee!important;
+        background: #a0a0a0!important;
         cursor: not-allowed;
         color: #a0a0a0;
     }
     
     .disabled_class {
         cursor: not-allowed;
-        color: #a0a0a0!important;
+        color: #dedede!important;
     }
     
     .list_ubica {

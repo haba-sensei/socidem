@@ -1,23 +1,23 @@
 <script>
 
-function modalCred(id) {
-   
+  function modalCred(id) {
+    
 
- $.ajax({
-     type: "POST",
-     url: "controller/dashboard/credenciales.controlador.php",
-     data: {
-       id: id,
-        
-     },            
-     success: function(data) {
-         $('#cuerpo_cred').html(data);
-         $('#credenciales').modal('show');
-     }
- });
+    $.ajax({
+        type: "POST",
+        url: "controller/dashboard/credenciales.controlador.php",
+        data: {
+          id: id,
+            
+        },            
+        success: function(data) {
+            $('#cuerpo_cred').html(data);
+            $('#credenciales').modal('show');
+        }
+    });
 
-}
-function modalDetalle(id) {
+  }
+  function modalDetalle(id) {
    
 
     $.ajax({
@@ -139,7 +139,7 @@ function modalDetalle(id) {
                    
             }
         }); 
-      };     
+  };     
 
       
   function updatePresencialCita() {
@@ -160,9 +160,87 @@ function modalDetalle(id) {
                    
             }
         }); 
-      };     
+  };    
+  
+  
+  function AbrirAgenda(fecha, hora) {
 
+        $.ajax({
+          type: 'POST',
+          url: 'controller/dashboard/abrirAgenda.controlador.php',
+          data: {
+              fecha: fecha,
+              hora: hora
+          },
+          success: function(data) {
+              
+              $('#cuerpo_crear_agenda').html(data);
+              $('#crear_agenda').modal('show');
 
+          }
+      });
+  }
+
+  function CrearAgenda(fecha, hora, token) {
+    var tipo = $("input[type='radio'][name='radio']:checked").val();
+    
+    
+    $.ajax({
+      type: 'POST',
+      url: 'controller/dashboard/crearAgenda.controlador.php',
+      data: {
+          fecha: fecha,
+          hora: hora, 
+          tipo:tipo
+      },
+      success: function(data) {
+          
+         
+          $('#crear_agenda').modal('hide');
+          cargaCalendar("cal-"+token, token, 8, "med");
+          
+      }
+    });
+  }
+
+  function elimAgenda(id, token) {
+     
+    Swal.fire({
+      title: '¿Seguro que desea Eliminar?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: `SI`,
+      denyButtonText: `NO ELIMINAR`,
+    }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+
+        $.ajax({
+        type: 'POST',
+        url: 'controller/dashboard/elimAgenda.controlador.php',
+        data: {
+            id: id
+        },
+        success: function(data) {
+             
+          Swal.fire({
+            title: 'ELIMINADO CON EXITO',
+            icon: 'success', 
+            showConfirmButton: false,
+            timer: 1500
+          }); 
+
+          cargaCalendar("cal-"+token, token, 8, "med");
+            
+        }
+      });
+      
+    } else if (result.isDenied) {
+          Swal.fire('NO ELIMINADO', '', 'error')
+    }
+    });
+    
+  }
      
      
  
