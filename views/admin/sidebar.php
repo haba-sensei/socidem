@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="servicios">
+                        <a href="serviciosMed">
                             <i class="fa fa-tags"></i>
                             <span>Servicios</span>
                         </a>
@@ -65,14 +65,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="Referido">
+                        <a href="referidos">
                             <i class="fas fa-file-invoice"></i>
                             <span>Referido</span>
 
                         </a>
                     </li>
                     <li>
-                        <a href="Membresias">
+                        <a href="membresias">
                             <i class="fas fa-star"></i>
                             <span>Membresias</span>
 

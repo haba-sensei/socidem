@@ -48,6 +48,11 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "perfil" || 
 			$routes[0] == "pacientes" || 
 			$routes[0] == "perfilMed" || 
+			$routes[0] == "mensajes" || 
+			$routes[0] == "referidos" || 
+			$routes[0] == "membresias" || 
+			$routes[0] == "faqMed" || 
+			$routes[0] == "cambioPass" || 
 			$routes[0] == "cita" || 
 			$routes[0] == "agenda" || 
 			$routes[0] == "test" || 
@@ -56,6 +61,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "checkProcess" || 
 			$routes[0] == "factura" || 
 			$routes[0] == "servicios" || 
+			$routes[0] == "serviciosMed" || 
 			$routes[0] == "contacto" || 
 			$routes[0] == "medico" || 
 			$routes[0] == "loginMed" || 
