@@ -112,6 +112,8 @@ $pass_room  =  md5(uniqid(rand(), true));
        
         if ($entry['id'] == $cod_id_json_cita) {
              
+            $agenda_full[$key]['agenda']= $cod_consulta;
+            $agenda_full[$key]['agenda'];
             $agenda_full[$key]['estado']="agendado";
             $agenda_full[$key]['estado'];
             $newJsonString = json_encode($agenda_full, JSON_UNESCAPED_UNICODE);

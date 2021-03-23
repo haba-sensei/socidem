@@ -39,14 +39,10 @@ LISTA DE CITAS DEL DIA AGENDA DEL MEDICO
 LISTA DE CITAS GENERALES AGENDA MEDICO
 =============================================*/
      $consGenralAgendaMed = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`email_usuario`, `perfil`.*, `agenda`.* FROM `agenda`, `perfil` WHERE `agenda`.`cod_medico` = `perfil`.`codigo_referido` AND `agenda`.`cod_medico` = '$codigo_referido_' ORDER BY `agenda`.`fecha_start` DESC");
-// /*=============================================
-// LISTA DE MARCAS
-// =============================================*/
-//     $listMarc = ejecutarSQL::consultar("SELECT * FROM `marcas`");
-// /*=============================================
-// LISTA DE OPCIONES ORIGINAL
-// =============================================*/
-//     $listOri = ejecutarSQL::consultar("SELECT * FROM `original` LIMIT 2");
+/*=============================================
+ LISTA DE OPCIONES ORIGINAL
+=============================================*/
+     $listPacientesMed = ejecutarSQL::consultar("SELECT DISTINCT `agenda`.`email_usuario`, `agenda`.`cod_medico`, `agenda`.`paciente` FROM `agenda` WHERE `agenda`.`cod_medico` = '$codigo_referido_'");
 // /*=============================================
 // LISTA DE TALLAS
 // =============================================*/

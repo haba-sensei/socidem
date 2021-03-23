@@ -35,19 +35,27 @@
                     <li>
                         <a href="agenda">
                             <i class="fas fa-calendar-check"></i>
-                            <span>Agenda</span>
+                            <span>Configurar Horarios</span>
                         </a>
                     </li>
                     <li>
                         <a href="pacientes">
                             <i class="fas fa-user-injured"></i>
-                            <span>Pacientes</span>
+                            <span>Clientes Atendidos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="serviciosMed">
-                            <i class="fa fa-tags"></i>
-                            <span>Servicios</span>
+                        <a href="referidos">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Plan de Referidos</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="membresias">
+                            <i class="fas fa-star"></i>
+                            <span>Membresias</span>
+
                         </a>
                     </li>
                     <li>
@@ -64,20 +72,7 @@
 
                         </a>
                     </li>
-                    <li>
-                        <a href="referidos">
-                            <i class="fas fa-file-invoice"></i>
-                            <span>Referido</span>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="membresias">
-                            <i class="fas fa-star"></i>
-                            <span>Membresias</span>
-
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="faqMed">
                             <i class="fa fa-question-circle"></i>

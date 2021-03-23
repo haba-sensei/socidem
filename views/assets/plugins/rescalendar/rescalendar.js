@@ -131,10 +131,28 @@
                             switch (obj_data.estado) {
 
                                 case 'agendado':
-                                    reserva_class = 'reservado';
-                                    desabled_class = 'disabled_class';
-                                    obj_data.url = 'javascript:';
-                                    onclik_event = '';
+                                    switch (tipo_calendario) {
+                                        case 'med':
+                                            reserva_class = 'reservado';
+                                            desabled_class = 'disabled_class';
+                                            obj_data.url = 'javascript:';
+                                            onclik_event = '';
+                                            break;
+
+                                        case 'dash_med':
+                                            reserva_class = 'reservado_med';
+                                            desabled_class = 'disabled_class_med';
+                                            obj_data.url = 'javascript:';
+                                            onclik_event = 'onclick="abrirDetallesCli(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.agenda + '&apos; )"';
+                                            break;
+
+                                        case 'paciente':
+                                            reserva_class = 'reservado';
+                                            desabled_class = 'disabled_class';
+                                            obj_data.url = 'javascript:';
+                                            onclik_event = '';
+                                            break;
+                                    }
                                     break;
 
                                 case 'libre':
@@ -152,6 +170,10 @@
                                                 onclik_event = 'onclick="elimAgenda(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; )"';
                                                 break;
 
+                                            case 'dash_med':
+                                                onclik_event = 'onclick="abrirDetallesCli(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; )"';
+                                                break;
+
                                             case 'paciente':
                                                 onclik_event = 'onclick="procesoCita(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; , &apos;' + obj_data.startDate + '&apos; , &apos;' + obj_data.title + '&apos; , &apos;' + obj_data.tipo + '&apos;)"';
                                                 break;
@@ -167,10 +189,30 @@
                                     break;
 
                                 case 'pendiente':
-                                    reserva_class = 'reservado';
-                                    desabled_class = 'disabled_class';
-                                    obj_data.url = 'javascript:';
-                                    onclik_event = '';
+
+                                    switch (tipo_calendario) {
+                                        case 'med':
+                                            reserva_class = 'reservado';
+                                            desabled_class = 'disabled_class';
+                                            obj_data.url = 'javascript:';
+                                            onclik_event = '';
+                                            break;
+
+                                        case 'dash_med':
+                                            reserva_class = 'reservado_med';
+                                            desabled_class = 'disabled_class_med';
+                                            obj_data.url = 'javascript:';
+                                            onclik_event = '';
+                                            break;
+
+                                        case 'paciente':
+                                            reserva_class = 'reservado';
+                                            desabled_class = 'disabled_class';
+                                            obj_data.url = 'javascript:';
+                                            onclik_event = '';
+                                            break;
+                                    }
+
                                     break;
                             }
 
@@ -196,6 +238,10 @@
                             switch (tipo_calendario) {
                                 case 'med':
                                     content = '<a href="javascript:" onclick="AbrirAgenda(&apos;' + date + '&apos; , &apos;' + name + '&apos; )" class="no_data_new"> <i class="fas fa-folder-plus"></i> </a>';
+                                    break;
+
+                                case 'dash_med':
+                                    content = '<a href="javascript:"  class="no_data_new_dash_med"> <i class="fas fa-folder-plus"></i> </a>';
                                     break;
 
                                 case 'paciente':

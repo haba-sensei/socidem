@@ -109,7 +109,49 @@
     }
 ]
 
+[
 
+    {
+        "id":1,
+        "fecha":"04/03/2021",
+        "analisis": [
+            {
+                id: "1",
+                pictures: "1.jpg"
+
+            },
+            {
+                id: "2",
+                pictures: "2.jpg"
+
+            },
+            {
+                id: "3",
+                pictures: "3.jpg"
+
+            } ],
+    },
+    {
+        "id":2,
+        "fecha":"05/03/2021",
+        "analisis": 
+           [ {
+                id: "1",
+                pictures: "1.jpg"
+
+            },
+            {
+                id: "2",
+                pictures: "2.jpg"
+
+            },
+            {
+                id: "3",
+                pictures: "3.jpg"
+
+            }   ],
+    }
+]
 
     margin-left: auto;
     margin-right: auto;

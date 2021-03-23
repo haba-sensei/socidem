@@ -49,7 +49,7 @@
                         <div class="profile-info-widget">
                             <a href="#" class="booking-doc-img">
                                 <label class="circulo">
-                                    <h2><?php 
+                                    <h2><?php  
                                     $words = explode(' ', $nombre_);
                                     $paa = strtoupper(substr($words[0], 0, 1) . substr(end($words), 0, 1));
                                     echo $paa;

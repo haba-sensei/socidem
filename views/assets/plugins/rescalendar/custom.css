@@ -225,6 +225,18 @@
         background: white!important;
     }
     
+    .no_data_new_dash_med {
+        cursor: unset!important;
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: #15558d!important;
+        font-weight: 600;
+        padding-top: 11px;
+        background: white!important;
+    }
+    
     .reservado {
         text-decoration: line-through;
         background: #a0a0a0!important;

@@ -50,6 +50,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "mensajes" || 
 			$routes[0] == "referidos" || 
+			$routes[0] == "historial" || 
 			$routes[0] == "membresias" || 
 			$routes[0] == "faqMed" || 
 			$routes[0] == "cambioPass" || 
