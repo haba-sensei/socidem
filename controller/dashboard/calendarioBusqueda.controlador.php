@@ -8,7 +8,7 @@ header("Content-Type: application/json", true);
 
   $id_ref_med = $_POST['id_ref'];
    //$id_ref_med = 'e37324a7bd39264d5f997c3ccd5fc1e0';
-
+ 
 
 $verAgendaMed = ejecutarSQL::consultar("SELECT `agenda_medica`.`cod_medico`, `agenda_medica`.`agenda`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$id_ref_med' AND `agenda_medica`.`estado` = '1';");
 

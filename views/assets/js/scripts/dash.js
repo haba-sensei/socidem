@@ -253,6 +253,8 @@ function abrirDetallesCli(id, cod_agenda) {
         },
         success: function(data) {
 
+
+
             $('#cuerpo_detalles_cli_agenda').html(data);
             $('#detalles_cli_agenda').modal('show');
 

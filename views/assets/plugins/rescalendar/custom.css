@@ -249,6 +249,10 @@
         color: #dedede!important;
     }
     
+    .disabled_class_med {
+        background: #a0a0a0!important;
+    }
+    
     .list_ubica {
         position: absolute;
         bottom: 76px;
