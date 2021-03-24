@@ -51,6 +51,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "mensajes" || 
 			$routes[0] == "referidos" || 
 			$routes[0] == "historial" || 
+			$routes[0] == "historialPac" || 
 			$routes[0] == "membresias" || 
 			$routes[0] == "faqMed" || 
 			$routes[0] == "cambioPass" || 
@@ -162,12 +163,12 @@ $routes = explode("-", $_GET["ruta"]);
 
 	case 'dashboard':
 	case 'agenda':
+	case 'historial':
 		
-		include 'views/footers/footer_base.php'; 
-		include "views/footers/scripts_dash.php";
-		include "views/footers/footer.php";
+		include 'views/footers/footer_base.php';   
+		include "views/footers/footer.php"; 
 		include "views/footers/modal_onboarding.php";
-		
+		include "views/footers/scripts_dash.php"; 
 		echo "</body>";
 	break;
 	

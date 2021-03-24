@@ -16,37 +16,37 @@
 </div>
 <!-- /Breadcrumb -->
     <style>
-    .med_row {
-        margin-bottom: 15px;
-        background: #008298;
-        color: white;
-        margin-left: auto;
-        margin-right: auto;
-        display: inherit;
-    }
+            .med_row {
+                margin-bottom: 15px;
+                background: #008298;
+                color: white;
+                margin-left: auto;
+                margin-right: auto;
+                display: inherit;
+            }
 
-    .med_row:hover{
-        background: #008298;
-        color: white;
-    }
+            .med_row:hover{
+                background: #008298;
+                color: white;
+            }
 
-    .img_data {
-        width: 800px;
-        height: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-        display: -webkit-box;
-        margin-bottom: 30px;
-    }
-    .custom-edit-service .service-upload {
-    border: 1px solid #dcdcdc;
-    border-radius: .25rem;
-    text-align: center;
-    padding: 70px 0;
-    margin-bottom: 30px;
-    background-color: #fff;
-    position: relative;
-}
+            .img_data {
+                width: 800px;
+                height: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+                display: -webkit-box;
+                margin-bottom: 30px;
+            }
+            .custom-edit-service .service-upload {
+            border: 1px solid #dcdcdc;
+            border-radius: .25rem;
+            text-align: center;
+            padding: 70px 0;
+            margin-bottom: 30px;
+            background-color: #fff;
+            position: relative;
+        }
     </style>
 
    
@@ -57,7 +57,7 @@
 
         <div class="row">
 
-            <?php include 'views/admin/sidebar.php'; ?>
+        <?php include 'views/admin/sidebar_paciente.php'; ?>
 
             <div class="col-md-7 col-lg-8 col-xl-9">
                
@@ -82,7 +82,7 @@
                 <div class="tab-content ">
              
                     <?php 
-                    $get_mail = $routes[1];
+                    $get_mail = md5($correo_);
                     $ConsHistorial = ejecutarSQL::consultar("SELECT `historial_medico`.*, `historial_medico`.`correo` FROM `historial_medico` WHERE `historial_medico`.`correo` = '$get_mail';");
                     while( $datos_historial_med =mysqli_fetch_assoc($ConsHistorial)){
 
@@ -96,7 +96,7 @@
                     ?>
 
                     <div class="tab-pane show active" id="historial">
-                        <button type="button" class="btn med_row " onclick="addHC('<?=$get_mail?>')"><i class="fa fa-plus"></i> AGREGAR HISTORIA CLINICA</button>
+                         
                         
                         <?php 
                         $historia_clinica = json_decode($objHistoria_clinica, true); 
@@ -109,9 +109,7 @@
                             <button type="button" class="btn btn-block" style="margin-bottom: 15px; background:#008298; color:white;" data-toggle="collapse" data-target="#h'.$count.'">'.$entry['fecha'].'</button>
                             <div id="h'.$count.'" class="collapse" style="margin-top: 15px; margin-bottom: 15px;">
                                  '.$entry['texto'].'
-                                 <br><br>
-                                    
-                                 <button type="button" class="btn med_row " onclick="editHC(&quot;'.$cod_correo.'&quot; , &quot;'.$entry['id'].'&quot; , &quot;'.$entry['fecha'].'&quot;)" ><i class="fas fa-edit"></i> EDITAR</button>
+                                 <br><br> 
                             </div>
                           
                             ';
@@ -125,10 +123,7 @@
 
                     </div>
 
-                    <div class="tab-pane" id="analisis_lab">
-
-                        <button type="button" class="btn med_row" onclick="addLab('<?=$get_mail?>')" ><i class="fa fa-plus"></i>
-                            AGREGAR ANALISIS DE LABORATORIO</button>
+                    <div class="tab-pane" id="analisis_lab"> 
 
                         <?php 
                         $analisis_lab = json_decode($objAnalisis_lab, true); 
@@ -161,8 +156,7 @@
                     </div>
 
                     <div class="tab-pane" id="imagenes_digitales">
-                        <button type="button" onclick="addImgDig('<?=$get_mail?>')" class="btn med_row "><i  class="fa fa-plus"></i> AGREGAR IMAGENES DIGITALES</button>
-
+                        
                             <?php 
                         $img_digitales = json_decode($objImg_digitales, true); 
                         $count = 0;
@@ -194,9 +188,7 @@
                     </div>
 
                     <div class="tab-pane" id="imagenes_recetas">
-                        <button type="button" class="btn med_row " onclick="addRecetas('<?=$get_mail?>')" ><i
-                                class="fa fa-plus"></i>
-                            AGREGAR RECETAS MEDICAS</button>
+                      
 
                             <?php 
                         $recetas = json_decode($objRecetas, true); 

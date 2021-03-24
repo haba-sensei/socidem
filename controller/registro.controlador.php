@@ -49,8 +49,14 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
          
         else {
 
-            $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, last_login, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$last_login', '$estado' "); 
            
+
+            $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, last_login, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$last_login', '$estado' "); 
+            
+            $correo_md5 = md5($correo);
+            $regHistorial = consultasSQL::InsertSQL("historial_medico", "correo, historia_clinica, analisis_lab, img_digitales, recetas_med", "'$correo_md5', '[]', '[]', '[]', '[]' "); 
+
+
             $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` WHERE `pacientes`.`correo` = '$correo' AND `pacientes`.`pass` = '$pass';");
     
             while($datos_usuario=mysqli_fetch_assoc($verAfil)){

@@ -39,7 +39,7 @@ setlocale(LC_TIME, 'spanish');
         $objAgenda=$datos_agenda_medica['agenda'];
         
         $agenda_full = json_decode($objAgenda, true); 
-        
+ 
         $count = 0;
         $date_init = "04:30 AM";
         $nuevaHora_init = strtotime('0 minutes', strtotime($date_init) );
@@ -55,6 +55,32 @@ setlocale(LC_TIME, 'spanish');
             'startDate' =>  $fecha_actual_f,
           );
         }
+        
+        if($agenda_full == NULL){
+          
+
+          foreach ($agenda_libre_carga  as $key => $value) {
+          
+            $count = $count + 1;  
+              $nuevaHora_row = strtotime('+30 minutes', strtotime($value['name']) );
+              $hora_row_new = date("h:i A", $nuevaHora_row); 
+              // background-color: #42c0fb; border: 1px solid #42c0fb; color: #fff; 
+              echo'
+              <div class="col-md-4 " style="padding-top: 12px;     text-align: left; ">
+              <input type="checkbox" class="horario-'.$id.'" name="horario[]" value="'.$id.'-'.$value['startDate'].'-'.$value['name'].'"  id="date_'.$count.'_'.$id.'"> 
+              <label for="date_'.$count.'_'.$id.'">'.$value['name'].' a '.$hora_row_new.'</label>
+              </div>
+              '; 
+           
+              
+            
+    
+           } 
+
+
+        }else {
+          
+        
 
         foreach ($agenda_full as $key => $value) {
           
@@ -70,6 +96,24 @@ setlocale(LC_TIME, 'spanish');
          }  
         if($agenda_full_carga == NULL){
           $zones_array3[] = NULL;
+
+          foreach ($agenda_libre_carga  as $key => $value) {
+          
+            $count = $count + 1;  
+              $nuevaHora_row = strtotime('+30 minutes', strtotime($value['name']) );
+              $hora_row_new = date("h:i A", $nuevaHora_row); 
+              // background-color: #42c0fb; border: 1px solid #42c0fb; color: #fff; 
+              echo'
+              <div class="col-md-4 " style="padding-top: 12px;     text-align: left; ">
+              <input type="checkbox" class="horario-'.$id.'" name="horario[]" value="'.$id.'-'.$value['startDate'].'-'.$value['name'].'"  id="date_'.$count.'_'.$id.'"> 
+              <label for="date_'.$count.'_'.$id.'">'.$value['name'].' a '.$hora_row_new.'</label>
+              </div>
+              '; 
+           
+              
+            
+    
+           } 
         }else { 
           foreach ($agenda_full_carga as $arr1){
             $check_array[] = $arr1['name'];
@@ -126,6 +170,7 @@ setlocale(LC_TIME, 'spanish');
        
       echo "</div>";  
 
+     }
     }
     
 
