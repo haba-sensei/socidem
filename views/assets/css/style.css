@@ -4958,6 +4958,7 @@ html.menu-opened body {
     padding: 5px 5px;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 .time-slot li .timing:hover {

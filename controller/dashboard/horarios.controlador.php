@@ -21,15 +21,28 @@ setlocale(LC_TIME, 'spanish');
 
  echo '
  
- <div class="row" id="box_cuerpo-'.$id.'" style="background:#ececec; border-radius: 10px; margin-top: 32px; width: 90%;">
+ <div class="row" id="box_cuerpo-'.$id.'" style="background:#ececec; border-radius: 10px; margin-top: 32px; width: 100%;">
         
        
-    <div class="col-md-12" style="padding-top: 12px; ">
-     <label for="selectall-'.$id.'" style="position: absolute; right: 31px; top: 18px;" onclick="selectall(&quot;'.$id.'&quot;)"> Select All  <input type="checkbox" id="selectall-'.$id.'">  </label>
+    <div class="col-md-12" style="padding-top: 12px; padding-bottom: 20px;">
+     <label for="selectall-'.$id.'" style="
+    position: absolute;
+    right: 31px;
+    top: 18px;
+    background: #42c0fb;
+    color: white;
+    padding: 7px;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+     " onclick="selectall(&quot;'.$id.'&quot;)"> Seleccionar Todos <i class="fa fa-star"></i> <input type="checkbox" class="ocult" id="selectall-'.$id.'">  </label>
         <strong>Horarios Disponibles</strong><br>
         <strong>'. $date_1.' </strong>
         
     </div>
+    <div class="time-slot checkboxes">
+        <ul class="clearfix">
+      
      ';
      
      $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$token'");
@@ -66,10 +79,16 @@ setlocale(LC_TIME, 'spanish');
               $hora_row_new = date("h:i A", $nuevaHora_row); 
               // background-color: #42c0fb; border: 1px solid #42c0fb; color: #fff; 
               echo'
-              <div class="col-md-4 " style="padding-top: 12px;     text-align: left; ">
-              <input type="checkbox" class="horario-'.$id.'" name="horario[]" value="'.$id.'-'.$value['startDate'].'-'.$value['name'].'"  id="date_'.$count.'_'.$id.'"> 
-              <label for="date_'.$count.'_'.$id.'">'.$value['name'].' a '.$hora_row_new.'</label>
-              </div>
+              <li >
+                  <input type="checkbox" class="ocult horario-'.$id.'" name="horario[]" value="'.$id.'-'.$value['startDate'].'-'.$value['name'].'"  id="date_'.$count.'_'.$id.'"> 
+                  <label class="timing " for="date_'.$count.'_'.$id.'" > 
+
+                      <span>'.$value['name'].'</span>
+                      a
+                      <span>'.$hora_row_new.'</span>
+                  
+                  </label> 
+              </li> 
               '; 
            
               
@@ -104,10 +123,16 @@ setlocale(LC_TIME, 'spanish');
               $hora_row_new = date("h:i A", $nuevaHora_row); 
               // background-color: #42c0fb; border: 1px solid #42c0fb; color: #fff; 
               echo'
-              <div class="col-md-4 " style="padding-top: 12px;     text-align: left; ">
-              <input type="checkbox" class="horario-'.$id.'" name="horario[]" value="'.$id.'-'.$value['startDate'].'-'.$value['name'].'"  id="date_'.$count.'_'.$id.'"> 
-              <label for="date_'.$count.'_'.$id.'">'.$value['name'].' a '.$hora_row_new.'</label>
-              </div>
+              <li >
+                  <input type="checkbox" class="ocult horario-'.$id.'" name="horario[]" value="'.$id.'-'.$value['startDate'].'-'.$value['name'].'"  id="date_'.$count.'_'.$id.'"> 
+                  <label class="timing " for="date_'.$count.'_'.$id.'" > 
+
+                      <span>'.$value['name'].'</span>
+                      a
+                      <span>'.$hora_row_new.'</span>
+                  
+                  </label> 
+              </li> 
               '; 
            
               
@@ -143,10 +168,16 @@ setlocale(LC_TIME, 'spanish');
             $hora_row_new = date("h:i A", $nuevaHora_row); 
             // background-color: #42c0fb; border: 1px solid #42c0fb; color: #fff; 
             echo'
-            <div class="col-md-4 " style="padding-top: 12px;     text-align: left; ">
-            <input type="checkbox" class="horario-'.$id.'" name="horario[]" value="'.$id.'-'.$value['startDate'].'-'.$value['name'].'"  id="date_'.$count.'_'.$id.'"> 
-            <label for="date_'.$count.'_'.$id.'">'.$value['name'].' a '.$hora_row_new.'</label>
-            </div>
+            <li >
+                  <input type="checkbox" class="ocult horario-'.$id.'" name="horario[]" value="'.$id.'-'.$value['startDate'].'-'.$value['name'].'"  id="date_'.$count.'_'.$id.'"> 
+                  <label class="timing " for="date_'.$count.'_'.$id.'" > 
+
+                      <span>'.$value['name'].'</span>
+                      a
+                      <span>'.$hora_row_new.'</span>
+                  
+                  </label> 
+              </li> 
             '; 
           }
             
@@ -155,7 +186,8 @@ setlocale(LC_TIME, 'spanish');
          } 
       }else {
         echo '
-        
+        </ul>
+        </div>
         <div class="error-box ">
          
         <h3 class="mb-3 h2"><i class="fa fa-check"></i> Horarios no Disponibles </h3>
@@ -168,7 +200,10 @@ setlocale(LC_TIME, 'spanish');
       }
 
        
-      echo "</div>";  
+      echo "
+        </ul>
+        </div>
+      </div>";  
 
      }
     }

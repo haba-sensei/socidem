@@ -306,6 +306,48 @@
                         color: #00d0f1;
                         font-size: 10em;
                     }
+                    .time-slot li {
+                        float: left;
+                        padding-left: 5px;
+                        padding-right: 6px;
+                        width: 25%;
+                        padding-bottom: 15px;
+                    }  
+
+                    .time-slot ul {
+                        list-style: none;
+                        margin-right: 20px;
+                        margin-left: 20px;
+                        margin-bottom: 0;
+                        padding: 0;
+                    }
+
+                    .time-slot li .timing {
+                        background-color: #fff;
+                    }
+
+                    input[type=checkbox]:checked + label{
+                    background-color: #42c0fb;
+                    border: 1px solid #42c0fb;
+                    color: #fff;
+                    }
+
+                    input[type=checkbox]:checked + label:hover{
+                    background-color: #42c0fb;
+                    border: 1px solid #42c0fb;
+                    color: #fff;
+                    }
+                    input[type=checkbox]:checked + .timing::before {
+                    color: #fff;
+                    content: "\f00c";
+                    font-family: "Font Awesome 5 Free";
+                    font-size: 12px;
+                    font-weight: 900;
+                    position: absolute;
+                    right: 6px;
+                    top: 6px;
+                    }
+                    
                     </style>
                     <div class="mb-0 card card-table">
                         <div class="card-body" style="text-align: center;">
@@ -363,7 +405,7 @@
                             }
                             ?>
 
-                            <div class="card-body " style="text-align: center; margin-left: 15%;" id="box_cita">
+                            <div class="card-body " style="text-align: center; " id="box_cita">
 
                             </div>
                             <br>
@@ -376,9 +418,8 @@
                             <br>
                         </div>
                     </div>
-                </form>
-
-
+                </form> 
+                            
             </div>
  
         </div>

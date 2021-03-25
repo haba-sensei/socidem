@@ -59,7 +59,7 @@
 
         <?php include 'views/admin/sidebar_paciente.php'; ?>
 
-            <div class="col-md-7 col-lg-8 col-xl-9">
+            <div class="col-md-10 col-lg-10 col-xl-10">
                
                 <nav class="mb-4 user-tabs">
 
