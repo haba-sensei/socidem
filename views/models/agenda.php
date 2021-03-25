@@ -543,11 +543,15 @@ function validate(id, fecha) {
 function subir() {
     var data1 = $('#form_cita').serialize();
 
+    console.log(data1);
+
     $.ajax({
         type: "POST",
         url: "controller/dashboard/crearAgenda.controlador.php",
         data: data1,
         success: function(data) {
+
+            
             if (data == "ok") {
                 Swal.fire({
                     title: 'AGREGADO CON EXITO',
@@ -571,11 +575,7 @@ function subir() {
                     timer: 1500
                 }).then((result) => {
 
-                    if (result.isConfirmed) {
-
-                    } else {
-                        window.location = "agenda";
-                    }
+                    
                 });
             }
 

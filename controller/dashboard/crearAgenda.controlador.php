@@ -21,42 +21,51 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
     foreach ($agenda_full as $key => $entry) { 
         
     } 
-     
-            $hora = $_POST['horario'];
+        if($_POST['horario'] == NULL){
 
-            $agenda_carga = json_encode($hora, true); 
+            echo "vacio"; 
+        }else{
+            echo "ok";
+                $hora = $_POST['horario'];
 
-            $nuevo_ID = $entry['id'];
-            foreach ($hora as $key => $obj_horario) { 
+                $agenda_carga = json_encode($hora, true); 
 
-            $words = explode('-', $obj_horario);
-                $tipo = $_POST['tipo']; 
-                $nuevo_ID = $nuevo_ID + 1;
-                
-                $nueva_agenda[] = array(
-                    'id' =>  $nuevo_ID,
-                    'token' =>  $token,
-                    'agenda' => md5(uniqid(rand(), true)),
-                    'name' =>  $words[2],
-                    'startDate' =>  $words[1],
-                    'customClass' =>  'blueClass',
-                    'title' =>  $words[2],
-                    'estado' =>  'libre',
-                    'tipo' =>  $tipo,
-                    'precio' => '' 
-                ); 
-                
-                
-                
-            } 
+                $nuevo_ID = $entry['id'];
+                foreach ($hora as $key => $obj_horario) { 
 
-            
- 
-        $resultado =  array_merge($agenda_full, $nueva_agenda);
-        $insertar_data = json_encode($resultado, JSON_UNESCAPED_UNICODE);
-            
-        echo "ok";
-        consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
+                $words = explode('-', $obj_horario);
+                    $tipo = $_POST['tipo']; 
+                    $nuevo_ID = $nuevo_ID + 1;
+                    
+                    $nueva_agenda[] = array(
+                        'id' =>  $nuevo_ID,
+                        'token' =>  $token,
+                        'agenda' => md5(uniqid(rand(), true)),
+                        'name' =>  $words[2],
+                        'startDate' =>  $words[1],
+                        'customClass' =>  'blueClass',
+                        'title' =>  $words[2],
+                        'estado' =>  'libre',
+                        'tipo' =>  $tipo,
+                        'precio' => '' 
+                    ); 
+                    
+                    
+                    
+                } 
+
+
+
+                $resultado =  array_merge($agenda_full, $nueva_agenda);
+                $insertar_data = json_encode($resultado, JSON_UNESCAPED_UNICODE);
+
+
+                consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
+
+
+
+
+        }
            
 }     
  
