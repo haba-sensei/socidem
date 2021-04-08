@@ -7,7 +7,7 @@ include '../../model/sessiones.php';
  
 $cod_consulta= $_POST['cod_consulta'];
 $cod_med= $_POST['cod_med'];
-$id_cod_agenda = $_POST['id'];
+$id_cod_agenda = $_POST['id']; 
  
 $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_med';");
 

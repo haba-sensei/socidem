@@ -9,6 +9,8 @@ $horario_final = $_POST['horario_final'];
 $horario_inicial = $_POST['horario_name']; 
 $horario_time = $_POST['rango']; 
 $dia = $_POST['dia_name'];
+
+$dia_array = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo');
 $separado_por_comas = implode(",", $dia);
 $tipo = $_POST['tipoCita'];
  
@@ -22,16 +24,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
     
 
     foreach ($agenda_full as $key => $entry) {   
-       
-
-        if ($entry['dia'] == $separado_por_comas) { 
-
-            unset($agenda_full[$key]); 
-             
-         } 
-       
-
-
+            unset($agenda_full[$key]);   
     }  
 
     $valor = json_encode( $agenda_full );
@@ -63,10 +56,40 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
                          );   
 
                 }  
+
+               
+
                  
             $resultado =  array_merge($agenda_full, $arreglo_horas);
-            $insertar_data = json_encode($resultado, JSON_UNESCAPED_UNICODE);
+            
+
+                foreach ($dia_array as $key1 ) {
+                 
+            foreach ($resultado as $key2 => $val) {
+                 
+                $arreglo_replica[] = array(
+                    'id' =>  $nuevo_ID,
+                    'token' =>  $token, 
+                    'name' =>  $val['startHour'],
+                    'dia' =>  $key1,
+                    'startHour' =>  $val['startHour'],
+                    'endHour' =>  $val['endHour'],
+                    'time' =>  $val['time'],
+                    'customClass' =>  'blueClass', 
+                    'estado' =>  'libre',
+                    'tipo' =>  $val['tipo'] 
+                );   
+
+
+            }
     
+        }
+
+           
+               $resultado =  array_merge($agenda_full, $arreglo_replica);
+               $insertar_data = json_encode($resultado, JSON_UNESCAPED_UNICODE);
+
+               
             consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
 }     
  

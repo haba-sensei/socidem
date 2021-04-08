@@ -33,7 +33,7 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
         $hora_fin = date_create_from_format('g:i A', date("g:i A")); 
         // // AND $hora_inicio >= $hora_fin
 
-
+ 
         $agenda_array = array( 
             'id' => $val['id'],
             'token' => $val['token'],

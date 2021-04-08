@@ -17,359 +17,17 @@
 
 <!-- Page Content -->
 <div class="content">
-    <div class="container-fluid">
+    <div class="container-fluid ajust_fluid">
 
         <div class="row">
 
             <?php include 'views/admin/sidebar.php'; ?>
 
             <div class="col-md-7 col-lg-8 col-xl-9">
+        <link rel="stylesheet" href="views/assets/css/agenda.css" >
                 <form action="" method="post" id="form_cita">
-                    <style>
-                    .control-me-primer_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-                    }
-
-                    .control-me-primer_toggle:hover,
-                    .control-me-primer_toggle:focus,
-                    .control-me-primer_toggle.active,
-                    .control-me-primer_toggle:active,
-                    .open>.dropdown-toggle.control-me-primer_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-
-                    }
-
-                    .control-me-segundo_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-                    }
-
-                    .control-me-segundo_toggle:hover,
-                    .control-me-segundo_toggle:focus,
-                    .control-me-segundo_toggle.active,
-                    .control-me-segundo_toggle:active,
-                    .open>.dropdown-toggle.control-me-segundo_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-
-                    }
-
-                    .control-me-tercer_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-                    }
-
-                    .control-me-tercer_toggle:hover,
-                    .control-me-tercer_toggle:focus,
-                    .control-me-tercer_toggle.active,
-                    .control-me-tercer_toggle:active,
-                    .open>.dropdown-toggle.control-me-tercer_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-
-                    }
-
-                    .control-me-cuarto_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-                    }
-
-                    .control-me-cuarto_toggle:hover,
-                    .control-me-cuarto_toggle:focus,
-                    .control-me-cuarto_toggle.active,
-                    .control-me-cuarto_toggle:active,
-                    .open>.dropdown-toggle.control-me-cuarto_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-
-                    }
-
-                    .control-me-quinto_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-                    }
-
-                    .control-me-quinto_toggle:hover,
-                    .control-me-quinto_toggle:focus,
-                    .control-me-quinto_toggle.active,
-                    .control-me-quinto_toggle:active,
-                    .open>.dropdown-toggle.control-me-quinto_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-
-                    }
-
-                    .control-me-sexto_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-                    }
-
-                    .control-me-sexto_toggle:hover,
-                    .control-me-sexto_toggle:focus,
-                    .control-me-sexto_toggle.active,
-                    .control-me-sexto_toggle:active,
-                    .open>.dropdown-toggle_toggle.control-me-sexto_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-
-                    }
-
-                    .control-me-septimo_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-                    }
-
-                    .control-me-septimo_toggle:hover,
-                    .control-me-septimo_toggle:focus,
-                    .control-me-septimo_toggle.active,
-                    .control-me-septimo_toggle:active,
-                    .open>.dropdown-toggle.control-me-septimo_toggle {
-                        background-color: #e0dfdf !important;
-                        border: 1px solid #000000 !important;
-                        color: black !important;
-
-                    }
-
-                    #primer_toggle:checked~.control-me-primer_toggle {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #segundo_toggle:checked~.control-me-segundo_toggle {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #tercer_toggle:checked~.control-me-tercer_toggle {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #cuarto_toggle:checked~.control-me-cuarto_toggle {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #quinto_toggle:checked~.control-me-quinto_toggle {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #sexto_toggle:checked~.control-me-sexto_toggle {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-
-                    #septimo_toggle:checked~.control-me-septimo_toggle {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    /* sadsadasd */
-
-                    #primer_toggle:checked~.blue_class_primer {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #segundo_toggle:checked~.blue_class_segundo {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #tercer_toggle:checked~.blue_class_tercer {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #cuarto_toggle:checked~.blue_class_cuarto {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #quinto_toggle:checked~.blue_class_quinto {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    #sexto_toggle:checked~.blue_class_sexto {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-
-                    #septimo_toggle:checked~.blue_class_septimo {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    /* asdasd */
-
-                    #primer_toggle:checked~.orange_class_primer {
-                        background-color: #ff7c00 !important;
-                        border: 1px solid #ff7c00 !important;
-                        color: white !important;
-                    }
-
-                    #segundo_toggle:checked~.orange_class_segundo {
-                        background-color: #ff7c00 !important;
-                        border: 1px solid #ff7c00 !important;
-                        color: white !important;
-                    }
-
-                    #tercer_toggle:checked~.orange_class_tercer {
-                        background-color: #ff7c00 !important;
-                        border: 1px solid #ff7c00 !important;
-                        color: white !important;
-                    }
-
-                    #cuarto_toggle:checked~.orange_class_cuarto {
-                        background-color: #ff7c00 !important;
-                        border: 1px solid #ff7c00 !important;
-                        color: white !important;
-                    }
-
-                    #quinto_toggle:checked~.orange_class_quinto {
-                        background-color: #ff7c00 !important;
-                        border: 1px solid #ff7c00 !important;
-                        color: white !important;
-                    }
-
-                    #sexto_toggle:checked~.orange_class_sexto {
-                        background-color: #ff7c00 !important;
-                        border: 1px solid #ff7c00 !important;
-                        color: white !important;
-                    }
-
-
-                    #septimo_toggle:checked~.orange_class_septimo {
-                        background-color: #ff7c00 !important;
-                        border: 1px solid #ff7c00 !important;
-                        color: white !important;
-                    }
-
-                    .ocult {
-                        display: none
-                    }
-
-                    .tipo_class_online {
-                        background-color: #15558d !important;
-                        border: 1px solid #15558d !important;
-                        color: white !important;
-                    }
-
-                    .tipo_class_presencial {
-                        background-color: #ff7c00 !important;
-                        border: 1px solid #ff7c00 !important;
-                        color: white !important;
-                    }
-
-                    .error-box {
-                        margin: 0 auto;
-                        max-width: 480px;
-                        padding: 1.875rem 0;
-                        text-align: center;
-                        width: 100%;
-                    }
-
-                    .error-box h1 {
-                        color: #00d0f1;
-                        font-size: 10em;
-                    }
-                    .time-slot li {
-                        float: left;
-                        padding-left: 5px;
-                        padding-right: 6px;
-                        width: 25%;
-                        padding-bottom: 15px;
-                    }  
-
-                    .time-slot ul {
-                        list-style: none;
-                        margin-right: 20px;
-                        margin-left: 20px;
-                        margin-bottom: 0;
-                        padding: 0;
-                    }
-
-                    .time-slot li .timing {
-                        background-color: #fff;
-                    }
-
-                    input[type=checkbox]:checked + label{
-                    background-color: #42c0fb;
-                    border: 1px solid #42c0fb;
-                    color: #fff;
-                    }
-
-                    input[type=checkbox]:checked + label:hover{
-                    background-color: #42c0fb;
-                    border: 1px solid #42c0fb;
-                    color: #fff;
-                    }
-                    input[type=checkbox]:checked + .timing::before {
-                    color: #fff;
-                    content: "\f00c";
-                    font-family: "Font Awesome 5 Free";
-                    font-size: 12px;
-                    font-weight: 900;
-                    position: absolute;
-                    right: 6px;
-                    top: 6px;
-                    }
-                    
-                    </style>
-                    <div class="mb-0 card card-table">
-                        <div class="card-body" style="text-align: center;">
-
-                            <h3>Elige el Tipo de Cita </h3>
-                            <br>
-                            <div class="" style="text-align: center;">
-                                <input type="radio" name="tipo" value="online" class="ocult" id="online_t" onclick="changeColor('online')" checked>
-                                <label for="online_t" class="btn btn-primary btn-rounded online_t"
-                                    style="background: #e0dfdf;  border-color: #e0dfdf;">Online</label>
-
-                                <input type="radio" name="tipo" value="presencial" class="ocult" id="presencial_t"
-                                    onclick="changeColor('presencial')">
-                                <label for="presencial_t" class="btn btn-primary btn-rounded presencial_t"
-                                    style="background: #e0dfdf;  border-color: #e0dfdf;">Presencial</label>
-
-
-                                <br> <br> <strong id="precio_cita"></strong> <br> <br>
-
-                            </div>
-                        </div>
-                    </div>
+                   
+                   
 
                     <div class="mb-0 card card-table" style="text-align: center">
                         <br>
@@ -378,42 +36,36 @@
                         <h3>Selecciona el dia </h3>
                         <br>
                         <div class="card-body" style="margin-left: 5%;  margin-right: 5%;">
-                            <?php 
-                            date_default_timezone_set('America/Lima');
-                            setlocale(LC_TIME, 'es_ES');
-                            setlocale(LC_TIME, 'spanish'); 
-                              
-                            $fecha_date = date('d-m-Y');
-                            $indice = array('primer_toggle', 'segundo_toggle', 'tercer_toggle' , 'cuarto_toggle' , 'quinto_toggle', 'sexto_toggle', 'septimo_toggle');  
-                              $cont = -1;
-                            for ($i=0; $i < 7; $i++) { 
-                                $cont = $cont + 1 ;
-                               
-                                $nuevafecha_init = strtotime ( $cont.' day', strtotime ( $fecha_date ) );
-                                $fecha_actual_f = date("d-m-Y", $nuevafecha_init); 
-                                $newDate_1 = strtotime($cont.' day', strtotime ( $fecha_date ));
-                                $newDate = strftime("%A %d <br> %B", $newDate_1);
-                                 
-                                $date_1 = utf8_encode($newDate);
+                             
+                            <input class="ocult" type="checkbox" name="check_date" value="Lunes" id="primer_toggle" onclick="validate('primer_toggle' , 'Lunes');" >
+                            <label for="primer_toggle" class="btn btn-primary submit-btn control-me-primer_toggle "> LUNES   </label>
 
+                            <input class="ocult" type="checkbox" name="check_date" value="Martes" id="segundo_toggle" onclick="validate('segundo_toggle' , 'Martes');">
+                            <label for="segundo_toggle" class="btn btn-primary submit-btn control-me-segundo_toggle "> MARTES   </label>
 
-                                echo '
-                                <input class="ocult" type="checkbox" name="check_date" id="'.$indice[$i].'"
-                                onclick="validate(&quot;'.$indice[$i].'&quot;, &quot;'.$fecha_actual_f.'&quot;);">
-                                 <label for="'.$indice[$i].'" class="btn btn-primary submit-btn control-me-'.$indice[$i].' "> '.$date_1 .'  </label>
-                                ';
-                            }
-                            ?>
+                            <input class="ocult" type="checkbox" name="check_date" value="Miercoles" id="tercer_toggle" onclick="validate('tercer_toggle' , 'Miercoles');">
+                            <label for="tercer_toggle" class="btn btn-primary submit-btn control-me-tercer_toggle "> MIERCOLES   </label>
 
+                            <input class="ocult" type="checkbox" name="check_date" value="Jueves" id="cuarto_toggle" onclick="validate('cuarto_toggle' , 'Jueves');">
+                            <label for="cuarto_toggle" class="btn btn-primary submit-btn control-me-cuarto_toggle "> JUEVES   </label>
+
+                            <input class="ocult" type="checkbox" name="check_date" value="Viernes" id="quinto_toggle" onclick="validate('quinto_toggle' , 'Viernes');">
+                            <label for="quinto_toggle" class="btn btn-primary submit-btn control-me-quinto_toggle "> VIERNES  </label>
+
+                            <input class="ocult" type="checkbox" name="check_date" value="Sabado" id="sexto_toggle" onclick="validate('sexto_toggle' , 'Sabado');">
+                            <label for="sexto_toggle" class="btn btn-primary submit-btn control-me-sexto_toggle"> SABADO   </label>
+
+                            <input class="ocult" type="checkbox" name="check_date" value="Domingo" id="septimo_toggle" onclick="validate('septimo_toggle' , 'Domingo');">
+                            <label for="septimo_toggle" class="btn btn-primary submit-btn control-me-septimo_toggle "> DOMINGO   </label>
+
+                            
+                            
+                            
                             <div class="card-body " style="text-align: center; " id="box_cita">
-
                             </div>
                             <br>
                             <br>
-                            <div style="text-align: center;">
-                                <button type="button" class="btn btn-block btn-info" style="background: #15558d;" onclick="subir();"> REGISTRAR CITAS
-                                </button>
-                            </div>
+                            <a href="exepciones" class="btn btn-elim " style="background: #008298; border: 1px solid #ececec; color:white;"> <i class="fa fa-cog"></i> Configurar Excepciones </a>
                             <br>
                             <br>
                         </div>
@@ -425,10 +77,11 @@
         </div>
 
     </div>
-
+    
 </div>
+ 
+<script> 
 
-<script>
 function changeColor(tipo) {
 
     $('input[type=checkbox]').prop('checked', false);
@@ -507,25 +160,27 @@ function changeColor(tipo) {
 
 
 
-function validate(id, fecha) {
+function validate(id, dia) {
 
     $.ajax({
         type: "POST",
         url: "controller/dashboard/horarios.controlador.php",
         data: {
             id: id,
-            fecha: fecha
+            dia: dia
         },
         success: function(data) {
-
+ 
             var cuerpo = data;
             var tracking = document.getElementById(id).checked;
+
+
 
             if (document.getElementById(id).checked) {
 
 
-
                 $("#box_cita").append(cuerpo);
+                
 
 
             } else {
@@ -539,17 +194,120 @@ function validate(id, fecha) {
 
 }
 
+function agregarMas(dia, track, id){
 
-function subir() {
-    var data1 = $('#form_cita').serialize();
+      var data1 = $('#form-'+track).serialize()+"&dia="+dia;
 
-    console.log(data1);
+      $.ajax({
+        type: "POST",
+        url: "controller/dashboard/agregarHorario.controlador.php",
+        data: data1,
+        success: function(data) { 
+            if (data == "false") {
+                Swal.fire({
+                    title: 'HORARIOS DUPLICADOS',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                // 
+            } else {
+                
+                $("#carga_horario_"+id).append(data);
+            }
 
+          
+
+        }
+    });
+
+}
+
+function quitarHorario(track){
+    $("#row_hora_"+ track).remove();
+}
+
+function cleanRange(track){
+
+    var temp= "rango-"+track;
+    $("rango"+track).val(temp);
+
+    document.getElementById(temp).selectedIndex = 3;
+ 
+}
+
+
+function getComboA(selectObject, track_id) {
+  
+
+  var rango = selectObject.value;    
+  var hora = document.getElementById("hora-"+track_id).value;
+  
+  $.ajax({
+        type: "POST",
+        url: "controller/dashboard/rangoHorario.controlador.php",
+        data: {
+            hora: hora,
+            rango: rango
+        },
+        success: function(data) { 
+
+            var NewHora = document.getElementById(track_id);
+            NewHora.value = data;
+
+        }
+    });
+
+
+
+}
+
+function replicar(track){
+    Swal.fire({
+        title: 'SEGURO QUE DESEA REPLICAR EL LUNES',
+        icon: 'warning',
+        showConfirmButton: true, 
+        showCancelButton: true,
+        confirmButtonText:
+    '<i class="fa fa-clone"></i> Replicar',
+  confirmButtonAriaLabel: 'Thumbs up, great!',
+  cancelButtonText:
+    '<i class="fa fa-times"></i> Cancelar',
+  cancelButtonAriaLabel: 'Thumbs down'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            
+            var serialize = $('#form_'+track).serialize();
+            $.ajax({
+            type: "POST",
+            url: "controller/dashboard/replicarAgenda.controlador.php",
+            data: serialize,
+            success: function(data) { 
+                Swal.fire({
+                    title: 'REPLICADO CON EXITO',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+            }
+            });
+        } else {
+            
+        }
+    });
+}
+
+function subir(track) {
+    var serialize = $('#form_'+track).serialize();
+     
+   
     $.ajax({
         type: "POST",
         url: "controller/dashboard/crearAgenda.controlador.php",
-        data: data1,
-        success: function(data) {
+        data: serialize,
+        success: function(data) { 
 
             
             if (data == "ok") {
@@ -563,13 +321,13 @@ function subir() {
                     if (result.isConfirmed) {
 
                     } else {
-                        window.location = "agenda";
+                        
                     }
                 });
 
             } else {
                 Swal.fire({
-                    title: 'ERROR NO AGREGADO',
+                    title: 'ERROR CAMPOS VACIOS',
                     icon: 'error',
                     showConfirmButton: false,
                     timer: 1500
