@@ -28,7 +28,9 @@
     <script src='views/assets/plugins/jitsi/external_api.js'></script>
     <link rel="stylesheet" href="views/assets/plugins/rescalendar/rescalendar.css">
     <link rel="stylesheet" href="views/assets/plugins/rescalendar/custom.css">
-    
+    <script src="views/assets/js/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
+   
     <script src="views/assets/plugins/rescalendar/rescalendar.js"></script>
     <script src="views/assets/plugins/rescalendar/config_calendar.js"></script>
     <link href="views/assets/plugins/timepicker/css/jquerysctipttop.css" rel="stylesheet" type="text/css">

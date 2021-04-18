@@ -5,8 +5,6 @@
     <script src="views/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
     <script src="views/assets/js/circle-progress.min.js"></script>
     <script src="views/assets/plugins/select1/js/select2.min.js"></script>
-    <script src="views/assets/js/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
     <script src="views/assets/plugins/datepicker/js/bootstrap-datepicker.js"></script>
     <script src="views/assets/plugins/datepicker/locales/bootstrap-datepicker.es.min.js"></script>
     <script src="views/assets/plugins/fancybox/jquery.fancybox.min.js"></script>

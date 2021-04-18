@@ -20,7 +20,7 @@
              type: type
          },
          success: function(data) {
-
+             //  console.log(data);
              var fecha_init = data['fecha_adelantada'];
              var agenda = data['agenda'];
 

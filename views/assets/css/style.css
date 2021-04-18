@@ -206,6 +206,7 @@ input[type=password] {
 .container-fluid {
     padding-left: 30px;
     padding-right: 30px;
+    padding-top: 30px;
 }
 
 .ajust_fluid {
@@ -3935,6 +3936,10 @@ html.menu-opened body {
     padding: 15px 0;
 }
 
+.breadcrumb-bar div {
+    padding-top: 0px!important;
+}
+
 .breadcrumb-bar .breadcrumb-title {
     color: #fff;
     font-size: 22px;
@@ -4154,7 +4159,7 @@ html.menu-opened body {
     display: -ms-flexbox;
     display: flex;
     border-right: 1px solid #f0f0f0;
-    padding-right: 13px;
+    padding-right: 77px;
     padding-top: 16px;
     height: 51vh;
 }
