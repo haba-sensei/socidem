@@ -110,21 +110,36 @@
                             </div>
 
 
+                        </div> 
+                    </div>
+                    <style>
+                        .doc-info-right {
+                            padding-top: 0px;
+                            width: 110%;
+                            flex: 0 0 601px;
+                            margin-right: 0!important;
+                            left: 82px!important;
+                            margin-left: -2%!important;
+                        }
+                        .move_to_tomorrow {
+                        position: relative;
+                        left: 512px;
+                        top: 6px;
+                        }
+                    </style>
+                    
+                        <?php  
+                                            
+                        echo '
+                        <div class="doc-info-right ">
+                        <div class="rescalendar" id="cal-'.$track.'"></div>
                         </div>
-                    </div>
-                    <div class="doc-info-right">
-                    <?php  
-                                        
-                    echo '
-                    <div class="doc-info-right "wrapper">
-                    <div class="rescalendar" id="cal-'.$track.'"></div>
-                    </div>
+                        <script> cargaCalendar("cal-'.$track.'","'.$codigo_referido_C.'", 3, "paciente") </script>
+                        
+                        ';
                 
-                    <script> cargaCalendar("cal-'.$track.'","'.$codigo_referido_C.'") </script>
-                    ';
-             
-            ?>
-                </div>
+                        ?>
+                    
             </div>
         </div>
         <!-- /Doctor Widget -->

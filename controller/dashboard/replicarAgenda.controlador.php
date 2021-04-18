@@ -56,19 +56,24 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
                          );   
 
                 }  
-
+ 
                
 
                  
             $resultado =  array_merge($agenda_full, $arreglo_horas);
             
-
+            $id_count = 0;
                 foreach ($dia_array as $key1 ) {
                  
+                   
+
             foreach ($resultado as $key2 => $val) {
-                 
+                
+                $id_count = $id_count + 1;
+                
+
                 $arreglo_replica[] = array(
-                    'id' =>  $nuevo_ID,
+                    'id' =>  $id_count,
                     'token' =>  $token, 
                     'name' =>  $val['startHour'],
                     'dia' =>  $key1,
@@ -88,9 +93,8 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
            
                $resultado =  array_merge($agenda_full, $arreglo_replica);
                $insertar_data = json_encode($resultado, JSON_UNESCAPED_UNICODE);
-
-               
-            consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
+              
+                consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
 }     
  
 }

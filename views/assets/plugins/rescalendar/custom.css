@@ -22,7 +22,7 @@
         background-color: #eef4fd;
         color: #1662c6;
         user-select: none;
-        width: 134px;
+        /* width: 134px; */
         padding-top: 1px;
     }
     
@@ -39,7 +39,7 @@
         border: 1px solid blue;
     }
     
-    .rescalendar_day_cells td.today {
+    .rescalendar_day_cells td.hoy_ {
         background: #15558d;
         color: #ffffff;
         font-weight: 600;
@@ -139,7 +139,7 @@
         font-weight: 600;
         padding-top: 11px;
         padding-bottom: 7px;
-        border: solid 1px white;
+        margin-top: 5px;
     }
     
      ::-webkit-scrollbar {
@@ -272,9 +272,51 @@
     }
     
     .bg_tipo_online {
+        background-color: #ffffff!important;
+        background: white!important;
+    }
+    
+    .bg_tipo_online:hover a {
         background-color: #008292;
+        color: #ffffff!important;
+        border-color: #008292!important;
+    }
+    
+    .bg_tipo_online a {
+        border-radius: 17px;
+        background-color: #ffffff;
+        color: #008292!important;
+        border-color: #008292!important;
+        border: solid 3px!important;
     }
     
     .bg_tipo_reservado {
+        background-color: #ffffff!important;
+        background: white!important;
+    }
+    
+    .bg_tipo_reservado:hover a {
         background-color: #ff7C00;
+        color: #ffffff!important;
+        border-color: #ff7C00!important;
+    }
+    
+    .bg_tipo_reservado a {
+        border-radius: 17px;
+        background-color: #ffffff;
+        color: #ff7C00!important;
+        border-color: #ff7C00!important;
+        border: solid 3px!important;
+    }
+    
+    .reservado a {
+        background-color: white;
+        color: #a0a0a0!important;
+        border-color: #808080!important;
+    }
+    
+    .reservado:hover a {
+        background-color: #a0a0a0;
+        color: #ffffff!important;
+        border-color: #a0a0a0!important;
     }

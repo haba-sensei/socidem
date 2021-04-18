@@ -143,7 +143,7 @@
                                             reserva_class = 'reservado_med';
                                             desabled_class = 'disabled_class_med';
                                             obj_data.url = 'javascript:';
-                                            onclik_event = 'onclick="abrirDetallesCli(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.agenda + '&apos; )"';
+                                            onclik_event = 'onclick="abrirDetallesCli(&apos;' + obj_data.agenda + '&apos; )"';
                                             break;
 
                                         case 'paciente':
@@ -156,8 +156,8 @@
                                     break;
 
                                 case 'libre':
-                                    var hora_init = moment(obj_data.title, 'h:mm A');
-                                    var hora_end = moment().format("h:mm A");
+                                    var hora_init = moment(obj_data.title, 'h:mm');
+                                    var hora_end = moment().format("h:mm");
 
 
                                     var et = moment().format("D/MM/Y");
@@ -171,7 +171,7 @@
                                                 break;
 
                                             case 'dash_med':
-                                                onclik_event = 'onclick="abrirDetallesCli(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; )"';
+                                                onclik_event = 'onclick="abrirDetallesCli(&apos;' + obj_data.agenda + '&apos; )"';
                                                 break;
 
                                             case 'paciente':
@@ -180,14 +180,16 @@
                                         }
 
 
-                                    } else {
-                                        reserva_class = 'reservado';
-                                        desabled_class = 'disabled_class';
-                                        obj_data.url = 'javascript:';
-                                        onclik_event = '';
                                     }
                                     break;
 
+                                case 'exepcion':
+                                    reserva_class = 'reservado aca';
+                                    desabled_class = 'disabled_class';
+                                    obj_data.url = 'javascript:';
+                                    onclik_event = '';
+
+                                    break;
                                 case 'pendiente':
 
                                     switch (tipo_calendario) {
@@ -222,7 +224,7 @@
                             content = '<a class="' + desabled_class + ' "  ' + onclik_event + '  href="javascript:" ' + title + '>' + obj_data.title + '</a>';
                             hasEventClass = 'hasEvent';
 
-                            if (obj_data.tipo == 'online') {
+                            if (obj_data.tipo == 'Online') {
 
                                 customClass = obj_data.customClass + " " + "bg_tipo_online";
 
@@ -304,11 +306,13 @@
                     dia = f_aux.format('DD');
                     mes = f_aux.locale(settings.locale).format('MMM').replace('.', '');
                     mescla = dia + ' ' + mes;
-                    dia_semana = f_aux.locale(settings.locale).format('dd');
+                    dia_semana = f_aux.locale(settings.locale).format('dddd');
                     num_dia_semana = f_aux.day();
-
-                    f_aux_format == today.format(format) ? clase_today = 'today' : clase_today = '';
+                    // today class del dia <--- important
+                    f_aux_format == today.format(format) ? clase_today = 'hoy_' : clase_today = '';
                     f_aux_format == middleDay ? clase_middleDay = 'middleDay' : clase_middleDay = '';
+
+
 
                     if (
                         settings.disabledDays.indexOf(f_aux_format) > -1 ||
@@ -317,15 +321,17 @@
 
                         clase_disabled = 'disabledDay';
                     }
-                    // ' + mes + '
-                    // '<span class="dia"> </span>',
+
+
                     html += [
                         '<td class="day_cell ' + clase_today + ' ' + clase_middleDay + ' ' + clase_disabled + '" data-cellDate="' + f_aux_format + '">',
-                        '<span class="dia_semana"> ' + dia_semana + ' </span>',
+
+                        '<span class="dia_semana" id="' + clase_today + '"> ' + dia_semana + ' </span>',
 
                         '<span class="mes">' + mescla + '</span>',
                         '</td>'
                     ].join('');
+
 
                 }
 
@@ -394,6 +400,7 @@
                 },
 
                 template_html: function(targetObj, settings) {
+                    $("#hoy_").text('Hoy');
                     // '<input class="refDate" type="text" value="' + refDate + '" />',
                     // '<button class="move_to_today"> ' + settings.lang.today + ' </button>',
                     var id = targetObj.attr('id'),
@@ -443,7 +450,7 @@
 
 
             return this.each(function() {
-
+                $("#hoy_").text('Hoy');
                 var targetObj = $(this);
 
                 set_template(targetObj, settings);
@@ -461,32 +468,34 @@
                 move_to_last_month.on('click', function(e) {
 
                     change_day(targetObj, 'subtract', settings.jumpSize);
-
+                    $("#hoy_").text('Hoy');
                 });
 
                 move_to_yesterday.on('click', function(e) {
 
                     change_day(targetObj, 'subtract', 1);
+                    $("#hoy_").text('Hoy');
 
                 });
 
                 move_to_tomorrow.on('click', function(e) {
 
                     change_day(targetObj, 'add', 1);
+                    $("#hoy_").text('Hoy');
 
                 });
 
                 move_to_next_month.on('click', function(e) {
 
                     change_day(targetObj, 'add', settings.jumpSize);
-
+                    $("#hoy_").text('Hoy');
                 });
 
                 refDate.on('blur', function(e) {
 
                     var refDate = targetObj.find('input.refDate').val();
                     setDayCells(targetObj, refDate);
-
+                    $("#hoy_").text('Hoy');
                 });
 
                 move_to_today.on('click', function(e) {
@@ -495,6 +504,7 @@
                     targetObj.find('input.refDate').val(today);
 
                     setDayCells(targetObj, today);
+                    $("#hoy_").text('Hoy');
 
                 });
 

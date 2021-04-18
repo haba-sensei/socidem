@@ -113,7 +113,7 @@
 
                 .rescalendar_table .firstColumn {
                     width: 80px;
-                    text-align: left;
+                    text-align: center;
                     background: white;
                     border: none;
                 }

@@ -1,18 +1,28 @@
  function cargaCalendar(id_cal, id_ref, size, type) {
      var id_calendar = "#" + id_cal;
+
+     switch (type) {
+         case 'dash_med':
+             var url_filtrada = 'controller/dashboard/calendarioBusquedaMed.controlador.php';
+             break;
+         case 'paciente':
+             var url_filtrada = 'controller/dashboard/calendarioBusquedaPac.controlador.php';
+             break;
+
+     }
+
      $.ajax({
          type: 'POST',
-         url: 'controller/dashboard/calendarioBusqueda.controlador.php',
+         url: url_filtrada,
          dataType: 'json',
          data: {
-             id_ref: id_ref
+             id_ref: id_ref,
+             type: type
          },
          success: function(data) {
 
              var fecha_init = data['fecha_adelantada'];
              var agenda = data['agenda'];
-
-
 
              $(id_calendar).rescalendar({
                  id: id_cal,
@@ -34,6 +44,7 @@
 
              });
 
+             $("#hoy_").text('Hoy');
 
 
 

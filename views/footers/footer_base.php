@@ -6,7 +6,9 @@
     <script src="views/assets/js/circle-progress.min.js"></script>
     <script src="views/assets/plugins/select1/js/select2.min.js"></script>
     <script src="views/assets/js/moment.min.js"></script>
-    <script src="views/assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.min.js"></script>
+    <script src="views/assets/plugins/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="views/assets/plugins/datepicker/locales/bootstrap-datepicker.es.min.js"></script>
     <script src="views/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
     <script src="views/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
@@ -19,8 +21,16 @@
     <script src="views/assets/plugins/datatables/datatables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
     <script src="views/assets/js/script.js"></script>
-     
+    
     <script>
+$('#sandbox-container').datepicker({
+    language: "es", 
+    orientation: "bottom left",
+    autoclose: true,
+    todayHighlight: true,
+    toggleActive: true
+});
+
 var clipboard = new ClipboardJS('.btna');
 
 clipboard.on('success', function(e) {

@@ -49,6 +49,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "pacientes" || 
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "mensajes" || 
+			$routes[0] == "exepciones" || 
 			$routes[0] == "referidos" || 
 			$routes[0] == "historial" || 
 			$routes[0] == "historialPac" || 

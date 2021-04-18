@@ -242,13 +242,12 @@ function elimAgenda(id, token) {
 
 }
 
-function abrirDetallesCli(id, cod_agenda) {
+function abrirDetallesCli(cod_agenda) {
 
     $.ajax({
         type: 'POST',
         url: 'controller/dashboard/modalDetCli.controlador.php',
         data: {
-            id: id,
             cod_agenda: cod_agenda
         },
         success: function(data) {

@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="views/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="views/assets/plugins/fontawesome/css/all.min.css">
     <script defer src="views/assets/plugins/fontawesome/js/all.js"></script>
-    <link rel="stylesheet" href="views/assets/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="views/assets/plugins/daterangepicker/daterangepicker.css">
+    <!-- <link rel="stylesheet" href="views/assets/plugins/datepicker/css/bootstrap-datepicker.css" /> -->
+    <link rel="stylesheet" href="views/assets/plugins/datepicker/css/bootstrap-datepicker3.min.css" />
     <link rel="stylesheet" href="views/assets/plugins/select1/css/select2.min.css">
     <link rel="stylesheet" href="views/assets/plugins/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="views/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
@@ -23,16 +23,16 @@
     <link rel="stylesheet" href="views/assets/css/style_search.css">
     <link rel='stylesheet' href='views/assets/plugins/calendario/main.css'>
     <script src="views/assets/js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src='views/assets/plugins/jitsi/external_api.js'></script>
     <link rel="stylesheet" href="views/assets/plugins/rescalendar/rescalendar.css">
     <link rel="stylesheet" href="views/assets/plugins/rescalendar/custom.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    
     <script src="views/assets/plugins/rescalendar/rescalendar.js"></script>
     <script src="views/assets/plugins/rescalendar/config_calendar.js"></script>
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="views/assets/plugins/timepicker/css/timepicker.css">
     <script src="views/assets/plugins/timepicker/js/timepicker.js"></script>
-
     
 </head>
