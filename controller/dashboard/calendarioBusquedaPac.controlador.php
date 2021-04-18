@@ -8,9 +8,9 @@ setlocale(LC_TIME, 'es_ES');
 setlocale(LC_TIME, 'spanish'); 
 header("Content-Type: application/json", true);
 
-  //  $id_ref_med = $_POST['id_ref'];
-  //  $type_med = $_POST['type'];
-   $id_ref_med = '885de4290058cd230e907b9ecb0da276';
+    $id_ref_med = $_POST['id_ref'];
+    $type_med = $_POST['type'];
+  //  $id_ref_med = '885de4290058cd230e907b9ecb0da276';
 session_unset(); 
  
 
