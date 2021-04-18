@@ -97,35 +97,7 @@ $pass_room  =  md5(uniqid(rand(), true));
  switch ($obj_json['status']) {
      case "approved":
     $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
-
-    $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
-
-    while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
-    
-    $objAgenda=$datos_agenda_medica['agenda'];
-     
-    $agenda_full = json_decode($objAgenda, true); 
-     
-
-    foreach ($agenda_full as $key => $entry) {
-        
-       
-        if ($entry['id'] == $cod_id_json_cita) {
-             
-            $agenda_full[$key]['agenda']= $cod_consulta;
-            $agenda_full[$key]['agenda'];
-            $agenda_full[$key]['estado']="agendado";
-            $agenda_full[$key]['estado'];
-            $newJsonString = json_encode($agenda_full, JSON_UNESCAPED_UNICODE);
-
-        }
-
-    } 
-}    
-
-
-    consultasSQL::UpdateSQL("agenda_medica", "agenda='$newJsonString'", "cod_medico='$cod_medico'");
-    
+   
     $estado_cita = "APROBADO";
      
     $nombre_paciente =  $nombre_paciente_p." ".$apellido_paciente_p; 
@@ -179,33 +151,7 @@ $pass_room  =  md5(uniqid(rand(), true));
     break;
     case "pending":
         $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
-        $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
-
-        while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
         
-        $objAgenda=$datos_agenda_medica['agenda'];
-         
-        $agenda_full = json_decode($objAgenda, true); 
-         
-    
-        foreach ($agenda_full as $key => $entry) {
-            
-           
-            if ($entry['id'] == $cod_id_json_cita) {
-                 
-                $agenda_full[$key]['estado']="pendiente";
-                $agenda_full[$key]['estado'];
-                $newJsonString = json_encode($agenda_full, JSON_UNESCAPED_UNICODE);
-    
-            }
-    
-        } 
-    }    
-    
-    
-        consultasSQL::UpdateSQL("agenda_medica", "agenda='$newJsonString'", "cod_medico='$cod_medico'");
-         
-    
         $estado_cita = "PENDIENTE";
         
         $nombre_paciente =  $nombre_paciente_p." ".$apellido_paciente_p; 
@@ -261,32 +207,7 @@ $pass_room  =  md5(uniqid(rand(), true));
 
     case "404":
         $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
-        $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$cod_medico'");
-
-        while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
-        
-        $objAgenda=$datos_agenda_medica['agenda'];
-         
-        $agenda_full = json_decode($objAgenda, true); 
-         
-    
-        foreach ($agenda_full as $key => $entry) {
-            
-           
-            if ($entry['id'] == $cod_id_json_cita) {
-                 
-                $agenda_full[$key]['estado']="404";
-                $agenda_full[$key]['estado'];
-                $newJsonString = json_encode($agenda_full, JSON_UNESCAPED_UNICODE);
-    
-            }
-    
-        } 
-    }    
-    
-    
-        consultasSQL::UpdateSQL("agenda_medica", "agenda='$newJsonString'", "cod_medico='$cod_medico'");
-       
+      
     break;
 
 }

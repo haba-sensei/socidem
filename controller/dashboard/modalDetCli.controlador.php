@@ -100,7 +100,7 @@ if($numCons >= 1){
                     ';
 
                     switch ($tipo_cita) {
-                    case 'online':
+                    case 'Online':
                     if($estado == 2){
                     echo "
                     <a href='javascript:' class='btn btn-sm bg-danger-light'>
@@ -109,8 +109,8 @@ if($numCons >= 1){
                     }else {
 
                     $nuevafecha_init = strtotime ( '- 5 minutes' , strtotime ( $fecha_hora ) );
-                    $hora_actual_f = date("h:i A", $nuevafecha_init);
-                    $hora_actual = date("h:i A");
+                    $hora_actual_f = date("H:i", $nuevafecha_init);
+                    $hora_actual = date("H:i");
                     $nuevafecha_end = strtotime ($hora_actual);
 
                     if($nuevafecha_end  >=  $nuevafecha_init ){
@@ -127,7 +127,7 @@ if($numCons >= 1){
 
                     break;
 
-                    case 'presencial':
+                    case 'Presencial':
                     echo "
                     <a href='factura-".$cod_consulta."' target='_blank' class='btn btn-sm bg-info-light'>
                     <i class='fas fa-print'></i> Imprimir </a>";

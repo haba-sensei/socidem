@@ -32,7 +32,7 @@
 						while($datos_agenda_C=mysqli_fetch_assoc($consAgendaNew)){
 						$cita_array = $datos_agenda_C['cita'];
 						$fecha_start = $datos_agenda_C['fecha_start'];
-						$fecha_end = $datos_agenda_C['fecha_end'];
+						$fecha_end = $datos_agenda_C['fecha_hora'];
 						$jsonCitaObj = json_decode($cita_array, TRUE);
 						 
 					 	
@@ -59,18 +59,18 @@
 											setlocale(LC_TIME, 'es_ES');
 											setlocale(LC_TIME, 'spanish');
 											
-											 
-
-
-											$dia= date("d", strtotime($fecha_start)); 	
-											$anio = strftime("%Y", strtotime($fecha_start));  
-											$fecha_init = strtotime($fecha_start);
+										$fecha_formateada =	str_replace('/', '-', $fecha_start);
+											
+										 
+											$dia= date("d", strtotime($fecha_formateada)); 	
+											$anio = strftime("%Y", strtotime($fecha_formateada));  
+											$fecha_init = strtotime($fecha_formateada);
 											$fecha_fin = strtotime($fecha_end);
 											$init_hora_min =  date("g:ia", $fecha_init);
                                             $end_hora_min = date("g:ia", $fecha_fin);
-											$mes_texto = strftime("%B", strtotime($fecha_start) );  
+											$mes_texto = strftime("%B", strtotime($fecha_formateada) );  
 
-											 $fecha_result = $dia." ".$mes_texto." del ".$anio." <br><br> ".$init_hora_min." - ".$end_hora_min;									
+											 $fecha_result = $dia." ".$mes_texto." del ".$anio." <br><br> ".$end_hora_min;									
 										?>
 
 										

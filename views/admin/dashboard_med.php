@@ -227,7 +227,7 @@
                                                     <tbody style="max-height: fit-content;">
 
                                                         <?php 
-
+ 
                                                         while($datos_agenda_paciente=mysqli_fetch_assoc($consGenralAgendaMed)){
 
                                                         $cod_medico =$datos_agenda_paciente['cod_medico']; 
@@ -246,17 +246,9 @@
                                                         $nombre_paciente =$dato_paciente_dash['nombre']; 
                                                         }  
 
-                                                        setlocale(LC_TIME, 'es_ES.UTF-8');
-                                                        setlocale(LC_TIME, 'spanish');
-
-                                                        $dia= date("d", strtotime($fecha_start)); 	
-                                                        $anio = strftime("%Y", strtotime($fecha_start));  
-                                                        $init_hora_min =date('h:i A', strtotime($fecha_start));
-
-                                                        $mes_texto = strftime("%B", strtotime($fecha_start) ); 
-
+                                                         
                                                         $fecha_format = $fecha_start;
-                                                        $hora_format = $init_hora_min." - ".$end_hora_min;
+                                                         
                                                         ?>
 
                                                         <tr>
@@ -308,7 +300,7 @@
                                                                     <?php 
 
                                                                     switch ($tipo_cita) {
-                                                                    case 'online':
+                                                                    case 'Online':
                                                                     if($estado == 2){
                                                                     echo "
                                                                     <a href='javascript:' class='btn btn-sm bg-danger-light'>
@@ -317,11 +309,10 @@
                                                                     }else {
 
                                                                     $nuevafecha_init = strtotime ( '- 5 minutes' , strtotime ( $fecha_hora ) );
-                                                                    $hora_actual_f = date("h:i A", $nuevafecha_init);
-                                                                    $hora_actual = date("h:i A");
-                                                                    $nuevafecha_end = strtotime ($hora_actual);
-
-
+                                                                    $hora_actual_f = date("H:i", $nuevafecha_init);
+                                                                    $hora_actual = date("H:i");
+                                                                    $nuevafecha_end = strtotime($hora_actual);
+ 
                                                                     if($nuevafecha_end  >=  $nuevafecha_init ){
                                                                     echo " <a href='lobby-$cod_consulta' onclick='' class='btn btn-sm bg-info-light'>
                                                                     <i class='far fa-eye'></i> Sala Abierta  </a>
@@ -335,7 +326,7 @@
 
                                                                     break;
 
-                                                                    case 'presencial':
+                                                                    case 'Presencial':
                                                                     echo "
                                                                     <a href='factura-".$cod_consulta."' target='_blank' class='btn btn-sm bg-info-light'>
                                                                     <i class='fas fa-print'></i> Imprimir </a>";
