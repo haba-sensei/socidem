@@ -9,7 +9,7 @@
                 if($foto_ == ""){
                     $foto_ = "1.jpg";
                 } 
-                
+                 
                 ?>
                     <img src="views/assets/images/medicos/<?=$foto_?>" alt="User Image">
                 </a>
@@ -17,8 +17,10 @@
                     <h3>Dr. <?=$nombre_ ?></h3>
 
                     <div class="patient-details">
-                        <h4 class="mb-0"><?=$especialidad_ ?></h4>
-                        <small class="mb-0"><?=$num_colegiatura_ ?></small>
+                        <h4 class="mb-2"><?=$especialidad_ ?></h4>
+                        <h4 class="mb-2">N° Colegiado: <?=$num_colegiatura_ ?></h4> 
+                        <h4 class="mb-2">Plan Profesional </h4> 
+                        
                     </div>
                 </div>
             </div>
