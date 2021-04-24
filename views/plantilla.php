@@ -54,6 +54,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "historial" || 
 			$routes[0] == "historialPac" || 
 			$routes[0] == "membresias" || 
+			$routes[0] == "calendario" || 
 			$routes[0] == "faqRef" || 
 			$routes[0] == "faqMed" || 
 			$routes[0] == "cambioPass" || 

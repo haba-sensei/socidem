@@ -41,6 +41,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="calendario">
+                        <i class="fas fa-address-book"></i>
+                            <span>Mi Calendario</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="pacientes">
                             <i class="fas fa-user-injured"></i>
                             <span>Clientes Atendidos</span>

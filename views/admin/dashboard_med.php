@@ -195,7 +195,7 @@
                                             <div class="doc-info-right "wrapper">
                                             <div class="rescalendar" id="cal-'.$track.'"></div>
                                             </div>
-
+ 
                                             <script> cargaCalendar("cal-'.$track.'","'.$codigo_referido_.'", 8, "dash_med") </script>
                                             ';
 

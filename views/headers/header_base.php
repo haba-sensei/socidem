@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="views/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="views/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="views/assets/plugins/fontawesome/css/all.min.css">
-    <script defer src="views/assets/plugins/fontawesome/js/all.js"></script>
+    <!-- <script defer src="views/assets/plugins/fontawesome/js/all.js"></script> -->
     <!-- <link rel="stylesheet" href="views/assets/plugins/datepicker/css/bootstrap-datepicker.css" /> -->
     <link rel="stylesheet" href="views/assets/plugins/datepicker/css/bootstrap-datepicker3.min.css" />
     <link rel="stylesheet" href="views/assets/plugins/select1/css/select2.min.css">

@@ -51,16 +51,26 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
       $indices[] = $datos_agenda_medica['fecha_hora']; 
      
 }
+
        
       $fecha_base = date('d-m-Y');
       $nuevafecha_z = strtotime($fecha_base);
       $nuevafecha_y = strtotime('+1 day', $nuevafecha_z);
       $nuevafecha = date('d/m/Y', $nuevafecha_y);
 
-      $cita_array = array(
+      $resultado = array_unique($indices);
+    
+      foreach ($resultado as $key ) {
+          $indices_unico[] = $key; 
+      } 
+
+      sort($indices_unico, SORT_STRING); 
+
+
+      $cita_array = array( 
       'fecha_adelantada' => $nuevafecha,
       'agenda' => $results,
-      'indices' => $indices
+      'indices' => $indices_unico
       
       ); 
 
