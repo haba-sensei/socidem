@@ -35,7 +35,7 @@ setlocale(LC_TIME, 'spanish');
         
        $carga_hora = array(
          'hora_start' => $value['startHour'],
-         'hora_end' => $value['endHour'],
+         'hora_end' => $value['endHour']
        );
        
        $aca_cargaH[] = $carga_hora;
@@ -70,7 +70,7 @@ setlocale(LC_TIME, 'spanish');
                   ';
                   foreach ($aca_cargaH as $key2 => $value3) { 
 
-                     echo '<option value="'.$value3['hora_end'].'">'.$value3['hora_end'].'</option>';
+                     echo '<option value="'.$value3['hora_start'].'">'.$value3['hora_start'].'</option>';
                      
                   }
                   echo ' 

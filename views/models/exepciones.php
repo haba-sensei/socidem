@@ -237,7 +237,7 @@ function saveEx(){
         data:  serialize,   
         dataType: 'json',      
         success: function(data) {
-           
+            
             if(data['estado'] == "vacio"){
                 Swal.fire({
                     title: 'ELIGE UN SERVICIO',

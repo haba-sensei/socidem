@@ -5,12 +5,12 @@ include '../../model/consulSQL.php';
 include '../../model/sessiones.php';
  
 $token = $codigo_referido_;
-$horario_final = $_POST['horario_final'];  
-$horario_inicial = $_POST['horario_name']; 
-$horario_time = $_POST['rango']; 
+$horario_init = $_POST['horario_init'];  
+$horario_end = $_POST['horario_end']; 
+$horario_rango = $_POST['rango_gen']; 
 $dia = $_POST['dia_name'];
 
-$dia_array = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo');
+$dia_array = array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
 $separado_por_comas = implode(",", $dia);
 $tipo = $_POST['tipoCita'];
  
@@ -29,48 +29,73 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
 
     $valor = json_encode( $agenda_full );
     
+  
 
-        if($_POST['horario_final'] == NULL){
+        if($_POST['horario_end'] == NULL){
 
             echo "vacio"; 
         }else{
              echo "ok"; 
-                $nuevo_ID = $entry['id']; 
-                $array_num = count($horario_final); 
-
-                for ($i = 0; $i < $array_num; ++$i){
-
-                    $nuevo_ID = $nuevo_ID + 1; 
-
-                         $arreglo_horas[] = array(
-                             'id' =>  $nuevo_ID,
-                             'token' =>  $token, 
-                             'name' =>  $horario_inicial[$i],
-                             'dia' =>  $separado_por_comas,
-                             'startHour' =>  $horario_inicial[$i],
-                             'endHour' =>  $horario_final[$i],
-                             'time' =>  $horario_time[$i],
-                             'customClass' =>  'blueClass', 
-                             'estado' =>  'libre',
-                             'tipo' =>  $tipo[$i] 
-                         );   
-
-                }  
- 
-               
-
-                 
-            $resultado =  array_merge($agenda_full, $arreglo_horas);
-            
+             $nuevo_ID = $entry['id'];  
+             $count_horarios = count($horario_init);
+   
+             for ($i=0; $i < $count_horarios; $i++) {  
+                            
+                       $fecha1 = new DateTime($horario_init[$i]);//fecha inicial
+                       $fecha2 = new DateTime($horario_end[$i]);//fecha de cierre
+   
+                       $intervalo = $fecha1->diff($fecha2);  
+   
+                       $minutes += $intervalo->h * 60;
+                       $minutes += $intervalo->i; 
+   
+                       $rango_dividido_horario = $minutes / $horario_rango; 
+                       
+                       $nuevaHora_init = strtotime($horario_init[$i]);
+   
+                       $saltos = 0;
+   
+                       for ($j=0; $j < $rango_dividido_horario; $j++) { 
+   
+                            $nuevaHora_format = strtotime('+'.$saltos.' minutes', $nuevaHora_init); 
+                            $nuevaHora_saltos = date('H:i', $nuevaHora_format); 
+                            
+                            if($nuevaHora_saltos < $horario_end[$i]){ 
+   
+                                 $nuevo_ID = $nuevo_ID + 1; 
+   
+                                 $arreglo_horas[] = array(
+                                      'id' =>  $nuevo_ID,
+                                      'token' =>  $token, 
+                                      'name' =>  $nuevaHora_saltos,
+                                      'dia' =>  $separado_por_comas,
+                                      'startHour' =>  $nuevaHora_saltos,
+                                      'endHour' =>  $horario_end[$i],
+                                      'time' =>  $horario_rango,
+                                      'customClass' =>  'blueClass', 
+                                      'estado' =>  'libre',
+                                      'tipo' =>  $tipo[$i] 
+                                  );    
+                                
+                            }
+                            
+                            $saltos_sum = $saltos += $horario_rango; 
+                            
+                       }
+                      
+   
+             } 
+  
+           $resultado =  array_merge($agenda_full, $arreglo_horas);
+           
             $id_count = 0;
-                foreach ($dia_array as $key1 ) {
+            foreach ($dia_array as $key1 ) {
                  
                    
 
             foreach ($resultado as $key2 => $val) {
                 
-                $id_count = $id_count + 1;
-                
+                $id_count = $id_count + 1; 
 
                 $arreglo_replica[] = array(
                     'id' =>  $id_count,
@@ -93,8 +118,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
            
                $resultado =  array_merge($agenda_full, $arreglo_replica);
                $insertar_data = json_encode($resultado, JSON_UNESCAPED_UNICODE);
-              
-                consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
+               consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
 }     
  
 }

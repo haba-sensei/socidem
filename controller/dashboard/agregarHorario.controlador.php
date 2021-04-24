@@ -32,46 +32,32 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
             
             <div class="row" id="row_hora_'.$valor_unico.'"  style=" margin-left: 141px; margin-right: 46px; padding-bottom: 21px;">
                 
-            <div class="col-md-3">
-                <input type="text" name="horario_name[]" autocomplete="off" onclick="cleanRange(&quot;'.$valor_unico.'&quot;)" id="hora-'.$valor_unico.'" style="cursor: pointer;" value="'.$value['startHour'].'" class="form-control aca-'.$valor_unico.'" placeholder="Elige el Horario" autocomplete="off">
+            <div class="col-md-4">
+            <input type="text" name="horario_init[]" autocomplete="off" style="cursor: pointer;" value="'.$value['startHour'].'" class="form-control init-'.$valor_unico.'" placeholder="Elige un Horario">
                 
             </div>
         
-            <div class="col-md-3">
-            <select class="form-control" name="rango[]" id="rango-'.$valor_unico.'" onchange="getComboA(this, &quot;'.$valor_unico.'&quot;)"  placeholder="Horario Agendado"> 
-             
-            <option value="30">
-            30 Min
-            </option> 
-            <option value="45">
-            45 Min 
-            </option>
-            <option value="60">
-            60 Min
-            </option>
-            <option value=""  disabled hidden selected>Duración</option>
+            <div class="col-md-1">
+                
+            <span class="" style="vertical-align:-webkit-baseline-middle"> a </span>
+                        
+            </div> 
         
-            </select>
-               
-            </div>
-        
-            <div class="col-md-3">
+            <div class="col-md-4">
             
-            <input type="text" name="horario_final[]"  class="form-control" id="'.$valor_unico.'" value="'.$value['endHour'].'" readonly placeholder="Agenda">
+            <input type="text" name="horario_end[]" autocomplete="off" style="cursor: pointer;" value="'.$value['endHour'].'" class="form-control end-'.$valor_unico.'" placeholder="Elige un Horario">
                         
             </div>  
         
             <div class="col-md-3">
-             
-                <select class="form-control" name="tipoCita[]"  >
-                 
-                    <option value="Online">
+             <select class="form-control " id="tipoCita-'.$valor_unico.'" name="tipoCita[]" onchange="cambiaColor(this, &quot;'.$valor_unico.'&quot;)">               
+                    <option class="base_select" value="Online">
                     Online
                     </option>
-                    <option value="Presencial">
+                    <option class="base_select" value="Presencial">
                 Presencial
                 </option>
-                <option value=""  disabled hidden selected>Tipo Cita</option>
+                <option value="" class="base_select"  disabled hidden selected>Tipo Cita</option>
                       
                 </select>
                 <div class="" style="position: absolute; right: -33px; top: 8px;">
@@ -80,7 +66,8 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
             </div>
         </div>
         <script >
-        $(".aca-'.$valor_unico.'").timepicker();
+        $(".init-'.$valor_unico.'").timepicker();
+        $(".end-'.$valor_unico.'").timepicker();
         </script>
         ';  
         break;
@@ -146,7 +133,8 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
             </div>
         </div>
         <script >
-        $(".aca-'.$valor_unico.'").timepicker();
+        $(".init-'.$valor_unico.'").timepicker();
+        $(".end-'.$valor_unico.'").timepicker();
         </script>
         ';  
         break;
@@ -166,46 +154,32 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
     
     <div class="row" id="row_hora_'.$valor_unico.'"  style="      margin-left: 141px; margin-right: 46px; padding-bottom: 21px;">
         
-    <div class="col-md-3">
-        <input type="text" name="horario_name[]" onclick="cleanRange(&quot;'.$valor_unico.'&quot;)" id="hora-'.$valor_unico.'" style="cursor: pointer;" value="'.$value['startHour'].'" class="form-control aca-'.$valor_unico.'" placeholder="Elige el Horario" autocomplete="off">
+    <div class="col-md-4">
+    <input type="text" name="horario_init[]" autocomplete="off" style="cursor: pointer;" value="'.$value['startHour'].'" class="form-control init-'.$valor_unico.'" placeholder="Elige un Horario">
         
     </div>
 
-    <div class="col-md-3">
-    <select class="form-control" name="rango[]" id="rango-'.$valor_unico.'" onchange="getComboA(this, &quot;'.$valor_unico.'&quot;)"  placeholder="Horario Agendado"> 
-     
-    <option value="30">
-    30 Min
-    </option> 
-    <option value="45">
-    45 Min 
-    </option>
-    <option value="60">
-    60 Min
-    </option>
-    <option value=""  disabled hidden selected>Duración</option>
-
-    </select>
+    <div class="col-md-1">
+    <span class="" style="vertical-align:-webkit-baseline-middle"> a </span>
        
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
     
-    <input type="text" name="horario_final[]"  class="form-control" id="'.$valor_unico.'" value="'.$value['endHour'].'" readonly placeholder="Agenda">
+    <input type="text" name="horario_end[]" autocomplete="off" style="cursor: pointer;" value="'.$value['endHour'].'" class="form-control end-'.$valor_unico.'" placeholder="Elige un Horario">
                 
     </div>  
 
     <div class="col-md-3">
-     
-        <select class="form-control" name="tipoCita[]"  >
+    <select class="form-control " id="tipoCita-'.$valor_unico.'" name="tipoCita[]" onchange="cambiaColor(this, &quot;'.$valor_unico.'&quot;)">               
          
-            <option value="Online">
+            <option class="base_select" value="Online">
             Online
             </option>
-            <option value="Presencial">
+            <option class="base_select" value="Presencial">
         Presencial
         </option>
-        <option value=""  disabled hidden selected>Tipo Cita</option>
+        <option value="" class="base_select"  disabled hidden selected>Tipo Cita</option>
               
         </select>
         <div class="" style="position: absolute; right: -33px; top: 8px;">
@@ -215,7 +189,8 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
    
 </div>
 <script >
-$(".aca-'.$valor_unico.'").timepicker();
+$(".init-'.$valor_unico.'").timepicker();
+$(".end-'.$valor_unico.'").timepicker();
 </script>
 ';  
 

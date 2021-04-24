@@ -153,6 +153,9 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
           } 
 
         }   
+
+       
+
         if(empty($objExepciones) == 1 ){
 
         }else { 
@@ -164,8 +167,9 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
               'tipo_agenda' => $value1['tipo']
             );
             
-
+            
           }   
+          
 
           foreach ($cita_obj_3 as $key => $value) {
             
@@ -174,6 +178,7 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
 
             $conta_reserva = count($info_exepcion);
             
+           
             
             for ($i=0; $i < $conta_reserva ; $i++) { 
 
@@ -184,16 +189,18 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
               }else {
                 $tipo_agenda_cons = " == $info_exepcion[$i]['tipo_agenda']";
               }
-
+            
               if($cita_obj_3[$key]['startDate'] == $info_exepcion[$i]['fecha_exepcion'] && $cita_obj_3[$key]['tipo'] . $tipo_agenda_cons){
-
+                
                 $conta_exepcion = count($info_exepcion[$i]['horas_exepcion']); 
-
+                // var_dump($conta_exepcion);
                   for ($f=0; $f < $conta_exepcion; $f++) { 
-                    
-                        if($cita_obj_3[$key]['startHour'] >= $info_exepcion[$i]['horas_exepcion'][$f]['startHour'] && $cita_obj_3[$key]['endHour'] <= $info_exepcion[$i]['horas_exepcion'][$f]['endHour'] ){ 
+                   
+                        if($cita_obj_3[$key]['startHour'] >= $info_exepcion[$i]['horas_exepcion'][$f]['startHour'] && $cita_obj_3[$key]['startHour'] <= $info_exepcion[$i]['horas_exepcion'][$f]['endHour'] ){ 
                             
                             $cita_obj_3[$key]['estado']= "exepcion";  
+
+                           
                         }
 
                   } 
@@ -206,9 +213,7 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
           }   
        
         }
-        $newJsonString = $cita_obj_3; 
-        
-        //  var_dump($newJsonString);
+        $newJsonString = $cita_obj_3;  
 
         $indices = $_SESSION["indices_carga"];
         $resultado = array_unique($indices);

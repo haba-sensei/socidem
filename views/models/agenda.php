@@ -24,10 +24,10 @@
             <?php include 'views/admin/sidebar.php'; ?>
 
             <div class="col-md-7 col-lg-8 col-xl-9">
-        <link rel="stylesheet" href="views/assets/css/agenda.css" >
+                <link rel="stylesheet" href="views/assets/css/agenda.css">
                 <form action="" method="post" id="form_cita">
-                   
-                   
+
+
 
                     <div class="mb-0 card card-table" style="text-align: center">
                         <br>
@@ -35,53 +35,95 @@
 
                         <h3>Selecciona el dia </h3>
                         <br>
-                        <div class="card-body" style="margin-left: 5%;  margin-right: 5%;"> 
-                             
-                            <input class="ocult" type="checkbox" name="check_date" value="Lunes" id="primer_toggle" onclick="validate('primer_toggle' , 'Lunes');" >
-                            <label for="primer_toggle" class="btn btn-primary submit-btn control-me-primer_toggle "> LUNES   </label>
+                        <div class="card-body" style="margin-left: 5%;  margin-right: 5%;">
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Martes" id="segundo_toggle" onclick="validate('segundo_toggle' , 'Martes');">
-                            <label for="segundo_toggle" class="btn btn-primary submit-btn control-me-segundo_toggle "> MARTES   </label>
+                            <input class="ocult" type="checkbox" name="check_date" value="Lunes" id="primer_toggle"
+                                onclick="validate('primer_toggle' , 'Lunes');">
+                            <label for="primer_toggle" class="btn btn-primary submit-btn control-me-primer_toggle "> LUNES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Miercoles" id="tercer_toggle" onclick="validate('tercer_toggle' , 'Miércoles');">
-                            <label for="tercer_toggle" class="btn btn-primary submit-btn control-me-tercer_toggle "> MIERCOLES   </label>
+                            <input class="ocult" type="checkbox" name="check_date" value="Martes" id="segundo_toggle"
+                                onclick="validate('segundo_toggle' , 'Martes');">
+                            <label for="segundo_toggle" class="btn btn-primary submit-btn control-me-segundo_toggle "> MARTES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Jueves" id="cuarto_toggle" onclick="validate('cuarto_toggle' , 'Jueves');">
-                            <label for="cuarto_toggle" class="btn btn-primary submit-btn control-me-cuarto_toggle "> JUEVES   </label>
+                            <input class="ocult" type="checkbox" name="check_date" value="Miercoles" id="tercer_toggle"
+                                onclick="validate('tercer_toggle' , 'Miércoles');">
+                            <label for="tercer_toggle" class="btn btn-primary submit-btn control-me-tercer_toggle "> MIERCOLES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Viernes" id="quinto_toggle" onclick="validate('quinto_toggle' , 'Viernes');">
-                            <label for="quinto_toggle" class="btn btn-primary submit-btn control-me-quinto_toggle "> VIERNES  </label>
+                            <input class="ocult" type="checkbox" name="check_date" value="Jueves" id="cuarto_toggle"
+                                onclick="validate('cuarto_toggle' , 'Jueves');">
+                            <label for="cuarto_toggle" class="btn btn-primary submit-btn control-me-cuarto_toggle "> JUEVES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Sabado" id="sexto_toggle" onclick="validate('sexto_toggle' , 'Sábado');">
-                            <label for="sexto_toggle" class="btn btn-primary submit-btn control-me-sexto_toggle"> SABADO   </label>
+                            <input class="ocult" type="checkbox" name="check_date" value="Viernes" id="quinto_toggle"
+                                onclick="validate('quinto_toggle' , 'Viernes');">
+                            <label for="quinto_toggle" class="btn btn-primary submit-btn control-me-quinto_toggle "> VIERNES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Domingo" id="septimo_toggle" onclick="validate('septimo_toggle' , 'Domingo');">
-                            <label for="septimo_toggle" class="btn btn-primary submit-btn control-me-septimo_toggle "> DOMINGO   </label>
+                            <input class="ocult" type="checkbox" name="check_date" value="Sabado" id="sexto_toggle"
+                                onclick="validate('sexto_toggle' , 'Sábado');">
+                            <label for="sexto_toggle" class="btn btn-primary submit-btn control-me-sexto_toggle"> SABADO </label>
 
-                            
-                            
-                            
+                            <input class="ocult" type="checkbox" name="check_date" value="Domingo" id="septimo_toggle"
+                                onclick="validate('septimo_toggle' , 'Domingo');">
+                            <label for="septimo_toggle" class="btn btn-primary submit-btn control-me-septimo_toggle "> DOMINGO </label>
+
+                            <br>
+                            <br>
+
+                            <h3>Selecciona el Tiempo de la cita </h3>
+                            <br>
+                            <div class="card-body" style="margin-left: 35%;  margin-right: 35%;">
+                                <select class="form-control" name="rango_gen" id="rango_gen">
+                                    <option value="30">
+                                        30 Min
+                                    </option>
+                                    <option value="45">
+                                        45 Min
+                                    </option>
+                                    <option value="60">
+                                        60 Min
+                                    </option>
+                                    <option value="" disabled="" hidden="">Duración</option>
+
+
+                                </select>
+                            </div>
+
+
                             <div class="card-body " style="text-align: center; " id="box_cita">
                             </div>
                             <br>
                             <br>
-                            <a href="exepciones" class="btn btn-elim " style="background: #008298; border: 1px solid #ececec; color:white;"> <i class="fa fa-cog"></i> Configurar Excepciones </a>
+                            <a href="exepciones" class="btn btn-elim " style="background: #008298; border: 1px solid #ececec; color:white;"> <i
+                                    class="fa fa-cog"></i> Configurar Excepciones </a>
                             <br>
                             <br>
                         </div>
                     </div>
-                </form> 
-                            
+                </form>
+
             </div>
- 
+
         </div>
 
     </div>
-    
+
 </div>
- 
-<script> 
- 
+
+<script>
+
+function cambiaColor(sel, track){
+    
+     if(sel.value == "Presencial"){
+        $("#tipoCita-"+track).removeClass('select_online');
+        $("#tipoCita-"+track).addClass('select_presencial');
+     }else {
+        $("#tipoCita-"+track).removeClass('select_presencial');
+        $("#tipoCita-"+track).addClass('select_online');
+     }
+     
+}
+
+
+
 function changeColor(tipo) {
 
     $('input[type=checkbox]').prop('checked', false);
@@ -170,7 +212,7 @@ function validate(id, dia) {
             dia: dia
         },
         success: function(data) {
- 
+
             var cuerpo = data;
             var tracking = document.getElementById(id).checked;
 
@@ -180,7 +222,7 @@ function validate(id, dia) {
 
 
                 $("#box_cita").append(cuerpo);
-                
+
 
 
             } else {
@@ -194,15 +236,15 @@ function validate(id, dia) {
 
 }
 
-function agregarMas(dia, track, id){
+function agregarMas(dia, track, id) {
 
-      var data1 = $('#form-'+track).serialize()+"&dia="+dia;
+    var data1 = $('#form-' + track).serialize() + "&dia=" + dia;
 
-      $.ajax({
+    $.ajax({
         type: "POST",
         url: "controller/dashboard/agregarHorario.controlador.php",
         data: data1,
-        success: function(data) { 
+        success: function(data) {
             if (data == "false") {
                 Swal.fire({
                     title: 'HORARIOS DUPLICADOS',
@@ -212,45 +254,45 @@ function agregarMas(dia, track, id){
                 });
                 // 
             } else {
-                
-                $("#carga_horario_"+id).append(data);
+
+                $("#carga_horario_" + id).append(data);
             }
 
-          
+
 
         }
     });
 
 }
 
-function quitarHorario(track){
-    $("#row_hora_"+ track).remove();
+function quitarHorario(track) {
+    $("#row_hora_" + track).remove();
 }
 
-function cleanRange(track){
+function cleanRange(track) {
 
-    var temp= "rango-"+track;
-    $("rango"+track).val(temp);
+    var temp = "rango-" + track;
+    $("rango" + track).val(temp);
 
     document.getElementById(temp).selectedIndex = 3;
- 
+
 }
 
 
 function getComboA(selectObject, track_id) {
-  
 
-  var rango = selectObject.value;    
-  var hora = document.getElementById("hora-"+track_id).value;
-  
-  $.ajax({
+
+    var rango = selectObject.value;
+    var hora = document.getElementById("hora-" + track_id).value;
+
+    $.ajax({
         type: "POST",
         url: "controller/dashboard/rangoHorario.controlador.php",
         data: {
             hora: hora,
             rango: rango
         },
-        success: function(data) { 
+        success: function(data) {
 
             var NewHora = document.getElementById(track_id);
             NewHora.value = data;
@@ -262,53 +304,52 @@ function getComboA(selectObject, track_id) {
 
 }
 
-function replicar(track){
+function replicar(track) {
     Swal.fire({
         title: 'SEGURO QUE DESEA REPLICAR EL LUNES',
         icon: 'warning',
-        showConfirmButton: true, 
+        showConfirmButton: true,
         showCancelButton: true,
-        confirmButtonText:
-    '<i class="fa fa-clone"></i> Replicar',
-  confirmButtonAriaLabel: 'Thumbs up, great!',
-  cancelButtonText:
-    '<i class="fa fa-times"></i> Cancelar',
-  cancelButtonAriaLabel: 'Thumbs down'
+        confirmButtonText: '<i class="fa fa-clone"></i> Replicar',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
+        cancelButtonAriaLabel: 'Thumbs down'
     }).then((result) => {
 
         if (result.isConfirmed) {
-            
-            var serialize = $('#form_'+track).serialize();
-            $.ajax({
-            type: "POST",
-            url: "controller/dashboard/replicarAgenda.controlador.php",
-            data: serialize,
-            success: function(data) { 
-                
-                Swal.fire({
-                    title: 'REPLICADO CON EXITO',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
 
-            }
+            var rango_gen = document.getElementById("rango_gen");
+            var serialize = $('#form_' + track).serialize()+ "&rango_gen=" + rango_gen.value;
+            $.ajax({
+                type: "POST",
+                url: "controller/dashboard/replicarAgenda.controlador.php",
+                data: serialize,
+                success: function(data) { 
+                    Swal.fire({
+                        title: 'REPLICADO CON EXITO',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+                }
             });
         } else {
-            
+
         }
     });
 }
 
 function subir(track) {
-    var serialize = $('#form_'+track).serialize();
-     
-   
+    var rango_gen = document.getElementById("rango_gen");
+    var serialize = $('#form_' + track).serialize()+ "&rango_gen=" + rango_gen.value;
+
+ 
     $.ajax({
         type: "POST",
         url: "controller/dashboard/crearAgenda.controlador.php",
         data: serialize,
-        success: function(data) { 
+        success: function(data) {
 
             
             if (data == "ok") {
@@ -322,7 +363,7 @@ function subir(track) {
                     if (result.isConfirmed) {
 
                     } else {
-                        
+
                     }
                 });
 
@@ -334,7 +375,7 @@ function subir(track) {
                     timer: 1500
                 }).then((result) => {
 
-                    
+
                 });
             }
 
