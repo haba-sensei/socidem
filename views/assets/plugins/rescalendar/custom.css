@@ -1,6 +1,7 @@
     .day_cell {
         padding-left: 13px;
-        padding-right: 39px;
+        /* padding-right: 39px; */
+        padding-right: 1px;
     }
     
     .wrapper {

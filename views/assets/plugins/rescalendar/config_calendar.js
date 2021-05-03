@@ -24,6 +24,7 @@
              var fecha_init = data['fecha_adelantada'];
              var agenda = data['agenda'];
 
+
              $(id_calendar).rescalendar({
                  id: id_cal,
                  format: 'DD/MM/YYYY',

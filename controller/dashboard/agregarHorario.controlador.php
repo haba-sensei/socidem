@@ -42,7 +42,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
             <span class="" style="vertical-align:-webkit-baseline-middle"> a </span>
                         
             </div> 
-        
+            <input type="hidden" name="dia_name[]" value="'.$dia.'">
             <div class="col-md-4">
             
             <input type="text" name="horario_end[]" autocomplete="off" style="cursor: pointer;" value="'.$value['endHour'].'" class="form-control end-'.$valor_unico.'" placeholder="Elige un Horario">
@@ -57,7 +57,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
                     <option class="base_select" value="Presencial">
                 Presencial
                 </option>
-                <option value="" class="base_select"  disabled hidden selected>Tipo Cita</option>
+                <option value="" class="base_select"  hidden selected>Tipo Cita</option>
                       
                 </select>
                 <div class="" style="position: absolute; right: -33px; top: 8px;">
@@ -124,7 +124,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
                     <option value="Presencial">
                 Presencial
                 </option>
-                <option value=""  disabled hidden selected>Tipo Cita</option>
+                <option value="" hidden selected>Tipo Cita</option>
                     
                 </select>
                 <div class="" style="position: absolute; right: -33px; top: 8px;">
@@ -163,13 +163,13 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
     <span class="" style="vertical-align:-webkit-baseline-middle"> a </span>
        
     </div>
-
+ 
     <div class="col-md-4">
     
     <input type="text" name="horario_end[]" autocomplete="off" style="cursor: pointer;" value="'.$value['endHour'].'" class="form-control end-'.$valor_unico.'" placeholder="Elige un Horario">
                 
     </div>  
-
+    <input type="hidden" name="dia_name[]" value="'.$dia.'">
     <div class="col-md-3">
     <select class="form-control " id="tipoCita-'.$valor_unico.'" name="tipoCita[]" onchange="cambiaColor(this, &quot;'.$valor_unico.'&quot;)">               
          
@@ -179,7 +179,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
             <option class="base_select" value="Presencial">
         Presencial
         </option>
-        <option value="" class="base_select"  disabled hidden selected>Tipo Cita</option>
+        <option value="" class="base_select"  hidden selected>Tipo Cita</option>
               
         </select>
         <div class="" style="position: absolute; right: -33px; top: 8px;">

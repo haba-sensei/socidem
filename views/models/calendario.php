@@ -36,11 +36,11 @@
                 overflow-y: scroll;
                 }
                  </style>
-                <?php  
+                <?php   
 
                 $track = $codigo_referido_;
                 echo '
-                <div class="doc-info-right "wrapper">
+                <div class="doc-info-right "wrapper" style="margin-bottom: 105px;">
                 <div class="rescalendar" id="cal-'.$track.'"></div>
                 </div>
 

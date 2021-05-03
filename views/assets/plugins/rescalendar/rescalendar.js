@@ -158,13 +158,13 @@
                                 case 'libre':
                                     var hora_init = moment(obj_data.title, 'h:mm');
                                     var hora_end = moment().format("h:mm");
-
-
                                     var et = moment().format("D/MM/Y");
 
-                                    if (hora_init.isBefore(hora_end) == false && obj_data.startDate >= et) {
+                                    if (hora_init.isBefore(hora_end) == false) {
+
                                         reserva_class = '';
                                         desabled_class = '';
+
                                         switch (tipo_calendario) {
                                             case 'med':
                                                 onclik_event = 'onclick="elimAgenda(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; )"';
@@ -190,6 +190,7 @@
                                     onclik_event = '';
 
                                     break;
+
                                 case 'pendiente':
 
                                     switch (tipo_calendario) {

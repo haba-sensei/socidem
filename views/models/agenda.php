@@ -70,8 +70,9 @@
 
                             <h3>Selecciona el Tiempo de la cita </h3>
                             <br>
-                            <div class="card-body" style="margin-left: 35%;  margin-right: 35%;">
-                                <select class="form-control" name="rango_gen" id="rango_gen">
+                            <div class="card-body" style="margin-left: auto; margin-right: auto; width: 60%; display: inline-flex;">
+                                <select class="form-control" name="rango_gen_presencial" id="rango_gen_presencial" style="margin-right: 50px;" onchange="cambiaColorRadio(this)">
+                                <option value="" selected>Duración Presencial</option>
                                     <option value="30">
                                         30 Min
                                     </option>
@@ -81,21 +82,42 @@
                                     <option value="60">
                                         60 Min
                                     </option>
-                                    <option value="" disabled="" hidden="">Duración</option>
+                                   
 
 
                                 </select>
+                                
+                                <select class="form-control" name="rango_gen_online" id="rango_gen_online" onchange="cambiaColorRadio(this)">
+                                <option value=""   selected>Duración Online</option>
+                                    <option value="30">
+                                        30 Min
+                                    </option>
+                                    <option value="45">
+                                        45 Min
+                                    </option>
+                                    <option value="60">
+                                        60 Min
+                                    </option>
+                                  
+
+
+                                </select> 
+                                 
                             </div>
 
-
+                            <form method="post" id="form_track">
                             <div class="card-body " style="text-align: center; " id="box_cita">
                             </div>
+                            
                             <br>
                             <br>
+                            <a href="javascript:" class="btn btn-elim " onclick="subir()" style="background: #008298; border: 1px solid #ececec; color:white;"> <i
+                                    class="fa fa-save"></i> Guardar Agenda </a>
                             <a href="exepciones" class="btn btn-elim " style="background: #008298; border: 1px solid #ececec; color:white;"> <i
                                     class="fa fa-cog"></i> Configurar Excepciones </a>
                             <br>
                             <br>
+                            </form>
                         </div>
                     </div>
                 </form>
@@ -107,6 +129,19 @@
     </div>
 
 </div>
+
+
+
+<?php 
+
+if($comps[$i] == "text"){
+    echo '<h3 class="nob">
+    <textarea type="text" class="nol ml0 lumise-edit-text" placeholder="'.$this->main->lang('Enter your text').'"></textarea>
+</h3>';
+}
+
+
+?>
 
 <script>
 
@@ -122,6 +157,20 @@ function cambiaColor(sel, track){
      
 }
 
+
+function cambiaColorRadio(sel){
+    
+    if(sel.id == "rango_gen_presencial"){
+       $("#rango_gen_presencial").removeClass('select_online');
+       $("#rango_gen_presencial").addClass('select_presencial');
+    }else {
+       $("#rango_gen_online").removeClass('select_presencial');
+       $("#rango_gen_online").addClass('select_online');
+    }
+
+    
+    
+}
 
 
 function changeColor(tipo) {
@@ -215,15 +264,9 @@ function validate(id, dia) {
 
             var cuerpo = data;
             var tracking = document.getElementById(id).checked;
-
-
-
-            if (document.getElementById(id).checked) {
-
-
-                $("#box_cita").append(cuerpo);
-
-
+  
+            if (document.getElementById(id).checked) { 
+                $("#box_cita").append(cuerpo); 
 
             } else {
                 var track_cuerpo = "#box_cuerpo-" + id;
@@ -245,6 +288,8 @@ function agregarMas(dia, track, id) {
         url: "controller/dashboard/agregarHorario.controlador.php",
         data: data1,
         success: function(data) {
+           
+           
             if (data == "false") {
                 Swal.fire({
                     title: 'HORARIOS DUPLICADOS',
@@ -317,20 +362,35 @@ function replicar(track) {
     }).then((result) => {
 
         if (result.isConfirmed) {
-
-            var rango_gen = document.getElementById("rango_gen");
-            var serialize = $('#form_' + track).serialize()+ "&rango_gen=" + rango_gen.value;
+ 
+            var serialize = $('#form_cita').serialize();
             $.ajax({
                 type: "POST",
                 url: "controller/dashboard/replicarAgenda.controlador.php",
                 data: serialize,
                 success: function(data) { 
-                    Swal.fire({
+                     
+                    if( data == 'false' ){
+
+                        Swal.fire({
+                        title: 'ELIGE UN RANGO DE HORARIO',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1500
+                        })
+
+                    }else{ 
+
+                        Swal.fire({
                         title: 'REPLICADO CON EXITO',
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                   
+                         })
+                    }
+
+                   
 
                 }
             });
@@ -340,20 +400,18 @@ function replicar(track) {
     });
 }
 
-function subir(track) {
-    var rango_gen = document.getElementById("rango_gen");
-    var serialize = $('#form_' + track).serialize()+ "&rango_gen=" + rango_gen.value;
-
- 
+function subir() { 
+    
+    var serialize = $('#form_cita').serialize(); 
     $.ajax({
         type: "POST",
         url: "controller/dashboard/crearAgenda.controlador.php",
         data: serialize,
         success: function(data) {
-
-            
-            if (data == "ok") {
-                Swal.fire({
+               console.log(data);
+            switch (data) {
+                case "ok":
+                    Swal.fire({
                     title: 'AGREGADO CON EXITO',
                     icon: 'success',
                     showConfirmButton: false,
@@ -366,9 +424,9 @@ function subir(track) {
 
                     }
                 });
-
-            } else {
-                Swal.fire({
+                break;
+                case "vacio":
+                    Swal.fire({
                     title: 'ERROR CAMPOS VACIOS',
                     icon: 'error',
                     showConfirmButton: false,
@@ -377,9 +435,10 @@ function subir(track) {
 
 
                 });
-            }
-
-
+                break;
+                
+                
+            } 
 
         }
     });
