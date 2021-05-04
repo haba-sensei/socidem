@@ -10,8 +10,8 @@ $horario_end = $_POST['horario_end'];
 $horario_rango_presencial = $_POST['rango_gen_presencial']; 
 $horario_rango_online = $_POST['rango_gen_online']; 
 $dia = $_POST['dia_name'];
-
-$dia_array = array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
+// array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
+$dia_array = $_POST['dia_name'];
 $separado_por_comas = implode(",", $dia);
 
 $tipo = $_POST['tipoCita'];

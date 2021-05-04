@@ -87,19 +87,29 @@
                     <link rel="stylesheet" href="views/assets/css/agenda.css" >
 
 
-                   
+                   <style>
+                    .check_box_new {
+                        margin-top: 12px;
+                        margin-right: 11px;
+                        -ms-transform: scale(2);
+                        -moz-transform: scale(2);
+                        -webkit-transform: scale(2);
+                        -o-transform: scale(2);
+                        transform: scale(1.5);
+                    }
+                   </style>
 
 
                             
                         <div class="row">
-                            <div class="col-md-4">
-                            <input class="ocult" type="checkbox" name="check_serv[]" value="Presencial" id="primer_toggle" onclick="CambiaColor('presencial')" >
+                            <div class="col-md-4" style="display: -webkit-inline-box; height: max-content; padding-right: 38px;">
+                            <input class="check_box_new " type="checkbox" name="check_serv[]" value="Presencial" id="primer_toggle" onclick="CambiaColor('presencial')" >
                             <label for="primer_toggle" class="btn btn-block control-me-presencial-ex "> Presencial  </label>
                                 
                             </div>
 
-                            <div class="col-md-4">
-                            <input class="ocult" type="checkbox" name="check_serv[]" value="Online" id="segundo_toggle" onclick="CambiaColor('online')" >
+                            <div class="col-md-4" style="display: -webkit-inline-box; height: max-content; padding-right: 38px;">
+                            <input class="check_box_new " type="checkbox" name="check_serv[]" value="Online" id="segundo_toggle" onclick="CambiaColor('online')" >
                             <label for="segundo_toggle" class="btn btn-block control-me-online-ex "> Online  </label>
                             
                             </div>
@@ -114,10 +124,13 @@
             </form>
                 </div>
 <br><br>
-                <div class="row" style="margin-left: 38%;   margin-right: auto; ">
+                <div class="row" style="margin-left: 28%;   margin-right: auto; ">
 
-                    <div class="col-md-12"><button onclick="saveEx()" type="button" class="btn btn-new btn-info "
+                    <div class="col-md-12">
+                    <button onclick="saveEx()" type="button" class="btn btn-new btn-info "
                             style="background: #008298; border: 1px solid #ececec; "><i class="fas fa-save"></i> Guardar Exepciones </button>
+                    <a href="javascript:" class="btn btn-elim " onclick="limpiar_exep()" style="background: #008298; border: 1px solid #ececec; color:white;"> <i
+                        class="fa fa-trash"></i> Limpiar Exepción </a>
                     </div>
 
                 </div>
@@ -225,6 +238,29 @@ function AgregarHorario(){
     
     }
     
+}
+
+function limpiar_exep(){
+    
+    $.ajax({
+        type: "POST",
+        url: "controller/dashboard/limpiarExepciones.controlador.php", 
+        success: function(data) { 
+
+            Swal.fire({
+                title: 'LIMPIADO CON EXITO',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            }).then((result) => {
+
+                location.reload();
+            });
+
+
+         } 
+    });
+
 }
 
 function saveEx(){

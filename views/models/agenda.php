@@ -70,8 +70,11 @@
 
                             <h3>Selecciona el Tiempo de la cita </h3>
                             <br>
+                            <input type="hidden" id="rango_recib_presencial">
                             <div class="card-body" style="margin-left: auto; margin-right: auto; width: 60%; display: inline-flex;">
                                 <select class="form-control" name="rango_gen_presencial" id="rango_gen_presencial" style="margin-right: 50px;" onchange="cambiaColorRadio(this)">
+                               
+                               
                                 <option value="" selected>Duración Presencial</option>
                                     <option value="30">
                                         30 Min
@@ -112,9 +115,11 @@
                             <br>
                             <br>
                             <a href="javascript:" class="btn btn-elim " onclick="subir()" style="background: #008298; border: 1px solid #ececec; color:white;"> <i
-                                    class="fa fa-save"></i> Guardar Agenda </a>
+                                    class="fa fa-save"></i> Guardar Agenda </a> 
                             <a href="exepciones" class="btn btn-elim " style="background: #008298; border: 1px solid #ececec; color:white;"> <i
                                     class="fa fa-cog"></i> Configurar Excepciones </a>
+                            <a href="javascript:" class="btn btn-elim " onclick="limpiar()" style="background: #008298; border: 1px solid #ececec; color:white;"> <i
+                                class="fa fa-trash"></i> Limpiar Agenda </a>
                             <br>
                             <br>
                             </form>
@@ -157,6 +162,24 @@ function cambiaColor(sel, track){
      
 }
 
+
+function cargaTiempoCita(){
+    
+    $.ajax({ 
+        url: "controller/dashboard/cargaTiempoAgenda.controlador.php",  
+        success: function(data) {
+            var datax = JSON.parse(data);
+            
+            $('#rango_gen_presencial').addClass('select_presencial').val(datax.horapresencial); 
+            $('#rango_gen_online').addClass('select_online').val(datax.horaonline); // also selects "Two"
+          
+            
+        }  
+         
+    });
+    
+}
+cargaTiempoCita();
 
 function cambiaColorRadio(sel){
     
@@ -388,6 +411,8 @@ function replicar(track) {
                         timer: 1500
                    
                          })
+                         setTimeout(function(){  location.reload(); }, 2000);
+                         
                     }
 
                    
@@ -400,6 +425,30 @@ function replicar(track) {
     });
 }
 
+function limpiar(){
+    
+    $.ajax({
+        type: "POST",
+        url: "controller/dashboard/limpiarAgenda.controlador.php", 
+        success: function(data) { 
+
+            Swal.fire({
+                title: 'LIMPIADO CON EXITO',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            }).then((result) => {
+
+                location.reload();
+            });
+
+
+         } 
+    });
+
+}
+
+
 function subir() { 
     
     var serialize = $('#form_cita').serialize(); 
@@ -408,7 +457,7 @@ function subir() {
         url: "controller/dashboard/crearAgenda.controlador.php",
         data: serialize,
         success: function(data) {
-               console.log(data);
+               
             switch (data) {
                 case "ok":
                     Swal.fire({
@@ -417,13 +466,14 @@ function subir() {
                     showConfirmButton: false,
                     timer: 1500
                 }).then((result) => {
-
+                    location.reload();
                     if (result.isConfirmed) {
-
+                        
                     } else {
 
                     }
                 });
+               
                 break;
                 case "vacio":
                     Swal.fire({
@@ -433,10 +483,20 @@ function subir() {
                     timer: 1500
                 }).then((result) => {
 
-
+                  
                 });
                 break;
-                
+                case "error":
+                    Swal.fire({
+                    title: 'ERROR CAMPOS CORRUPTOS',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then((result) => {
+
+                    location.reload();
+                });
+                break;
                 
             } 
 

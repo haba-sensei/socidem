@@ -1,6 +1,7 @@
 <?php
 session_start();
-error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+error_reporting(0);
+ini_set('display_errors', 0);
 include '../../model/consulSQL.php';
 include '../../model/sessiones.php';
 
@@ -10,6 +11,7 @@ $horario_end = $_POST['horario_end'];
 $horario_rango_presencial = $_POST['rango_gen_presencial'];
 $horario_rango_online = $_POST['rango_gen_online'];
 $dia = $_POST['dia_name'];
+$check_date = $_POST['check_date'];
 $tipo = $_POST['tipoCita'];
  
 if($dia != ""){
@@ -33,7 +35,7 @@ if($dia != ""){
 
 }
 
-if($estado_init  == "vacio" || $estado_end  == "vacio" || $estado_tipo == "vacio" || $estado_horario_tipo == "vacio"){
+if($check_date  == "" || $estado_init  == "vacio" || $estado_end  == "vacio" || $estado_tipo == "vacio" || $estado_horario_tipo == "vacio"){
     echo "vacio"; 
 }else {
     $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$token'");
@@ -138,7 +140,13 @@ if($estado_init  == "vacio" || $estado_end  == "vacio" || $estado_tipo == "vacio
         echo "ok";
         $resultado =  array_merge($agenda_full, $arreglo_horas);
         $insertar_data = json_encode($resultado, JSON_UNESCAPED_UNICODE);
-        consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
+
+        if($insertar_data == null || $resultado == null){ 
+            echo "error";
+        }else {
+            consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
+        }
+        
     
     }        
              
