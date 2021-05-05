@@ -198,8 +198,10 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
                    
                         if($cita_obj_3[$key]['startHour'] >= $info_exepcion[$i]['horas_exepcion'][$f]['startHour'] && $cita_obj_3[$key]['startHour'] <= $info_exepcion[$i]['horas_exepcion'][$f]['endHour'] ){ 
                             
-                            $cita_obj_3[$key]['estado']= "exepcion";  
-
+                          if($cita_obj_3[$key]['tipo'] == $info_exepcion[$i]['tipo_agenda'] || $info_exepcion[$i]['tipo_agenda'] == "Mixto"){
+                            $cita_obj_3[$key]['estado'] = "exepcion";
+                          }
+ 
                            
                         }
 
@@ -214,7 +216,7 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
        
         }
         $newJsonString = $cita_obj_3;  
-
+       
         $indices = $_SESSION["indices_carga"];
         $resultado = array_unique($indices);
     

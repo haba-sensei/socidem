@@ -184,6 +184,7 @@
                                     break;
 
                                 case 'exepcion':
+
                                     reserva_class = 'reservado aca';
                                     desabled_class = 'disabled_class';
                                     obj_data.url = 'javascript:';

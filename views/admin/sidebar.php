@@ -47,6 +47,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="exepciones">
+                        <i class="fas fa-cog"></i>
+                            <span>Mis Exepciones</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="pacientes">
                             <i class="fas fa-user-injured"></i>
                             <span>Clientes Atendidos</span>
