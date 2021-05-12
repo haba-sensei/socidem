@@ -1,7 +1,7 @@
 <?php
 session_start();
-error_reporting(0);
-ini_set('display_errors', 0);
+// error_reporting(0);
+// ini_set('display_errors', 0);
 include '../../model/consulSQL.php';
 include '../../model/sessiones.php';
 
@@ -12,8 +12,36 @@ $horario_rango_presencial = $_POST['rango_gen_presencial'];
 $horario_rango_online = $_POST['rango_gen_online'];
 $dia = $_POST['dia_name'];
 $check_date = $_POST['check_date'];
-$tipo = $_POST['tipoCita'];
+$tipo = $_POST['tipoCita']; 
+
+$count_horarios = count($horario_init);
+
  
+    for ($u=0; $u < $count_horarios; $u++ ) {  
+        $fecha1[] = $horario_init[$u];//fecha inicial
+        $fecha2[] = $horario_end[$u];//fecha inicial 
+
+    }
+     
+
+    foreach ($fecha1 as $key => $val) {
+        if (isset($fecha1[$key+1])) { 
+           if(
+               $fecha1[$key+1] < $fecha2[$key] && 
+               $fecha1[$key+1] >= $fecha1[$key] ||
+
+               $fecha2[$key+1] < $fecha2[$key] && 
+               $fecha2[$key+1] >= $fecha1[$key]
+               
+           ){
+
+                echo "El horario de ". $fecha1[$key+1]." a ".$fecha2[$key+1]." es intervalo de ".$fecha1[$key]." a ".$fecha2[$key]." del dia ".$dia[$key]."<br>";
+                break;
+           }
+        } else {
+          
+
+
 if($dia != ""){
         
     foreach ($horario_init  as $value_1) { $value_1 == "" ? $estado_init = "vacio" : ''; }
@@ -144,10 +172,14 @@ if($check_date  == "" || $estado_init  == "vacio" || $estado_end  == "vacio" || 
         if($insertar_data == null || $resultado == null){ 
             echo "error";
         }else {
-            consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
+          consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
         }
         
     
     }        
              
     } 
+
+
+}
+}

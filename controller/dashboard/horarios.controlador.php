@@ -70,7 +70,7 @@ foreach ($agenda as $key => $value) {
                 <input type="hidden" name="dia_name[]" value="'.$dia.'">
                 <div class="col-md-4">
                 
-                <input type="text" name="horario_end[]" autocomplete="off" style="cursor: pointer;"  class="form-control end-'.$valor_unico.'" placeholder="Elige un Horario">
+                <input type="text" name="horario_end[]" autocomplete="off" onkeyup="valid('.$valor_unico.')" style="cursor: pointer;"  class="form-control end-'.$valor_unico.'" placeholder="Elige un Horario">
                             
                 </div>  
 
@@ -112,7 +112,7 @@ foreach ($agenda as $key => $value) {
             <div class="row" id="row_hora_'.$valor_unico.'" style="    margin-left: 156px; margin-right: 46px; padding-bottom: 21px;">
                 
                 <div class="col-md-4">
-                    <input type="text" name="horario_init[]" autocomplete="off" style="cursor: pointer;" value="'.$value2['startHour'].'" class="form-control init-'.$valor_unico.'" placeholder="Elige un Horario">
+                    <input type="text" name="horario_init[]" id="horario_init[]" autocomplete="off" style="cursor: pointer;" value="'.$value2['startHour'].'" class="form-control init-'.$valor_unico.'" placeholder="Elige un Horario">
                     
                 </div>
                 <div class="col-md-1">
@@ -123,7 +123,7 @@ foreach ($agenda as $key => $value) {
                 <input type="hidden" name="dia_name[]" value="'.$dia.'">
                 <div class="col-md-4">
                 
-                <input type="text" name="horario_end[]" autocomplete="off" style="cursor: pointer;" value="'.$value2['endHour'].'" class="form-control end-'.$valor_unico.'" placeholder="Elige un Horario">
+                <input type="text" name="horario_end[]" id="horario_end" autocomplete="off" onclick="valid()"  style="cursor: pointer;" value="'.$value2['endHour'].'" class="form-control end-'.$valor_unico.'" placeholder="Elige un Horario">
                             
                 </div>  
 

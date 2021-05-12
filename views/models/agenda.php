@@ -77,13 +77,13 @@
                                
                                 <option value="" selected>Duración Presencial</option>
                                     <option value="30">
-                                        30 Min
+                                        30 Min - Presencial
                                     </option>
                                     <option value="45">
-                                        45 Min
+                                        45 Min - Presencial
                                     </option>
                                     <option value="60">
-                                        60 Min
+                                        60 Min - Presencial
                                     </option>
                                    
 
@@ -93,13 +93,13 @@
                                 <select class="form-control" name="rango_gen_online" id="rango_gen_online" onchange="cambiaColorRadio(this)">
                                 <option value=""   selected>Duración Online</option>
                                     <option value="30">
-                                        30 Min
+                                        30 Min - Online
                                     </option>
                                     <option value="45">
-                                        45 Min
+                                        45 Min - Online
                                     </option>
                                     <option value="60">
-                                        60 Min
+                                        60 Min - Online
                                     </option>
                                   
 
@@ -149,6 +149,7 @@ if($comps[$i] == "text"){
 ?>
 
 <script>
+
 
 function cambiaColor(sel, track){
     
@@ -448,16 +449,17 @@ function limpiar(){
 
 }
 
+ 
 
 function subir() { 
     
-    var serialize = $('#form_cita').serialize(); 
+    var serialize = $('#form_cita').serialize();  
+
     $.ajax({
         type: "POST",
         url: "controller/dashboard/crearAgenda.controlador.php",
         data: serialize,
-        success: function(data) {
-               
+        success: function(data) { 
             switch (data) {
                 case "ok":
                     Swal.fire({
@@ -475,6 +477,7 @@ function subir() {
                 });
                
                 break;
+
                 case "vacio":
                     Swal.fire({
                     title: 'ERROR CAMPOS VACIOS',
@@ -497,11 +500,20 @@ function subir() {
                     location.reload();
                 });
                 break;
-                
-            } 
+
+                default: 
+                Swal.fire({
+                    title: data,
+                    icon: 'error',
+                    showConfirmButton: true, 
+                }) 
+                break;
+            }
+         
 
         }
     });
+
 }
 
 
