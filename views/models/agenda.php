@@ -37,31 +37,31 @@
                         <br>
                         <div class="card-body" style="margin-left: 5%;  margin-right: 5%;">
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Lunes" id="primer_toggle"
+                            <input class="ocult" type="checkbox" name="check_date[]" value="Lunes" id="primer_toggle"
                                 onclick="validate('primer_toggle' , 'Lunes');">
                             <label for="primer_toggle" class="btn btn-primary submit-btn control-me-primer_toggle "> LUNES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Martes" id="segundo_toggle"
+                            <input class="ocult" type="checkbox" name="check_date[]" value="Martes" id="segundo_toggle"
                                 onclick="validate('segundo_toggle' , 'Martes');">
                             <label for="segundo_toggle" class="btn btn-primary submit-btn control-me-segundo_toggle "> MARTES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Miercoles" id="tercer_toggle"
+                            <input class="ocult" type="checkbox" name="check_date[]" value="Miércoles" id="tercer_toggle"
                                 onclick="validate('tercer_toggle' , 'Miércoles');">
                             <label for="tercer_toggle" class="btn btn-primary submit-btn control-me-tercer_toggle "> MIERCOLES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Jueves" id="cuarto_toggle"
+                            <input class="ocult" type="checkbox" name="check_date[]" value="Jueves" id="cuarto_toggle"
                                 onclick="validate('cuarto_toggle' , 'Jueves');">
                             <label for="cuarto_toggle" class="btn btn-primary submit-btn control-me-cuarto_toggle "> JUEVES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Viernes" id="quinto_toggle"
+                            <input class="ocult" type="checkbox" name="check_date[]" value="Viernes" id="quinto_toggle"
                                 onclick="validate('quinto_toggle' , 'Viernes');">
                             <label for="quinto_toggle" class="btn btn-primary submit-btn control-me-quinto_toggle "> VIERNES </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Sabado" id="sexto_toggle"
+                            <input class="ocult" type="checkbox" name="check_date[]" value="Sábado" id="sexto_toggle"
                                 onclick="validate('sexto_toggle' , 'Sábado');">
                             <label for="sexto_toggle" class="btn btn-primary submit-btn control-me-sexto_toggle"> SABADO </label>
 
-                            <input class="ocult" type="checkbox" name="check_date" value="Domingo" id="septimo_toggle"
+                            <input class="ocult" type="checkbox" name="check_date[]" value="Domingo" id="septimo_toggle"
                                 onclick="validate('septimo_toggle' , 'Domingo');">
                             <label for="septimo_toggle" class="btn btn-primary submit-btn control-me-septimo_toggle "> DOMINGO </label>
 
@@ -334,8 +334,53 @@ function agregarMas(dia, track, id) {
 
 }
 
-function quitarHorario(track) {
-    $("#row_hora_" + track).remove();
+function quitarHorario(track, dia) {
+    let dias_creados = document.querySelectorAll(".fila_horarios_"+dia).length;
+    
+    
+    if(dias_creados == 1){
+      
+        Swal.fire({
+        title: 'SEGURO QUE DESEA ELIMINAR',
+        icon: 'warning',
+        showConfirmButton: true,
+        showCancelButton: true,
+        confirmButtonText: '<i class="fa fa-clone"></i> Eliminar',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
+        cancelButtonAriaLabel: 'Thumbs down'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+            type: "POST",
+            url: "controller/dashboard/limpiarDiaAgenda.controlador.php",
+            data: {
+            dia_reset: dia
+            },
+            success: function(data) { 
+            
+            Swal.fire({
+                title: 'ELIMINADO CON EXITO',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            }).then((result) => {
+                $("#row_hora_" + track).remove();
+               
+            });
+
+
+            } 
+            });
+        } else {
+
+        }
+        }); 
+    }else {
+        $("#row_hora_" + track).remove();
+    }
+   
+    
 }
 
 function cleanRange(track) {
@@ -392,19 +437,10 @@ function replicar(track) {
                 type: "POST",
                 url: "controller/dashboard/replicarAgenda.controlador.php",
                 data: serialize,
-                success: function(data) { 
-                     
-                    if( data == 'false' ){
+                success: function(data) {  
 
-                        Swal.fire({
-                        title: 'ELIGE UN RANGO DE HORARIO',
-                        icon: 'error',
-                        showConfirmButton: false,
-                        timer: 1500
-                        })
-
-                    }else{ 
-
+                    switch (data) {
+                    case "ok":
                         Swal.fire({
                         title: 'REPLICADO CON EXITO',
                         icon: 'success',
@@ -412,8 +448,25 @@ function replicar(track) {
                         timer: 1500
                    
                          })
-                         setTimeout(function(){  location.reload(); }, 2000);
-                         
+                        //  setTimeout(function(){  location.reload(); }, 2000);
+
+                    break;
+
+                    case 'false':
+                        Swal.fire({
+                        title: 'ELIGE UN RANGO DE HORARIO',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1500
+                        })
+                    break; 
+                    default: 
+                        Swal.fire({
+                        title: data,
+                        icon: 'error',
+                        showConfirmButton: true, 
+                        }) 
+                    break;
                     }
 
                    
@@ -460,6 +513,7 @@ function subir() {
         url: "controller/dashboard/crearAgenda.controlador.php",
         data: serialize,
         success: function(data) { 
+            
             switch (data) {
                 case "ok":
                     Swal.fire({
@@ -468,7 +522,7 @@ function subir() {
                     showConfirmButton: false,
                     timer: 1500
                 }).then((result) => {
-                    location.reload();
+                    // location.reload();
                     if (result.isConfirmed) {
                         
                     } else {

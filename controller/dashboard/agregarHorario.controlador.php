@@ -30,7 +30,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
             </div>
         
             
-            <div class="row" id="row_hora_'.$valor_unico.'"  style=" margin-left: 141px; margin-right: 46px; padding-bottom: 21px;">
+            <div class="row fila_horarios_'.$dia.'" id="row_hora_'.$valor_unico.'"  style=" margin-left: 141px; margin-right: 46px; padding-bottom: 21px;">
                 
             <div class="col-md-4">
             <input type="text" name="horario_init[]" autocomplete="off" style="cursor: pointer;" value="'.$value['startHour'].'" class="form-control init-'.$valor_unico.'" placeholder="Elige un Horario">
@@ -61,7 +61,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
                       
                 </select>
                 <div class="" style="position: absolute; right: -33px; top: 8px;">
-        <button type="button" class="btn btn-sm bg-danger-light" onclick="quitarHorario(&quot;'.$valor_unico.'&quot;)"><i class="fa fa-trash"></i></button>
+        <button type="button" class="btn btn-sm bg-danger-light" onclick="quitarHorario(&quot;'.$valor_unico.'&quot; , &quot;'.$dia.'&quot;)"><i class="fa fa-trash"></i></button>
         </div>
             </div>
         </div>
@@ -83,7 +83,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
             </div>
     
             
-            <div class="row" id="row_hora_'.$valor_unico.'"  style="      margin-left: 141px; margin-right: 46px; padding-bottom: 21px;">
+            <div class="row fila_horarios_'.$dia.'" id="row_hora_'.$valor_unico.'"  style="      margin-left: 141px; margin-right: 46px; padding-bottom: 21px;">
                 
             <div class="col-md-3">
                 <input type="text" name="horario_name[]" onclick="cleanRange(&quot;'.$valor_unico.'&quot;)" id="hora-'.$valor_unico.'" style="cursor: pointer;" value="'.$value['startHour'].'" class="form-control aca-'.$valor_unico.'" placeholder="Elige el Horario" autocomplete="off">
@@ -128,7 +128,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
                     
                 </select>
                 <div class="" style="position: absolute; right: -33px; top: 8px;">
-        <button type="button" class="btn btn-sm bg-danger-light" onclick="quitarHorario(&quot;'.$valor_unico.'&quot;)"><i class="fa fa-trash"></i></button>
+        <button type="button" class="btn btn-sm bg-danger-light" onclick="quitarHorario(&quot;'.$valor_unico.'&quot;, &quot;'.$dia.'&quot;)"><i class="fa fa-trash"></i></button>
         </div>
             </div>
         </div>
@@ -152,7 +152,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
     </div>
 
     
-    <div class="row" id="row_hora_'.$valor_unico.'"  style="      margin-left: 141px; margin-right: 46px; padding-bottom: 21px;">
+    <div class="row fila_horarios_'.$dia.'" id="row_hora_'.$valor_unico.'"  style="      margin-left: 141px; margin-right: 46px; padding-bottom: 21px;">
         
     <div class="col-md-4">
     <input type="text" name="horario_init[]" autocomplete="off" style="cursor: pointer;" value="'.$value['startHour'].'" class="form-control init-'.$valor_unico.'" placeholder="Elige un Horario">
@@ -183,7 +183,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
               
         </select>
         <div class="" style="position: absolute; right: -33px; top: 8px;">
-        <button type="button" class="btn btn-sm bg-danger-light" onclick="quitarHorario(&quot;'.$valor_unico.'&quot;)"><i class="fa fa-trash"></i></button>
+        <button type="button" class="btn btn-sm bg-danger-light" onclick="quitarHorario(&quot;'.$valor_unico.'&quot; , &quot;'.$dia.'&quot;)"><i class="fa fa-trash"></i></button>
         </div>
     </div>
    

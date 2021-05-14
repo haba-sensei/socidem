@@ -109,7 +109,7 @@ foreach ($agenda as $key => $value) {
         foreach ($arreglo_final as $key2 => $value2) {
             $valor_unico = md5(uniqid(rand(), true));
             echo '
-            <div class="row" id="row_hora_'.$valor_unico.'" style="    margin-left: 156px; margin-right: 46px; padding-bottom: 21px;">
+            <div class="row fila_horarios_'.$dia.'" id="row_hora_'.$valor_unico.'" style="margin-left: 156px; margin-right: 46px; padding-bottom: 21px;">
                 
                 <div class="col-md-4">
                     <input type="text" name="horario_init[]" id="horario_init[]" autocomplete="off" style="cursor: pointer;" value="'.$value2['startHour'].'" class="form-control init-'.$valor_unico.'" placeholder="Elige un Horario">
@@ -164,7 +164,7 @@ foreach ($agenda as $key => $value) {
                     echo '  
                     </select>
                     <div class="" style="position: absolute; right: -33px; top: 8px;">
-                    <button type="button" class="btn btn-sm bg-danger-light" onclick="quitarHorario(&quot;'.$valor_unico.'&quot;)"><i class="fa fa-trash"></i></button>
+                    <button type="button" class="btn btn-sm bg-danger-light" onclick="quitarHorario(&quot;'.$valor_unico.'&quot;, &quot;'.$dia.'&quot;)"><i class="fa fa-trash"></i></button>
                     </div>
                 </div>
             </div>

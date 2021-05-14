@@ -15,8 +15,33 @@ $dia_array = $_POST['dia_name'];
 $separado_por_comas = implode(",", $dia);
 
 $tipo = $_POST['tipoCita'];
+$count_horarios = count($horario_init);
+    
+for ($u=0; $u < $count_horarios; $u++ ) {  
+    $fecha1[] = $horario_init[$u];//fecha inicial
+    $fecha2[] = $horario_end[$u];//fecha inicial 
+
+}
  
-$verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$token'");
+
+foreach ($fecha1 as $key => $val) {
+    if (isset($fecha1[$key+1])) { 
+       if(
+           $fecha1[$key+1] < $fecha2[$key] && 
+           $fecha1[$key+1] >= $fecha1[$key] ||
+
+           $fecha2[$key+1] < $fecha2[$key] && 
+           $fecha2[$key+1] >= $fecha1[$key]
+           
+       ){
+
+            echo "El horario de ". $fecha1[$key+1]." a ".$fecha2[$key+1]." es intervalo de ".$fecha1[$key]." a ".$fecha2[$key]." del dia ".$dia[$key]."<br>";
+            break;
+       }
+    }else {
+ 
+
+    $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$token'");
 
 
     while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
@@ -154,4 +179,8 @@ $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `age
             }
         }     
     
+    }
+
+    }
+
     }
