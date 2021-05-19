@@ -149,7 +149,49 @@ if($comps[$i] == "text"){
 ?>
 
 <script>
+ 
+var bPreguntar = true;
+     
+window.onbeforeunload = preguntarAntesDeSalir;
 
+function preguntarAntesDeSalir()
+{
+
+    $.ajax({
+    type: "POST",
+    url: "controller/dashboard/confirmOut.controlador.php",
+    success: function(data) { 
+
+    if (data = "ok"){
+            valida();
+    }
+
+
+    } 
+    });
+ 
+
+}
+
+function valida(){
+    
+    Swal.fire({
+            title: 'SEGURO QUE DESEA SALIR SIN GUARDAR',
+            icon: 'warning',
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: '<i class="fa fa-clone"></i> Salir',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
+            cancelButtonAriaLabel: 'Thumbs down'
+        }).then((result) => {
+            if (result.isConfirmed) { 
+
+                alert("hola");
+
+
+            }});
+}
 
 function cambiaColor(sel, track){
     
