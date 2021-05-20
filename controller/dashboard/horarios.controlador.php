@@ -56,7 +56,8 @@ foreach ($agenda as $key => $value) {
         if($array_filtrado == NULL){ 
             $valor_unico = md5(uniqid(rand(), true));
             echo '
-            <div class="row" id="row_hora_'.$valor_unico.'" style="    margin-left: 156px; margin-right: 46px; padding-bottom: 21px;">
+           
+            <div class="row fila_horarios_'.$dia.'" id="row_hora_'.$valor_unico.'" style="    margin-left: 156px; margin-right: 46px; padding-bottom: 21px;">
                 
                 <div class="col-md-4">
                     <input type="text" name="horario_init[]" autocomplete="off" style="cursor: pointer;"  class="form-control init-'.$valor_unico.'" placeholder="Elige un Horario">
@@ -94,6 +95,7 @@ foreach ($agenda as $key => $value) {
             $(".init-'.$valor_unico.'").timepicker();
             $(".end-'.$valor_unico.'").timepicker();
             </script>
+            
             '; 
 
 
@@ -187,7 +189,7 @@ foreach ($agenda as $key => $value) {
         <div class="row">
         <div class="col-md-6"><button type="button" class="btn btn-new btn-info btn-block" style="background: #008298; border: 1px solid #ececec;"  onclick="agregarMas(&quot;'.$dia.'&quot; , &quot;'.$id_track.'&quot; , &quot;'.$valor_unico.'&quot; )" ><i class="fas fa-plus"></i> Agregar mas Horarios</button></div>
  
-        <div class="col-md-6"><button type="button" class="btn btn-new btn-info btn-block" style="background: #008298; border: 1px solid #ececec;" onclick="replicar(&quot;'.$id_track.'&quot;)"><i class="fas fa-clone"></i> Replicar Resto de dias </button></div>
+        <div class="col-md-6"><button type="button" class="btn btn-new btn-info btn-block" style="background: #008298; border: 1px solid #ececec;" onclick="replicar(&quot;'.$id_track.'&quot;, &quot;'.$dia.'&quot;)"><i class="fas fa-clone"></i> Replicar Resto de dias </button></div>
         </div> 
         </div>  
         ';

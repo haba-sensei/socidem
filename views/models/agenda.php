@@ -25,14 +25,9 @@
 
             <div class="col-md-7 col-lg-8 col-xl-9">
                 <link rel="stylesheet" href="views/assets/css/agenda.css">
-                <form action="" method="post" id="form_cita">
-
-
-
+                <form action="" method="post" id="form_cita"> 
                     <div class="mb-0 card card-table" style="text-align: center">
-                        <br>
-
-
+                        <br> 
                         <h3>Selecciona el dia </h3>
                         <br>
                         <div class="card-body" style="margin-left: 5%;  margin-right: 5%;">
@@ -150,28 +145,28 @@ if($comps[$i] == "text"){
 
 <script>
  
-var bPreguntar = true;
+// var bPreguntar = true;
      
-window.onbeforeunload = preguntarAntesDeSalir;
+// window.onbeforeunload = preguntarAntesDeSalir;
 
-function preguntarAntesDeSalir()
-{
+// function preguntarAntesDeSalir()
+// {
 
-    $.ajax({
-    type: "POST",
-    url: "controller/dashboard/confirmOut.controlador.php",
-    success: function(data) { 
+//     $.ajax({
+//     type: "POST",
+//     url: "controller/dashboard/confirmOut.controlador.php",
+//     success: function(data) { 
 
-    if (data = "ok"){
-            valida();
-    }
+//     if (data = "ok"){
+//             valida();
+//     }
 
 
-    } 
-    });
+//     } 
+//     });
  
 
-}
+// }
 
 function valida(){
     
@@ -460,7 +455,7 @@ function getComboA(selectObject, track_id) {
 
 }
 
-function replicar(track) {
+function replicar(track, dia) {
     Swal.fire({
         title: 'SEGURO QUE DESEA REPLICAR EL LUNES',
         icon: 'warning',
@@ -473,8 +468,8 @@ function replicar(track) {
     }).then((result) => {
 
         if (result.isConfirmed) {
- 
-            var serialize = $('#form_cita').serialize();
+           
+            var serialize = $('#form_cita').serialize()+ "&dia_track=" + dia;
             $.ajax({
                 type: "POST",
                 url: "controller/dashboard/replicarAgenda.controlador.php",
@@ -502,6 +497,9 @@ function replicar(track) {
                         timer: 1500
                         })
                     break; 
+
+                    
+
                     default: 
                         Swal.fire({
                         title: data,
