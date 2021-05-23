@@ -35,7 +35,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
         'horaonline' =>  $hora_online,
         'horapresencial' =>  $hora_presencial 
     );
-
+ 
     echo json_encode($busca_horario) ;
     
 }

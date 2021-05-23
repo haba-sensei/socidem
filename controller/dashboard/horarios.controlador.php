@@ -23,8 +23,7 @@ setlocale(LC_TIME, 'spanish');
   
   echo '
     <div  id="box_cuerpo-'.$id_track.'" style="background:#ececec; border-radius: 10px; margin-top: 32px; width: 100%;">
-    
-    
+    <form   id="form_track_'.$dia.'"> 
     <br> 
     <div class="row" style="margin-right: 5px;">
     
@@ -182,8 +181,10 @@ foreach ($agenda as $key => $value) {
     
     
         echo ' 
+        
         </div>
         <div id="carga_horario_'.$valor_unico.'"></div>
+        </form>
         <br>
         <br>
         <div class="row">

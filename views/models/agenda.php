@@ -16,7 +16,7 @@
 <!-- /Breadcrumb -->
 
 <!-- Page Content -->
-<div class="content">
+<div class="content" >
     <div class="container-fluid ajust_fluid">
 
         <div class="row">
@@ -103,7 +103,7 @@
                                  
                             </div>
 
-                            <form method="post" id="form_track">
+                            
                             <div class="card-body " style="text-align: center; " id="box_cita">
                             </div>
                             
@@ -117,7 +117,7 @@
                                 class="fa fa-trash"></i> Limpiar Agenda </a>
                             <br>
                             <br>
-                            </form>
+                            
                         </div>
                     </div>
                 </form>
@@ -143,51 +143,7 @@ if($comps[$i] == "text"){
 
 ?>
 
-<script>
- 
-// var bPreguntar = true;
-     
-// window.onbeforeunload = preguntarAntesDeSalir;
-
-// function preguntarAntesDeSalir()
-// {
-
-//     $.ajax({
-//     type: "POST",
-//     url: "controller/dashboard/confirmOut.controlador.php",
-//     success: function(data) { 
-
-//     if (data = "ok"){
-//             valida();
-//     }
-
-
-//     } 
-//     });
- 
-
-// }
-
-function valida(){
-    
-    Swal.fire({
-            title: 'SEGURO QUE DESEA SALIR SIN GUARDAR',
-            icon: 'warning',
-            showConfirmButton: true,
-            showCancelButton: true,
-            confirmButtonText: '<i class="fa fa-clone"></i> Salir',
-            confirmButtonAriaLabel: 'Thumbs up, great!',
-            cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
-            cancelButtonAriaLabel: 'Thumbs down'
-        }).then((result) => {
-            if (result.isConfirmed) { 
-
-                alert("hola");
-
-
-            }});
-}
-
+<script> 
 function cambiaColor(sel, track){
     
      if(sel.value == "Presencial"){
@@ -200,7 +156,7 @@ function cambiaColor(sel, track){
      
 }
 
-
+cargaTiempoCita();
 function cargaTiempoCita(){
     
     $.ajax({ 
@@ -217,7 +173,7 @@ function cargaTiempoCita(){
     });
     
 }
-cargaTiempoCita();
+
 
 function cambiaColorRadio(sel){
     
@@ -457,7 +413,7 @@ function getComboA(selectObject, track_id) {
 
 function replicar(track, dia) {
     Swal.fire({
-        title: 'SEGURO QUE DESEA REPLICAR EL LUNES',
+        title: 'SEGURO QUE DESEA REPLICAR EL '+dia,
         icon: 'warning',
         showConfirmButton: true,
         showCancelButton: true,
@@ -468,14 +424,19 @@ function replicar(track, dia) {
     }).then((result) => {
 
         if (result.isConfirmed) {
-           
-            var serialize = $('#form_cita').serialize()+ "&dia_track=" + dia;
+            var rango_presencial = document.getElementById('rango_gen_presencial').value;
+            var rango_online = document.getElementById('rango_gen_online').value;
+            
+            var dias_replica = $('input[name="check_date[]"]:checked').map(function () {return this.value}).get();
+ 
+            var serialize = $('#form_track_'+dia).serialize()+"&dias_replica="+dias_replica+"&dia_track=" + dia+"&rango_gen_presencial="+rango_presencial+"&rango_gen_online="+rango_online;
+            
             $.ajax({
                 type: "POST",
                 url: "controller/dashboard/replicarAgenda.controlador.php",
                 data: serialize,
                 success: function(data) {  
-
+ 
                     switch (data) {
                     case "ok":
                         Swal.fire({
@@ -484,8 +445,20 @@ function replicar(track, dia) {
                         showConfirmButton: false,
                         timer: 1500
                    
-                         })
-                        //  setTimeout(function(){  location.reload(); }, 2000);
+                         });
+
+                        var tracking = $('input[name="check_date[]"]:checked').map(function () {
+                           
+                            var track_cuerpo = "#box_cuerpo-" + this.id; 
+                            $("#box_cuerpo-" + this.id).remove(); 
+
+                            cargaDiferida(this.id, this.value);
+                           
+                        }).get();
+                        
+                        
+                        //  
+                        // setTimeout(function(){  location.reload(); }, 2000);
 
                     break;
 
@@ -519,6 +492,31 @@ function replicar(track, dia) {
     });
 }
 
+function cargaDiferida(id, dia){
+
+        $.ajax({
+        type: "POST",
+        url: "controller/dashboard/horarios.controlador.php",
+        data: {
+        id: id,
+        dia: dia
+        },
+        success: function(data) {
+
+        var cuerpo = data;
+        var tracking = document.getElementById(id).checked;
+
+        if (document.getElementById(id).checked) { 
+        $("#box_cita").append(cuerpo); 
+
+        }  
+
+        }
+
+        });
+
+}
+
 function limpiar(){
     
     $.ajax({
@@ -546,7 +544,7 @@ function limpiar(){
 
 function subir() { 
     
-    var serialize = $('#form_cita').serialize();  
+    var serialize = $('#form_cita, #form_track_Lunes, #form_track_Martes, #form_track_Miércoles, #form_track_Jueves, #form_track_Viernes, #form_track_Sábado, #form_track_Domingo   ').serialize();  
 
     $.ajax({
         type: "POST",

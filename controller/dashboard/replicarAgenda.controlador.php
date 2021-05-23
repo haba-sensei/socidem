@@ -11,20 +11,18 @@ $horario_end = $_POST['horario_end'];
 $horario_rango_presencial = $_POST['rango_gen_presencial'];
 $horario_rango_online = $_POST['rango_gen_online'];
 $dia = $_POST['dia_name'];
-$dia_track = $_POST['dia_track'];
-
-$dia_array = $_POST['dia_name'];
-
+$dia_track = $_POST['dia_track']; 
+$dias_obj = $_POST['dias_replica']; 
 $tipo = $_POST['tipoCita'];
+
+$dia_array = explode("," , $dias_obj); 
 
 if ($horario_init != null) {
     $count_horarios = count($horario_init);
-
-    for ($u = 0; $u < $count_horarios; $u++) {
-        if ($dia[$u] == $dia_track) {
+    
+    for ($u = 0; $u < $count_horarios; $u++) { 
             $horario_init_val[] = $horario_init[$u]; //fecha inicial
-            $horario_end_val[] = $horario_end[$u]; //fecha inicial
-        }
+            $horario_end_val[] = $horario_end[$u]; //fecha inicial 
     }
 
     foreach ($horario_init_val as $key => $val) {
@@ -54,6 +52,7 @@ if ($horario_init != null) {
     echo "false";
 }
 
+  
 if ($state == "open") {
     $verAgendaMedica = ejecutarSQL::consultar("SELECT `agenda_medica`.`agenda`, `agenda_medica`.`cod_medico`, `agenda_medica`.`estado` FROM `agenda_medica` WHERE `agenda_medica`.`cod_medico` = '$token'");
 
@@ -64,15 +63,17 @@ if ($state == "open") {
         $agenda_full = json_decode($objAgenda, true);
 
         foreach ($agenda_full as $key => $entry) {
-            unset($agenda_full[$key]);
+
+            if(in_array($entry['dia'], $dia_array) ){ 
+                unset($agenda_full[$key]);  
+           }
+           
+          
         }
-
-        $valor = json_encode($agenda_full);
-
-        if ($_POST['horario_end'] == null) {
-
-            echo "vacio";
-        } else {
+       
+         $valor = json_encode($agenda_full);
+      
+        if($_POST['horario_end'] != NULL){
 
             $nuevo_ID = $entry['id'];
             $count_horarios = count($horario_init);
@@ -174,12 +175,18 @@ if ($state == "open") {
 
                 }
 
+                
                 echo 'ok';
                 $resultado = array_merge($agenda_full, $arreglo_replica);
                 $insertar_data = json_encode($resultado, JSON_UNESCAPED_UNICODE);
                 consultasSQL::UpdateSQL("agenda_medica", "agenda='$insertar_data'", "cod_medico='$token'");
+           
             }
+        }else {
+
+            echo "vacio";
         }
+ 
 
     }
 }

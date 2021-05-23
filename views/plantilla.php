@@ -27,7 +27,7 @@ $routes = explode("-", $_GET["ruta"]);
 ?>
 
 
-<body class="account-page">
+<body class="account-page" >
  
 
     <?php
