@@ -27,7 +27,7 @@ $routes = explode("-", $_GET["ruta"]);
 ?>
 
 
-<body class="account-page" >
+<body class="account-page"  >
  
 
     <?php
@@ -63,6 +63,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "test" || 
 			$routes[0] == "lobby" || 
 			$routes[0] == "checkout" || 
+			$routes[0] == "checkoutmed" || 
 			$routes[0] == "checkProcess" || 
 			$routes[0] == "factura" || 
 			$routes[0] == "servicios" || 

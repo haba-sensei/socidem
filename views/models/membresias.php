@@ -445,8 +445,7 @@
                                 <li>Sin avisos </li>
                             </ul>
 
-                            <a class="btn-plan cta   btn" href="">Plan Mensual</a>
-                            <a class="btn-plan cta   btn" href="">Plan Anual</a>
+                            <a class="btn-plan btn-info btn" href="checkoutmed">Elegir Plan</a>
                             <br><br>
                             <div class="plan-cost" style="    background: #008298;
                                 color: white;

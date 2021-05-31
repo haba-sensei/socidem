@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function() {
-
+ 
     $.ajax({
         type: "POST",
         url: "controller/dashboard/consulPerfil.controlador.php",

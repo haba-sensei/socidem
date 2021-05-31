@@ -5,7 +5,7 @@
             url: $('#checkout_form').attr('action'),
             data: $('#checkout_form').serialize()
              
-        }); 
+        });  
     }
 
     function servicio(ref){

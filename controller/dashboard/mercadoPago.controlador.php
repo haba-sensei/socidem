@@ -15,7 +15,7 @@ $item = new MercadoPago\Item();
 $item->title = 'Agenda de Cita';
 $item->quantity = 1;
 $item->unit_price = $_SESSION['precio_final'];
-
+ 
 $preference->items = array($item);
  
 
@@ -23,7 +23,6 @@ $type = 'MP_AGENDA';
 include 'model/config.php';
 
 $preference->auto_return = "approved"; 
-
 
 $preference->save();
  

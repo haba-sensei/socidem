@@ -144,6 +144,9 @@ if($comps[$i] == "text"){
 ?>
 
 <script> 
+ 
+
+
 function cambiaColor(sel, track){
     
      if(sel.value == "Presencial"){
