@@ -19,13 +19,14 @@ $val = 750;
 if($porcentaje == NULL || $porcentaje == 0 || $porcentaje == "" ){
     $valor = $val;
     $estatus = "nulo";
+    $porcentaje_f = "0 %";
 
 }else {
 
     $res = $val * $porcentaje / 100;
     $valor = $val - $res;
     $estatus = "activo";
-
+    $porcentaje_f = $porcentaje." %";
 }
 
     MercadoPago\SDK::setAccessToken('TEST-1333418562298877-020706-8f12270a97bdd77d30bbc6afe10c909c-314858826');
@@ -40,7 +41,7 @@ if($porcentaje == NULL || $porcentaje == 0 || $porcentaje == "" ){
     $preference->items = array($item);
 
 
-    $type = 'MP_AGENDA';
+    $type = 'MP_MEMBRESIA';
     include '../../model/config.php';
 
     $preference->auto_return = "approved"; 
@@ -50,6 +51,7 @@ if($porcentaje == NULL || $porcentaje == 0 || $porcentaje == "" ){
     $output = array(
         'precio' => $valor,
         'href' => $preference->init_point,
+        'porcentaje' => $porcentaje_f,
         'status' => $estatus
     );
 

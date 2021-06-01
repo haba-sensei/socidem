@@ -329,7 +329,7 @@
                     <div id="message"></div>
                     <form action="controller/dashboard/createRecetas.controlador.php" class="dropzone recetas">
                     <div id="cuerpo_addRecetas"></div>
-                    </form>  
+                    </form>   
                     <br>
                     <br>
                     <input type="button" class="btn med_row" id='uploadfiles_recetas' value='Upload Files' >

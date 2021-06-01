@@ -38,7 +38,7 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
          
         else {
 
-            $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc' "); 
+            $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc', 'Gratuito', 0"); 
             $regPerfil = consultasSQL::InsertSQL("perfil", "correo, documento, foto, telefono, num_colegiatura, especialidad, servicios, titulo, universidad, años, ubicacion, sobre_mi, nombre_clinica, direccion_clinica, precio_consulta, codigo_referido", "'$correo_doc', '', '$foto_doc', '$telefono_doc', '$num_colegiado_doc', '$especialidad_doc', '', '', '', '', '$ciudad_doc', '', '', '', '', '$cod_referido'"); 
             $regAgenda = consultasSQL::InsertSQL("agenda_medica", "cod_medico, agenda, estado", "'$cod_referido', '[]', '1'"); 
             $regExepciones = consultasSQL::InsertSQL("exepciones", "cod_med, exepciones, estado", "'$cod_referido', '[]', '1'"); 
@@ -50,6 +50,8 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
                 $nombre = $datos_usuario['nombre_completo'];
                 $correo = $datos_usuario['correo'];
                 $estado = $datos_usuario['estado']; 
+                $membresia=$datos_usuario['membresia']; 
+                $periodo_membresia=$datos_usuario['periodo_membresia']; 
                 $last_login = $datos_usuario['last_login'];
                 
                 $verPerfil = ejecutarSQL::consultar("SELECT `perfil`.`correo`, `perfil`.`codigo_referido`, `perfil`.`especialidad`, `perfil`.`num_colegiatura`, `perfil`.`foto`  FROM `perfil` WHERE `perfil`.`correo` = '$correo' ");
@@ -73,6 +75,8 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
                 $_SESSION["num_colegiatura"] = $num_colegiatura;
                 $_SESSION["rol"] = $rol;
                 $_SESSION['estado'] = $estado;
+                $_SESSION['membresia'] = $membresia;
+                $_SESSION['periodo_membresia'] = $periodo_membresia;
                 $_SESSION['last_login'] = $last_login; 
 
                 

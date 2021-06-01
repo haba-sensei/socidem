@@ -432,8 +432,7 @@
                             </div>
 
                             <ul class="plan-features">
-                                <li>Funciona en cualquier Pc o celular</li>
-                                <li>Sin necesidad de instalar programas</li>
+                                
                                 <li>Comparta con un solo clic su consultorio virtual</li>
                                 <li>Establezca sus horarios y el monto por consulta tanto en video llamada o presencial</li>
                                 <li>Difunda la ubicación de su consultorio para consultas presenciales</li>
@@ -441,7 +440,6 @@
                                 <li>Historiales médicos ilimitados</li>
                                 <li>Envió de recetas y recibo de análisis</li>
                                 <li>Puede optar por el sistema de cobranza en línea a pacientes</li>
-                                <li>Pague hasta en 12 cuotas sin intereses usando su tarjeta de crédito</li>
                                 <li>Sin avisos </li>
                             </ul>
 

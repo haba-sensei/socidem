@@ -46,6 +46,8 @@ if (!$correo == "" && !$clave == "") {
         $foto=$datos_usuario['foto'];
         $num_colegiatura=$datos_usuario['num_colegiatura'];
         $estado=$datos_usuario['estado']; 
+        $membresia=$datos_usuario['membresia']; 
+        $periodo_membresia=$datos_usuario['periodo_membresia']; 
         $last_login=$datos_usuario['last_login'];
        
     } 
@@ -61,6 +63,8 @@ if (!$correo == "" && !$clave == "") {
         $_SESSION["foto"] = $foto;
         $_SESSION["num_colegiatura"] = $num_colegiatura;
         $_SESSION['estado'] = $estado;
+        $_SESSION['membresia'] = $membresia;
+        $_SESSION['periodo_membresia'] = $periodo_membresia;
         $_SESSION['last_login'] = $last_login;
          
         $_SESSION["iniciarSesion"] = "ok";

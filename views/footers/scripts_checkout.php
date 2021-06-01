@@ -31,4 +31,4 @@
         $('#servicios_check').modal('hide');
 
     }
-</script>
+</script> 

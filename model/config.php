@@ -66,6 +66,16 @@
                     );
 
                 break;
+
+                case 'MP_MEMBRESIA':
+                    
+                    $preference->back_urls = array(
+                        "success" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoMembresia.controlador.php",
+                        "failure" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoMembresia.controlador.php", 
+                        "pending" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoMembresia.controlador.php"
+                    );
+
+                break;
             }
            
             
@@ -127,6 +137,16 @@
                         "success" => "http://localhost/socidem/controller/dashboard/crearPagoCita.controlador.php",
                         "failure" => "http://localhost/socidem/controller/dashboard/crearPagoCita.controlador.php", 
                         "pending" => "http://localhost/socidem/controller/dashboard/crearPagoCita.controlador.php"
+                    );
+
+                break;
+
+                case 'MP_MEMBRESIA':
+                    
+                    $preference->back_urls = array(
+                        "success" => "http://localhost/socidem/controller/dashboard/crearPagoMembresia.controlador.php",
+                        "failure" => "http://localhost/socidem/controller/dashboard/crearPagoMembresia.controlador.php", 
+                        "pending" => "http://localhost/socidem/controller/dashboard/crearPagoMembresia.controlador.php"
                     );
 
                 break;

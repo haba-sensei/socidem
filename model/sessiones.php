@@ -12,7 +12,11 @@ error_reporting(E_ALL ^ E_NOTICE);
     $num_colegiatura_ = $_SESSION["num_colegiatura"];
     $telefono_  = $_SESSION["telefono"];
     $estado_ = $_SESSION["estado"]; 
+    $membresia_ = $_SESSION["membresia"]; 
+    $periodo_membresia_ = $_SESSION["periodo_membresia"]; 
     $last_login_ = $_SESSION["last_login"];
+
+  
   
 
 
