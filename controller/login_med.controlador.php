@@ -49,6 +49,7 @@ if (!$correo == "" && !$clave == "") {
         $membresia=$datos_usuario['membresia']; 
         $periodo_membresia=$datos_usuario['periodo_membresia']; 
         $last_login=$datos_usuario['last_login'];
+ 
        
     } 
     
@@ -67,6 +68,18 @@ if (!$correo == "" && !$clave == "") {
         $_SESSION['periodo_membresia'] = $periodo_membresia;
         $_SESSION['last_login'] = $last_login;
          
+        $verBankCCI = ejecutarSQL::consultar("SELECT `medico_bank`.*, `medico_bank`.`token_medico`  FROM `medico_bank` WHERE `medico_bank`.`token_medico` = '$codigo_referido';");
+
+        $Active_CCI = mysqli_num_rows($verBankCCI);
+        
+        if($Active_CCI >= 1){
+            $_SESSION["reg_token_bank"] = "registrado"; 
+        }else {
+            $_SESSION["reg_token_bank"] = ""; 
+        }
+
+
+        
         $_SESSION["iniciarSesion"] = "ok";
        
         date_default_timezone_set('America/Lima');

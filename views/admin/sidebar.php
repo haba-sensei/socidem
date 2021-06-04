@@ -1,5 +1,4 @@
-<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-
+<div class="col-md-5 col-lg-4 col-xl-3  "> 
     <!-- Profile Sidebar -->
     <div class="profile-sidebar">
         <div class="widget-profile pro-widget-content">
@@ -34,137 +33,137 @@
                         </a>
                     </li>
 
-<?php
+                    <?php   
 
-switch ($membresia_) {
-    case "Gratuito" :  
-        echo '<li>
-        <a href="referidos">
-            <i class="fas fa-file-invoice"></i>
-            <span>Plan de Referidos</span>
+                    switch ($membresia_) {
+                        case "Gratuito" :  
+                            echo '<li>
+                            <a href="referidos">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Plan de Referidos</span>
 
-        </a>
-        </li>
-        <li>
-        <a href="membresias">
-            <i class="fas fa-star"></i>
-            <span>Membresias</span>
+                            </a>
+                            </li>
+                            <li>
+                            <a href="membresias">
+                                <i class="fas fa-star"></i>
+                                <span>Membresias</span>
 
-        </a>
-        </li>
-        <li>
-        <a href="perfilMed">
-            <i class="fas fa-user-cog"></i>
-            <span>Perfil</span>
+                            </a>
+                            </li>
+                            <li>
+                            <a href="perfilMed">
+                                <i class="fas fa-user-cog"></i>
+                                <span>Perfil</span>
 
-        </a>
-        </li>
+                            </a>
+                            </li>
 
-        <li>
-            <a href="faqMed">
-                <i class="fa fa-question-circle"></i>
-                <span>Preguntas Frecuentes</span>
+                            <li>
+                                <a href="faqMed">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span>Preguntas Frecuentes</span>
 
-            </a>
-        </li>
+                                </a>
+                            </li>
 
-        <li>
-            <a href="cambioPass">
-                <i class="fas fa-lock"></i>
-                <span>Cambiar Password</span>
+                            <li>
+                                <a href="cambioPass">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Cambiar Password</span>
 
-            </a>
-        </li>
+                                </a>
+                            </li>
 
-        <li>
-            <a href="salir">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
-            </a>
-        </li>   
-        ';   
-    break;
-    
-    case "Profesional":
-        echo ' <li>
-        <a href="agenda">
-            <i class="fas fa-calendar-check"></i>
-            <span>Configurar Horarios</span>
-        </a>
-    </li>
-    <li>
-        <a href="calendario">
-        <i class="fas fa-address-book"></i>
-            <span>Mi Calendario</span>
-        </a>
-    </li>
-    <li>
-        <a href="exepciones">
-        <i class="fas fa-cog"></i>
-            <span>Mis Exepciones</span>
-        </a>
-    </li>
-    <li>
-        <a href="pacientes">
-            <i class="fas fa-user-injured"></i>
-            <span>Clientes Atendidos</span>
-        </a>
-    </li>
-    <li>
-        <a href="referidos">
-            <i class="fas fa-file-invoice"></i>
-            <span>Plan de Referidos</span>
+                            <li>
+                                <a href="salir">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>   
+                            ';   
+                        break;
+                        
+                        case "Profesional":
+                            echo ' <li>
+                            <a href="agenda">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Configurar Horarios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="calendario">
+                            <i class="fas fa-address-book"></i>
+                                <span>Mi Calendario</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="exepciones">
+                            <i class="fas fa-cog"></i>
+                                <span>Mis Exepciones</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pacientes">
+                                <i class="fas fa-user-injured"></i>
+                                <span>Clientes Atendidos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="referidos">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Plan de Referidos</span>
 
-        </a>
-    </li>
-    <li>
-        <a href="membresias">
-            <i class="fas fa-star"></i>
-            <span>Membresias</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="membresias">
+                                <i class="fas fa-star"></i>
+                                <span>Membresias</span>
 
-        </a>
-    </li>
-    <li>
-        <a href="mensajes">
-            <i class="fas fa-comments"></i>
-            <span>Mensajes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mensajes">
+                                <i class="fas fa-comments"></i>
+                                <span>Mensajes</span>
 
-        </a>
-    </li>
-    <li>
-        <a href="perfilMed">
-            <i class="fas fa-user-cog"></i>
-            <span>Perfil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="perfilMed">
+                                <i class="fas fa-user-cog"></i>
+                                <span>Perfil</span>
 
-        </a>
-    </li>
-    
-    <li>
-        <a href="faqMed">
-            <i class="fa fa-question-circle"></i>
-            <span>Preguntas Frecuentes</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="faqMed">
+                                <i class="fa fa-question-circle"></i>
+                                <span>Preguntas Frecuentes</span>
 
-        </a>
-    </li>
+                            </a>
+                        </li>
 
-    <li>
-        <a href="cambioPass">
-            <i class="fas fa-lock"></i>
-            <span>Cambiar Password</span>
+                        <li>
+                            <a href="cambioPass">
+                                <i class="fas fa-lock"></i>
+                                <span>Cambiar Password</span>
 
-        </a>
-    </li>
-   
-    <li>
-        <a href="salir">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-        </a>
-    </li>';
-        break;
-}
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="salir">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>';
+                            break;
+                    }
 
-?>    
+                    ?>    
                 </ul>
             </nav>
         </div>
@@ -172,3 +171,4 @@ switch ($membresia_) {
     <!-- /Profile Sidebar -->
 
 </div>
+ 

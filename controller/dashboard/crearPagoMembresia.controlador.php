@@ -67,13 +67,26 @@ $tipo_membresia = "Profesional";
      case "approved":
 
     $varInsert = consultasSQL::InsertSQL("pagos_membresias", "pagoMembresia, token_medico, cod_pago, estado ", " '$membresia_obj', '$codigo_referido_', '$get_pago_id', '$estado' "); 
-    $tiempo_membresia = $periodo_membresia_ + 12;
     
+    if($membresia_ == "Gratuito"){
+        $tiempo_membresia = $periodo_membresia_ + 14;
+    }else {
+        $tiempo_membresia = $periodo_membresia_ + 12;
+    } 
+    
+    $codigo_promocion = $_SESSION["cod_promocion"];
     consultasSQL::UpdateSQL("medicos", "membresia='$tipo_membresia', periodo_membresia='$tiempo_membresia' ", "correo='$correo_'");
-     
+    
+    consultasSQL::UpdateSQL("codigos_promo", "status='1' ", "codigo='$codigo_promocion'"); 
+
     session_reset(); 
+    $_SESSION["cod_promocion"];
     $_SESSION["membresia"] = $tipo_membresia;  
     $_SESSION["periodo_membresia"] = $tiempo_membresia;
+
+
+
+
 
     break;
     case "pending":

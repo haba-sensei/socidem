@@ -24,6 +24,7 @@
             <?php include 'views/admin/sidebar.php'; ?>
 
             <div class="col-md-7 col-lg-8 col-xl-9">
+            <?php include 'views/admin/promo.php'; ?>
                 <link rel="stylesheet" href="views/assets/css/agenda.css">
                 <form action="" method="post" id="form_cita"> 
                     <div class="mb-0 card card-table" style="text-align: center">
@@ -101,12 +102,7 @@
 
                                 </select> 
                                  
-                            </div>
-
-                            
-                            <div class="card-body " style="text-align: center; " id="box_cita">
-                            </div>
-                            
+                            </div> 
                             <br>
                             <br>
                             <a href="javascript:" class="btn btn-elim " onclick="subir()" style="background: #008298; border: 1px solid #ececec; color:white;"> <i
@@ -117,7 +113,8 @@
                                 class="fa fa-trash"></i> Limpiar Agenda </a>
                             <br>
                             <br>
-                            
+                            <div class="card-body " style="text-align: center; " id="box_cita">
+                            </div>
                         </div>
                     </div>
                 </form>

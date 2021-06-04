@@ -27,6 +27,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
+                        <?php include 'views/admin/promo.php'; ?>
                         <div class="card dash-card">
                             <div class="card-body">
                                 <div class="row">

@@ -282,8 +282,8 @@ require_once 'views/admin/breadcrumb.php';
                                 <div class="row form-row membership-cont">
                                     <div class="col-12 col-md-10 col-lg-5">
                                         <div class="form-group">
-
-                                            <input type="text" id="membresia" class="form-control" readonly>
+                                       
+                                            <input type="text"   value="<?=$membresia_?>" class="form-control" readonly>
                                         </div>
                                     </div>
                                 </div>

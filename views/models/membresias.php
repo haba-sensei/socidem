@@ -383,7 +383,51 @@
         margin: 0 auto;
         max-width: 75.00em;
     }
+} 
+.input_val {
+    background: transparent;
+    border: none;
+    color: #77b9dd;
+    font-size: 44px;
+    font-weight: 700;
+    width: 32%;
 }
+
+.form-control {
+    border-color: #15558d;
+    color: #333;
+    font-size: 15px;
+    min-height: 34px;
+    padding: 6px 15px;
+    border: solid 2px #8cd0f5;
+    width: 59%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 17px;
+    margin-bottom: 2px;
+}
+
+.div_box_promo {
+    display: inline-flex;
+    width: 97%;
+    margin-left: 3%;
+    margin-right: 25%;
+    padding-bottom: 18px;
+}
+/* #989898 */
+.costo_promo {
+    background: #008298;
+    color: white;
+    padding: 1px; 
+    padding-top: 6px;
+    margin-bottom: -18px;
+}
+
+.strong_text {
+    font-size: 23px; 
+    padding-left: 23px;
+}
+ 
 </style>
 <!-- Page Content -->
 <div class="content">
@@ -393,7 +437,7 @@
 
             <?php include 'views/admin/sidebar.php'; ?>
 
-            <div class="col-md-7 col-lg-8 col-xl-9">
+            <div class="col-md-7 col-lg-8 col-xl-9" style="margin-bottom: 12%;">
 
 
 
@@ -422,15 +466,48 @@
                             <div class="featured-ribbon">Mejor Opcion</div>
                             <h2 class="plan-title">Profesional</h2>
                             <div class="plan-cost">
-                                <p class="plan-price">S/ 79</p>
+                                <p class="plan-price">S/  <input type="text" class="input_val " id="val_mem" disabled></p>
                                 <span>/</span>
-                                <p class="plan-type">Mensual</p>
-                                <!-- <small style="position: absolute;
-                                bottom: 0px;
-                                font-size: 16px;
-                                font-weight: 500;">S/ 790 Anual</small> -->
+                                <p class="plan-type">Anual</p> 
                             </div>
+                            <?php 
+                             if($_SESSION["reg_token_bank"] == "registrado"){ 
+                                 echo '
+                                 <a class="btn-plan btn-info btn" style="margin-top: 19px;" id="id_btn_val">Pagar Plan</a>
+                                 <div class="div_box_promo">
+                                 <input class="form-control " id="codigoP" placeholder="Codigo Promocional" onkeyup="loaddata()" onchange="loaddata()" name="codigoP" type="text" > 
+                                 </div>
+                                 ';
+                             }else {
 
+                                echo '
+                                
+                                <small class="" style="color:red; font-weight: 600;">Debe Registrar un CCI para Continuar </small>
+                                <br>
+                                <a href="referidos" style="color:#008298; font-weight: 600;" >Ir a Referidos</a>
+                                <div class="div_box_promo">
+                                <input class="form-control "  placeholder="Codigo Promocional" type="text" disabled readonly> 
+                                </div>
+                                ';
+                             }
+                            
+                            
+                            ?>
+                           
+                           
+                           <br>
+                           <!-- $membresia_ -->
+                            <div class="plan-cost costo_promo">
+                                <?php 
+                                    if($membresia_ == "Gratuito"){
+                                        echo '<p class="plan-price">2</p>
+                                        <span>/</span>
+                                        <p>Meses <br> <strong class="strong_text"> Gratis</strong> </p>';
+                                    }  
+                                ?>
+                               
+
+                            </div>
                             <ul class="plan-features">
                                 
                                 <li>Comparta con un solo clic su consultorio virtual</li>
@@ -442,19 +519,6 @@
                                 <li>Puede optar por el sistema de cobranza en línea a pacientes</li>
                                 <li>Sin avisos </li>
                             </ul>
-
-                            <a class="btn-plan btn-info btn" href="checkoutmed">Elegir Plan</a>
-                            <br><br>
-                            <div class="plan-cost" style="    background: #008298;
-                                color: white;
-                                padding: 1px;
-                                padding-top: 6px;
-                                margin-bottom: -18px;">
-                                <p class="plan-price">2</p>
-                                <span>/</span>
-                                <p>Meses <br> <strong style="font-size: 23px; padding-left: 23px;"> Gratis</strong> </p>
-
-                            </div>
                             <!-- <br><br> -->
                         </div>
                         <!-- "Ultmate" Plan -->
@@ -475,10 +539,64 @@
                         </div>
                     </div>
                 </section>
-
+                
+                 
             </div>
         </div>
 
     </div>
 
 </div>
+
+
+<script>
+    function loaddata(){ 
+
+    $.ajax({
+        type: "POST",
+        url: "controller/dashboard/consulCodigoP.controlador.php", 
+            dataType: "json", 
+        data: {
+            cod : $("#codigoP").val(),
+        },
+        
+        success: function(data) {   
+            $("#val_mem").val(data['precio']); 
+            
+            btn_val = document.getElementById('id_btn_val');
+            btn_val.href = data['href'];
+            
+            input_status = document.getElementById('codigoP');
+            
+            
+            switch (data['status']) {
+                case "activo":
+                    input_status.classList.remove("is-invalid");
+                    input_status.classList.add("is-valid");
+                    
+                    break;
+                case "nulo":
+                    if($("#codigoP").val() != ""){
+                        input_status.classList.remove("is-valid");
+                        input_status.classList.add("is-invalid");
+                    }
+                    
+                break;
+                
+            }
+
+            
+           
+
+           
+        }
+    });
+
+
+
+    }
+
+    loaddata();
+    
+
+</script>

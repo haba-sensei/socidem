@@ -24,6 +24,7 @@
             <?php include 'views/admin/sidebar.php'; ?>
 
             <div class="col-md-7 col-lg-8 col-xl-9"> 
+            <?php include 'views/admin/promo.php'; ?>
                  <style>
                 .move_to_tomorrow {
                 position: relative;

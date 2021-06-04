@@ -116,29 +116,40 @@
                     <br>
                     <div class="centrar">
 
-                        <strong class="cod_ref">885de4290058cd230e907b9ecb0da276</strong> <br><br>
+                        <strong class="cod_ref"><?=$codigo_referido_ ?></strong> <br><br>
                         <button class="btn btn-info btn_ref " type="button"> Copiar Codigo</button>
 
                     </div>
                     <br>
                 </div>
 
-
-                <div class="ajust_div "  >
+                <?php 
+                if($_SESSION["reg_token_bank"] != "registrado"){
+                echo ' 
+                <form class="theme-form update-Form" action="controller/dashboard/upCCI.controlador.php" method="post" role="form"
+                    data-form="updateCCI" > 
+                    <div class="ajust_div "  >
 
                     <br>
-                    <h5 class="ajust_table"> Si desea participar Ingrese su CCI  Para transferir el 20%  </h5>
+                    <h5 class="ajust_table">Para participar debe Ingresar su CCI Para transferir el 20%  </h5>
                     <br>
                     <div class="centrar">
                         
-                        <input class="form-control input_ref" type="text" placeholder="Codigo CCI min 20 Digitos"> <button class="btn btn-info btn_ref " type="button"> Aceptar</button>
+                        <input class="form-control input_ref" type="text" name="cci" placeholder="Codigo CCI min 20 Digitos"> <button class="btn btn-info btn_ref " type="submit"> Aceptar</button>
                        <br>
                         <small>Código de Cuenta Interbancario</small>
                         <br><br>
-                        <h5>Si no conoce su CCI consulte con su banco</h5>
+                        <h5>Nota: esta acción es obligatoria si desea registrar una membresia </h5>
                     </div>
                     <br>
                 </div>
+                </form>
+                ';
+
+
+                }  
+                ?>
+                
             </div>
         </div>
 

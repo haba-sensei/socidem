@@ -102,7 +102,7 @@ if (!$correo == "" && !$especialidad == "" && !$nombre == "" && !$documento == "
             $_SESSION["codigo_referido"] =  $codigo_referido_;
             $_SESSION["num_colegiatura"] = $num_colegiatura;
             $_SESSION["estado"] = 1;
-            echo ' <script> window.location = "dashboard";  </script>';
+            echo ' <script> window.location = "../../referidos";  </script>';
            
         }elseif ($AfilC == 0 && $correo !== $correo_old) {
 
@@ -147,7 +147,7 @@ if (!$correo == "" && !$especialidad == "" && !$nombre == "" && !$documento == "
 
            
               
-            echo '<script> 	window.location = "dashboard"; </script>';
+            echo '<script> 	window.location = "../../referidos"; </script>';
            
                   
         }
