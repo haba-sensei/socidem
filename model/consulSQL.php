@@ -74,8 +74,9 @@ class consultasSQL{
         echo "Ocurrió algo con la base de datos: " . $e->getMessage();
         return null;
     }
-
+    
     function generate_string($input, $strength = 16) {
+        $input = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $input_length = strlen($input);
         $random_string = '';
         for($i = 0; $i < $strength; $i++) {
