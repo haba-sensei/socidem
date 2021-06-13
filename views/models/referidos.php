@@ -1,18 +1,4 @@
-<div class="breadcrumb-bar">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-12 col-12">
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="inicio">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </nav>
-                <h2 class="breadcrumb-title">Dashboard </h2>
-            </div>
-        </div>
-    </div>
-</div>
+<?php include 'views/admin/breadcrumb_med.php'; ?>
 <!-- /Breadcrumb -->
 <style>
 .ref1 {
@@ -79,7 +65,7 @@
             <?php include 'views/admin/sidebar.php'; ?>
 
             <div class="col-md-7 col-lg-8 col-xl-9">
-
+            <?php include 'views/admin/promo.php'; ?>
                 <div class="ajust_div">
 
                     <br>
@@ -108,22 +94,28 @@
                 </div>
 
 
+                <?php 
+                if($_SESSION["membresia"] != "Gratuito"){ 
+                echo '
 
-                <div class="ajust_div " >
+                    <div class="ajust_div " >
 
                     <br>
                     <h3 class="ajust_table" >Su código</h3>
                     <br>
                     <div class="centrar">
 
-                        <strong class="cod_ref"><?=$codigo_referido_ ?></strong> <br><br>
+                        <strong class="cod_ref">'.$codigo_referido_.'</strong> <br><br>
                         <button class="btn btn-info btn_ref " type="button"> Copiar Codigo</button>
 
                     </div>
                     <br>
-                </div>
+                    </div>
 
-                <?php 
+
+                ';
+                } 
+ 
                 if($_SESSION["reg_token_bank"] != "registrado"){
                 echo ' 
                 <form class="theme-form update-Form" action="controller/dashboard/upCCI.controlador.php" method="post" role="form"

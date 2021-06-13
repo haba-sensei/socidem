@@ -3933,7 +3933,7 @@ html.menu-opened body {
 
 .breadcrumb-bar {
     background-color: #15558d;
-    padding: 15px 0;
+    padding: 0px 0;
 }
 
 .breadcrumb-bar div {
@@ -3949,7 +3949,7 @@ html.menu-opened body {
 
 .page-breadcrumb ol {
     background-color: transparent;
-    font-size: 12px;
+    font-size: 16px;
     margin-bottom: 0;
     padding: 0;
 }
@@ -3964,7 +3964,7 @@ html.menu-opened body {
 
 .page-breadcrumb .breadcrumb-item+.breadcrumb-item:before {
     color: #fff;
-    font-size: 10px;
+    font-size: 17px;
 }
 
 .sort-by {

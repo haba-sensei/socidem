@@ -1,4 +1,4 @@
-<div class="col-md-5 col-lg-4 col-xl-3  "> 
+<div class="col-md-5 col-lg-4 col-xl-3 "> 
     <!-- Profile Sidebar -->
     <div class="profile-sidebar">
         <div class="widget-profile pro-widget-content">
@@ -31,61 +31,8 @@
                             <i class="fas fa-columns"></i>
                             <span>Dashboard</span>
                         </a>
-                    </li>
-
-                    <?php   
-
-                    switch ($membresia_) {
-                        case "Gratuito" :  
-                            echo '<li>
-                            <a href="referidos">
-                                <i class="fas fa-file-invoice"></i>
-                                <span>Plan de Referidos</span>
-
-                            </a>
-                            </li>
-                            <li>
-                            <a href="membresias">
-                                <i class="fas fa-star"></i>
-                                <span>Membresias</span>
-
-                            </a>
-                            </li>
-                            <li>
-                            <a href="perfilMed">
-                                <i class="fas fa-user-cog"></i>
-                                <span>Perfil</span>
-
-                            </a>
-                            </li>
-
-                            <li>
-                                <a href="faqMed">
-                                    <i class="fa fa-question-circle"></i>
-                                    <span>Preguntas Frecuentes</span>
-
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="cambioPass">
-                                    <i class="fas fa-lock"></i>
-                                    <span>Cambiar Password</span>
-
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="salir">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                    <span>Logout</span>
-                                </a>
-                            </li>   
-                            ';   
-                        break;
-                        
-                        case "Profesional":
-                            echo ' <li>
+                    </li> 
+                    <li> 
                             <a href="agenda">
                                 <i class="fas fa-calendar-check"></i>
                                 <span>Configurar Horarios</span>
@@ -123,13 +70,7 @@
 
                             </a>
                         </li>
-                        <li>
-                            <a href="mensajes">
-                                <i class="fas fa-comments"></i>
-                                <span>Mensajes</span>
-
-                            </a>
-                        </li>
+                       
                         <li>
                             <a href="perfilMed">
                                 <i class="fas fa-user-cog"></i>
@@ -159,11 +100,7 @@
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
                             </a>
-                        </li>';
-                            break;
-                    }
-
-                    ?>    
+                        </li>  
                 </ul>
             </nav>
         </div>

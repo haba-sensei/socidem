@@ -20,7 +20,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
     <script src="views/assets/js/script.js"></script>
     
-    <script>
+    <script> 
 $('#sandbox-container').datepicker({
     language: "es", 
     orientation: "bottom left",
@@ -43,6 +43,18 @@ clipboard2.on('success', function(e) {
 
 });
 
+
+var clipboard3 = new ClipboardJS('.link_compartir');
+
+clipboard3.on('success', function(e) {
+    Swal.fire({
+        title: 'PERFIL COPIADO',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500
+    });
+
+});
 
 
 function cambio() {

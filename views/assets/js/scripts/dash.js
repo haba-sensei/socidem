@@ -353,7 +353,30 @@ function addLab(cod_correo) {
 
             $('#cuerpo_addLab').html(data);
             $('#crear_Lab').modal('show');
+            var analisis_lab = new Dropzone(".analisis_lab", {
+                autoProcessQueue: false,
+                parallelUploads: 10,
+                acceptedFiles: '.png, .jpeg, .jpg',
+                addRemoveLinks: true,
+                uploadMultiple: true,
+                maxFiles: 5,
+                dictRemoveFileConfirmation: "Estas seguro?",
+                dictCancelUpload: "Cancelar",
+                dictRemoveFile: "Remover",
+                dictDefaultMessage: "Maximo 5 imagenes",
+                init: function() {
+                    this.on("success", function(file, responseText) {
 
+                        Swal.fire('AGREGADO CON EXITO', '', 'success');
+                        setTimeout(function() { location.reload(); }, 1500);
+                        // console.log(responseText);
+                    });
+                }
+            });
+
+            $('#uploadfiles_lab').click(function() {
+                analisis_lab.processQueue();
+            });
         }
 
     });
@@ -397,27 +420,207 @@ function addRecetas(cod_correo) {
     });
 
 }
+previewIMG('all');
 
-var analisis_lab = new Dropzone(".analisis_lab", {
-    autoProcessQueue: false,
-    parallelUploads: 10,
-    acceptedFiles: '.png, .jpeg, .jpg',
-    addRemoveLinks: true,
-    uploadMultiple: true,
-    maxFiles: 5,
-    dictRemoveFileConfirmation: "Estas seguro?",
-    dictCancelUpload: "Cancelar",
-    dictRemoveFile: "Remover",
-    dictDefaultMessage: "Maximo 5 imagenes",
-    init: function() {
-        this.on("success", function(file, responseText) {
+function addPic2(tipo_pic) {
+    $.ajax({
+        type: 'POST',
+        url: 'controller/dashboard/addPicPerfilMed.controlador.php',
+        data: {
+            tipo_pic: tipo_pic
+        },
+        success: function(data) {
 
-            Swal.fire('AGREGADO CON EXITO', '', 'success');
-            setTimeout(function() { location.reload(); }, 1500);
-            // console.log(responseText);
-        });
-    }
-});
+            $('#cuerpo_addLab').html(data);
+            $('#crear_Lab').modal('show');
+            var analisis_lab = new Dropzone(".analisis_lab", {
+                autoProcessQueue: false,
+                parallelUploads: 5,
+                acceptedFiles: '.png, .jpeg, .jpg',
+                addRemoveLinks: true,
+                uploadMultiple: true,
+                maxFiles: 5,
+                dictRemoveFileConfirmation: "Estas seguro?",
+                dictCancelUpload: "Cancelar",
+                dictRemoveFile: "Remover",
+                dictDefaultMessage: "Maximo 5 imagenes",
+                init: function() {
+                    this.on("success", function(file, responseText) {
+
+                        if (responseText == "limit") {
+                            Swal.fire('LIMITE DE IMAGENES SUPERADO', '', 'error');
+                            $('#crear_Lab').modal('hide');
+
+                        } else {
+                            Swal.fire('AGREGADO CON EXITO', '', 'success');
+                            $('#crear_Lab').modal('hide');
+                        }
+
+
+                    });
+
+
+                }
+            });
+
+            $('#uploadfiles_lab').click(function() {
+                analisis_lab.processQueue();
+                setTimeout(function() {
+                    previewIMG('all');
+                }, 2000);
+            });
+
+
+        }
+    });
+}
+
+function previewIMG(tipo_pic) {
+
+    $.ajax({
+        type: 'POST',
+        url: 'controller/dashboard/list-fotos.controlador.php',
+        data: {
+            tipo_pic: tipo_pic
+        },
+        dataType: "json",
+        success: function(data) {
+
+            switch (tipo_pic) {
+                case 'all':
+
+                    images1 = "";
+                    images2 = "";
+                    images3 = "";
+                    images4 = "";
+
+                    if (data[0]['foto'] != null && data[0]['foto'].length > 0) {
+
+                        var foto_lenght = data[0]['foto'].length;
+                    } else {
+                        var foto_lenght = 0;
+                    }
+                    for (var x = 0; x < foto_lenght; x++) {
+                        // console.log(data[0]['morph'][x]['name']);
+                        images1 += "<div class='pic_" + data[0]['foto'][x]['name'] + "' style='text-align: center; margin-right: 12px;'>  <img style='width: 90px; height: 90px;' src='views/assets/images/perfil/" + data[0]['foto'][x]['name'] + "'> <br> <button class='btn btn-sm btn-danger' type='button' onclick='removePic(&quot;" + data[0]['foto'][x]['name'] + "&quot; , &quot;fotos_varias&quot;)' style='margin-top: 10px;'> Remover </button>   </div>";
+
+                    }
+
+                    $('#preview_fotos').html(images1);
+
+                    if (data[0]['cert'] != null && data[0]['cert'].length > 0) {
+
+                        var cert_lenght = data[0]['cert'].length;
+                    } else {
+                        var cert_lenght = 0;
+                    }
+                    for (var x = 0; x < cert_lenght; x++) {
+
+                        // console.log(data[0]['morph'][x]['name']);
+                        images2 += "<div class='pic_" + data[0]['cert'][x]['name'] + "' style='text-align: center; margin-right: 12px;'>  <img style='width: 90px; height: 90px;' src='views/assets/images/perfil/" + data[0]['cert'][x]['name'] + "'> <br> <button class='btn btn-sm btn-danger' type='button' onclick='removePic(&quot;" + data[0]['cert'][x]['name'] + "&quot; , &quot;certificados&quot;)' style='margin-top: 10px;'> Remover </button>    </div>";
+
+                    }
+
+                    $('#preview_cert').html(images2);
+                    if (data[0]['form'] != null && data[0]['form'].length > 0) {
+
+                        var form_lenght = data[0]['form'].length;
+                    } else {
+                        var form_lenght = 0;
+                    }
+                    for (var x = 0; x < form_lenght; x++) {
+
+                        // console.log(data[0]['morph'][x]['name']);
+                        images3 += "<div class='pic_" + data[0]['form'][x]['name'] + "' style='text-align: center; margin-right: 12px;'>  <img style='width: 90px; height: 90px;' src='views/assets/images/perfil/" + data[0]['form'][x]['name'] + "'> <br> <button class='btn btn-sm btn-danger' type='button' onclick='removePic(&quot;" + data[0]['form'][x]['name'] + "&quot; , &quot;formacion&quot;)' style='margin-top: 10px;'> Remover </button>    </div>";
+
+                    }
+
+                    $('#preview_form').html(images3);
+                    if (data[0]['premios'] != null && data[0]['premios'].length > 0) {
+
+                        var premios_lenght = data[0]['premios'].length;
+                    } else {
+                        var premios_lenght = 0;
+                    }
+                    for (var x = 0; x < premios_lenght; x++) {
+
+                        // console.log(data[0]['morph'][x]['name']);
+                        images4 += "<div class='pic_" + data[0]['premios'][x]['name'] + "' style='text-align: center; margin-right: 12px;'>  <img style='width: 90px; height: 90px;' src='views/assets/images/perfil/" + data[0]['premios'][x]['name'] + "'> <br> <button class='btn btn-sm btn-danger' type='button' onclick='removePic(&quot;" + data[0]['premios'][x]['name'] + "&quot; , &quot;premios&quot;)' style='margin-top: 10px;'> Remover </button>    </div>";
+
+                    }
+
+                    $('#preview_premios').html(images4);
+
+                    break;
+
+                    // default:
+
+                    //     for (var x = 0; x < data[0]['morph'].length; x++) {
+
+                    //         images += "<div class='pic_" + tipo_pic + "' style='text-align: center; margin-right: 12px;'>  <img style='width: 90px; height: 90px;' src='views/assets/images/perfil/" + data[0]['morph'][x]['name'] + "'> <br> <span> Remover </span>   </div>";
+
+
+                    //     }
+                    //     break;
+            }
+
+        }
+
+    });
+
+}
+
+function removePic(pictures, type_pic) {
+
+    Swal.fire({
+        title: '¿Seguro que desea Eliminar?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: `SI`,
+        denyButtonText: `NO ELIMINAR`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'POST',
+                url: 'controller/dashboard/elimPicPerfil.controlador.php',
+                data: {
+                    pictures: pictures,
+                    type_pic: type_pic
+                },
+                success: function(data) {
+
+                    Swal.fire({
+                        title: 'ELIMINADO CON EXITO',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    console.log(data);
+                    previewIMG('all');
+
+                }
+            });
+        } else if (result.isDenied) {
+            Swal.fire('NO ELIMINADO', '', 'error')
+        }
+    });
+}
+
+function enviarCCI() {
+    var cci = document.getElementById("cci_perfil").value;
+
+    $.ajax({
+        type: 'POST',
+        url: 'controller/dashboard/upCCI.controlador.php',
+        data: {
+            cci: cci
+        },
+        success: function(data) {
+            Swal.fire(data, '', 'success')
+        }
+    });
+}
 
 var img_digitales = new Dropzone(".img_digitales", {
     autoProcessQueue: false,
@@ -461,8 +664,25 @@ var recetas = new Dropzone(".recetas", {
     }
 });
 
-$('#uploadfiles_lab').click(function() {
-    analisis_lab.processQueue();
+var pictures = new Dropzone(".pictures", {
+    autoProcessQueue: false,
+    parallelUploads: 10,
+    acceptedFiles: '.png, .jpeg, .jpg',
+    addRemoveLinks: true,
+    uploadMultiple: true,
+    maxFiles: 5,
+    dictRemoveFileConfirmation: "Estas seguro?",
+    dictCancelUpload: "Cancelar",
+    dictRemoveFile: "Remover",
+    dictDefaultMessage: "Maximo 5 imagenes",
+    init: function() {
+        this.on("success", function(file, responseText) {
+
+            Swal.fire('AGREGADO CON EXITO', '', 'success');
+            setTimeout(function() { location.reload(); }, 1500);
+            // console.log(responseText);
+        });
+    }
 });
 
 $('#uploadfiles_img_dig').click(function() {
@@ -471,4 +691,8 @@ $('#uploadfiles_img_dig').click(function() {
 
 $('#uploadfiles_recetas').click(function() {
     recetas.processQueue();
+});
+
+$('#uploadfiles_pictures').click(function() {
+    pictures.processQueue();
 });

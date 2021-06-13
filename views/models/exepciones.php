@@ -1,19 +1,4 @@
-<div class="breadcrumb-bar">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-12 col-12">
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="inicio">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </nav>
-                <h2 class="breadcrumb-title">Dashboard</h2>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /Breadcrumb -->
+<?php include 'views/admin/breadcrumb_med.php'; ?>
 
 <div class="content">
     <div class="container-fluid ajust_fluid">
@@ -29,6 +14,13 @@
             }
             </style>
             <div class="col-md-7 col-lg-8 col-xl-9">
+            <?php include 'views/admin/promo.php'; ?>
+            <?php    
+                if($membresia_ == "Gratuito") {
+                echo '<img src="views/assets/images/exepciones.png" >';
+                }else { 
+
+                ?>
             <form action="" method="post" id="form_primer_toggle"> 
                 <br>
                 <h3 class="" style="margin-left: auto; margin-right: auto; display: table;">Crear Exepciones</h3>
@@ -123,10 +115,10 @@
 
             </form>
                 </div>
-<br><br>
-                <div class="row" style="margin-left: 28%;   margin-right: auto; ">
+                <br><br>
+            <div class="row" style="margin-left: 28%;   margin-right: auto; ">
 
-                    <div class="col-md-12">
+                <div class="col-md-12">
                     <button onclick="saveEx()" type="button" class="btn btn-new btn-info "
                             style="background: #008298; border: 1px solid #ececec; "><i class="fas fa-save"></i> Guardar Exepciones </button>
                     <a href="javascript:" class="btn btn-elim " onclick="limpiar_exep()" style="background: #008298; border: 1px solid #ececec; color:white;"> <i
@@ -135,7 +127,7 @@
 
                 </div>
             </div>
-
+            <?php } ?>
 
         </div>
 

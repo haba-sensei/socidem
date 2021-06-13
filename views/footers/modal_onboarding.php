@@ -257,16 +257,15 @@
                 <div class="container">
                     <div class="row" >
                     
-                        <h4 class="modal-title" style="margin-left: auto; margin-right: auto;">Agregar Analisis de Laboratorio </h4>      
+                        <h4 class="modal-title" style="margin-left: auto; margin-right: auto;">Agregar Imagenes </h4>      
                     
                     </div>
                     <div class="col-md-12">
                         <br>
                         <br>
                         <div id="message"></div>
-                        <form action="controller/dashboard/createALab.controlador.php" class="dropzone analisis_lab"  >
-                             <div id="cuerpo_addLab"></div>
-                        </form>  
+                        <div id="cuerpo_addLab"> 
+                        </div>
                         <br>
                         <br>
                         <input type="button" class="btn med_row" id='uploadfiles_lab' value='Upload Files' >
@@ -276,6 +275,8 @@
         </div>
     </div>
 </div>
+
+
 
 <div class="modal fade" id="crear_img_dig" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-dialog-top" role="document">
@@ -338,4 +339,9 @@
         </div>
     </div>
 </div>
+
+
+
+
+ 
  

@@ -21,10 +21,10 @@ if (!$cci  == "" ) {
          session_reset(); 
          $_SESSION["reg_token_bank"] = "registrado"; 
 
-         echo '<script> window.location = "../../membresias";  </script>';
+         echo "Registro con exito ";  
            
         }elseif ($AfilC >= 1) { 
-                echo "Este CCI ya se encuentra registrado ";    
+                echo "Usted ya tiene un CCI registrado ";    
                   
         }
          

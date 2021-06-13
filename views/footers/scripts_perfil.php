@@ -7,11 +7,11 @@ $(document).ready(function() {
         dataType: "json",
         success: function(data) {
             
-            document.getElementById("preview").src = "views/assets/images/medicos/"+data['foto'];
+           document.getElementById("preview").src = "views/assets/images/medicos/"+data['foto'];
             
            $('#nombre').val(data['nombre_completo']);
            $('#correo').val(data['correo']);
-           $('#documento').val(data['documento']);
+           
            $('#num_colegiatura').val(data['num_colegiatura']);
            $('#especialidad').val(data['especialidad']);
            $('#telefono').val(data['telefono']);
@@ -20,11 +20,30 @@ $(document).ready(function() {
            $('#nombre_clinica').val(data['nombre_clinica']);
            $('#direccion_clinica').val(data['direccion_clinica']);
            $('#precio_consulta').val(data['precio_consulta']);
+           $('#precio_online').val(data['precio_online']);
            $('#services').tagsinput('add', data['servicios']);
+           $('#otros_nro_colegiatura').tagsinput('add', data['otros_nro_colegiatura']);
+           $('#otras_especialidades').tagsinput('add', data['otras_especialidades']); 
+           $('#idiomas').tagsinput('add', data['idiomas']); 
            $('#titulo').val(data['titulo']);
            $('#universidad').val(data['universidad']);
            $('#anio_exp').val(data['años']);
            $('#membresia').val(data['membresia']);
+
+           if(data['check_tel'] == 1){
+            document.getElementById("check_tel").checked = true;
+            
+            }  else {
+                document.getElementById("check_tel").checked = false;
+            }
+
+            
+            if(data['check_correo'] == 1){
+            document.getElementById("check_correo").checked = true; 
+            }  else {
+                document.getElementById("check_correo").checked = false;
+            }
+          
 
             function readURL(input) {
             if (input.files && input.files[0]) {
@@ -78,6 +97,5 @@ $(document).ready(function() {
                     
            
     });
-
 
 </script>

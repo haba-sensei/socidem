@@ -1,19 +1,5 @@
-<div class="breadcrumb-bar">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-12 col-12">
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="inicio">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </nav>
-                <h2 class="breadcrumb-title">Dashboard </h2>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /Breadcrumb -->
+<?php include 'views/admin/breadcrumb_med.php'; ?>
+
 <style>
 .demo-wrap {
     display: flex;
@@ -438,7 +424,7 @@
             <?php include 'views/admin/sidebar.php'; ?>
 
             <div class="col-md-7 col-lg-8 col-xl-9" style="margin-bottom: 12%;">
-
+            <?php include 'views/admin/promo.php'; ?>
 
 
                 <!-- PRICING PLANS -->
@@ -482,7 +468,7 @@
 
                             </div>
                             <?php 
-                             if($_SESSION["reg_token_bank"] != "registrado"){ 
+                             if($_SESSION["reg_token_bank"] == "registrado"){ 
                                  echo '
                                  <br>
                                  <small class="" style="color:#008298; font-weight: 600;">Si Tienes un codigo Promocional</small> 
