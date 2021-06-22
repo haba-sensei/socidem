@@ -167,13 +167,17 @@
                     $separated = explode(',', $servicios_C);
                     $track = md5($codigo_referido_C);
                     
+                    $extra_slug = preg_replace("/[^a-zA-Z0-9 \_\-]+/", '', $nombre_completo_C." ".$especialidad_C." ".$ubicacion_C);
+
+                    
+                    $journalName = preg_replace('/\s+/', '-', $extra_slug);
                     echo '
                     <div class="card" data-jplist-item>
                     <div class="card-body" >
                         <div class="doctor-widget">
                             <div class="doc-info-left">
                                 <div class="doctor-img">
-                                    <a href="perfil-'.$codigo_referido_C.'">
+                                    <a href="perfil-'.$codigo_referido_C.'-'.$journalName.'">
                                         <img src="views/assets/images/medicos/'.$foto_C.'" class="img-fluid" alt="User Image" style="    height: 200px!important; position: relative; left: 8px;">
                                     </a>
                                     <div class="doctor-action" style="position: absolute; bottom: -5px; left: 27px;">
@@ -182,7 +186,7 @@
 									</div>
                                 </div>
                                 <div class="doc-info-cont">
-                                    <h4 class="doc-name"><a href="perfil-'.$codigo_referido_C.'" style="text-transform: capitalize;">Dr. '.$nombre_completo_C.'</a></h4>
+                                    <h4 class="doc-name"><a href="perfil-'.$codigo_referido_C.'-'.$journalName.'" style="text-transform: capitalize;">Dr. '.$nombre_completo_C.'</a></h4>
                                     <p class="doc-speciality" style="text-transform: capitalize;">'.$titulo_C.'</p>
                                     <h5 class="doc-department " style="color: #757575;">
                                         <img src="views/assets/img/especial.png" class="img-fluid" alt="especialidad"> <span class="'.$slug_C.' "> '.$especialidad_C.'</span>
@@ -313,3 +317,16 @@
     </div>
 
 </div>
+
+<script src="views/assets/plugins/jQuery-Plugin-stringToSlug-2.1.0/src/jquery.stringtoslug.js"></script>
+
+<script >
+$(document).ready(function() {
+    $("#name").stringToSlug({
+        setEvents: 'keyup keydown blur',
+        getPut: '#slug',
+        space: '-'
+
+    });
+});
+</script>
