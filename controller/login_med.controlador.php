@@ -43,6 +43,7 @@ if (!$correo == "" && !$clave == "") {
         $rol=$datos_usuario['rol'];
         $codigo_referido=$datos_usuario['codigo_referido'];
         $especialidad=$datos_usuario['especialidad'];
+        $ubicacion=$datos_usuario['ubicacion'];
         $foto=$datos_usuario['foto'];
         $num_colegiatura=$datos_usuario['num_colegiatura'];
         $estado=$datos_usuario['estado']; 
@@ -61,6 +62,7 @@ if (!$correo == "" && !$clave == "") {
         $_SESSION["rol"] = $rol;
         $_SESSION["codigo_referido"] = $codigo_referido;
         $_SESSION["especialidad"] = $especialidad;
+        $_SESSION["ubicacion"] = $ubicacion;
         $_SESSION["foto"] = $foto;
         $_SESSION["num_colegiatura"] = $num_colegiatura;
         $_SESSION['estado'] = $estado;

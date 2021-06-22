@@ -1,4 +1,4 @@
-  <?php include 'model/config.php' ?>
+<?php include 'model/config.php' ?>
   <div class="breadcrumb-bar">
       <div class="container-fluid">
           <div class="row align-items-center">
@@ -137,7 +137,7 @@
                                 }
 
                                 if($check_correo == 1){
-                                    echo '<li>Correo <span>'.$correo_contacto.'</span></li>';
+                                    echo '<li>Correo <span>'.$mail_contacto.'</span></li>';
                                 }else {
                                     echo '  <li>Correo <span>Privado</span></li>';
                                 }
@@ -264,12 +264,12 @@
                                 <div class="mb-0 card card-table">
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                            <div class="col-md-12 col-lg-9">
+                                            <div class="col-md-12 col-lg-12">
 										
                                         <!-- About Details -->
                                         <div class="widget about-widget">
                                             <h4 class="widget-title">Resumen sobre mi</h4>
-                                            <p> <?=$sobre_mi_med ?> </p>
+                                            <p style="text-align: justify;"> <?=$sobre_mi_med ?> </p>
                                         </div>
                                         <!-- /About Details -->
                                     

@@ -67,6 +67,7 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
 
                 $codigo_referido_new=$perfil_usuario['codigo_referido'];
                 $especialidad=$perfil_usuario['especialidad'];
+                $ubicacion=$perfil_usuario['ubicacion'];
                 $foto=$perfil_usuario['foto'];
                 $num_colegiatura=$perfil_usuario['num_colegiatura'];
 
@@ -78,6 +79,7 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
                 $_SESSION['correo'] = $correo;
                 $_SESSION["codigo_referido"] = $codigo_referido_new;
                 $_SESSION["especialidad"] = $especialidad;
+                $_SESSION["ubicacion"] = $ubicacion;
                 $_SESSION["foto"] = $foto;
                 $_SESSION["num_colegiatura"] = $num_colegiatura;
                 $_SESSION["rol"] = $rol;
