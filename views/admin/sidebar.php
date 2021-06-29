@@ -19,6 +19,13 @@
                         <h4 class="mb-2"><?=$especialidad_ ?></h4> 
                         <h4 class="mb-2">Plan <?=$membresia_?> </h4> 
                         <h4 class="mb-2">Meses Activos: <?=$periodo_membresia_ ?></h4> 
+                        <?php 
+                        
+                         $extra_slug = preg_replace("/[^a-zA-Z0-9 \_\-]+/", '', $nombre_." ".$especialidad_." ".$ubicacion_); 
+                         $journalName = preg_replace('/\s+/', '-', $extra_slug);
+                        
+                        ?>
+                        <a href="perfil-<?=$codigo_referido_."-".$journalName ?>" target="_blank" class="btn btn-info_2 btn_ref_2 "  type="button">Ver Perfil</a>
                     </div>
                 </div>
             </div>
@@ -79,21 +86,7 @@
                             </a>
                         </li>
                         
-                        <li>
-                            <a href="faqMed">
-                                <i class="fa fa-question-circle"></i>
-                                <span>Preguntas Frecuentes</span>
-
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="cambioPass">
-                                <i class="fas fa-lock"></i>
-                                <span>Cambiar Password</span>
-
-                            </a>
-                        </li>
+                       
                     
                         <li>
                             <a href="salir">

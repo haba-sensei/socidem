@@ -9,11 +9,16 @@ $routes = array();
 $routes = explode("-", $_GET["ruta"]);
 
 	switch ($routes[0]) {
-		case 'adminDash':
+		case 'adminDash': 
+			include 'adminP/model/data.php';
 			include 'adminP/headers/header_base.php';
 			include "adminP/headers/cabezera.php";
 			
 		break;
+		
+        case 'resumen':
+       	include 'views/headers/header_base.php'; 
+        break;
  	
 		default:
 			include 'views/headers/header_base.php';
@@ -56,6 +61,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "membresias" || 
 			$routes[0] == "calendario" || 
 			$routes[0] == "faqRef" || 
+			$routes[0] == "resumen" || 
 			$routes[0] == "faqMed" || 
 			$routes[0] == "cambioPass" || 
 			$routes[0] == "cita" || 
@@ -85,15 +91,28 @@ $routes = explode("-", $_GET["ruta"]);
 						RUTAS INTERNAS ADMIN
 						=============================================*/
 						if ($routes[1] == "login" || 
-							$routes[1] == "inicio" 
-							 
+							$routes[1] == "inicio" ||
+							$routes[1] == "doctor" ||
+							$routes[1] == "doctores" ||
+							$routes[1] == "paciente" ||
+							$routes[1] == "pacientes" ||
+							$routes[1] == "citas" ||
+							$routes[1] == "cita" ||
+							$routes[1] == "referidosInt" ||
+							$routes[1] == "referidosExt" ||
+							$routes[1] == "referidoInt" ||
+							$routes[1] == "referidoExt" ||
+							$routes[1] == "referidos100" || 
+							$routes[1] == "crearRef" || 
+							$routes[1] == "repMembresias" ||  
+							$routes[1] == "salir" 
 
 						){
 							
 							include "adminP/views/models/".$routes[1].".php";
 							 
 						}else {
-							include "adminP/views/components/404.php";
+							include "adminP/views/models/404.php";
 							 
 						}
 					break;
@@ -176,7 +195,15 @@ $routes = explode("-", $_GET["ruta"]);
 		echo "</body>";
 	break;
 	
-
+    case 'resumen':
+       include 'views/footers/footer_base.php';
+		include "views/footers/scripts_citas.php";
+		include "views/footers/scripts_checkout.php";
+		 
+		include "views/footers/modal_onboarding.php";
+		echo "</body>";
+    break;
+    
 	default:
 		include 'views/footers/footer_base.php';
 		include "views/footers/footer.php";

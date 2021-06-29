@@ -2,13 +2,13 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-8 col-12">
-                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                 <nav aria-label="breadcrumb" class="page-breadcrumb" style="padding-top: 13px; padding-bottom: 13px;">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="inicio">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Busqueda</li>
                     </ol>
                 </nav>
-                <h2 class="breadcrumb-title" data-type="info"><?= $medTotal ?> Doctores </h2>
+                 
             </div>
 
         </div>

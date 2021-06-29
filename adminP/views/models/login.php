@@ -1,46 +1,44 @@
 <div class="main-wrapper login-body">
-    <div class="login-wrapper">
+    <?php
+     include 'adminP/seguridad/session.php'; 
+    ?>
+    <style>
+    .lock-user img {
+    margin-bottom: 39px;
+    width: 241px;
+}
+    </style>
+    <div class="login-wrapper " style="background: #166ea0;">
         <div class="container">
             <div class="loginbox">
                 <div class="login-left">
-                    <img src="adminP/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    <img class="img-fluid" src="views/assets/img/dr-slider.png" alt="Logo">
+                    
                 </div>
-                <div class="login-right">
-                    <div class="login-right-wrap">
-                        <h1>Login</h1>
-                        <p class="account-subtitle">Access to our dashboard</p>
+                <div class="login-right ">
+                    <div class="login-right-wrap ">
+                        <div class="lock-user">
+                            <img class="" src="views/assets/img/logo_final.png" alt="User Image">
+                            <!-- <h4>DASHBOARD</h4> -->
+                        </div>
 
                         <!-- Form -->
-                        <form action="adminP/controller/login.controlador.php" method="post" role="form"
-					class="margin-bottom-0 Login-Form"  data-form="login">
+                        <form class="margin-bottom-0 Login-Form" data-form="login">
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Email">
+                                <input class="form-control" name="email-log" type="text" placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Password">
+                                <input class="form-control" name="pass-log" type="password" placeholder="Password">
                             </div>
-                            <div class="form-group">
-                                <a href="adminDash-inicio" class="btn btn-primary btn-block" >Login</a>
+                            <div class="mb-0 form-group">
+                                <button class="btn btn-primary btn-block" type="submit">Ingresar</button>
                             </div>
+                            <br>
+                            <div class="res-Login"></div>
                         </form>
-                        <!-- /Form -->
+                      
 
-                        <div class="text-center forgotpass"><a href="forgot-password.html">Forgot Password?</a></div>
-                        <div class="login-or">
-                            <span class="or-line"></span>
-                            <span class="span-or">or</span>
-                        </div>
-
-                        <!-- Social Login -->
-                        <div class="social-login">
-                            <span>Login with</span>
-                            <a href="" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" class="google"><i
-                                    class="fa fa-google"></i></a>
-                        </div>
-                        <!-- /Social Login -->
-
-                        <div class="text-center dont-have">Don’t have an account? <a href="register.html">Register</a>
-                        </div>
+                         
                     </div>
                 </div>
             </div>

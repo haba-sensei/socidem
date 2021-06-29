@@ -35,9 +35,9 @@
                  $extra_slug = preg_replace("/[^a-zA-Z0-9 \_\-]+/", '', $nombre_." ".$especialidad_." ".$ubicacion_); 
                  $journalName = preg_replace('/\s+/', '-', $extra_slug);
                  if($_SERVER['SERVER_NAME'] == "localhost"){
-                    echo "http://".$_SERVER['SERVER_NAME']."/socidem/perfil-".$codigo_referido_."-".$journalName;
+                    echo "http://".$_SERVER['SERVER_NAME']."/socidem/resumen-".$codigo_referido_."-".$journalName;
                  }else {
-                     echo "https://".$_SERVER['SERVER_NAME']."/perfil-".$codigo_referido_."-".$journalName;
+                     echo "https://".$_SERVER['SERVER_NAME']."/resumen-".$codigo_referido_."-".$journalName;
                  } 
                 ?>" class="btn btn-info_2 btn_ref_2 link_compartir"   type="button">Compartir Perfil </button>
             </div>

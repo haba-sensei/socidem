@@ -3,8 +3,8 @@ session_start();
 error_reporting(E_ALL ^ E_NOTICE);
 include '../../model/consulSQL.php';
  
-    $usuario_admin = $_POST['a-login'];
-    $clave_admin = md5($_POST['p-login']);
+    $usuario_admin = $_POST['email-log'];
+    $clave_admin = md5($_POST['pass-log']);
  
 
 if (!$usuario_admin == "" && !$clave_admin == "") {
@@ -13,17 +13,13 @@ if (!$usuario_admin == "" && !$clave_admin == "") {
     
     while($datos_admin=mysqli_fetch_assoc($verAfil)){
          
-        $correo_admin=$datos_admin['correo'];
-        $nivel_admin=$datos_admin['nivel'];
+        $user_admin=$datos_admin['user']; 
     } 
     
     $AfilC = mysqli_num_rows($verAfil);
         if ($AfilC > 0) {
          
-        $_SESSION['correo'] = $correo_admin;
-        $_SESSION["nivel"] =  $nivel_admin;
-         
-        
+        $_SESSION['user_admin'] = $user_admin; 
         $_SESSION["iniciarSesion"] = "estable";
        
         date_default_timezone_set('America/Lima');
@@ -32,12 +28,9 @@ if (!$usuario_admin == "" && !$clave_admin == "") {
         $last_login_up = date('l jS F Y h:i:s A');
              
              
-            consultasSQL::UpdateSQL("admin", "user='$usuario_admin', last_login='$last_login_up' ", "user='$correo'");
+        consultasSQL::UpdateSQL("admin", "last_login='$last_login_up' ", "user='$user_admin'");
          
-        echo '<script> 	window.location = "../../adminDash-inicio"; </script>';
-            
-           
-           
+        echo '<script> 	window.location = "adminDash-inicio"; </script>';
            
         } else {
             echo '<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%">Usuario Incorrecto </div> </div>';

@@ -85,7 +85,7 @@ $cita_array = array(
 ); 
 
 $cita_obj = (json_encode($cita_array, true));
-
+$pago_estatus = $obj_json['status'];
  
 $get_pago_id = md5($obj_json['id']);
 
@@ -96,7 +96,8 @@ $pass_room  =  md5(uniqid(rand(), true));
  
  switch ($obj_json['status']) {
      case "approved":
-    $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
+    
+    $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, pago_estado, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$pago_estatus', '$estado'"); 
    
     $estado_cita = "APROBADO";
      
@@ -150,7 +151,7 @@ $pass_room  =  md5(uniqid(rand(), true));
 
     break;
     case "pending":
-        $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
+        $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, pago_estado, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$pago_estatus', '$estado'"); 
         
         $estado_cita = "PENDIENTE";
         
@@ -206,7 +207,7 @@ $pass_room  =  md5(uniqid(rand(), true));
     break;
 
     case "404":
-        $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$estado'"); 
+        $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, pago_estado, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$pago_estatus', '$estado'"); 
       
     break;
 
