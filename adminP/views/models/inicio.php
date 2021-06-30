@@ -9,19 +9,19 @@
 
         <div class="content container-fluid"> 
             <?php 
-             include 'adminP\componentes\resume.php'; 
+             include 'adminP/componentes/resume.php'; 
             ?>
         <div class="row">
             <?php 
-                include 'adminP\componentes\listDoc.php';
-                include 'adminP\componentes\listPac.php';
-                // include 'adminP\componentes\listRef_externo.php';
-                // include 'adminP\componentes\listRef_interno.php';
+                include 'adminP/componentes/listDoc.php';
+                include 'adminP/componentes/listPac.php';
+                // include 'adminP/componentes/listRef_externo.php';
+                // include 'adminP/componentes/listRef_interno.php';
             ?> 
         </div>
         <div class="row">
         <?php 
-            include 'adminP\componentes\listCitas.php';
+            include 'adminP/componentes/listCitas.php';
         ?>
         </div>
         </div>

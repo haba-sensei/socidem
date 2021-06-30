@@ -12,7 +12,7 @@
             <div class="row">
                 <?php
                
-               include 'adminP\componentes\listRef_interno.php';
+               include 'adminP/componentes/listRef_interno.php';
 
                 ?>
             </div>
