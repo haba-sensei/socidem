@@ -70,6 +70,61 @@ function pagarNomina(date) {
 
 }
 
+function pagarNominaUnit(cod, date) {
+
+    $.ajax({
+        type: "POST",
+        url: "adminP/controller/pagoDocUnit.controlador.php",
+        data: {
+            cod: cod,
+            date: date
+        },
+        error: function() {
+            $(".res-pago").html("Ha ocurrido un error en el sistema");
+        },
+        success: function(data) {
+
+
+            switch (data) {
+                case 'existe':
+                    Swal.fire({
+                        title: 'ESTE MES YA ESTA PAGO',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    break;
+                case 'no_veri':
+                    Swal.fire({
+                        title: 'MEDICO NO VERIFICADO',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    break;
+                case 'exito':
+                    Swal.fire({
+                        title: 'MES PAGADO CON EXITO',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setTimeout(function() { location.reload(); }, 2000);
+                    break;
+            }
+
+
+
+
+
+        }
+    });
+
+
+
+
+}
+
 function verPago(id) {
 
     $.ajax({
@@ -85,6 +140,29 @@ function verPago(id) {
     });
 
 
+}
+
+function newRef() {
+    num_ref = document.getElementById("num_ref");
+
+    $.ajax({
+        type: "POST",
+        url: "adminP/controller/newRef.controlador.php",
+        data: {
+            num_ref: num_ref.value,
+
+        },
+        success: function(data) {
+            Swal.fire({
+                title: 'CREADOS CON EXITO',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            setTimeout(function() { location.reload(); }, 2000);
+
+        }
+    });
 }
 
 function cambioEstado(id) {
@@ -107,6 +185,50 @@ function cambioEstado(id) {
 
         }
     });
+}
+
+function NewP() {
+    n_pass = document.getElementById("n-pass");
+    c_pass = document.getElementById("c-pass");
+
+    $.ajax({
+        type: "POST",
+        url: "adminP/controller/newPass.controlador.php",
+        data: {
+            n_pass: n_pass.value,
+            c_pass: c_pass.value,
+
+        },
+        success: function(data) {
+
+            if (data == "ok") {
+
+                Swal.fire({
+                    title: 'ACTUALIZADO CON EXITO',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setTimeout(function() { location.reload(); }, 2000);
+
+            } else {
+
+                Swal.fire({
+                    title: 'PASSWORD NO COINCIDE',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+            }
+
+
+
+        }
+    });
+
+
+
 }
 
 var dataTable1 = $('#doc-table').DataTable({
@@ -148,5 +270,12 @@ var dataTable5 = $('#doc-table2').DataTable({
     "responsive": true,
     "iDisplayLength": "5",
     "aLengthMenu": [5, 10, 50, 100, 150, 200],
+    "lengthMenu": true
+});
+
+var dataTable6 = $('#referidos-100').DataTable({
+    "responsive": true,
+    "iDisplayLength": "10",
+    "aLengthMenu": [10, 50, 100, 150, 200],
     "lengthMenu": true
 });

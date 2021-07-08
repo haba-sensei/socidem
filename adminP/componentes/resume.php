@@ -74,7 +74,7 @@
                 </div>
                 <div class="dash-widget-info">
 
-                    <h6 class="text-muted">Referidos </h6>
+                    <h6 class="text-muted">Referidos Generales</h6>
                     <div class="progress progress-sm">
                         <div class="progress-bar bg-warning w-50"></div>
                     </div>

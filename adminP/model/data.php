@@ -17,7 +17,7 @@ CONTADOR DE CITAS
 /*=============================================
 CONTADOR DE REFERIDOS EXTERNOS
 =============================================*/
-     $refInternoConsProf = ejecutarSQL::consultar("SELECT `codigos_promo`.*, `codigos_promo`.`tipo` FROM `codigos_promo` WHERE `codigos_promo`.`tipo` != 'porcentaje';");
+     $refInternoConsProf = ejecutarSQL::consultar("SELECT `codigos_promo`.*, `codigos_promo`.`tipo` FROM `codigos_promo` ");
      $refInternoTotalProf = mysqli_num_rows($refInternoConsProf);
 /*=============================================
 CONTADOR DE REFERIDOS EXTERNOS
@@ -27,12 +27,12 @@ CONTADOR DE REFERIDOS EXTERNOS
 /*=============================================
 CONTADOR DE REFERIDOS EXTERNOS
 =============================================*/
-     $refPorcentajeConsProf = ejecutarSQL::consultar("SELECT `codigos_promo`.*, `codigos_promo`.`tipo` FROM `codigos_promo` WHERE `codigos_promo`.`tipo` = 'porcentaje';");
+     $refPorcentajeConsProf = ejecutarSQL::consultar("SELECT `codigos_promo`.*, `codigos_promo`.`tipo` FROM `codigos_promo` WHERE `codigos_promo`.`tipo` = 'porcentaje' ORDER BY `codigos_promo`.`usado` ASC");
      $refPorcentajeTotalProf = mysqli_num_rows($refPorcentajeConsProf);
 /*=============================================
 LISTA DE MEDICOS 
 =============================================*/
-     $listaMedConsProf = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `medicos`.`correo`, `medicos`.`periodo_membresia`, `medicos`.`membresia`, `perfil`.`foto`, `perfil`.`codigo_referido` FROM `medicos` , `perfil` WHERE `medicos`.`correo` = `perfil`.`correo`");
+     $listaMedConsProf = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `medicos`.`correo`,  `medicos`.`estado`, `medicos`.`periodo_membresia`, `medicos`.`membresia`, `perfil`.`foto`, `perfil`.`codigo_referido` FROM `medicos` , `perfil` WHERE `medicos`.`correo` = `perfil`.`correo`");
  
 
 ?>

@@ -44,10 +44,18 @@
                 </div>
                 <div class="user-text">
                     <h6>Bienvenido </h6>
-                    <p class="mb-0 text-muted">Administrator</p>
+                    <?php 
+                if( $_SESSION['user_admin'] == "admin"){ 
+                    echo ' <p class="mb-0 text-muted">Admin</p>';
+                }elseif($_SESSION['user_admin'] == "super_admin"){
+                    echo ' <p class="mb-0 text-muted">Super Admin</p>';
+                }
+                    
+                    ?>
+                   
                 </div>
             </div>
-           
+            <a class="dropdown-item" href="adminDash-perfil">Cambiar Password</a>
             <a class="dropdown-item" href="adminDash-salir">Logout</a>
         </div>
     </li>

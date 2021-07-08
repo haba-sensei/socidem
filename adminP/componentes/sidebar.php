@@ -28,8 +28,20 @@
                     <li class="submenu">
                         <a href="#"><i class="fe fe-activity"></i> <span> Referidos </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li>
-                            <a href="adminDash-crearRef"> <span> Crear Codigo </span> </a></li>
+                            <?php 
+                            if( $_SESSION['user_admin'] == "admin"){ 
+                            echo '
+                            <li> 
+                            <a href="adminDash-referidos100"> <span>Referidos 100%</span></a>
+                            </li>
+                            ';
+                            }elseif($_SESSION['user_admin'] == "super_admin"){
+                            echo '';
+                            }
+
+                            ?>
+                           
+
                             <li> 
                             <a href="adminDash-referidosInt"> <span>Referidos internos</span></a>
                             </li>
@@ -38,15 +50,29 @@
                             <a href="adminDash-referidosExt"> <span>Referidos externos</span></a>
                             </li>
 
-                            <li> 
-                            <a href="adminDash-referidos100"> <span>Referidos 100%</span></a>
-                            </li>
+                            
                         </ul>
                     </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fe fe-document"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;"> 
+                            <li> 
+                            <a href="adminP/controller/doctoresGratExcel.controlador.php"> <span>Med. Gratuito</span></a>
+                            </li>
 
-                    <li> 
-                         <a href="adminDash-repMembresias"><i class="fe fe-document"></i> <span>Reporte Membresias</span></a>
+                            <li> 
+                            <a href="adminP/controller/doctoresProfExcel.controlador.php"> <span>Med. Profesional</span></a>
+                            </li>
+
+                            <li> 
+                            <a href="adminP/controller/doctoresVeriExcel.controlador.php"> <span>Med. Verificado</span></a>
+                            </li>
+                            
+                        </ul>
                     </li>
+                    <!-- <li> 
+                         <a href="adminDash-repMembresias"><i class="fe fe-document"></i> <span>Reporte Membresias</span></a>
+                    </li> -->
                      
 
                     <li> 

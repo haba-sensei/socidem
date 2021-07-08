@@ -97,7 +97,7 @@ $routes = explode("-", $_GET["ruta"]);
 							$routes[1] == "paciente" ||
 							$routes[1] == "pacientes" ||
 							$routes[1] == "citas" ||
-							$routes[1] == "cita" ||
+							$routes[1] == "cita" || 
 							$routes[1] == "referidosInt" ||
 							$routes[1] == "referidosExt" ||
 							$routes[1] == "referidoInt" ||
@@ -105,6 +105,7 @@ $routes = explode("-", $_GET["ruta"]);
 							$routes[1] == "referidos100" || 
 							$routes[1] == "crearRef" || 
 							$routes[1] == "repMembresias" ||  
+							$routes[1] == "perfil" ||
 							$routes[1] == "salir" 
 
 						){
