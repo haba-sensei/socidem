@@ -70,14 +70,16 @@ function pagarNomina(date) {
 
 }
 
-function pagarNominaUnit(cod, date) {
+function pagarNominaUnit(cod, date, count) {
+    input_check = document.getElementById("status_" + count);
 
     $.ajax({
         type: "POST",
         url: "adminP/controller/pagoDocUnit.controlador.php",
         data: {
             cod: cod,
-            date: date
+            date: date,
+            status: input_check.checked,
         },
         error: function() {
             $(".res-pago").html("Ha ocurrido un error en el sistema");
@@ -88,11 +90,20 @@ function pagarNominaUnit(cod, date) {
             switch (data) {
                 case 'existe':
                     Swal.fire({
-                        title: 'ESTE MES YA ESTA PAGO',
+                        title: 'ESTA SEMANA ESTA PAGA',
                         icon: 'error',
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    break;
+                case 'revertido':
+                    Swal.fire({
+                        title: 'SEMANA PAGO REVERTIDO',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setTimeout(function() { location.reload(); }, 2000);
                     break;
                 case 'no_veri':
                     Swal.fire({
@@ -104,7 +115,7 @@ function pagarNominaUnit(cod, date) {
                     break;
                 case 'exito':
                     Swal.fire({
-                        title: 'MES PAGADO CON EXITO',
+                        title: 'SEMANA PAGADA CON EXITO',
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 1500
@@ -144,12 +155,14 @@ function verPago(id) {
 
 function newRef() {
     num_ref = document.getElementById("num_ref");
+    caducidad_ref = document.getElementById("caducidad_ref");
 
     $.ajax({
         type: "POST",
         url: "adminP/controller/newRef.controlador.php",
         data: {
             num_ref: num_ref.value,
+            caducidad_ref: caducidad_ref.value
 
         },
         success: function(data) {
@@ -161,6 +174,29 @@ function newRef() {
             });
             setTimeout(function() { location.reload(); }, 2000);
 
+        }
+    });
+}
+
+function verificar(tipo, cod) {
+
+
+    $.ajax({
+        type: "POST",
+        url: "adminP/controller/verificar.controlador.php",
+        data: {
+            tipo: tipo,
+            cod: cod
+        },
+        success: function(data) {
+
+            Swal.fire({
+                title: 'EXITO',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            setTimeout(function() { location.reload(); }, 2000);
         }
     });
 }
@@ -278,4 +314,14 @@ var dataTable6 = $('#referidos-100').DataTable({
     "iDisplayLength": "10",
     "aLengthMenu": [10, 50, 100, 150, 200],
     "lengthMenu": true
+});
+
+
+$(function() {
+    $("#start_date").datepicker({
+        "dateFormat": "yy-mm-dd"
+    });
+    $("#end_date").datepicker({
+        "dateFormat": "yy-mm-dd"
+    });
 });

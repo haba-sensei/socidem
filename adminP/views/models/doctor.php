@@ -19,14 +19,18 @@
 
             <?php
 
-            $consult_medico_unit = ejecutarSQL::consultar("SELECT `perfil`.`codigo_referido`, `perfil`.`correo`, `perfil`.`telefono`, `medicos`.`nombre_completo`, `perfil`.`foto`, `perfil`.`ubicacion`, `medicos`.`membresia`, `medicos`.`periodo_membresia`, `medico_bank`.`cci` FROM `perfil`, `medicos`, `medico_bank` WHERE `perfil`.`codigo_referido` = '$routes[2]' AND `perfil`.`correo` = `medicos`.`correo` AND `perfil`.`codigo_referido` = `medico_bank`.`token_medico`");
+            $consult_medico_unit = ejecutarSQL::consultar("SELECT `perfil`.`codigo_referido`, `perfil`.`correo`, `perfil`.`especialidad`, `perfil`.`num_colegiatura`, `perfil`.`telefono`, `medicos`.`nombre_completo` , `medicos`.`estado`, `perfil`.`foto`, `perfil`.`ubicacion`, `medicos`.`membresia`, `medicos`.`periodo_membresia`, `medico_bank`.`cci` FROM `perfil`, `medicos`, `medico_bank` WHERE `perfil`.`codigo_referido` = '$routes[2]' AND `perfil`.`correo` = `medicos`.`correo` AND `perfil`.`codigo_referido` = `medico_bank`.`token_medico`");
 
             while ($datos_medico_unit = mysqli_fetch_assoc($consult_medico_unit)) {
 
                 $nombre_completo = $datos_medico_unit['nombre_completo'];
                 $foto = $datos_medico_unit['foto'];
                 $cci = $datos_medico_unit['cci'];
+                $codigo_referido = $datos_medico_unit['codigo_referido'];
+                $estado = $datos_medico_unit['estado'];
                 $correo = $datos_medico_unit['correo'];
+                $especialidad = $datos_medico_unit['especialidad'];
+                $num_colegiatura = $datos_medico_unit['num_colegiatura'];
                 $telefono = $datos_medico_unit['telefono'];
                 $ubicacion = $datos_medico_unit['ubicacion'];
                 $membresia = $datos_medico_unit['membresia'];
@@ -43,12 +47,38 @@
                                 </a>
                             </div>
                             <div class="col ml-md-n2 profile-user-info">
-                                <h4 class="user-name mb-0" style="text-transform: capitalize;"><?= $nombre_completo ?></h4>
-                                <h6 class="text-muted"><?= $correo ?></h6>
-                                <h6 class="text-muted"><?= $telefono ?></h6>
+                                <h4 class="mb-0 user-name" style="text-transform: capitalize; padding-bottom: 7px;"><?= $nombre_completo ?>
+                                 </h4> 
+                                 <div class="user-Location"> 
+
+                                <?php 
+                                if($estado == 1){
+                                    echo '<strong >Verificado</strong> <img style="width: 20px;" src="adminP/assets/img/marca-de-verificacion.svg"> ';
+                                } elseif($estado == 2) {
+                                    echo '<strong > Rechazado</strong> <img style="width: 20px;" src="adminP/assets/img/multiply.svg"> ';
+                                }else {
+                                    echo '<strong > No Verificado</strong> <img style="width: 20px;" src="adminP/assets/img/multiply.svg"> ';
+                                }
+                                ?>
+                                
+                                </div>
+                                <div class="user-Location"><i class="fa fa-phone"></i> <?= $telefono ?></div>
+                                <div class="user-Location"><i class="fa fa-envelope-open-o"></i> <?= $correo ?></div>
+                                <div class="user-Location"><i class="fa fa-user"></i> Especialidad:  <?= $especialidad ?></div>
+                                <div class="user-Location"><i class="fa fa-hospital-o"></i> <?= $num_colegiatura ?></div>
                                 <div class="user-Location"><i class="fa fa-map-marker"></i> <?= $ubicacion ?></div> 
                                 <div class="user-Location"><i class="fa fa-address-card"></i> <?= $membresia . " " . $periodo_membresia . " Meses." ?></div> 
                                 <div class="user-Location"><i class="fa fa-credit-card-alt"></i> <?="CCI: ".$cci ?></div> 
+                            </div>
+
+                            <div class="col-auto profile-btn">
+										
+                                <a href="javascript:" onclick="verificar('1', '<?=$codigo_referido?>')" class="btn btn-success">
+                                <i class="fa fa-check"></i> Verificar
+                                </a>
+                                <a href="javascript:" onclick="verificar('3', '<?=$codigo_referido?>')" class="btn btn-danger">
+                                <i class="fa fa-times"></i>  Rechazar
+                                </a>
                             </div>
 
                         </div>

@@ -18,6 +18,10 @@
                     </li>
 
                     <li> 
+                         <a href="adminDash-historial"><i class="fe fe-credit-card"></i> <span>Historial Doc.</span></a>
+                    </li>
+
+                    <li> 
                          <a href="adminDash-pacientes"><i class="fe fe-user"></i> <span>Pacientes</span></a>
                     </li>
 

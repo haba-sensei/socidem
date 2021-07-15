@@ -22,8 +22,10 @@ $count = 0;
                  <table class="table mb-0 table-hover table-center" id="referidos-100">
                      <thead>
                          <tr> 
+                             <th style="width: 26px!important;">Nro</th>
                              <th>Codigo</th>   
                              <th>Porcentaje</th>
+                             <th>Caducidad</th>
                              <th>Estado</th>
                              <th>Acciones</th>
                          </tr>
@@ -37,6 +39,7 @@ $count = 0;
                     $porcentaje = $datos_listaRefInterno['porcentaje']; 
                     $status = $datos_listaRefInterno['status']; 
                     $usado_status = $datos_listaRefInterno['usado']; 
+                    $caducidad_codigo = $datos_listaRefInterno['caducidad'];
                     $count++;
                     if($status == 1){
                         $estado_ = ""; 
@@ -55,7 +58,9 @@ $count = 0;
                     
                     echo '
                     <tr> 
+                    <td >'.$count.'</td>
                     <td> '.$codigo.' </td>  
+                    <td>'.$caducidad_codigo.'</td>
                     <td> '.$porcentaje.' % </td>  
                     <td> '.$usado_.' </td> 
                     <td  > 

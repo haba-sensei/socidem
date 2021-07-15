@@ -48,6 +48,13 @@ if( $_SESSION['user_admin'] == "super_admin"){
                                     <input type="number" id="num_ref" class="form-control" placeholder="0">
                                 </div>
                             </div>
+
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>Caducidad</label>
+                                    <input type="date" min="2021-06-30" id="caducidad_ref" class="form-control" >
+                                </div>
+                            </div>
                              
 
                         </div>

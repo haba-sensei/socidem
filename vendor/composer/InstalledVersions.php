@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '8713fbd7e232fcdaab98a7d333f276c3c203e270',
+    'reference' => '53c6435fbcab9c3e7465f34c1b4f78428ce30227',
     'name' => 'socidem/haba',
   ),
   'versions' => 
@@ -122,6 +122,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '2d8250638b33d73e7a87add65f47fabf91f8ad9b',
+    ),
+    'fightbulc/moment' => 
+    array (
+      'pretty_version' => '1.33.0',
+      'version' => '1.33.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '435d68e481ab0a716358926fb51966e696d297e3',
     ),
     'firebase/php-jwt' => 
     array (
@@ -341,7 +350,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '8713fbd7e232fcdaab98a7d333f276c3c203e270',
+      'reference' => '53c6435fbcab9c3e7465f34c1b4f78428ce30227',
     ),
     'symfony/console' => 
     array (

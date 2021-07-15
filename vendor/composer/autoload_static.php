@@ -64,6 +64,7 @@ class ComposerStaticInit5db98b918d1380c2bb57e9ced948d253
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Moment\\' => 7,
             'MercadoPago\\' => 12,
         ),
         'I' => 
@@ -216,6 +217,10 @@ class ComposerStaticInit5db98b918d1380c2bb57e9ced948d253
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Moment\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fightbulc/moment/src',
         ),
         'MercadoPago\\' => 
         array (

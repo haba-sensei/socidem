@@ -1,4 +1,4 @@
-<?php 
+<?php  
 /*=============================================
 CONTADOR DE MEDICOS 
 =============================================*/
@@ -16,7 +16,7 @@ CONTADOR DE CITAS
      $agendaTotalProf = mysqli_num_rows($agendaConsProf);
 /*=============================================
 CONTADOR DE REFERIDOS EXTERNOS
-=============================================*/
+=============================================*/ 
      $refInternoConsProf = ejecutarSQL::consultar("SELECT `codigos_promo`.*, `codigos_promo`.`tipo` FROM `codigos_promo` ");
      $refInternoTotalProf = mysqli_num_rows($refInternoConsProf);
 /*=============================================
@@ -27,7 +27,7 @@ CONTADOR DE REFERIDOS EXTERNOS
 /*=============================================
 CONTADOR DE REFERIDOS EXTERNOS
 =============================================*/
-     $refPorcentajeConsProf = ejecutarSQL::consultar("SELECT `codigos_promo`.*, `codigos_promo`.`tipo` FROM `codigos_promo` WHERE `codigos_promo`.`tipo` = 'porcentaje' ORDER BY `codigos_promo`.`usado` ASC");
+     $refPorcentajeConsProf = ejecutarSQL::consultar("SELECT `codigos_promo`.*, `codigos_promo`.`tipo` FROM `codigos_promo` WHERE `codigos_promo`.`tipo` = 'porcentaje' ORDER BY `codigos_promo`.`id` ASC");
      $refPorcentajeTotalProf = mysqli_num_rows($refPorcentajeConsProf);
 /*=============================================
 LISTA DE MEDICOS 
