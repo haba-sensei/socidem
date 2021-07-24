@@ -15,10 +15,17 @@ $item = new MercadoPago\Item();
 $item->title = 'Agenda de Cita';
 $item->quantity = 1;
 $item->unit_price = $_SESSION['precio_final'];
- 
+
+$preference->payment_methods = array( 
+    "excluded_payment_types" => array(
+      array("id" => "ticket")
+    ),       
+    "installments" => 1
+  );
+  
 $preference->items = array($item);
  
-
+ 
 $type = 'MP_AGENDA';
 include 'model/config.php';
 

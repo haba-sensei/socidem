@@ -85,7 +85,7 @@
   <div class="st-content">
     <div class="st-height-b125 st-height-lg-b80" id="home"></div>
     <!-- Start Hero Seciton -->
-    <div class="st-hero-wrap st-color1 st-bg st-dynamic-bg overflow-hidden" data-src="assets/img/hero-bg11.jpg">
+    <div class="overflow-hidden st-hero-wrap st-color1 st-bg st-dynamic-bg" data-src="assets/img/hero-bg11.jpg">
       <div class="st-hero st-style1 st-type1">
         <div class="container">
           <div class="st-hero-text" style="top: -32px;">
@@ -98,15 +98,23 @@
           </div>
           <form method="POST" id="form_req" class="st-appointment-form">
             <div class="st-wave-animation st-white"></div>
-            <h2 class="st-appointment-form-title text-center">Registrate, Refiere y Gana</h2>
+            <h2 class="text-center st-appointment-form-title">Registrate, Refiere y Gana</h2>
             <div id="st-alert1"></div>
             <div class="row">
+              <div class="col-lg-6">
+                <div class="st-form-field st-style1">
+                  <select id="tipo_doc" name="tipo_doc">
+                    <option value="Ruc">Ruc</option>
+                    <option value="Dni">Dni</option>
+                  </select> 
+                </div>
+              </div>
               <div class="col-lg-6">
                 <div class="st-form-field st-style1">
                   <input type="text" id="documento" name="documento" onchange="busqueda()" onkeyup="busqueda()" placeholder="Documento" required>
                 </div>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-12">
                 <div class="st-form-field st-style1">
                     <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>

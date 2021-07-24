@@ -1,4 +1,5 @@
-function procesoCita(id, token, fecha, hora, tipo) {
+function procesoCita(id, token, fecha, hora, rango, tipo) {
+
 
     $.ajax({
         type: "POST",
@@ -8,7 +9,8 @@ function procesoCita(id, token, fecha, hora, tipo) {
             secur: token,
             tipo: tipo,
             fecha: fecha,
-            hora: hora
+            hora: hora,
+            rango: rango
 
         },
         success: function(data) {

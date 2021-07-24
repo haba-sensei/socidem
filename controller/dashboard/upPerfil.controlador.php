@@ -109,6 +109,7 @@ if( strlen($img) > 0){
                session_reset();  
                $_SESSION["foto"] = $foto;
                $_SESSION["especialidad"] = $especialidad;
+               $_SESSION["ubicacion"] = $ubicacion;
                $_SESSION["codigo_referido"] =  $codigo_referido_;
                $_SESSION["num_colegiatura"] = $num_colegiatura;
                $_SESSION["estado"] = 1;
@@ -138,6 +139,7 @@ if( strlen($img) > 0){
 
                session_reset();   
                $_SESSION["especialidad"] = $especialidad;
+               $_SESSION["ubicacion"] = $ubicacion;
                $_SESSION["codigo_referido"] =  $codigo_referido_;
                $_SESSION["num_colegiatura"] = $num_colegiatura;
                $_SESSION["estado"] = 1;

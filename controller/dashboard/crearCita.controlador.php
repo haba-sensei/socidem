@@ -9,8 +9,13 @@ include '../../model/sessiones.php';
 $id_cita = $_POST['valor'];
 $codigo_referido = $_POST['secur'];
 $tipo = $_POST['tipo'];
-$fecha = $_POST['fecha'];
+
+$dateObj = DateTime::createFromFormat('d/m/Y', $_POST['fecha']); 
+$fecha = $dateObj->format('Y-m-d'); 
+
 $hora = $_POST['hora'];
+$rango = $_POST['rango'];
+
 
 $verPr = ejecutarSQL::consultar("SELECT `perfil`.`codigo_referido`, `perfil`.`precio_consulta`, `perfil`.`precio_online` FROM `perfil` WHERE `perfil`.`codigo_referido` = '$codigo_referido' ");
 
@@ -25,6 +30,7 @@ $_SESSION['secur'] = $codigo_referido;
 $_SESSION['tipo'] = $tipo;
 $_SESSION['fecha'] = $fecha;
 $_SESSION['hora'] = $hora;
+$_SESSION['rango'] = $rango;
 
 if ($tipo == 'online'){
     $_SESSION['precio_final'] = $precio_online;

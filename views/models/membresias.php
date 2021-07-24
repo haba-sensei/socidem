@@ -458,7 +458,7 @@
                             </div>
                             <div class="plan-cost costo_promo">
                                 <?php 
-                                    if($membresia_ != "Gratuito"){
+                                    if($membresia_ == "Gratuito"){
                                         echo '<p class="plan-price">2</p>
                                         <span>/</span>
                                         <p>Meses <br> <strong class="strong_text"> Gratis</strong> </p>';
@@ -558,7 +558,7 @@
             btn_val.href = data['href'];
             
             input_status = document.getElementById('codigoP');
-            
+             
             
             switch (data['status']) {
                 case "activo":
@@ -566,6 +566,11 @@
                     input_status.classList.add("is-valid");
                     
                     break;
+                case "porcentaje":
+                input_status.classList.remove("is-invalid");
+                input_status.classList.add("is-valid");
+                
+                break;
                 case "nulo":
                     if($("#codigoP").val() != ""){
                         input_status.classList.remove("is-valid");

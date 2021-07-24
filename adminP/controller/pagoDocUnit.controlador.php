@@ -13,10 +13,8 @@ $count_fecha_pago = mysqli_num_rows($consult);
 
 
 if ($count_fecha_pago > 0) {
-   
-    $fecha_martes =  date('Y-m-d', strtotime('-1 week last tuesday'));
     if($status == "true"){
-        $reg = consultasSQL::DeleteSQL("pagos_medicos", "cod_med='".$cod_med."' AND fecha='".$fecha_martes."'");
+        $reg = consultasSQL::DeleteSQL("pagos_medicos", "cod_med='".$cod_med."' AND fecha='".$fecha."'");
         echo "revertido";
     }else {
         echo "existe";
@@ -35,10 +33,9 @@ if ($count_fecha_pago > 0) {
             $medico_activo = $datos_consult_medicos['codigo_referido']; 
             $estado = $datos_consult_medicos['estado']; 
 
-            $fecha_lunes =  date('Y-m-d', strtotime('-1 week last monday'));  
-          
-            $fecha_domingo = date('Y-m-d', strtotime('-1 week next sunday'));
-            
+            $fecha_lunes =  date('Y-m-d', strtotime($fecha." monday this week")); 
+            $fecha_domingo = date('Y-m-d', strtotime($fecha." sunday this week")); 
+         
             $cons_total_ref = ejecutarSQL::consultar("SELECT
             `pagos_membresias`.`estado`,
             `pagos_membresias`.`token_referido`, 
@@ -64,16 +61,15 @@ if ($count_fecha_pago > 0) {
                     $cod_medico = $datos_consult_agenda['cod_medico'];
                     $sumatoria_total = $datos_consult_agenda['sumatoria_total'] +  $total_ref; 
         
-                    if($cod_medico != NULL){ 
-
-                        
+                    if($cod_medico != NULL){  
                         $regPagoMed = consultasSQL::InsertSQL("pagos_medicos", "cod_med, fecha, monto", "'$cod_medico', '$fecha', '$sumatoria_total' "); 
-
-                       
-                    } 
+                        echo "exito";
+                    } else {
+                        echo "no_saldo";
+                    }
                 }
     
-                echo "exito";
+              
             
                
           

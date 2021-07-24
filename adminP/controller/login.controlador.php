@@ -9,17 +9,19 @@ include '../../model/consulSQL.php';
 
 if (!$usuario_admin == "" && !$clave_admin == "") {
      
-    $verAfil = ejecutarSQL::consultar("SELECT `admin`.*, `admin`.`user`, `admin`.`pass` FROM `admin` WHERE `admin`.`user` = '$usuario_admin' AND `admin`.`pass` = '$clave_admin';");
+    $verAfil = ejecutarSQL::consultar("SELECT `admin`.*, `admin`.`user`, `admin`.`role`, `admin`.`pass` FROM `admin` WHERE `admin`.`user` = '$usuario_admin' AND `admin`.`pass` = '$clave_admin';");
     
     while($datos_admin=mysqli_fetch_assoc($verAfil)){
          
         $user_admin=$datos_admin['user']; 
+        $user_role =$datos_admin['role']; 
     } 
     
     $AfilC = mysqli_num_rows($verAfil);
         if ($AfilC > 0) {
          
         $_SESSION['user_admin'] = $user_admin; 
+        $_SESSION['user_role'] = $user_role;
         $_SESSION["iniciarSesion"] = "estable";
        
         date_default_timezone_set('America/Lima');

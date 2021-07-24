@@ -33,6 +33,7 @@ CONTADOR DE REFERIDOS EXTERNOS
 LISTA DE MEDICOS 
 =============================================*/
      $listaMedConsProf = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `medicos`.`correo`,  `medicos`.`estado`, `medicos`.`periodo_membresia`, `medicos`.`membresia`, `perfil`.`foto`, `perfil`.`codigo_referido` FROM `medicos` , `perfil` WHERE `medicos`.`correo` = `perfil`.`correo`");
+    
  
 
 ?>

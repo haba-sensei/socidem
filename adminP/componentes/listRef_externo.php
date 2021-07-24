@@ -27,7 +27,7 @@ if($routes[1] == "referidosExt"){
                              <th>Correo</th>
                              <th>Razon Soc.</th>
                              <th>CCI</th>
-                             <th>Estado</th>
+                             
                          </tr>
                      </thead>
                      <tbody>
@@ -49,7 +49,7 @@ if($routes[1] == "referidosExt"){
                     <td>'. $correo.'</td>
                     <td>'. $razon.'</td>
                     <td>'. $cci.'</td>
-                    <td>'. $status.'</td>
+                    
                     
                     </tr>
                     

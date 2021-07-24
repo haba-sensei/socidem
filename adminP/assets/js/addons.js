@@ -1,32 +1,46 @@
-$(document).ready(function() {
+/*Ajax para Login y registro (clientes y vendedores)*/
+$('.Login-Form').submit(function(e) {
+    e.preventDefault();
+    var data = $(this).serialize();
+    var formType = $(this).attr('data-form');
 
-    /*Ajax para Login y registro (clientes y vendedores)*/
-    $('.Login-Form').submit(function(e) {
-        e.preventDefault();
-        var data = $(this).serialize();
-        var formType = $(this).attr('data-form');
+    if (formType == "login") {
 
-        if (formType == "login") {
+        $.ajax({
+            type: "POST",
+            url: "adminP/controller/login.controlador.php",
+            data: data,
+            beforeSend: function() {
+                $(".res-Login").html('<div class="progress progress-striped active"><div class="progress-bar progress-bar-info" style="width: 100%">Iniciando sesion</div></div>');
+            },
+            error: function() {
+                $(".res-Login").html("Ha ocurrido un error en el sistema");
+            },
+            success: function(data) {
+                $(".res-Login").html(data);
+            }
+        });
+        return false;
+    }
 
-            $.ajax({
-                type: "POST",
-                url: "adminP/controller/login.controlador.php",
-                data: data,
-                beforeSend: function() {
-                    $(".res-Login").html('<div class="progress progress-striped active"><div class="progress-bar progress-bar-info" style="width: 100%">Iniciando sesion</div></div>');
-                },
-                error: function() {
-                    $(".res-Login").html("Ha ocurrido un error en el sistema");
-                },
-                success: function(data) {
-                    $(".res-Login").html(data);
-                }
-            });
-            return false;
-        }
+    if (formType == "register") {
 
-
-    });
+        $.ajax({
+            type: "POST",
+            url: "adminP/controller/register.controlador.php",
+            data: data,
+            beforeSend: function() {
+                $(".res-register").html('<div class="progress progress-striped active"><div class="progress-bar progress-bar-info" style="width: 100%">Registrando</div></div>');
+            },
+            error: function() {
+                $(".res-register").html("Ha ocurrido un error en el sistema");
+            },
+            success: function(data) {
+                $(".res-register").html(data);
+            }
+        });
+        return false;
+    }
 
 
 });
@@ -95,6 +109,7 @@ function pagarNominaUnit(cod, date, count) {
                         showConfirmButton: false,
                         timer: 1500
                     });
+
                     break;
                 case 'revertido':
                     Swal.fire({
@@ -103,7 +118,7 @@ function pagarNominaUnit(cod, date, count) {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    setTimeout(function() { location.reload(); }, 2000);
+
                     break;
                 case 'no_veri':
                     Swal.fire({
@@ -113,6 +128,16 @@ function pagarNominaUnit(cod, date, count) {
                         timer: 1500
                     });
                     break;
+                case 'no_saldo':
+                    Swal.fire({
+                        title: 'PAGO VACIO',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+
+                    break;
                 case 'exito':
                     Swal.fire({
                         title: 'SEMANA PAGADA CON EXITO',
@@ -120,7 +145,7 @@ function pagarNominaUnit(cod, date, count) {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    setTimeout(function() { location.reload(); }, 2000);
+                    // setTimeout(function() { location.reload(); }, 2000);
                     break;
             }
 
@@ -267,6 +292,147 @@ function NewP() {
 
 }
 
+
+
+//Initialize the datePicker(I have taken format as mm-dd-yyyy, you can     //have your owh)
+$("#weeklyDatePicker").datetimepicker({
+    format: 'YYYY-MM-DD',
+    locale: 'es',
+
+});
+
+// //Get the value of Start and End of Week
+// $('#weeklyDatePicker').on('dp.change', function(e) {
+//     var value = $("#weeklyDatePicker").val();
+// });
+
+
+
+function remove_table() {
+    $("#table_hist").remove();
+}
+
+function table_export() {
+    var from_date = $('#weeklyDatePicker').val();
+    window.location = "adminP/controller/doctoresExcelFiltrado.controlador.php?fecha=" + from_date;
+
+}
+
+function table_export_externos() {
+    var from_date = $('#weeklyDatePicker').val();
+    window.location = "adminP/controller/refExternosExcelFiltrado.controlador.php?fecha=" + from_date;
+
+}
+
+function table_row() {
+    var from_date = $('#weeklyDatePicker').val();
+
+    $.ajax({
+        type: "POST",
+        url: "adminP/controller/historialControlador.php",
+        data: {
+            fecha: from_date
+        },
+        success: function(data) {
+
+            $("#tabla_ref").html(data);
+
+
+        }
+    });
+
+
+}
+
+function table_ref_externos() {
+    var from_date = $('#weeklyDatePicker').val();
+
+    $.ajax({
+        type: "POST",
+        url: "adminP/controller/pagoRefExterno.controlador.php",
+        data: {
+            fecha: from_date
+        },
+        success: function(data) {
+
+            $("#tabla_ref").html(data);
+
+
+        }
+    });
+
+
+}
+
+function pagarRefUnit(cod, date, count) {
+    input_check = document.getElementById("status_" + count);
+
+    $.ajax({
+        type: "POST",
+        url: "adminP/controller/pagoRefUnit.controlador.php",
+        data: {
+            cod: cod,
+            date: date,
+            status: input_check.checked,
+        },
+        error: function() {
+            $(".res-pago").html("Ha ocurrido un error en el sistema");
+        },
+        success: function(data) {
+
+
+            switch (data) {
+                case 'existe':
+                    Swal.fire({
+                        title: 'ESTA SEMANA ESTA PAGA',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    break;
+                case 'revertido':
+                    Swal.fire({
+                        title: 'SEMANA PAGO REVERTIDO',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    break;
+                case 'no_saldo':
+                    Swal.fire({
+                        title: 'PAGO VACIO',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+
+                    break;
+                case 'exito':
+                    Swal.fire({
+                        title: 'SEMANA PAGADA CON EXITO',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // setTimeout(function() { location.reload(); }, 2000);
+                    break;
+            }
+
+
+
+
+
+        }
+    });
+
+
+
+
+}
+
 var dataTable1 = $('#doc-table').DataTable({
     "responsive": true,
     "iDisplayLength": "3",
@@ -316,12 +482,9 @@ var dataTable6 = $('#referidos-100').DataTable({
     "lengthMenu": true
 });
 
-
-$(function() {
-    $("#start_date").datepicker({
-        "dateFormat": "yy-mm-dd"
-    });
-    $("#end_date").datepicker({
-        "dateFormat": "yy-mm-dd"
-    });
+var dataTable7 = $('#table_hist').DataTable({
+    "responsive": true,
+    "iDisplayLength": "2",
+    "aLengthMenu": [2, 10, 50, 100, 150, 200],
+    "lengthMenu": true
 });

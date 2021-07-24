@@ -53,8 +53,11 @@ $cod_id_json_cita = $_SESSION['valor'];
 $cod_medico = $_SESSION['secur'];
 $tipo_cita  = $_SESSION['tipo'];
 $precio_consulta = $_SESSION['precio_final'];
-$fecha_start = $_SESSION['fecha'];
-$fecha_hora = $_SESSION['hora'];
+
+$fecha_start =  date('Y-m-d', strtotime($_SESSION['fecha']) ); 
+ 
+$fecha_hora =  $_SESSION['hora'];
+$fecha_hora_rango =  date('G:i', strtotime('+'.$_SESSION['rango'].' minutes ', strtotime($_SESSION['hora']) ) );
  
 
 $paciente_array = array(
@@ -97,7 +100,7 @@ $pass_room  =  md5(uniqid(rand(), true));
  switch ($obj_json['status']) {
      case "approved":
     
-    $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, cita, paciente, tipo_cita, pago_estado, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$cita_obj', '$paciente_obj', '$tipo_cita', '$pago_estatus', '$estado'"); 
+    $varInsert = consultasSQL::InsertSQL("agenda", "id, cod_medico, cod_consulta, email_usuario, nombre_room, pass_room, pagoID, precio_consulta, fecha_start, fecha_hora, fecha_hora_end, cita, paciente, tipo_cita, pago_estado, estado", "'', '$cod_medico', '$cod_consulta', '$correo_', '$nombre_room ', '$pass_room ', '$get_pago_id', '$precio_consulta',  '$fecha_start', '$fecha_hora', '$fecha_hora_rango', '$cita_obj', '$paciente_obj', '$tipo_cita', '$pago_estatus', '$estado'"); 
    
     $estado_cita = "APROBADO";
      

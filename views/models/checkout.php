@@ -149,7 +149,11 @@
                             <div class="booking-item-wrap">
                                 <ul class="booking-date">
                                     <li><i class="fa fa-calendar" style="color: #008298;" aria-hidden="true"></i>
-                                        <?php echo $_SESSION['fecha'] ." , ". $_SESSION['hora']; ?> </li>
+                                        <?php
+                                        
+                                        $nuevaHora =  date('G:i', strtotime('+'.$_SESSION['rango'].' minutes ', strtotime($_SESSION['hora']) ) );
+                                        
+                                        echo $_SESSION['fecha'] ." , ". $_SESSION['hora']." - ".$nuevaHora ?> </li>
                                 <?php 
                                 
                                 if($_SESSION['tipo'] == "presencial"){

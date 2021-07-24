@@ -9,6 +9,7 @@ setlocale(LC_TIME, 'spanish');
 header("Content-Type: application/json", true);
 
     $id_ref_med = $_POST['id_ref'];
+    //
     $type_med = $_POST['type'];
   //  $id_ref_med = '885de4290058cd230e907b9ecb0da276';
     unset($_SESSION['indices_carga']);
@@ -66,17 +67,20 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
         FROM `agenda`
         WHERE `agenda`.`cod_medico` = '$id_ref_med' ");
 
+        $num_row_agenda = mysqli_num_rows($verAgendaReservada);
+
         while($datos_agenda_reserva =mysqli_fetch_assoc($verAgendaReservada)){
-          
-          $datos_agenda_reserva['fecha_start'];
-          $datos_agenda_reserva['fecha_hora'];
+           
+          $fecha_reserva_format = date('d/m/Y', strtotime($datos_agenda_reserva['fecha_start'])); 
 
           $info_reserva[] = array(
-            'fecha_reserva' => $datos_agenda_reserva['fecha_start'],
+            'fecha_reserva' => $fecha_reserva_format,
             'hora_reserva' => $datos_agenda_reserva['fecha_hora']
 
           );
         }
+
+         
         function searchForId($dia, $objAgenda, $fecha) {
           $cont = 0;
           
@@ -88,18 +92,19 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
                 $cont = $cont + 1;
 
                 $agenda_array = array( 
-                'id' => $cont,
-                'token' => $id_ref_med,
-                'agenda' => '',
-                'name' =>  $val['name'],
-                'title' =>  $val['name'],
-                'startHour' =>  $val['startHour'],
-                'endHour' =>  $val['endHour'],
-                'dia' => $val['dia'],
-                'startDate' => $fecha,
-                'customClass' => 'blueClass',  
-                'estado' => $val['estado'],
-                'tipo' => $val['tipo']
+                  'id' => $cont,
+                  'token' => $id_ref_med,
+                  'agenda' => '',
+                  'name' =>  $val['name'],
+                  'title' =>  $val['name'],
+                  'startHour' =>  $val['startHour'],
+                  'endHour' =>  $val['endHour'],
+                  'time' =>  $val['time'],
+                  'dia' => $val['dia'],
+                  'startDate' => $fecha,
+                  'customClass' => 'blueClass',  
+                  'estado' => $val['estado'],
+                  'tipo' => $val['tipo']
                 ); 
     
                 $_SESSION["indices_carga"][] = $val['name'];
@@ -108,7 +113,7 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
             
           }
         
-        }
+        } 
 
         for ($i=0; $i < $total_dias; $i++) { 
             
@@ -139,18 +144,21 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
           $contador = $contador + 1;
           $cita_obj_3[$key]['id']= $contador;   
 
-          $conta_reserva = count($info_reserva);
+          if($num_row_agenda >= 1 ){
+            $conta_reserva = count($info_reserva);
           
-          for ($i=0; $i < $conta_reserva ; $i++) { 
-
-            if($cita_obj_3[$key]['startDate'] == $info_reserva[$i]['fecha_reserva'] && $cita_obj_3[$key]['name'] == $info_reserva[$i]['hora_reserva'] ){
-
-              $cita_obj_3[$key]['estado']= "agendado";  
-      
-            }
-            
-            
-          } 
+            for ($i=0; $i < $conta_reserva ; $i++) { 
+  
+              if($cita_obj_3[$key]['startDate'] == $info_reserva[$i]['fecha_reserva'] && $cita_obj_3[$key]['name'] == $info_reserva[$i]['hora_reserva'] ){
+  
+                $cita_obj_3[$key]['estado']= "agendado";  
+        
+              }
+              
+              
+            } 
+          }
+          
 
         }   
 
@@ -169,6 +177,7 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
             
             
           }   
+          
           
 
           foreach ($cita_obj_3 as $key => $value) {

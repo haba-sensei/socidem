@@ -1,5 +1,5 @@
 <?php 
-if( $_SESSION['user_admin'] == "super_admin"){ 
+if( $_SESSION['user_role'] == 2){ 
     header("Location: adminDash-inicio",  TRUE, 301);  
     exit();
 } 

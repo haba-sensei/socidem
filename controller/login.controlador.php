@@ -80,7 +80,7 @@ if (!$correo == "" && !$clave == "") {
            
            
         } else {
-            echo '<script> alert("Usuario no registrado"); 	window.location = "../registro"; </script>';
+            echo '<script> alert("Usuario no registrado"); 	window.location = "registro"; </script>';
             // echo '<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%">Usuario Incorrecto </div> </div>';
         }
     

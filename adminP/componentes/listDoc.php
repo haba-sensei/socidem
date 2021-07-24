@@ -22,18 +22,18 @@ $fecha_domingo = date('Y-m-d', strtotime('-1 week next sunday'));
 
     </style>
     <!-- Recent Orders -->
-    <div class="card card-table flex-fill">
+    <!-- <div class="card card-table flex-fill">
         <div class="card-header" style="display: inline-flex;">
             <h4 class="card-title">Nomina de Doctores <br>  Inicia (<?=$fecha_lunes?>) Termina (<?=$fecha_domingo ?>)</h4> 
             <a class="btn btn-sm bg-info-light" style="<?= $routes[1] == "doctores" ? 'margin-left: 48%;' : 'margin-left: 48%;' ?>" href="adminP/controller/doctoresExcel.controlador.php">
             <i class="fe fe-vector"></i> Exportar
-            </a>
+            </a> -->
 
             <!-- <a class="btn btn-sm bg-info-light" style="<?= $routes[1] == "doctores" ? '' : '' ?>" onclick="pagarNomina('<?=date('m/Y')?>')">
             <i class="fe fe-money"></i> Pagar
             </a> -->
             
-        </div>
+        <!-- </div> -->
        
         <div class="card-body">
             <div class="table-responsive">
@@ -41,9 +41,7 @@ $fecha_domingo = date('Y-m-d', strtotime('-1 week next sunday'));
                     <thead>
                         <tr>
                             <th>Nombre Doc.</th>  
-                            <th>Membresia</th>
-                            <th>Monto</th> 
-                            <th>Estado</th> 
+                            <th>Membresia</th> 
                             <th>Acciones</th> 
                         </tr>
                     </thead>
@@ -134,7 +132,7 @@ $fecha_domingo = date('Y-m-d', strtotime('-1 week next sunday'));
                         $switch_estado = ""; 
                     }
                     echo '
-                        <tr >
+                        <tr > 
                         <td style="display: inline-grid;">
                             <h2 class="table-avatar">
                                 <a href="adminDash-doctor-'.$codigo_referido.'" class="mr-2 avatar avatar-sm">
@@ -170,31 +168,21 @@ $fecha_domingo = date('Y-m-d', strtotime('-1 week next sunday'));
                         echo '
                         
                          </td>
-
-                        <td class="text-left">S/. '.$subtotal.' </td>
-                        
-                        <td class="text-left">
-                        ';
-                            if($estado_pago != "Pagado"){
-                                echo '<span class="badge badge-pill bg-danger inv-badge">No Pagado</span>';
-                            }else {
-                                echo '<span class="badge badge-pill bg-info inv-badge">Pagado</span>';
-                            } 
-
-
-                        $fecha_martes =  date('Y-m-d', strtotime('-1 week last tuesday'));
-                        $count++;
-                        echo '   
+  
                               
                         </td>
                         
                         
                         
-                        <td class="text-left">
-                            <div class="status-toggle">
-                            <input type="checkbox" value="'.$codigo_referido.'" id="status_'.$count.'" class="check" '.$switch_estado.' >
-                            <label for="status_'.$count.'" class="checktoggle"  onclick="pagarNominaUnit(&quot;'.$codigo_referido.'&quot; , &quot;'.$fecha_martes.'&quot; , &quot;'.$count.'&quot; )" >checkbox</label>
-                            </div>
+                        <td class="text-center">
+
+                        <div class="actions">
+                        
+                            <a class="btn btn-sm bg-success-light"  href="adminDash-doctor-'.$codigo_referido.'"  ">
+                                <i class="fe fe-eye"></i> Verificar Medico
+                            </a>
+                        </div>
+
                         </td>
                         
                         </tr>

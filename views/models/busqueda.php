@@ -213,23 +213,9 @@
                                     
                                     <div class="d-flex align-items-top"  style="position: relative; bottom: -7px;">
                                     <div class="pr-1">
-                                        <i class="svg-icon svg-icon-pin svg-icon-size-16 svg-icon-color-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8.5,0 C5.43694236,0 3,2.4812504 3,5.6 C3,10.4 8.5,16 8.5,16 C8.5,16 14,10.3187504 14,5.6 C14,2.4812504 11.5630584,0 8.5,0 Z M8.5,7.38461538 C7.47447953,7.38461538 6.66666667,6.57115422 6.66666667,5.53846154 C6.66666667,4.5057696 7.47447953,3.69230769 8.5,3.69230769 C9.5255212,3.69230769 10.3333333,4.5057696 10.3333333,5.53846154 C10.3333333,6.57115422 9.5255212,7.38461538 8.5,7.38461538 Z"></path></svg>
-                                    </i>
+                                         
                                     </div>
-                                    <div class="address-name">
-                                    <p class="m-0 d-flex align-items-center">
-                                    <span class="text-ellipsis text-base-color" style="text-transform: capitalize;">'.$nombre_clinica_C.' -  '.$direccion_clinica_C.' </span>
-                                    
                                      
-                                    
-                                    </a>
-                                    </p>
-                                    <p class="m-0 text-ellipsis small" style="font-size: 15px;">
-                                                 
-                                            </p>
-                                              
-                                       
-                                    </div>
                                 </div>
                                     </div>
                                      

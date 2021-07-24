@@ -3,7 +3,7 @@ if($routes[1] == "pacientes"){
     echo '<div class="col-md-12 d-flex">';
 }else {
     echo '<div class="col-md-12 d-flex">';
-}
+} 
 
 ?> 
      <!-- Feed Activity -->

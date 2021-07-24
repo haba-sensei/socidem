@@ -12,7 +12,7 @@
                  <?php include 'views/admin/promo.php'; ?>
                 <link rel="stylesheet" href="views/assets/css/agenda.css">
                 <?php 
-                if($membresia_ == "Gratuito") {
+                if($membresia_ == "Gratuito"  ) {
                 echo '<img src="views/assets/images/agenda.png" >';
                 }else {
 

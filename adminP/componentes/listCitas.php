@@ -1,7 +1,10 @@
+
+ 
 <div class="col-md-12">
 
     <!-- Recent Orders -->
-    <div class="card card-table">
+    <div class="card card-table" style="    margin-left: 44px;
+    margin-right: 44px;">
         <div class="card-header">
             <h4 class="card-title">Historial de citas
                 <a class="btn btn-sm bg-info-light" style="<?= $routes[1] == "citas" ? 'margin-left: 70%;' : 'margin-left: 72%;' ?>" href="adminP/controller/citasExcel.controlador.php">

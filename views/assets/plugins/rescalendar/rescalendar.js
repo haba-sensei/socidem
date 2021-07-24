@@ -158,7 +158,7 @@
                                 case 'libre':
                                     var hora_init = moment(obj_data.title, 'h:mm');
                                     var hora_end = moment().format("h:mm");
-                                    var et = moment().format("D/MM/Y");
+                                    var et = moment('').format("D/MM/Y");
 
                                     if (hora_init.isBefore(hora_end) == false) {
 
@@ -175,7 +175,8 @@
                                                 break;
 
                                             case 'paciente':
-                                                onclik_event = 'onclick="procesoCita(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; , &apos;' + obj_data.startDate + '&apos; , &apos;' + obj_data.title + '&apos; , &apos;' + obj_data.tipo + '&apos;)"';
+
+                                                onclik_event = 'onclick="procesoCita(&apos;' + obj_data.id + '&apos; , &apos;' + obj_data.token + '&apos; , &apos;' + obj_data.startDate + '&apos; , &apos;' + obj_data.title + '&apos; ,  &apos;' + obj_data.time + ' &apos; ,  &apos;' + obj_data.tipo + '&apos;)"';
                                                 break;
                                         }
 

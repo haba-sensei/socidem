@@ -47,7 +47,7 @@ if($routes[1] == "referidosInt"){
                     <tr> 
                     <td> '.$codigo.' </td> 
                     <td>'. $tipo.'</td> 
-                    <td>'. $porcentaje.'</td>
+                    <td>'. $porcentaje.' %</td>
                     <td>'. $cantidad.'</td>
                     <td>'. $estado_ .'</td>
                     

@@ -7,7 +7,7 @@ include '../../model/consulSQL.php';
 header("Content-Type: application/vnd.ms-excel; charset=ISO-8859-1 ");
 header("Content-Disposition: attachment; filename=med_prof_no_verificado.xls");
 
-$consult = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `medicos`.`correo`, `medicos`.`estado`, `medicos`.`periodo_membresia`, `medicos`.`membresia`, `perfil`.`telefono`, `perfil`.`codigo_referido`, `medico_bank`.`cci` FROM `medicos`, `perfil`, `medico_bank` WHERE `medicos`.`correo` = `perfil`.`correo` AND `medicos`.`membresia` = 'Profesional' AND `medicos`.`estado` = '0' AND `perfil`.`codigo_referido` = `medico_bank`.`token_medico`");
+$consult = ejecutarSQL::consultar("SELECT `medicos`.`nombre_completo`, `medicos`.`correo`, `medicos`.`estado`, `medicos`.`periodo_membresia`, `medicos`.`membresia`, `perfil`.`telefono`, `perfil`.`codigo_referido`, `medico_bank`.`cci` FROM `medicos`, `perfil`, `medico_bank` WHERE `medicos`.`correo` = `perfil`.`correo` AND `medicos`.`membresia` = 'Profesional' AND `medicos`.`estado` = '3' AND `perfil`.`codigo_referido` = `medico_bank`.`token_medico`");
 $count = 0;
 
 

@@ -7,6 +7,7 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 include '../model/consulSQL.php'; 
 require '../vendor/autoload.php';
 
+$valor_tipo = $_POST['tipo_doc']; 
 $valor_documento = $_POST['documento'];
 $valor_email = $_POST['email'];
 $valor_razon = $_POST['razon'];
@@ -21,13 +22,15 @@ if($count == 0){
     $valor_codigo = generate_string($valor_documento, 8); 
 
     $varInsert = consultasSQL::InsertSQL("referidos_externos", 
-                                        "documento, 
+                                        "tipo,
+                                        documento, 
                                         codigo,
                                         correo, 
                                         razon, 
                                         cci, 
                                         status", 
-                                        "'$valor_documento', 
+                                        "'$valor_tipo', 
+                                        '$valor_documento', 
                                         '$valor_codigo', 
                                         '$valor_email', 
                                         '$valor_razon', 
@@ -39,12 +42,17 @@ if($count == 0){
     tipo,
     cantidad, 
     porcentaje,  
-    status", 
+    status,
+    usado,
+    caducidad    
+    ", 
     "'$valor_codigo', 
     'externo', 
     '0', 
     '20',
-    '0'
+    '0',
+    '0',
+    NULL
     "); 
 
     $subject = "Codigo de Referido: Medicos en Directo";

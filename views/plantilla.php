@@ -98,7 +98,9 @@ $routes = explode("-", $_GET["ruta"]);
 							$routes[1] == "pacientes" ||
 							$routes[1] == "citas" ||
 							$routes[1] == "cita" || 
+							$routes[1] == "usuarios" || 
 							$routes[1] == "historial" || 
+							$routes[1] == "pagosExternos" ||  
 							$routes[1] == "referidosInt" ||
 							$routes[1] == "referidosExt" ||
 							$routes[1] == "referidoInt" ||

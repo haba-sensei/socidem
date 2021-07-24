@@ -129,7 +129,7 @@
 
                                                         echo '
                                                             <tr >
-                                                                 <td>Pago del mes de '.$fecha_mes.' del '.$fecha_year.'</td>
+                                                                 <td>Pago Correspondiente de la fecha ('.$fecha.') </td>
                                                                  <td>S/. '. $monto .'</td>
                                                             </tr>
                                                         ';
@@ -184,6 +184,7 @@
                                             $token_referido = $datos_medico_membresia['token_referido'];
                                             $monto_reducido_token = $datos_medico_membresia['monto_reducido_token'];
                                             $estado = $datos_medico_membresia['estado'];
+                                            $fecha = $datos_medico_membresia['fecha'];
                                             $precio_membresia = $datos_medico_membresia['precio'];
                                             $pagoMembresia = $datos_medico_membresia['pagoMembresia'];
 
@@ -198,34 +199,13 @@
                                             }else{
                                                 $token_reducido_resp = $monto_reducido_token;
                                             } 
-
-
-
-                                            $objPago = json_decode($pagoMembresia, true);
-
-                                            foreach( $objPago as $key => $val){ 
-                                
-                                                if($key == "fecha_created"){
-                                                    $fecha_cons = strtotime($val);
-                                                    $fecha_created = date('d/m/Y', $fecha_cons);
-
-                                                   
-                                                } 
-                                                
-                                            
-                                            } 
-                                            // $fecha_mod = substr($fecha, 0, 2);
-                                            // $fecha_year = substr($fecha, 3, 4);
-
-                                            // $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-                                            // $fecha_mes = $meses[$fecha_mod-1];
-
+  
 
                                             echo '
                                             <tr >
                                              
                                                 <td> '. $cod_pago .'</td>
-                                                <td> '. $fecha_created .'</td>
+                                                <td> '. $fecha .'</td>
                                                 <td> '. $precio_membresia .'</td>
                                                 <td> '. $token_ref_resp .'</td>
                                                 <td> '. $token_reducido_resp .'</td>

@@ -158,7 +158,7 @@
                                                                         <?php 
 
                                                                     switch ($tipo_cita) {
-                                                                    case "presencial":
+                                                                    case "Presencial":
                                                                         if ($objCita_de['status'] == "404"){
                                                                             echo "<a href='javascript:' class='btn btn-sm bg-danger-light'>
                                                                             <i class='fas fa-minus'></i> Pago Rechazado
@@ -171,7 +171,8 @@
                                                                     
                                                                     break;
 
-                                                                    case "online":
+                                                                    case "Online":
+                                                                         
                                                                         if($estado == 2){
                                                                             echo "
                                                                                 <a href='javascript:' class='btn btn-sm bg-danger-light'>
@@ -185,6 +186,8 @@
                                                                             <i class='fas fa-minus'></i> Pago Rechazado
                                                                             </a>";
                                                                         }else {
+
+                                                                            
                                                                             if($estado == 2){
                                                                                 echo "
                                                                                 <a href='javascript:' class='btn btn-sm bg-danger-light'>
