@@ -1,7 +1,9 @@
-<?php
+<?php 
+use PHPMailer\PHPMailer\PHPMailer;
 session_start();
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
-include '../model/consulSQL.php';
+include '../model/consulSQL.php';  
+require_once '../vendor/autoload.php';
 date_default_timezone_set('America/Lima');
 setlocale(LC_ALL,"es_ES"); 
 setlocale(LC_TIME, 'spanish'); 
@@ -43,59 +45,54 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
         }
          
         else {
+            $code = md5(time());
 
-            $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado, membresia, periodo_membresia", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc', 'Gratuito', 0"); 
+            $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado, membresia, periodo_membresia, token_confirm, mail_confirm", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc', 'Gratuito', 0, '$code', 0"); 
             $regPerfil = consultasSQL::InsertSQL("perfil", "correo, foto, telefono, num_colegiatura, especialidad, servicios, titulo, universidad, años, ubicacion, sobre_mi, nombre_clinica, direccion_clinica, precio_consulta, codigo_referido", "'$correo_doc', '$foto_doc', '$telefono_doc', '$num_colegiado_doc', '$especialidad_doc', '', '', '', '', '$ciudad_doc', '', '', '', '', '$cod_referido'"); 
             $regCodigosPromo = consultasSQL::InsertSQL("codigos_promo", "codigo, tipo, cantidad, porcentaje, status", "'$cod_referido', 'medico', 0, 20, 0"); 
             $regAgenda = consultasSQL::InsertSQL("agenda_medica", "cod_medico, agenda, estado", "'$cod_referido', '[]', '1'"); 
             $regExepciones = consultasSQL::InsertSQL("exepciones", "cod_med, exepciones, estado", "'$cod_referido', '[]', '1'"); 
-            $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` WHERE `medicos`.`correo` = '$correo_doc' AND `medicos`.`pass` = '$pass_doc';");
             
-    
-            while($datos_usuario=mysqli_fetch_array($verAfil)){
-                $rol = $datos_usuario['rol'];
-                $nombre = $datos_usuario['nombre_completo'];
-                $correo = $datos_usuario['correo'];
-                $estado = $datos_usuario['estado']; 
-                $membresia=$datos_usuario['membresia']; 
-                $periodo_membresia=$datos_usuario['periodo_membresia']; 
-                $last_login = $datos_usuario['last_login'];
-                
-                $verPerfil = ejecutarSQL::consultar("SELECT `perfil`.`correo`, `perfil`.`codigo_referido`, `perfil`.`especialidad`, `perfil`.`num_colegiatura`, `perfil`.`foto`  FROM `perfil` WHERE `perfil`.`correo` = '$correo' ");
-    
-                while($perfil_usuario=mysqli_fetch_array($verPerfil)){ 
-
-                $codigo_referido_new=$perfil_usuario['codigo_referido'];
-                $especialidad=$perfil_usuario['especialidad'];
-                $ubicacion=$perfil_usuario['ubicacion'];
-                $foto=$perfil_usuario['foto'];
-                $num_colegiatura=$perfil_usuario['num_colegiatura'];
-
-
-                }
-                $_SESSION["iniciarSesion"] = "ok";
-                
-                $_SESSION['nombre'] = $nombre;
-                $_SESSION['correo'] = $correo;
-                $_SESSION["codigo_referido"] = $codigo_referido_new;
-                $_SESSION["especialidad"] = $especialidad;
-                $_SESSION["ubicacion"] = $ubicacion;
-                $_SESSION["foto"] = $foto;
-                $_SESSION["num_colegiatura"] = $num_colegiatura;
-                $_SESSION["rol"] = $rol;
-                $_SESSION['estado'] = $estado;
-                $_SESSION['membresia'] = $membresia;
-                $_SESSION['periodo_membresia'] = $periodo_membresia;
-                $_SESSION['last_login'] = $last_login; 
-
-                
-            } 
             
-           
+            
+            $valor_codigo = "http://localhost/socidem/controller/mail_med_confirm.controlador.php?code=".$code;
+            
             if (isset($_GET['code'])){ 
                 echo '<script> 	window.location = "../perfilMed"; </script>';
-            }else{
-                echo '<script> 	window.location = "perfilMed"; </script>';
+            }else { 
+
+            include 'plantillaCorreo.php';
+            
+            $mail = new PHPMailer(true);
+            
+            try {
+                    
+                $mail->isSMTP();                                            
+                $mail->Host       = 'mail.insitesoluciones.com';                 
+                $mail->SMTPAuth   = true;                                 
+                $mail->Username = "medico@insitesoluciones.com";  
+                $mail->Password = "IFUMRjx;go8L";                          
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+                $mail->Port       = 587;                                    
+
+                //Recipients
+                $mail->setFrom('medico@insitesoluciones.com', 'Medicos En Directo ');
+                $mail->addAddress($correo_doc, 'Externo');      
+
+
+                //Content
+                $mail->isHTML(true);                                   
+                $mail->Subject = "Confirmacion de mail ";
+                $mail->Body    = $body;
+                $mail->AltBody = "Enviado desde Medicos en Directo.";
+
+                $mail->send();
+                echo "Registro Exitoso Revise su Correo";
+            } catch (Exception $e) {
+                echo "El Correo no fue enviado. Error interno";
+            }
+            
+           
             }
             
         }

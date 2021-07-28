@@ -1,9 +1,10 @@
-<?php
+<?php 
 session_start(); 
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 include '../model/consulSQL.php';
 require_once '../vendor/autoload.php';
 require_once '../model/credencialesReg.php';
+use PHPMailer\PHPMailer\PHPMailer;
 
 if (isset($_GET['code'])){
     
@@ -48,41 +49,71 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
         }
          
         else {
+            $code = md5(time());
 
-           
-
-            $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, last_login, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$last_login', '$estado' "); 
+            $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, token_confirm, mail_confirm, last_login, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$code', 0, '$last_login', '$estado' "); 
             
             $correo_md5 = md5($correo);
             $regHistorial = consultasSQL::InsertSQL("historial_medico", "correo, historia_clinica, analisis_lab, img_digitales, recetas_med", "'$correo_md5', '[]', '[]', '[]', '[]' "); 
 
+            if (isset($_GET['code'])){  
 
-            $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` WHERE `pacientes`.`correo` = '$correo' AND `pacientes`.`pass` = '$pass';");
-    
-            while($datos_usuario=mysqli_fetch_assoc($verAfil)){
-                $id_usuario=$datos_usuario['id'];
-                $nombre=$datos_usuario['nombre'];
-                $correo=$datos_usuario['correo'];
-                $rol=$datos_usuario['rol'];
-                $telefono=$datos_usuario['telefono'];
-                $estado=$datos_usuario['estado']; 
-                $last_login=$datos_usuario['last_login'];
+                $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` WHERE `pacientes`.`correo` = '$correo' AND `pacientes`.`pass` = '$pass';");
 
-                $_SESSION["iniciarSesion"] = "ok";
-                $_SESSION['id'] = $id_usuario;
-                $_SESSION['nombre'] = $nombre;
-                $_SESSION['correo'] = $correo;
-                $_SESSION["rol"] = $rol;
-                $_SESSION['telefono'] = $telefono;
-                $_SESSION['estado'] = $estado;
-                $_SESSION['last_login'] = $last_login;
-            } 
-            
-           
-            if (isset($_GET['code'])){ 
-                echo '<script> 	window.location = "../inicio"; </script>';
-            }else{
-                echo '<script> 	window.location = "inicio"; </script>';
+                while($datos_usuario=mysqli_fetch_assoc($verAfil)){
+                    $id_usuario=$datos_usuario['id'];
+                    $nombre=$datos_usuario['nombre'];
+                    $correo=$datos_usuario['correo'];
+                    $rol=$datos_usuario['rol'];
+                    $telefono=$datos_usuario['telefono'];
+                    $estado=$datos_usuario['estado']; 
+                    $last_login=$datos_usuario['last_login'];
+
+                    $_SESSION["iniciarSesion"] = "ok";
+                    $_SESSION['id'] = $id_usuario;
+                    $_SESSION['nombre'] = $nombre;
+                    $_SESSION['correo'] = $correo;
+                    $_SESSION["rol"] = $rol;
+                    $_SESSION['telefono'] = $telefono;
+                    $_SESSION['estado'] = $estado;
+                    $_SESSION['last_login'] = $last_login;
+                } 
+                    echo '<script> 	window.location = "../inicio"; </script>';
+            }else {
+
+                
+                $valor_codigo = "http://localhost/socidem/controller/mail_confirm.controlador.php?code=".$code;
+                
+                include 'plantillaCorreo.php';
+                
+                $mail = new PHPMailer(true);
+                
+                try {
+                        
+                    $mail->isSMTP();                                            
+                    $mail->Host       = 'mail.insitesoluciones.com';                 
+                    $mail->SMTPAuth   = true;                                 
+                    $mail->Username = "medico@insitesoluciones.com";  
+                    $mail->Password = "IFUMRjx;go8L";                          
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+                    $mail->Port       = 587;                                    
+
+                    //Recipients
+                    $mail->setFrom('medico@insitesoluciones.com', 'Medicos En Directo ');
+                    $mail->addAddress($correo, 'Externo');      
+
+
+                    //Content
+                    $mail->isHTML(true);                                   
+                    $mail->Subject = "Confirmacion de mail ";
+                    $mail->Body    = $body;
+                    $mail->AltBody = "Enviado desde Medicos en Directo.";
+
+                    $mail->send();
+                    echo "Registro Exitoso Revise su Correo";
+                } catch (Exception $e) {
+                    echo "El Correo no fue enviado. Error interno";
+                }
             }
             
         }

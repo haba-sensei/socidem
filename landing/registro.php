@@ -62,15 +62,15 @@ if($count == 0){
 	try {
 		                    
 		$mail->isSMTP();                                            
-		$mail->Host       = 'mail.stampiza2.com';                 
+		$mail->Host       = 'mail.insitesoluciones.com';                 
 		$mail->SMTPAuth   = true;                                 
-		$mail->Username = "medicos@stampiza2.com";  
-        $mail->Password = "V&rdmTt0uDp^";                          
+		$mail->Username = "medico@insitesoluciones.com";  
+        $mail->Password = "IFUMRjx;go8L";                          
 		$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
 		$mail->Port       = 587;                                    
 	
 		//Recipients
-		$mail->setFrom('haba@stampiza2.com', 'Medicos En Directo ');
+		$mail->setFrom('medico@insitesoluciones.com', 'Medicos En Directo ');
 		$mail->addAddress($valor_email, 'Externo');      
 		 
 	 

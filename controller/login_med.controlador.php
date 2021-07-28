@@ -30,7 +30,7 @@ if (!$correo == "" && !$clave == "") {
     if (isset($_GET['code'])){  
         $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`correo` = `medicos`.`correo` WHERE `medicos`.`correo` = '$correo' ");
     }else {
-        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`correo` = `medicos`.`correo` WHERE `medicos`.`correo` = '$correo' AND `medicos`.`pass` = '$clave';");
+        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`mail_confirm`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`correo` = `medicos`.`correo` WHERE `medicos`.`correo` = '$correo' AND `medicos`.`pass` = '$clave' AND `medicos`.`mail_confirm` = 1");
     }
     
     
@@ -100,7 +100,7 @@ if (!$correo == "" && !$clave == "") {
            
            
         } else {
-            echo '<script> alert("Usuario no registrado"); 	window.location = "registroDoc"; </script>';
+            echo '<script> alert("Usuario no registrado"); 	window.location = "loginMed"; </script>';
             // echo '<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%">Usuario Incorrecto </div> </div>';
         }
     

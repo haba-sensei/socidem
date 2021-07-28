@@ -695,7 +695,7 @@ background-position: center top;
 
                         <span > Bienvenido : texto de ejemplo....</span>
 
-                        <strong>Codigo de Referido: <span style='font-weight: 500;' > $valor_codigo </span></strong>  
+                        <strong>Link de confirmacion : <span style='font-weight: 500;' ><a href='$valor_codigo'  > Click Aqui </a>  </span></strong>  
                     
                            
                         </p>

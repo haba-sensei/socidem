@@ -32,7 +32,9 @@ if (!$correo == "" && !$clave == "") {
         
         $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `pacientes`.`correo` FROM `pacientes` WHERE `pacientes`.`correo` = '$correo' ");
     }else {
-        $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `pacientes`.`correo`, `pacientes`.`pass` FROM `pacientes` WHERE `pacientes`.`correo` = '$correo' AND `pacientes`.`pass` = '$clave';");
+    
+        $verAfil = ejecutarSQL::consultar("SELECT `pacientes`.*, `pacientes`.`correo`, `pacientes`.`pass`, `pacientes`.`mail_confirm` FROM `pacientes` WHERE `pacientes`.`correo` = '$correo' AND `pacientes`.`pass` = '$clave' AND `pacientes`.`mail_confirm` = 1");
+    
     }
     
     
@@ -80,7 +82,7 @@ if (!$correo == "" && !$clave == "") {
            
            
         } else {
-            echo '<script> alert("Usuario no registrado"); 	window.location = "registro"; </script>';
+            echo '<script> alert("Usuario no registrado"); 	window.location = "login"; </script>';
             // echo '<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%">Usuario Incorrecto </div> </div>';
         }
     
