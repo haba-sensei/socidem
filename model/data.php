@@ -42,15 +42,46 @@ LISTA DE CITAS GENERALES AGENDA MEDICO
 /*=============================================
  LISTA DE OPCIONES ORIGINAL
 =============================================*/
-     $listPacientesMed = ejecutarSQL::consultar("SELECT DISTINCT `agenda`.`email_usuario`, `agenda`.`cod_medico`, `agenda`.`paciente` FROM `agenda` WHERE `agenda`.`cod_medico` = '$codigo_referido_'");
-// /*=============================================
-// LISTA DE TALLAS
-// =============================================*/
-//     $listTallas = ejecutarSQL::consultar("SELECT * FROM `tallas`");
-// /*=============================================
-// LISTA DE CATEGORIAS
-// =============================================*/
-//     $listCate = ejecutarSQL::consultar("SELECT * FROM `categorias`");
+     $listPacientesMed = ejecutarSQL::consultar("SELECT DISTINCT `agenda`.`email_usuario`, `agenda`.`cod_medico` FROM `agenda` WHERE `agenda`.`cod_medico` = '$codigo_referido_'");
+/*=============================================
+HISTORICO DE PAGO
+=============================================*/
+    $historial_full_pago = ejecutarSQL::consultar("SELECT `pagos_medicos`.*, `pagos_medicos`.`cod_med` FROM `pagos_medicos` WHERE `pagos_medicos`.`cod_med` = '$codigo_referido_';");
+    $monto_historico = 0;
+    while($datos_med_C=mysqli_fetch_assoc($historial_full_pago)){
+     $monto_historico += $datos_med_C['monto']; 
+    }
+
+/*=============================================
+ HISTORIAL SEMANAL CON EXTRAS EN LA SEMANA
+=============================================*/ 
+     $fecha = date('Y-m-d');
+     $fecha_lunes =  date('Y-m-d', strtotime($fecha." monday this week")); 
+     $fecha_domingo = date('Y-m-d', strtotime($fecha." sunday this week")); 
+
+     $cons_total_ref = ejecutarSQL::consultar("SELECT
+     `pagos_membresias`.`estado`,
+     `pagos_membresias`.`token_referido`, 
+     `pagos_membresias`.`monto_reducido_token`,
+     `pagos_membresias`.`token_referido`,
+     `pagos_membresias`.`fecha`,
+     `pagos_membresias`.`token_medico`,
+     SUM(monto_reducido_token) AS total
+     FROM
+     `pagos_membresias`
+     WHERE
+     `pagos_membresias`.`estado` = 'approved' AND `pagos_membresias`.`token_referido` = '$codigo_referido_' AND `pagos_membresias`.`fecha` BETWEEN '$fecha_lunes' AND '$fecha_domingo'");
+
+     while( $referidos_total =mysqli_fetch_assoc($cons_total_ref)){   
+     $total_ref = $referidos_total['total'];
+
+     }
+
+     $historial_semanal_cons = ejecutarSQL::consultar("SELECT `agenda`.`cod_medico`, `agenda`.`pago_estado`, `agenda`.`fecha_start`, SUM(precio_consulta) AS sumatoria_total FROM `agenda` WHERE `agenda`.`cod_medico` = '$codigo_referido_' AND `agenda`.`pago_estado` = 'approved' AND `agenda`.`fecha_start` BETWEEN '$fecha_lunes' AND '$fecha_domingo'");
+               
+     while ($datos_semana = mysqli_fetch_assoc($historial_semanal_cons)) {  
+          $historial_semanal = $datos_semana['sumatoria_total'] +  $total_ref; 
+     }
 // /*=============================================
 // LISTA DE VENDEDORES DESTACADOS
 // =============================================*/

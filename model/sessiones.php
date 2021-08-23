@@ -17,6 +17,8 @@ error_reporting(E_ALL ^ E_NOTICE);
     $periodo_membresia_ = $_SESSION["periodo_membresia"]; 
     $last_login_ = $_SESSION["last_login"];
 
+    $asist_ = $_SESSION["asistente"];
+
   
     
 

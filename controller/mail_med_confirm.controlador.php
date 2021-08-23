@@ -6,6 +6,8 @@ include '../model/consulSQL.php';
 
 if (isset($_GET['code'])){ 
   
+ unset($_SESSION["asistente"]);
+
  $token_confirm = $_GET['code'];
  
  $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `medicos`.`correo`, `medicos`.`token_confirm` FROM `medicos` WHERE `medicos`.`token_confirm` = '$token_confirm' ");
@@ -37,7 +39,9 @@ if (isset($_GET['code'])){
 
             }
             $_SESSION["iniciarSesion"] = "ok";
-            
+             
+
+
             $_SESSION['nombre'] = $nombre;
             $_SESSION['correo'] = $correo;
             $_SESSION["codigo_referido"] = $codigo_referido_new;
@@ -57,7 +61,7 @@ if (isset($_GET['code'])){
         consultasSQL::UpdateSQL("medicos", "correo='$correo', mail_confirm='1' ", "correo='$correo'");
 
 
-        echo '<script> 	window.location = "../inicio"; </script>';
+        echo '<script> 	window.location = "../dashboard"; </script>';
     }else {
         echo '<script> 	window.location = "../inicio"; </script>';
     }

@@ -1,4 +1,7 @@
-<?php include 'views/admin/breadcrumb_med.php'; ?>
+<?php 
+include 'views/admin/breadcrumb_med.php'; 
+include 'views/admin/secretaria.php';
+?>
 <!-- /Breadcrumb -->
 <style>
 .ref1 {
@@ -127,7 +130,7 @@
                     <br>
                     <div class="centrar">
                         
-                        <input class="form-control input_ref" type="text" name="cci" placeholder="Codigo CCI min 20 Digitos"> <button class="btn btn-info btn_ref " type="submit"> Aceptar</button>
+                        <input class="form-control input_ref" type="text" name="cci" placeholder="Codigo CCI min 20 Digitos" autocomplete="off"> <button class="btn btn-info btn_ref " type="submit"> Aceptar</button>
                        <br>
                         <small>Código de Cuenta Interbancario</small>
                         <br><br>

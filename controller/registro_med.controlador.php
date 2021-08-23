@@ -15,6 +15,7 @@ setlocale(LC_TIME, 'spanish');
     $nombre_doc = $_POST['nombre_doc'];
     $ciudad_doc = $_POST['ciudad_doc'];
     $telefono_doc = $_POST['telefono_doc'];
+    $tipo_colegiado_doc = $_POST['coleg_type'];
     $num_colegiado_doc = $_POST['num_colegiado_doc'];
     $correo_doc = $_POST['email_doc'];
     $especialidad_doc = $_POST['especialidad'];
@@ -32,7 +33,7 @@ setlocale(LC_TIME, 'spanish');
   
 
 
-if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_doc == "" &&  !$num_colegiado_doc == "" &&  !$telefono_doc == "" &&  !$foto_doc == ""  && !$especialidad_doc == "" && !$rol_doc == "" && !$last_login_doc == ""  && !$cod_referido == "") {
+if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_doc == "" &&  !$num_colegiado_doc == "" && !$tipo_colegiado_doc == "" &&  !$telefono_doc == "" &&  !$foto_doc == ""  && !$especialidad_doc == "" && !$rol_doc == "" && !$last_login_doc == ""  && !$cod_referido == "") {
      
     $BuscaAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `medicos`.`correo`
     FROM `medicos`
@@ -46,13 +47,14 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
          
         else {
             $code = md5(time());
+            $pass_asistance = md5($cod_referido);
 
             $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado, membresia, periodo_membresia, token_confirm, mail_confirm", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc', 'Gratuito', 0, '$code', 0"); 
-            $regPerfil = consultasSQL::InsertSQL("perfil", "correo, foto, telefono, num_colegiatura, especialidad, servicios, titulo, universidad, años, ubicacion, sobre_mi, nombre_clinica, direccion_clinica, precio_consulta, codigo_referido", "'$correo_doc', '$foto_doc', '$telefono_doc', '$num_colegiado_doc', '$especialidad_doc', '', '', '', '', '$ciudad_doc', '', '', '', '', '$cod_referido'"); 
+            $regPerfil = consultasSQL::InsertSQL("perfil", "correo, foto, telefono, tipo_colegiado_doc, num_colegiatura, especialidad, servicios, titulo, universidad, años, ubicacion, sobre_mi, nombre_clinica, direccion_clinica, codigo_referido", "'$correo_doc', '$foto_doc', '$telefono_doc', '$tipo_colegiado_doc', '$num_colegiado_doc', '$especialidad_doc', '', '', '', '', '$ciudad_doc', '', '', '', '$cod_referido'"); 
             $regCodigosPromo = consultasSQL::InsertSQL("codigos_promo", "codigo, tipo, cantidad, porcentaje, status", "'$cod_referido', 'medico', 0, 20, 0"); 
             $regAgenda = consultasSQL::InsertSQL("agenda_medica", "cod_medico, agenda, estado", "'$cod_referido', '[]', '1'"); 
             $regExepciones = consultasSQL::InsertSQL("exepciones", "cod_med, exepciones, estado", "'$cod_referido', '[]', '1'"); 
-            
+            $regAsistente = consultasSQL::InsertSQL("secretarias", "cod_med, usuario, pass", "'$cod_referido', '$cod_referido', '$pass_asistance'"); 
             
             
             $valor_codigo = "http://localhost/socidem/controller/mail_med_confirm.controlador.php?code=".$code;
@@ -70,13 +72,13 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
                 $mail->isSMTP();                                            
                 $mail->Host       = 'mail.insitesoluciones.com';                 
                 $mail->SMTPAuth   = true;                                 
-                $mail->Username = "medico@insitesoluciones.com";  
-                $mail->Password = "IFUMRjx;go8L";                          
+                $mail->Username = "medicos_no_reply@insitesoluciones.com";  
+                $mail->Password = ")u6ukzT@kioQ";                         
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
                 $mail->Port       = 587;                                    
 
                 //Recipients
-                $mail->setFrom('medico@insitesoluciones.com', 'Medicos En Directo ');
+                $mail->setFrom('medicos_no_reply@insitesoluciones.com', 'Medicos En Directo ');
                 $mail->addAddress($correo_doc, 'Externo');      
 
 

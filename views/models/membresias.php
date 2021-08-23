@@ -1,4 +1,4 @@
-<?php include 'views/admin/breadcrumb_med.php'; ?>
+<?php include 'views/admin/breadcrumb_med.php'; include 'views/admin/secretaria.php';?>
 
 <style>
 .demo-wrap {
@@ -474,7 +474,7 @@
                                  <small class="" style="color:#008298; font-weight: 600;">Si Tienes un codigo Promocional</small> 
                                  <div class="div_box_promo"> 
                                 
-                                 <input class="form-control " id="codigoP" placeholder="Ingresa tu codigo aqui" onkeyup="loaddata()" onchange="loaddata()" name="codigoP" type="text" > 
+                                 <input class="form-control " id="codigoP" placeholder="Ingresa tu codigo aqui" onkeyup="loaddata()" onchange="loaddata()" name="codigoP" type="text" autocomplete="off"> 
                                  </div>
                                  
                                  <a class="btn-plan btn-info btn" style="margin-top: -4px;" id="id_btn_val">Pagar Plan</a>
@@ -487,7 +487,7 @@
                                 <br>
                                 <a href="referidos" style="color:#008298; font-weight: 600;" >Ir a Referidos</a>
                                 <div class="div_box_promo">
-                                <input class="form-control "  placeholder="Ingresa tu codigo aqui" type="text" disabled readonly> 
+                                <input class="form-control "  placeholder="Ingresa tu codigo aqui" type="text" disabled readonly autocomplete="off"> 
                                 </div>
                                 ';
                              }

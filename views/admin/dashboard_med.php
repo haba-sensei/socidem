@@ -25,8 +25,8 @@
                                 <div class="row">
                                     <div class="col-md-12 col-lg-4">
                                         <div class="dash-widget dct-border-rht">
-                                            <div class="circle-bar circle-bar1">
-                                                <div class="circle-graph1" data-percent="75">
+                                            <div class="circle-bar circle-bar3">
+                                                <div class="circle-graph3" data-percent="100">
                                                     <img src="views/assets/img/icon-01.png" class="img-fluid" alt="patient">
                                                 </div>
                                             </div>
@@ -40,8 +40,8 @@
 
                                     <div class="col-md-12 col-lg-4">
                                         <div class="dash-widget dct-border-rht">
-                                            <div class="circle-bar circle-bar2">
-                                                <div class="circle-graph2" data-percent="65">
+                                            <div class="circle-bar circle-bar3">
+                                                <div class="circle-graph3" data-percent="100">
                                                     <img src="views/assets/img/icon-02.png" class="img-fluid" alt="Patient">
                                                 </div>
                                             </div>
@@ -56,7 +56,7 @@
                                     <div class="col-md-12 col-lg-4">
                                         <div class="dash-widget">
                                             <div class="circle-bar circle-bar3">
-                                                <div class="circle-graph3" data-percent="50">
+                                                <div class="circle-graph3" data-percent="100">
                                                     <img src="views/assets/img/icon-03.png" class="img-fluid" alt="Patient">
                                                 </div>
                                             </div>
@@ -67,7 +67,39 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
+                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-6 ">
+                                        <div class="dash-widget">
+                                            <div class="circle-bar circle-bar3">
+                                                <div class="circle-graph3" data-percent="100">
+                                                    <img src="views/assets/img/doctor.png" style="width: 42px; height: auto;"  class="img-fluid" alt="Patient">
+                                                </div>
+                                            </div>
+                                            <div class="dash-widget-success">
+                                                <h6>Historico Cobrado</h6>
+                                                <h3>S/. <?= $monto_historico  ?></h3>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="dash-widget">
+                                            <div class="circle-bar circle-bar3">
+                                                <div class="circle-graph3" data-percent="100">
+                                                    <img src="views/assets/img/especial.png" style="width: 49px; height: auto;" class="img-fluid" alt="Patient">
+                                                </div>
+                                            </div>
+                                            <div class="dash-widget-info">
+                                                <h6>Acumulado de la Semana</h6>
+                                                <h3>S/. <?=$historial_semanal ?></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
                             </div>
                         </div>
                        
@@ -145,6 +177,7 @@
                 </style>
                 <div class="row">
                     <div class="col-md-12">
+                      
                         <!-- <h4 class="mb-4">Agenda de Pacientes</h4> -->
                         <nav class="mb-4 user-tabs">
                             <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
@@ -210,12 +243,11 @@
                                                 <table id="datatable_med_general" class="table mt-0 mb-0 table-hover table-center">
                                                     <thead>
                                                         <tr>
-                                                            <th>Usuario</th>
-                                                            <th>Fecha y Hora</th>
-                                                            <th>Tipo de Cita</th>
+                                                            <th style="padding: 11px;">Usuario</th>
+                                                            <th >Detalles Cita</th> 
                                                             <th>Info Paciente</th>
-                                                            <th>Estado</th>
-                                                            <th>Acciones </th>
+                                                            <th style="padding-right: 6px;">Estados</th>
+                                                            <th style="padding-right: 10px;">Acciones </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody style="max-height: fit-content;">
@@ -254,31 +286,32 @@
 
                                                                 </h2>
                                                             </td>
-                                                            <td><?= $fecha_format ?> <span class="d-block text-info"><?=$fecha_hora ?> </span>
+                                                            <td style="text-transform: capitalize;     width: 139px;">
+                                                            <?= $tipo_cita ?>
+                                                            <span class="d-block"><?= $fecha_format ?>  </span>  
+                                                            <span class="d-block text-info"><?=$fecha_hora ?> </span> 
                                                             </td>
-                                                            <td style="text-transform: capitalize"> <?= $tipo_cita ?> </td>
-                                                            <td> <a href="javascript:" onclick="modalDetalle('<?=$cod_consulta ?>')"
+                                                             
+                                                            <td style="width: 155px;" align="center">  
+                                                                <a href="javascript:" onclick="modalDetalle('<?=$cod_consulta ?>')"
                                                                     class="btn btn-sm bg-success-light">
                                                                     <i class="fas fa-id-card-alt"></i> Ver Info
-                                                                </a></td>
+                                                                </a>
+                                                            </td>
 
-                                                            <td>
+                                                            <td  align="center" >
+                                                            <div class="d-block">
                                                                 <?php 
 
                                                                     switch ($objCita_de['status']) {
                                                                         case "pending":
-                                                                    echo "<span class='badge badge-pill bg-warning-light'>PENDIENTE ";
+                                                                    echo "<span class='badge badge-pill bg-warning-light'>NO PAGADO ";
                                                                     break;
 
                                                                         case "approved":
-                                                                            if($estado == 2){
-                                                                                echo "<span class='badge badge-pill bg-danger-light'>CERRADO";
-                                                                            }else {
-                                                                                echo "<span class='badge badge-pill bg-success-light'>APROBADO";
-                                                                            }
+                                                                            echo "<span class='badge badge-pill bg-success-light'>PAGADO"; 
                                                                         
-                                                                    break;
-
+                                                                    break; 
                                                                         case "404":
                                                                         echo "<span class='badge badge-pill bg-danger-light'>RECHAZADO";
                                                                     break;
@@ -288,17 +321,33 @@
                                                                     ?>
 
                                                                 </span>
-                                                            <td class="text-left" style="white-space: nowrap;">
-                                                                <div class="table-action">
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <?php 
 
+                                                                if($estado == 2){
+                                                                    echo "<span class='badge badge-pill bg-success-light'>ATENDIDO</span>";
+                                                                }else {
+                                                                    echo "<span class='badge badge-pill bg-danger-light'>NO ATENDIDO</span>";
+                                                                }
+
+                                                                ?>
+                                                            
+                                                            </div>
+                                                            </td>
+                                                            <td class="text-center" style="white-space: nowrap;">
+                                                                <div class="table-action">
+                                                                <div class='d-block' style="padding-bottom: 6px;">
                                                                     <?php 
 
                                                                     switch ($tipo_cita) {
                                                                     case 'Online':
                                                                     if($estado == 2){
                                                                     echo "
+                                                                   
                                                                     <a href='javascript:' class='btn btn-sm bg-danger-light'>
                                                                     <i class='fa fa-eye-slash' aria-hidden='true'></i> Sala Cerrada  </a>
+                                                                   
                                                                     ";
                                                                     }else {
 
@@ -330,8 +379,12 @@
                                                                     }
 
                                                                     ?>
-
-
+                                                                     </div>
+                                                                    <div class="d-block">
+                                                                    <a href='javascript:' onclick="atenderPaciente('<?=$cod_consulta ?>')" class='btn btn-sm bg-primary-light'>
+                                                                    <i class='fas fa-handshake' aria-hidden='true'></i> Atendido </a>  
+                                                                    </div>
+                                                                  
                                                                 </div>
                                                             </td>
                                                         </tr>

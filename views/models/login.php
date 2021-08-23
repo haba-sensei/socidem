@@ -8,7 +8,7 @@
                 <div class="account-content">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-7 col-lg-6 login-left">
-                            <img src="views/assets/img/login.png" class="img-fluid" alt="Doccure Login">
+                            <img src="views/assets/img/log_user.svg" class="img-fluid" alt="Doccure Login">
                         </div>
                         <div class="col-md-12 col-lg-6 login-right">
                             <div class="login-header">
@@ -19,7 +19,7 @@
                                 <div class="form-group form-focus">
 
                                     <input type="email" class="form-control floating" id="correo-login"
-                                        name="correo-login" placeholder="Ingresa tu Correo" required>
+                                        name="correo-login" placeholder="Ingresa tu Correo" required autocomplete="off">
 
                                     <label class="focus-label">Email</label>
                                 </div>

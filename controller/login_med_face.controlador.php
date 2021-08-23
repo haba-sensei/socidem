@@ -115,9 +115,9 @@ require_once '../vendor/autoload.php';
                       
                       consultasSQL::UpdateSQL("medicos", "correo='$correo', last_login='$last_login_up' ", "correo='$correo'");
                       if (isset($_GET['code'])){ 
-                          echo '<script> 	window.location = "../inicio"; </script>';
+                          echo '<script> 	window.location = "../dashboard"; </script>';
                       }else{
-                          echo '<script> 	window.location = "inicio"; </script>';
+                          echo '<script> 	window.location = "dashboard"; </script>';
                       }
                     
                     

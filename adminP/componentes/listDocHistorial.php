@@ -38,7 +38,7 @@ $fecha_domingo = date('Y-m-d', strtotime($searchByFromdate." sunday this week"))
             <i class="fe fe-money"></i> Pagar
             </a> -->
 
-        </div>
+        </div> 
         <div class="col-md-12" style="margin-bottom: -80px;">
                 <div class="row">
                     <div class="col-md-3">

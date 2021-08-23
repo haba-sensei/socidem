@@ -81,6 +81,7 @@ if( strlen($img) > 0){
 
         if ($AfilC == 1) {
             consultasSQL::UpdateSQL("medicos", "estado='1'", "correo='$correo_'");
+            consultasSQL::UpdateSQL("secretarias", "estado='1'", "cod_med='$codigo_referido_'");
             if(strlen($img) > 0){
 
                consultasSQL::UpdateSQL("perfil", " 

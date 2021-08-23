@@ -50,8 +50,8 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
          
         else {
             $code = md5(time());
-
-            $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, token_confirm, mail_confirm, last_login, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$code', 0, '$last_login', '$estado' "); 
+            $ingreso = date('Y-m-d');
+            $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, token_confirm, mail_confirm, last_login, inscripcion, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$code', 0, '$last_login', '$ingreso', '$estado' "); 
             
             $correo_md5 = md5($correo);
             $regHistorial = consultasSQL::InsertSQL("historial_medico", "correo, historia_clinica, analisis_lab, img_digitales, recetas_med", "'$correo_md5', '[]', '[]', '[]', '[]' "); 
@@ -93,13 +93,13 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
                     $mail->isSMTP();                                            
                     $mail->Host       = 'mail.insitesoluciones.com';                 
                     $mail->SMTPAuth   = true;                                 
-                    $mail->Username = "medico@insitesoluciones.com";  
-                    $mail->Password = "IFUMRjx;go8L";                          
+                    $mail->Username = "medicos_no_reply@insitesoluciones.com";  
+                    $mail->Password = ")u6ukzT@kioQ";                                  
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
                     $mail->Port       = 587;                                    
 
                     //Recipients
-                    $mail->setFrom('medico@insitesoluciones.com', 'Medicos En Directo ');
+                    $mail->setFrom('medicos_no_reply@insitesoluciones.com', 'Medicos En Directo ');
                     $mail->addAddress($correo, 'Externo');      
 
 

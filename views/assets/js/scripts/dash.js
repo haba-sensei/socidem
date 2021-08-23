@@ -36,6 +36,50 @@ function modalDetalle(id) {
 
 }
 
+function atenderPaciente(id) {
+    $.ajax({
+        type: "POST",
+        url: "controller/dashboard/agendaCambioAtendido.controlador.php",
+        data: {
+            id: id,
+
+        },
+        success: function(data) {
+            Swal.fire({
+                title: 'ATENDIDO CON EXITO',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            setTimeout(function() { location.reload(); }, 1500);
+        }
+    });
+}
+
+function histCitas() {
+
+    elemento1 = document.getElementById("fecha_1");
+    elemento2 = document.getElementById("fecha_2");
+
+    $.ajax({
+        type: "POST",
+        url: "controller/dashboard/histCistas.controlador.php",
+        data: {
+            elemento1: elemento1,
+            elemento2: elemento2
+
+        },
+        success: function(data) {
+
+        }
+    });
+
+
+
+}
+
+
 function modalConfirm(id) {
 
 

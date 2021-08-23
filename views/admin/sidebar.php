@@ -60,32 +60,50 @@
                         <li>
                             <a href="pacientes">
                                 <i class="fas fa-user-injured"></i>
-                                <span>Clientes Atendidos</span>
+                                <span>Pacientes</span>
                             </a>
                         </li>
                         <li>
+                            <a href="histCitas">
+                                <i class="fas fa-user-injured"></i>
+                                <span>Historico Citas</span>
+                            </a>
+                        </li>
+                        <?php 
+                        if ($_SESSION["asistente"] != "ok") {
+                            echo '
+                            <li>
                             <a href="referidos">
                                 <i class="fas fa-file-invoice"></i>
                                 <span>Plan de Referidos</span>
 
                             </a>
                         </li>
-                        <li>
+                        <li> 
                             <a href="membresias">
                                 <i class="fas fa-star"></i>
                                 <span>Membresias</span>
 
                             </a>
                         </li>
-                       
-                        <li>
+                            <li>
+                            <a href="secretaria">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Secretaria</span>
+
+                            </a>
+                        </li>
+                            
+                            
+                            <li>
                             <a href="perfilMed">
                                 <i class="fas fa-user-cog"></i>
                                 <span>Perfil</span>
 
                             </a>
-                        </li>
-                        
+                        </li>';
+                        } 
+                        ?> 
                        
                     
                         <li>

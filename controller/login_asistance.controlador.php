@@ -5,35 +5,28 @@ include '../model/consulSQL.php';
 require_once '../vendor/autoload.php';
 require_once '../model/credencialesLogMed.php';
   
-if (isset($_GET['code'])){
-    
-    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-    $client->setAccessToken($token['access_token']);
 
-    // get profile info
-    $google_oauth = new Google_Service_Oauth2($client);
-    $google_account_info = $google_oauth->userinfo->get();
-    $correo =  $google_account_info->email;
-    $clave =  md5($correo);
-   
-
-      
-}else {
-
-    $correo = $_POST['correo-login'];
+    $user_login = $_POST['user-login'];
     $clave = md5($_POST['clave-login']);
 
-}
+  
   
 
-if (!$correo == "" && !$clave == "") {
-    if (isset($_GET['code'])){  
-        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`correo` = `medicos`.`correo` WHERE `medicos`.`correo` = '$correo' ");
-    }else {
-        $verAfil = ejecutarSQL::consultar("SELECT `medicos`.*, `perfil`.*, `medicos`.`correo`, `medicos`.`mail_confirm`, `medicos`.`pass` FROM `medicos` LEFT JOIN `perfil` ON `perfil`.`correo` = `medicos`.`correo` WHERE `medicos`.`correo` = '$correo' AND `medicos`.`pass` = '$clave' AND `medicos`.`mail_confirm` = 1");
+if (!$user_login == "" && !$clave == "") {
+
+    $secretariaCons = ejecutarSQL::consultar("SELECT `secretarias`.*, `secretarias`.`usuario`, `secretarias`.`pass` FROM `secretarias` WHERE `secretarias`.`usuario` = '$user_login' AND `secretarias`.`pass` = '$clave' AND `secretarias`.`estado` = '1'");
+     
+    
+    while($datos_medicos=mysqli_fetch_assoc($secretariaCons)){
+        $cod_med =$datos_medicos['cod_med'];  
+   
     }
     
-    
+     $verAfil = ejecutarSQL::consultar("SELECT `perfil`.*, `medicos`.*, `perfil`.`codigo_referido`, `perfil`.`correo`, `medicos`.`mail_confirm`
+     FROM `perfil`
+         , `medicos`
+     WHERE `perfil`.`codigo_referido` = '$cod_med' AND `perfil`.`correo` = `medicos`.`correo` AND `medicos`.`mail_confirm` = '1';");
+     
    
     
     while($datos_usuario=mysqli_fetch_assoc($verAfil)){
@@ -54,7 +47,8 @@ if (!$correo == "" && !$clave == "") {
        
     } 
     
-    $AfilC = mysqli_num_rows($verAfil);
+    $AfilC = mysqli_num_rows($secretariaCons);
+    
         if ($AfilC > 0) {
         $_SESSION['id'] = $id_usuario;
         $_SESSION['nombre'] = $nombre;
@@ -83,6 +77,8 @@ if (!$correo == "" && !$clave == "") {
 
         
         $_SESSION["iniciarSesion"] = "ok";
+        
+        $_SESSION["asistente"] = "ok";
        
         date_default_timezone_set('America/Lima');
         setlocale(LC_TIME, 'es_ES.UTF-8');
@@ -91,16 +87,12 @@ if (!$correo == "" && !$clave == "") {
              
              
             consultasSQL::UpdateSQL("medicos", "correo='$correo', last_login='$last_login_up' ", "correo='$correo'");
-            if (isset($_GET['code'])){ 
-                echo '<script> 	window.location = "../dashboard"; </script>';
-            }else{
+           
                 echo '<script> 	window.location = "dashboard"; </script>';
-            }
-           
-           
+          
            
         } else {
-            echo '<script> alert("Usuario no registrado"); 	window.location = "loginMed"; </script>';
+            echo '<script> alert("Asistente no registrado"); 	window.location = "loginAsistance"; </script>';
             // echo '<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 100%">Usuario Incorrecto </div> </div>';
         }
     

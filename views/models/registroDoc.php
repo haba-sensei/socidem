@@ -20,9 +20,9 @@
 
                 <!-- Register Content -->
                 <div class="account-content">
-                    <div class="row align-items-center justify-content-center">
+                    <div class="row align-items-center justify-content-center" style="margin-bottom: 10%; margin-top: 8%;">
                         <div class="col-md-7 col-lg-6 login-left">
-                            <img src="views/assets/img/med.png" class="img-fluid" alt="Doccure Register">
+                            <img src="views/assets/img/reg.svg" class="img-fluid" alt="Doccure Register">
                         </div>
 
                         <div class="col-md-12 col-lg-6 login-right">
@@ -123,7 +123,7 @@
 
                                     </div>
                                     <div class="form-group form-focus">
-                                        <input type="text" name="nombre_doc" class="form-control floating" required>
+                                        <input type="text" name="nombre_doc" class="form-control floating" required autocomplete="off">
                                         <label class="focus-label">Nombre Completo</label>
                                     </div>
 
@@ -137,30 +137,43 @@
                                         <h3>Registro Doctores <a href="registro">No Eres un Doctor? </a></h3>
                                     </div>
                                     <div class="form-group form-focus">
-                                        <input type="text" name="ciudad_doc" class="form-control floating" required>
+                                        <input type="text" name="ciudad_doc" class="form-control floating" required autocomplete="off">
                                         <label class="focus-label">Ciudad</label>
                                     </div>
                                     <div class="form-group form-focus">
-                                        <input type="text" name="telefono_doc" class="form-control floating" required>
+                                        <input type="text" name="telefono_doc" class="form-control floating" required autocomplete="off">
                                         <label class="focus-label">Telefono (+51) no necesario</label>
                                     </div>
                                     <div class="form-group form-focus">
-                                        <input type="email" name="email_doc" class="form-control floating" required>
+                                        <input type="email" name="email_doc" class="form-control floating" required autocomplete="off">
                                         <label class="focus-label">Email</label>
                                     </div>
                                     <div class="form-group form-focus">
-                                        <input type="password" name="pass_doc" class="form-control floating" required>
+                                        <input type="password" name="pass_doc" class="form-control floating" required autocomplete="off">
                                         <label class="focus-label">Contraseña</label>
                                     </div>
 
-                                    <div class="form-group form-focus">
-                                        <input type="text" name="num_colegiado_doc" class="form-control floating" required>
-                                        <label class="focus-label">Num. Colegiado</label>
+                                    <div class="form-group ">
+                                    <select class="form-control "  name="coleg_type" require>
+                                            <option selected="true" disabled="disabled" hidden>Seleccione la colegiatura </option>
+                                            <option value="Colegio Medico del Peru">Colegio Médico del Perú</option>
+                                            <option value="Colegio de Nutricionistas del Peru">Colegio de Nutricionistas del Perú</option>
+                                            <option value="Colegio de Psicologos del Peru">Colegio de Psicólogos del Perú</option>
+                                            <option value="Colegio de Odontologico del Peru">Colegio de Odontológico del Perú</option>
+                                    </select>
+
                                     </div>
+                                    
+                                <div class="form-group form-focus"   > 
+                                <input type="text" name="num_colegiado_doc" class="form-control floating" required autocomplete="off">
+                                <label class="focus-label">Num. Colegiado</label>
+                            
+                                    </div>
+
                                     <div class="res-registro animated fadeInDown"> </div>
                                     <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Registrarme</button>
                                 </div>
-                                
+
                         </div>
                         </form>
                         <!-- /Register Form -->

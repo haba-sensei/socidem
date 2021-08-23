@@ -29,6 +29,7 @@ if ( $rol_ == "1"){
         $foto_perfil=$datos_perfil['foto'];
         $telefono_perfil=$datos_perfil['telefono'];
         $num_colegiatura_perfil=$datos_perfil['num_colegiatura'];
+        $type_colegiatura_perfil=$datos_perfil['tipo_colegiado_doc'];
         $especialidad_perfil=$datos_perfil['especialidad'];
         $servicios_perfil=$datos_perfil['servicios'];
         $otras_especialidades_perfil=$datos_perfil['otras_especialidades'];
@@ -53,6 +54,7 @@ if ( $rol_ == "1"){
         'correo' => $correo_perfil, 
         'foto' => $foto_perfil,
         'telefono' => $telefono_perfil,
+        'type_colegiatura_perfil' => $type_colegiatura_perfil,
         'num_colegiatura' => $num_colegiatura_perfil,
         'especialidad' => $especialidad_perfil,
         'servicios' => $servicios_perfil,

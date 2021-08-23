@@ -36,5 +36,6 @@
     <link href="views/assets/plugins/timepicker/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="views/assets/plugins/timepicker/css/timepicker.css">
     <script src="views/assets/plugins/timepicker/js/timepicker.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.0.0/cropper.min.css" integrity="sha256-FeDcPwV8ZgxG1MU5L/b2i8clOmqZJKK0eyDHqrQaXxY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css">
 </head>

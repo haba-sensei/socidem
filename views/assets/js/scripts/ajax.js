@@ -45,5 +45,41 @@ $(document).ready(function() {
 
     });
 
+    $('.secret-Form').submit(function(e) {
+        e.preventDefault();
+        var data = $(this).serialize();
+        var type = $(this).attr('method');
+        var url = $(this).attr('action');
+        var formType = $(this).attr('data-form');
 
+
+        $.ajax({
+            type: type,
+            url: url,
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+
+                switch (data) {
+                    case "exito":
+                        Swal.fire('AGREGADO CON EXITO', '', 'success');
+                        break;
+
+                    case "vacio":
+                        Swal.fire('ERROR CAMPOS VACIOS', '', 'error');
+                        break;
+
+                    case "duplicado":
+                        Swal.fire('ERROR USUARIO DUPLICADO', '', 'error');
+                        break;
+                }
+
+
+
+            }
+        });
+
+    });
 });

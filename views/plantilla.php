@@ -45,6 +45,8 @@ $routes = explode("-", $_GET["ruta"]);
 		 
 		 if($routes[0] == "inicio" || 
 			$routes[0] == "login" || 
+			$routes[0] == "histCitas" || 
+			$routes[0] == "loginAsistance" ||
 			$routes[0] == "salir" || 
 			$routes[0] == "registro" || 
 			$routes[0] == "registroDoc" || 
@@ -54,6 +56,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "pacientes" || 
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "mensajes" || 
+			$routes[0] == "secretaria" || 
 			$routes[0] == "exepciones" || 
 			$routes[0] == "referidos" || 
 			$routes[0] == "historial" || 

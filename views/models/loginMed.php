@@ -6,20 +6,20 @@
 
                 <!-- Login Tab Content -->
                 <div class="account-content">
-                    <div class="row align-items-center justify-content-center">
+                    <div class="row align-items-center justify-content-center" style="margin-bottom: 10%;">
                         <div class="col-md-7 col-lg-6 login-left">
-                            <img src="views/assets/img/login-doctor.png" class="img-fluid" alt="Doccure Login">
+                            <img src="views/assets/img/med.svg" class="img-fluid" alt="Doccure Login">
                         </div>
                         <div class="col-md-12 col-lg-6 login-right">
                             <div class="login-header">
-                                <h3>Ingreso Doctores <a href="login">Eres un Paciente?</a></h3>
+                                <h3>Ingreso Doctores <a href="loginAsistance">¿Eres un Asistente?</a></h3>
                             </div>
                             <form action="controller/login_med.controlador.php" method="post" role="form"
                                 class="theme-form Login-Form" data-form="login">
                                 <div class="form-group form-focus">
 
                                     <input type="email" class="form-control floating" id="correo-login"
-                                        name="correo-login" placeholder="Ingresa tu Correo" required>
+                                        name="correo-login" placeholder="Ingresa tu Correo" required autocomplete="off">
 
                                     <label class="focus-label">Email</label>
                                 </div>
@@ -34,7 +34,8 @@
                                     <a class="forgot-link" href="forgot-password.html">Perdida de Password?</a>
                                 </div>
                                 
-                                <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Ingresar</button>
+                                <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Ingreso Medicos</button>
+                                 
                                 <div class="res-Login animated fadeInDown"></div>
                                 <div class="login-or">
                                     <span class="or-line"></span>
