@@ -37,6 +37,10 @@ class ComposerStaticInit5db98b918d1380c2bb57e9ced948d253
             'ZendService\\Google\\' => 19,
             'ZendService\\Apple\\' => 18,
         ),
+        'T' => 
+        array (
+            'Twilio\\' => 7,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -141,6 +145,10 @@ class ComposerStaticInit5db98b918d1380c2bb57e9ced948d253
         'ZendService\\Apple\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zendservice-apple-apns/src',
+        ),
+        'Twilio\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twilio/sdk/src/Twilio',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (

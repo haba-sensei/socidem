@@ -170,8 +170,11 @@
                             
                                     </div>
 
-                                    <div class="res-registro animated fadeInDown"> </div>
-                                    <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Registrarme</button>
+                                    
+                                    <button class="btn btn-primary btn-block btn-lg login-btn res-registro" type="submit">Registrarme
+                                    <span class="res-registro animated fadeInDown"></span> 
+                                    </button>
+                                    <div class="res-registro-end animated fadeInDown"> </div>
                                 </div>
 
                         </div>

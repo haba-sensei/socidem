@@ -30,13 +30,13 @@ $(document).ready(function() {
                 url: url,
                 data: data,
                 beforeSend: function() {
-                    $(".res-registro").html('Procesando... <br><img src="assets/img/enviando.gif" class="center-all-contens">');
+                    $(".res-registro").html('Registrarme <span class="mr-2 spinner-border spinner-border-sm" role="status" style="position: relative; top: -4px; left: 111px;"></span>');
                 },
                 error: function() {
-                    $(".res-registro").html("Ha ocurrido un error en el sistema");
+                    $(".res-registro").html("Ha ocurrido un error en el sistema1");
                 },
                 success: function(data) {
-                    $(".res-registro").html(data);
+                    $(".res-registro-end").html(data);
                 }
             });
             return false;

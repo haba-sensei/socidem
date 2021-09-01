@@ -85,9 +85,8 @@ class consultasSQL{
         }
 
     return $random_string;
-    }  
-
-
+    } 
+     
     if(!$conn){
         die("imposible conectarse: ".mysqli_error($conn));
     }

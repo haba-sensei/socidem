@@ -9,10 +9,7 @@
     <link type="image/x-icon" href="views/assets/img/favicon.png" rel="icon">
     <link rel="stylesheet" href="views/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="views/assets/plugins/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="views/assets/plugins/fontawesome/css/all.min.css">
-    <!-- <script defer src="views/assets/plugins/fontawesome/js/all.js"></script> -->
-    <!-- <link rel="stylesheet" href="views/assets/plugins/datepicker/css/bootstrap-datepicker.css" /> -->
-    <link rel="stylesheet" href="views/assets/plugins/datepicker/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="views/assets/plugins/fontawesome/css/all.min.css"> 
     <link rel="stylesheet" href="views/assets/plugins/select1/css/select2.min.css">
     <link rel="stylesheet" href="views/assets/plugins/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="views/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
@@ -34,8 +31,18 @@
     <script src="views/assets/plugins/rescalendar/rescalendar.js"></script>
     <script src="views/assets/plugins/rescalendar/config_calendar.js"></script>
     <link href="views/assets/plugins/timepicker/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="views/assets/plugins/timepicker/css/timepicker.css">
-    <script src="views/assets/plugins/timepicker/js/timepicker.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.0.0/cropper.min.css" integrity="sha256-FeDcPwV8ZgxG1MU5L/b2i8clOmqZJKK0eyDHqrQaXxY=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css">
+     <link rel="stylesheet" href="https://foliotek.github.io/Croppie/croppie.css">
+     
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.0.0/cropper.min.css" integrity="sha256-FeDcPwV8ZgxG1MU5L/b2i8clOmqZJKK0eyDHqrQaXxY=" crossorigin="anonymous" /> -->
+    
+    <!-- <link id="bs-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">  -->
+    <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+       <style>
+        .datepicker {
+            width: min-content;
+        }
+       </style>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script> 
+
 </head>

@@ -5,7 +5,7 @@ include 'model/sessiones.php';
 include 'model/data.php';
 require_once 'vendor/autoload.php';
 date_default_timezone_set('America/Lima');
-$routes = array();
+$routes = array(); 
 $routes = explode("-", $_GET["ruta"]);
 
 	switch ($routes[0]) {
@@ -56,6 +56,8 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "pacientes" || 
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "mensajes" || 
+			$routes[0] == "verificarP" || 
+			$routes[0] == "verificarM" || 
 			$routes[0] == "secretaria" || 
 			$routes[0] == "exepciones" || 
 			$routes[0] == "referidos" || 

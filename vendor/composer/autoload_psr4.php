@@ -16,6 +16,7 @@ return array(
     'Zend\\Escaper\\' => array($vendorDir . '/zendframework/zend-escaper/src'),
     'ZendService\\Google\\' => array($vendorDir . '/zendframework/zendservice-google-gcm/src'),
     'ZendService\\Apple\\' => array($vendorDir . '/zendframework/zendservice-apple-apns/src'),
+    'Twilio\\' => array($vendorDir . '/twilio/sdk/src/Twilio'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),

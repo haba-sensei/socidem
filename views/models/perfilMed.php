@@ -1,11 +1,11 @@
-<?php include 'views/admin/breadcrumb_med.php';  
+<?php include 'views/admin/breadcrumb_med.php';
 ?>
 
 
- 
+
 <div class="content">
     <div class="container-fluid">
- 
+
         <div class="row">
             <?php require_once 'views/admin/sidebar.php'; ?>
             <div class="col-md-7 col-lg-8 col-xl-9">
@@ -35,7 +35,7 @@
                                                     Maximo 2MB</small>
                                             </div>
 
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -257,22 +257,37 @@
 
                             <h4 class="card-title">Información del Consultorio</h4>
                             <div class="row form-row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Nombre de la Clinica <span class="text-danger">*</span></label>
                                         <input type="text" name="nombre_clinica" id="nombre_clinica" class="form-control" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <label>Departamento <span class="text-danger">*</span></label>
+                                    <div class="">
+                                        <select name="departamento" class="form-control" id="departamento" onchange="cargarPueblos();">
+                                            <option default hidden>Departamentos</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Distrito <span class="text-danger">*</span></label>
+                                    <div class="">
+
+                                        <select name="distrito" class="form-control" id="distrito">
+                                            <option default hidden>Distritos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="pt-4 col-md-12">
                                     <div class="form-group">
                                         <label>Dirección de la Clinica <span class="text-danger">*</span></label>
                                         <input type="text" name="direccion_clinica" id="direccion_clinica" class="form-control" autocomplete="off">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Ubicación <span class="text-danger">*</span></label>
-                                        <input type="text" name="ubicacion" id="ubicacion" class="form-control" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
@@ -346,9 +361,46 @@
                             </div>
 
 
+<style>
 
+label.cabinet{
+	display: block;
+	cursor: pointer;
+}
 
-                         
+label.cabinet input.file{
+	position: relative;
+	height: 100%;
+	width: auto;
+	opacity: 0;
+	-moz-opacity: 0;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+  margin-top:-30px;
+}
+
+#upload-demo{
+	width: 250px;
+	height: 250px;
+  padding-bottom:25px;
+}
+
+</style>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <label class="cabinet center-block">
+                                            <figure>
+                                                <img src="" class="gambar img-responsive img-thumbnail" id="item-img-output" />
+                                                <figcaption><i class="fa fa-camera"></i></figcaption>
+                                            </figure>
+                                            <input type="file" class="item-img file center-block" name="file_photo" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                          
 
 
 

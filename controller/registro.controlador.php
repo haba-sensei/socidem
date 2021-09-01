@@ -5,6 +5,7 @@ include '../model/consulSQL.php';
 require_once '../vendor/autoload.php';
 require_once '../model/credencialesReg.php';
 use PHPMailer\PHPMailer\PHPMailer;
+use Twilio\Rest\Client;
 
 if (isset($_GET['code'])){
     
@@ -46,13 +47,19 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
          
         if ($AfilC > 0 ) {
             echo '<script> alert("Este correo ya esta registrado"); 	window.location = "../registro"; </script>';
-        }
-         
-        else {
-            $code = md5(time());
+        } else {
+            $code = generate_string(md5(time()), 8);
             $ingreso = date('Y-m-d');
             $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, token_confirm, mail_confirm, last_login, inscripcion, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$code', 0, '$last_login', '$ingreso', '$estado' "); 
             
+            $client = new Client($account_sid, $auth_token);
+            $client->messages->create('+51'.$tel,
+            array(
+                'from' => $twilio_number,
+                'body' => 'Codigo de Verificacion: '.$code.' '
+            )
+            );
+
             $correo_md5 = md5($correo);
             $regHistorial = consultasSQL::InsertSQL("historial_medico", "correo, historia_clinica, analisis_lab, img_digitales, recetas_med", "'$correo_md5', '[]', '[]', '[]', '[]' "); 
 
@@ -82,7 +89,7 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
             }else {
 
                 
-                $valor_codigo = "http://localhost/socidem/controller/mail_confirm.controlador.php?code=".$code;
+                $valor_codigo = $url_base."controller/mail_confirm.controlador.php?code=".$code;
                 
                 include 'plantillaCorreo.php';
                 
@@ -110,10 +117,14 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
                     $mail->AltBody = "Enviado desde Medicos en Directo.";
 
                     $mail->send();
-                    echo "Registro Exitoso Revise su Correo";
+                    
                 } catch (Exception $e) {
-                    echo "El Correo no fue enviado. Error interno";
-                }
+                     
+
+                } 
+                echo '<script> 	Swal.fire("REGISTRO EXITOSO", "", "info");  setTimeout(function() { window.location = "verificarP"; }, 1500); </script>';
+                
+
             }
             
         }

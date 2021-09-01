@@ -16,18 +16,18 @@
                             </div>
 
                             <!-- Register Form -->
-                            <form class="theme-form Login-Form" action="controller/registro.controlador.php" method="post" role="form"
-                          data-form="registro">
+                            <form class="theme-form Login-Form" id="reg_paciente" action="controller/registro.controlador.php" method="post" role="form"
+                                    data-form="registro">
                                 <div class="form-group form-focus">
-                                    <input type="text" name="nombre-reg" class="form-control floating">
+                                    <input type="text" name="nombre-reg" class="form-control floating" autocomplete="off">
                                     <label class="focus-label">Nombre</label>
                                 </div>
                                 <div class="form-group form-focus">
-                                    <input type="text" name="correo-reg" class="form-control floating">
+                                    <input type="text" name="correo-reg" class="form-control floating" autocomplete="off">
                                     <label class="focus-label">Email</label>
                                 </div>
                                 <div class="form-group form-focus">
-                                    <input type="text" name="tel-reg" class="form-control floating">
+                                    <input type="text" name="tel-reg" class="form-control floating" autocomplete="off">
                                     <label class="focus-label">Telefono</label>
                                 </div>
                                 <div class="form-group form-focus">
@@ -37,8 +37,11 @@
                                 <div class="text-right">
                                     <a class="forgot-link" href="login">Ya tienes una cuenta?</a>
                                 </div>
-                                <div class="res-registro animated fadeInDown"> </div>
-                                <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Registrarme</button>
+                                
+                                <button class="btn btn-primary btn-block btn-lg login-btn res-registro" type="submit"> Registrarme 
+                                <span class="res-registro animated fadeInDown"></span>
+                                </button>
+                                <span class="res-registro-end animated fadeInDown"></span>
                                 <div class="login-or">
                                     <span class="or-line"></span>
                                     <span class="span-or">or</span>

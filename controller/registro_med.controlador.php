@@ -1,5 +1,4 @@
-<?php 
-use PHPMailer\PHPMailer\PHPMailer;
+<?php  
 session_start();
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 include '../model/consulSQL.php';  
@@ -7,6 +6,8 @@ require_once '../vendor/autoload.php';
 date_default_timezone_set('America/Lima');
 setlocale(LC_ALL,"es_ES"); 
 setlocale(LC_TIME, 'spanish'); 
+use PHPMailer\PHPMailer\PHPMailer;
+use Twilio\Rest\Client;
 
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -28,10 +29,7 @@ setlocale(LC_TIME, 'spanish');
     $fecha = (($time+date('Z'))%86400 < 43200 ? 'AM' : 'PM');
     $last_login_doc_f = strftime('%A %d de %B del %Y %I:%M:%S');
     $last_login_doc = $last_login_doc_f." ".$fecha;
-    
-
   
-
 
 if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_doc == "" &&  !$num_colegiado_doc == "" && !$tipo_colegiado_doc == "" &&  !$telefono_doc == "" &&  !$foto_doc == ""  && !$especialidad_doc == "" && !$rol_doc == "" && !$last_login_doc == ""  && !$cod_referido == "") {
      
@@ -46,7 +44,7 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
         }
          
         else {
-            $code = md5(time());
+            $code = generate_string(md5(time()), 8);
             $pass_asistance = md5($cod_referido);
 
             $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado, membresia, periodo_membresia, token_confirm, mail_confirm", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc', 'Gratuito', 0, '$code', 0"); 
@@ -57,7 +55,15 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
             $regAsistente = consultasSQL::InsertSQL("secretarias", "cod_med, usuario, pass", "'$cod_referido', '$cod_referido', '$pass_asistance'"); 
             
             
-            $valor_codigo = "http://localhost/socidem/controller/mail_med_confirm.controlador.php?code=".$code;
+            $valor_codigo = $url_base."controller/mail_med_confirm.controlador.php?code=".$code;
+ 
+            $client = new Client($account_sid, $auth_token);
+            $client->messages->create('+51'.$telefono_doc.'',
+            array(
+                'from' => $twilio_number,
+                'body' => 'Codigo de Verificacion: '.$code.' '
+            )
+            );
             
             if (isset($_GET['code'])){ 
                 echo '<script> 	window.location = "../perfilMed"; </script>';
@@ -89,15 +95,16 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
                 $mail->AltBody = "Enviado desde Medicos en Directo.";
 
                 $mail->send();
-                echo "Registro Exitoso Revise su Correo";
+                
             } catch (Exception $e) {
-                echo "El Correo no fue enviado. Error interno";
+               
             }
             
+            echo '<script> 	Swal.fire("REGISTRO EXITOSO", "", "info");  setTimeout(function() { window.location = "verificarM"; }, 1500); </script>';
            
             }
             
         }
     } else {
-    echo '<script> alert("Campos Vacios"); 	window.location = "registroDoc"; </script>';
+    echo '<script> Swal.fire("CAMPOS VACIOS", "", "info"); </script>';
 }

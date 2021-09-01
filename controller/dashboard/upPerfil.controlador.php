@@ -12,7 +12,27 @@ $num_colegiatura = $_POST['num_colegiatura'];
 $otros_num_colegiatura = $_POST['otros_nro_colegiatura'];
 $otras_especialidades = $_POST['otras_especialidades'];
 $telefono = $_POST['telefono'];
-$ubicacion = $_POST['ubicacion'];
+
+$url_departament = "../../controller/json_departamentos.json";
+$departamentos_json  = json_decode(file_get_contents($url_departament), true);
+
+$url_distrito = "../../controller/json_distritos.json";
+$distrito_json  = json_decode(file_get_contents($url_distrito), true);
+
+ 
+foreach($departamentos_json as $d){
+   if ($_POST['departamento'] == $d['id']) {
+     $departamento_name = $d['name'];
+   }; 
+}
+
+foreach($distrito_json as $dist){
+   if ($_POST['distrito'] == $dist['id']) {
+     $distrito_name = $dist['name'];
+   }; 
+} 
+
+$ubicacion = $departamento_name.", ".$distrito_name;
 $sobre_mi = $_POST['sobre_mi'];
 $idiomas = $_POST['idiomas'];
 $nombre_clinica = $_POST['nombre_clinica'];

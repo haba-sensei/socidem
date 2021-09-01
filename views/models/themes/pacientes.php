@@ -8,24 +8,35 @@
               </div>
 
               <!-- Search -->
-              <div class="search-box">
-                  <form action="">
+              <div class="search-box" style=" display: inline-flex; padding-left: 38px;">
+                  
                       <div class="form-group search-location">
-                          <input type="text" class="form-control" placeholder="Buscar Localidad">
-                          <span class="form-text">Ingresa la ubicación</span>
-                      </div>
-                      <div class="form-group search-location">
-                          <input type="text" class="form-control" placeholder="Buscar Nombre">
-                          <span class="form-text">Ingresa el nombre</span>
-                      </div>
-                      <div class="form-group search-location">
-                          <input type="text" class="form-control" placeholder="Ingresar Especialidad">
-                          <span class="form-text">Ingresa la especialidad</span>
+                          <select name="departamento" class="form-control" id="departamento" onchange="cargarPueblos();">
+                              <option default hidden>Departamentos</option>
+                          </select>
+                          <span class="form-text">Eliga un departamento</span>
                       </div>
 
-                      <button type="submit" class="mt-0 btn btn-primary search-btn"><i class="fas fa-search"></i>
+                      <div class="form-group search-location">
+                          <select name="distrito" class="form-control" id="distrito">
+                              <option default hidden>Distritos</option>
+                          </select>
+                          <span class="form-text">Eliga un distrito</span>
+                      </div>
+                      <div class="form-group search-location">
+                          <select name="especialidad" class="form-control" id="especialidad">
+                              <option default hidden>Especialidades</option>
+                               
+                          </select>
+                          <span class="form-text">Eliga una espeacialidad</span>
+                      </div>
+
+
+                       
+
+                      <button type="button" class="mt-0 btn btn-primary search-btn" onclick="search()"><i class="fas fa-search"></i>
                           <span>Buscar</span></button>
-                  </form>
+               
               </div>
               <!-- /Search -->
 
@@ -258,8 +269,7 @@
                               <ul class="available-info">
                                   <li> <i class="fas fa-map-marker-alt"></i> Florida, USA</li>
                                   <li> <i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                  <li> <i class="far fa-money-bill-alt"></i> $300 - $1000 <i class="fas fa-info-circle" data-toggle="tooltip"
-                                          title="Lorem Ipsum"></i>
+                                  <li> <i class="far fa-money-bill-alt"></i> $300 - $1000 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                   </li>
                               </ul>
                               <div class="row row-sm">
@@ -296,8 +306,7 @@
                               <ul class="available-info">
                                   <li> <i class="fas fa-map-marker-alt"></i> Newyork, USA</li>
                                   <li> <i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                  <li> <i class="far fa-money-bill-alt"></i> $50 - $300 <i class="fas fa-info-circle" data-toggle="tooltip"
-                                          title="Lorem Ipsum"></i>
+                                  <li> <i class="far fa-money-bill-alt"></i> $50 - $300 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                   </li>
                               </ul>
                               <div class="row row-sm">
@@ -334,8 +343,7 @@
                               <ul class="available-info">
                                   <li> <i class="fas fa-map-marker-alt"></i> Georgia, USA</li>
                                   <li> <i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                  <li> <i class="far fa-money-bill-alt"></i> $100 - $400 <i class="fas fa-info-circle" data-toggle="tooltip"
-                                          title="Lorem Ipsum"></i>
+                                  <li> <i class="far fa-money-bill-alt"></i> $100 - $400 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                   </li>
                               </ul>
                               <div class="row row-sm">
@@ -372,8 +380,7 @@
                               <ul class="available-info">
                                   <li> <i class="fas fa-map-marker-alt"></i> Louisiana, USA</li>
                                   <li> <i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                  <li> <i class="far fa-money-bill-alt"></i> $150 - $250 <i class="fas fa-info-circle" data-toggle="tooltip"
-                                          title="Lorem Ipsum"></i>
+                                  <li> <i class="far fa-money-bill-alt"></i> $150 - $250 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                   </li>
                               </ul>
                               <div class="row row-sm">
@@ -410,8 +417,7 @@
                               <ul class="available-info">
                                   <li> <i class="fas fa-map-marker-alt"></i> Michigan, USA</li>
                                   <li> <i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                  <li> <i class="far fa-money-bill-alt"></i> $50 - $700 <i class="fas fa-info-circle" data-toggle="tooltip"
-                                          title="Lorem Ipsum"></i>
+                                  <li> <i class="far fa-money-bill-alt"></i> $50 - $700 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                   </li>
                               </ul>
                               <div class="row row-sm">
@@ -448,8 +454,7 @@
                               <ul class="available-info">
                                   <li> <i class="fas fa-map-marker-alt"></i> Texas, USA</li>
                                   <li> <i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                  <li> <i class="far fa-money-bill-alt"></i> $100 - $500 <i class="fas fa-info-circle" data-toggle="tooltip"
-                                          title="Lorem Ipsum"></i>
+                                  <li> <i class="far fa-money-bill-alt"></i> $100 - $500 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                   </li>
                               </ul>
                               <div class="row row-sm">
@@ -486,8 +491,7 @@
                               <ul class="available-info">
                                   <li> <i class="fas fa-map-marker-alt"></i> Kansas, USA</li>
                                   <li> <i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                  <li> <i class="far fa-money-bill-alt"></i> $100 - $1000 <i class="fas fa-info-circle" data-toggle="tooltip"
-                                          title="Lorem Ipsum"></i>
+                                  <li> <i class="far fa-money-bill-alt"></i> $100 - $1000 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                   </li>
                               </ul>
                               <div class="row row-sm">
@@ -524,8 +528,7 @@
                               <ul class="available-info">
                                   <li> <i class="fas fa-map-marker-alt"></i> California, USA</li>
                                   <li> <i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                  <li> <i class="far fa-money-bill-alt"></i> $100 - $400 <i class="fas fa-info-circle" data-toggle="tooltip"
-                                          title="Lorem Ipsum"></i>
+                                  <li> <i class="far fa-money-bill-alt"></i> $100 - $400 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                   </li>
                               </ul>
                               <div class="row row-sm">

@@ -274,11 +274,10 @@
     </div>
 </div>
 <style>
-.image_container{
-  max-width: 800px;
-  max-height: 450px;
-}
-
+    .image_container {
+        max-width: 800px;
+        max-height: 450px;
+    }
 </style>
 <div class="modal fade " id="voice_call" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-dialog-top modal-lg" role="document">
@@ -288,16 +287,16 @@
                 <div class="call-box incoming-box">
                     <div class="call-wrapper">
                         <div class="call-inner">
-                            <input type="file" name="image" id="image" onchange="readURL(this);"/>
+                            <input type="file" name="image" id="image" onchange="readURL(this);" />
 
                             <div class="image_container">
-                            <img id="blah" src="#" alt="your image" />
+                                <img id="blah" src="#" alt="your image" />
                             </div>
 
                             <!-- // Cropped image to display (only if u want) -->
-                            <div id="cropped_result"></div>  
+                            <div id="cropped_result"></div>
                             <!-- // Will trigger crop event -->
-                            <button id="crop_button">Crop</button> 
+                            <button id="crop_button">Crop</button>
                             <!-- asdasd -->
                             <!-- <div class="call-user profile-img">
                                 <img src="#" id="preview" alt="User Image">
@@ -317,6 +316,24 @@
     </div>
 </div>
 
+<div class="modal fade" id="cropImagePop"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">
+                    <?php echo "Edit Foto" ?></h4>
+            </div>
+            <div class="modal-body">
+                <div id="upload-demo" class="center-block"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="cropImageBtn" class="btn btn-primary">Crop</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="crear_img_dig" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-dialog-top" role="document">
@@ -379,3 +396,4 @@
             </div>
         </div>
     </div>
+</div>

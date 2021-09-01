@@ -36,12 +36,13 @@ if (isset($_GET['code'])){
         consultasSQL::UpdateSQL("pacientes", "correo='$correo', mail_confirm='1' ", "correo='$correo'");
 
 
-        echo '<script> 	window.location = "../inicio"; </script>';
+        echo 'exito';
     }else {
-        echo '<script> 	window.location = "../inicio"; </script>';
+        echo 'fail';
     }
 
-}else {
+}else { 
+
     echo '<script> 	window.location = "../inicio"; </script>';
 }
     

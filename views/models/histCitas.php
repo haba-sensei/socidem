@@ -16,55 +16,69 @@
                 } else {
 
                 ?>
-                    
 
-                            <div class="col-md-12" style="margin-bottom: -80px;">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="mb-3 input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="text-white input-group-text bg-info" id="basic-addon1"><i class="fa fa-calendar"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" id="weeklyDatePicker">
-                                        </div>
-                                    </div>
 
-                                    <div class="col-md-3">
-                                        <div class="mb-3 input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="text-white input-group-text bg-info" id="basic-addon1"><i class="fa fa-calendar"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" id="weeklyDatePicker">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="mb-3 input-group" style="margin-top: 5px;">
-                                            <button class="btn btn-success btn-sm" style="margin-right: 5px;" onclick="table_row()">Buscar</button>
-                                            <button onclick="table_export()" style="margin-right: 5px;"  class="btn btn-info btn-sm">Exportar</button>
-                                            <button onclick="remove_table()" class="btn btn-danger btn-sm">Limpiar</button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div id="tabla_exp"></div>
-
-                                    <div style="margin-right: 87px;">
-                                    <canvas id="myChart" width="400" height="400"></canvas>  
-                                    </div>
- 
-                                    <div> 
-                                    <canvas id="myChart2" width="400" height="400"></canvas> 
-                                    </div>
-                                   
+                    <div class="col-md-12" style="margin-bottom: -80px;">
+                        <div class="row">
+                            
+                            <div class="col-md-3">
+                            <div class="mb-3 input-group date">
+                                <div class="input-group-prepend ">
+                                    <span class="text-white input-group-text bg-info" id="basic-addon1"><i class="fa fa-calendar"></i></span>
                                 </div>
+                                <input type="text" class="form-control" id="elemento1" placeholder="Desde" autocomplete="off">  
+                            </div>
 
-                                
 
                             </div>
+
+                            <div class="col-md-3">
+                            <div class="mb-3 input-group date">
+                                <div class="input-group-prepend ">
+                                    <span class="text-white input-group-text bg-info" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="elemento2" placeholder="Hasta" autocomplete="off">  
+                            </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="mb-3 input-group" style="margin-top: 5px;">
+                                    <button class="btn btn-success btn-sm" style="margin-right: 5px;" onclick="table_row()">Buscar</button>
+                                    <button onclick="table_export()" style="margin-right: 5px;" class="btn btn-info btn-sm">Exportar</button>
+                                    <button onclick="remove_table()" class="btn btn-danger btn-sm">Limpiar</button>
+                                </div>
+                            </div>
+
+                            <div id="tabla_exp"></div>
+
+                            <div class="row">
+                                <div class="col-md-12" id="grafico_div">
+
+                                    <canvas id="myChart" width="900" height="400"></canvas>
+                                </div>
+
+                            </div>
+
+                            <!-- <div class="row">
+                                        <span></span>
+                                        <div class="col-md-12">
+
+                                        <canvas id="myChart2" width="900" height="400"></canvas>  
+                                        </div>
+                                    
+                                    </div> -->
+
+
+
                         </div>
 
 
-                    
+
+                    </div>
+            </div>
+
+
+
         <?php } ?>
 
         </div>

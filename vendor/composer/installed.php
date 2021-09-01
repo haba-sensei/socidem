@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '53c6435fbcab9c3e7465f34c1b4f78428ce30227',
+    'reference' => '4f861f65cf0259b36c9f62734eba82d1105210db',
     'name' => 'socidem/haba',
   ),
   'versions' => 
@@ -337,7 +337,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '53c6435fbcab9c3e7465f34c1b4f78428ce30227',
+      'reference' => '4f861f65cf0259b36c9f62734eba82d1105210db',
     ),
     'symfony/console' => 
     array (
@@ -428,6 +428,15 @@
       array (
       ),
       'reference' => 'd15da7ba4957ffb8f1747218be9e1a121fd298a1',
+    ),
+    'twilio/sdk' => 
+    array (
+      'pretty_version' => '6.28.1',
+      'version' => '6.28.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8d389e82b2bef32cad093cec362c5b190f7de58b',
     ),
     'zendframework/zend-escaper' => 
     array (

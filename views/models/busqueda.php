@@ -29,23 +29,64 @@
                 <!-- Search Filter -->
                 <div class="card search-filter">
                     <div class="card-header">
-                        <h4 class="mb-0 card-title">Filtro de Busqueda</h4>
+                        <h4 class="mb-0 card-title">Filtro de Busqueda  </h4>
                     </div>
                     <div class="card-body">
+ 
+                                        
+                    <?php 
+                    
+                    $consDepa = ejecutarSQL::consultar("SELECT `departamentos`.*, `departamentos`.`id` FROM `departamentos` WHERE `departamentos`.`id` = '$routes[1]'");
+                    $consDist = ejecutarSQL::consultar("SELECT `distritos`.*, `distritos`.`id` FROM `distritos` WHERE `distritos`.`id` = '$routes[2]'");
+                    $consEspe = ejecutarSQL::consultar("SELECT `especialidades`.*, `especialidades`.`id` FROM `especialidades` WHERE `especialidades`.`id` = '$routes[3]'");
+                        
+                    while($datos_depa=mysqli_fetch_assoc($consDepa)){ $nombre_departamento =$datos_depa['name'];  
+                    echo '
+                    <input type="hidden" class="form-control " data-jplist-control="textbox-filter" data-group="group1"
+                    data-name="my-filter-1" data-path=".doc-depa"  value="'.$nombre_departamento.'"  data-clear-btn-id="name-clear-btn"
+                    placeholder="Busqueda por departamento">
+                    '; 
+                    } 
 
+                    while($datos_dist=mysqli_fetch_assoc($consDist)){ $nombre_distrito =$datos_dist['name'];  
+                    echo '
+                    <input type="hidden" class="form-control " data-jplist-control="textbox-filter" data-group="group1"
+                    data-name="my-filter-1" data-path=".doc-dist"  value="'.$nombre_distrito.'"  data-clear-btn-id="name-clear-btn"
+                    placeholder="Busqueda por distrito">
+                    '; 
+                    } 
+                    
+                    while($datos_esp=mysqli_fetch_assoc($consEspe)){ $nombre_especialidad =$datos_esp['nombre'];  
+                    echo '
+                    <input type="hidden" class="form-control " data-jplist-control="textbox-filter" data-group="group1"
+                    data-name="my-filter-1" data-path=".doc-esp"  value="'.$nombre_especialidad.'"  data-clear-btn-id="name-clear-btn"
+                    placeholder="Busqueda por especialidad">
+                    '; 
+                    } 
+
+                    ?>
+ 
+         
+
+      
+
+
+                    
                         <div class="filter-widget">
                             <h4>Busca por Especialidad</h4>
                             <select class="form-control floating" data-jplist-control="select-filter" data-group="group1" data-name="name2">
-                                <option value="0" data-path="default">Todas las Especialidades</option>
+                          
+                            <option value="0" data-path="default">Todas las Especialidades</option>
 
                                 <?php 
                                 
                                 while($datos_espe=mysqli_fetch_assoc($espeCons)){
                                     $nom_espe=$datos_espe['nombre'];
                                     $slug_espe=$datos_espe['slug'];
+                                    $id_espe=$datos_espe['id'];
                                      echo '
                                     
-                                    <option value="'.$nom_espe.'" data-path=".'.$slug_espe.'">'.$nom_espe.'</option>
+                                    <option data-path=".'.$slug_espe.'" >'.$nom_espe.'</option>
                                     
                                     ';
                                 } 
@@ -61,7 +102,7 @@
                         <div class="filter-widget">
                             <h4>Busca por Nombre</h4>
                             <div class="cal-icon">
-                                <div style="display: none" data-jplist-control="hidden-sort" data-group="group1" data-path=".doc-name"
+                                <div style="display: none" data-jplist-control="hidden-sort"  data-group="group1" data-path=".doc-name"
                                     data-order="desc" data-type="text" data-clear-btn-id="name-clear-btn">
                                 </div>
                                 <input type="text" class="form-control " data-jplist-control="textbox-filter" data-group="group1"
@@ -73,23 +114,25 @@
                             </div>
                         </div>
 
-                        <div class="filter-widget">
-                            <h4>Busca por Servicio</h4>
-                            <div class="cal-icon">
+                     
 
-                                <input type="text" class="form-control " data-jplist-control="textbox-filter" data-group="group1"
-                                    data-name="my-filter-1" data-path=".doc-servicio" type="text" value="" data-clear-btn-id="name-clear-btn"
-                                    placeholder="Busqueda por Servicio">
+                        <div class="filter-widget">
+                            <h4>Busca por Departamento</h4>
+                            <div class="">
+                            <select data-jplist-control="select-filter" data-group="group1" data-name="name3" name="departamento" class="form-control" id="departamento" onchange="cargarPueblos();">
+                              <option default hidden>Departamentos</option>
+                            </select>
+                                 
                             </div>
                         </div>
 
                         <div class="filter-widget">
-                            <h4>Busca por Consultorio</h4>
-                            <div class="cal-icon">
+                            <h4>Busca por Distrito</h4>
+                            <div class="">
 
-                                <input type="text" class="form-control " data-jplist-control="textbox-filter" data-group="group1"
-                                    data-name="my-filter-1" data-path=".doc-locate" type="text" value="" data-clear-btn-id="name-clear-btn"
-                                    placeholder="Busqueda por Consultorio">
+                            <select data-jplist-control="select-filter" data-group="group1" data-name="name4" name="distrito" class="form-control" id="distrito">
+                              <option default hidden>Distritos</option>
+                          </select>
                             </div>
                         </div>
 
@@ -147,11 +190,12 @@
                     $num_colegiatura_C=$data_medicos_C['num_colegiatura'];
                     $especialidad_C=$data_medicos_C['especialidad'];
 
-                    $espConsFilter = ejecutarSQL::consultar("SELECT `especialidades`.`nombre`, `especialidades`.`slug`  FROM `especialidades` WHERE `especialidades`.`nombre` = '$especialidad_C';");
+                    $espConsFilter = ejecutarSQL::consultar("SELECT `especialidades`.`nombre`, `especialidades`.`slug`, `especialidades`.`id`  FROM `especialidades` WHERE `especialidades`.`nombre` = '$especialidad_C';");
 
                     while($data_esp_F_C=mysqli_fetch_assoc($espConsFilter)){ 
                         
-                        $slug_C=$data_esp_F_C['slug'];
+                        $id_esp_C = "_".$data_esp_F_C['id'];
+                        $slug_C= $data_esp_F_C['slug'];
                         
                     }
                      
@@ -189,8 +233,9 @@
                                     <h4 class="doc-name"><a href="perfil-'.$codigo_referido_C.'-'.$journalName.'" style="text-transform: capitalize;">Dr. '.$nombre_completo_C.'</a></h4>
                                     <p class="doc-speciality" style="text-transform: capitalize;">'.$titulo_C.'</p>
                                     <h5 class="doc-department " style="color: #757575;">
-                                        <img src="views/assets/img/especial.png" class="img-fluid" alt="especialidad"> <span class="'.$slug_C.' "> '.$especialidad_C.'</span>
+                                        <img src="views/assets/img/especial.png" class="img-fluid" alt="especialidad"> <span class="doc-esp '.$slug_C.'">'.$especialidad_C.'</span>
                                     </h5>
+                                    
                                     <h5 class="doc-department" style="color: #757575;">
                                         <img src="views/assets/img/estetoscopio.png" class="img-fluid" alt="colegiatura" style="margin-right: 13px;">#'.$num_colegiatura_C.'
                                     </h5>
@@ -199,7 +244,7 @@
                                         <p class="doc-department" style="color: #757575; font-weight: 500;">
                                             <img src="views/assets/img/marcador-de-posicion.png" class="img-fluid" alt="localizacion">
                                             
-                                            <span class="" style="color: #757575; font-weight: 500; text-transform: capitalize;">'.$ubicacion_C.'</span> 
+                                            <span class="doc-depa doc-dist '.$ubicacion_C.'" style="color: #757575; font-weight: 500;">'.$ubicacion_C.'</span> 
                                         </p>
                                     </div>
                                 
@@ -314,5 +359,7 @@ $(document).ready(function() {
         space: '-'
 
     });
+    jplist.init();
+
 });
 </script>

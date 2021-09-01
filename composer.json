@@ -8,6 +8,7 @@
         "facebook/graph-sdk": "^5.7",
         "sly/notification-pusher": "^2.3",
         "phpmailer/phpmailer": "^6.3",
-        "fightbulc/moment": "^1.33"
+        "fightbulc/moment": "^1.33",
+        "twilio/sdk": "^6.28"
     }
 }
