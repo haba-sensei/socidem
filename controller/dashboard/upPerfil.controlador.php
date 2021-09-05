@@ -32,7 +32,7 @@ foreach($distrito_json as $dist){
    }; 
 } 
 
-$ubicacion = $departamento_name.", ".$distrito_name;
+$ubicacion = $departamento_name." ".$distrito_name;
 $sobre_mi = $_POST['sobre_mi'];
 $idiomas = $_POST['idiomas'];
 $nombre_clinica = $_POST['nombre_clinica'];

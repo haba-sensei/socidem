@@ -1,6 +1,30 @@
 <?php include 'views/admin/breadcrumb_med.php';
 ?>
+<style>
 
+label.cabinet{
+	    /* display: block; */
+        cursor: pointer;
+    width: 26%;
+}
+
+label.cabinet input.file{
+	position: relative;
+	height: 100%;
+	width: auto;
+	opacity: 0;
+	-moz-opacity: 0;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+  margin-top:-30px;
+}
+
+#upload-demo{
+    width: 100%;
+    height: 300px;
+    padding-bottom: 25px;
+}
+
+</style>
 
 
 <div class="content">
@@ -20,20 +44,26 @@
                                     <div class="form-group">
                                         <div class="change-avatar">
                                             <div class="profile-img">
-                                                <img src="#" id="preview" alt="User Image">
+                                                <label class="cabinet center-block">
+                                                <figure style=" margin: 0 0 -2rem!important;">
+                                                <img src="" class=" img-responsive img-thumbnail" id="preview" />
+                                                <figcaption><i class="fa fa-camera"></i></figcaption>
+                                                </figure>
+                                                <!-- <input type="file" class="item-img file center-block" name="foto" id="foto" /> -->
+                                                </label>
+                                                <input type="file" class="item-img file center-block" name="foto" id="foto" />
+                                                <!-- <img src="" class="gambar img-responsive img-thumbnail" id="item-img-output" alt="User Image"> -->
                                             </div>
-                                            <div class="upload-img">
+                                            <!-- <div class="upload-img">
                                                 <div class="change-photo-btn">
                                                     <span><i class="fa fa-upload"></i> Sube tu Foto</span>
 
                                                 </div>
-                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#voice_call">
-                                                    <i class="material-icons">local_phone</i>
-                                                </a>
+                                                 
                                                 <input type="file" name="foto" id="foto" class="upload" style="display: none;">
                                                 <small class="form-text text-muted">Solo Imagenes JPG, PNG. Tamaño
                                                     Maximo 2MB</small>
-                                            </div>
+                                            </div> -->
 
 
                                         </div>
@@ -361,44 +391,10 @@
                             </div>
 
 
-<style>
 
-label.cabinet{
-	display: block;
-	cursor: pointer;
-}
 
-label.cabinet input.file{
-	position: relative;
-	height: 100%;
-	width: auto;
-	opacity: 0;
-	-moz-opacity: 0;
-  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
-  margin-top:-30px;
-}
 
-#upload-demo{
-	width: 250px;
-	height: 250px;
-  padding-bottom:25px;
-}
 
-</style>
-
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <label class="cabinet center-block">
-                                            <figure>
-                                                <img src="" class="gambar img-responsive img-thumbnail" id="item-img-output" />
-                                                <figcaption><i class="fa fa-camera"></i></figcaption>
-                                            </figure>
-                                            <input type="file" class="item-img file center-block" name="file_photo" />
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
 
                           
 
@@ -423,3 +419,7 @@ label.cabinet input.file{
 
 </div>
 </div>
+
+
+ 
+

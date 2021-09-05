@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '4f861f65cf0259b36c9f62734eba82d1105210db',
+    'reference' => '0478ba5b45b63ca3170debf6cba6c0d214230b2d',
     'name' => 'socidem/haba',
   ),
   'versions' => 
@@ -350,7 +350,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '4f861f65cf0259b36c9f62734eba82d1105210db',
+      'reference' => '0478ba5b45b63ca3170debf6cba6c0d214230b2d',
     ),
     'symfony/console' => 
     array (

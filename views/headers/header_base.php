@@ -31,7 +31,8 @@
     <script src="views/assets/plugins/rescalendar/rescalendar.js"></script>
     <script src="views/assets/plugins/rescalendar/config_calendar.js"></script>
     <link href="views/assets/plugins/timepicker/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-     <link rel="stylesheet" href="https://foliotek.github.io/Croppie/croppie.css">
+    <script src="https://foliotek.github.io/Croppie/croppie.js" ></script>
+    <link rel="stylesheet" href="https://foliotek.github.io/Croppie/croppie.css">
      
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.0.0/cropper.min.css" integrity="sha256-FeDcPwV8ZgxG1MU5L/b2i8clOmqZJKK0eyDHqrQaXxY=" crossorigin="anonymous" /> -->
     

@@ -1,5 +1,6 @@
     <script src="views/assets/js/popper.min.js"></script>
-    <script src="views/assets/js/bootstrap.min.js"></script> 
+    <script src="views/assets/js/bootstrap.min.js"></script>    
+    <script src="views/assets/js/scripts/crop.js"></script>
     <script src="views/assets/js/slick.js"></script>
     <script src="views/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
     <script src="views/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
@@ -21,11 +22,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
     <script src="views/assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
-   
     <script src="views/assets/js/scripts/scripts.js"></script>
+   
+    
    <script> 
  
     </script>
+    
     <?php 
   
   switch ($rol_) {

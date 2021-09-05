@@ -163,11 +163,12 @@ $routes = explode("-", $_GET["ruta"]);
 		include "adminP/footers/footer.php";
 	break;
 
-	case 'perfilMed': 
+	case 'perfilMed':
 		 
+		include "views/footers/modal_onboarding.php";
 		include 'views/footers/footer_base.php';   
 		include "views/footers/footer.php"; 
-		include "views/footers/modal_onboarding.php";
+		
 		include "views/footers/scripts_dash.php"; 
 		include "views/footers/scripts_perfil.php"; 
 		echo "</body>";
