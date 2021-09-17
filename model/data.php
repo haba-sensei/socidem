@@ -81,11 +81,7 @@ HISTORICO DE PAGO
                
      while ($datos_semana = mysqli_fetch_assoc($historial_semanal_cons)) {  
           $historial_semanal = $datos_semana['sumatoria_total'] +  $total_ref; 
-     }
-// /*=============================================
-// LISTA DE VENDEDORES DESTACADOS
-// =============================================*/
-//     $listVendDest = ejecutarSQL::consultar("SELECT `usuarios`.*, `perfil`.*, `perfil`.`tipo` FROM `usuarios` LEFT JOIN `perfil` ON `perfil`.`id` = `usuarios`.`id` WHERE `perfil`.`tipo` = 'destacado';");
+     } 
 // /*=============================================
 // LISTA DE PRODUCTOS DESTACADOS
 // =============================================*/

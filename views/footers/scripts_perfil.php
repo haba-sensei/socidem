@@ -29,7 +29,7 @@ $(document).ready(function() {
            $('#titulo').val(data['titulo']);
            $('#universidad').val(data['universidad']);
            $('#anio_exp').val(data['años']);
-           $('#membresia').val(data['membresia']);
+           $('#membresia').val(data['membresia']); 
 
            if(data['check_tel'] == 1){
             document.getElementById("check_tel").checked = true;
@@ -61,6 +61,16 @@ $(document).ready(function() {
             $("#foto").change(function() {
             readURL(this);
             });
+
+            $("#otras_especialidades_select").change(function() {
+
+               var especialidades =  $("#otras_especialidades_select").val();
+
+                 
+                $("#otras_especialidades").tagsinput('add', especialidades);
+             
+            });
+
         }
     });
 

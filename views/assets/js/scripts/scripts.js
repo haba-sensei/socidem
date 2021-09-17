@@ -144,7 +144,7 @@ function cambio() {
 
 }
 
-function cargarProvincias() {
+function cargarDepartamentos() {
     var departamentos_json = [{ "id": "01", "name": "Amazonas" }, { "id": "02", "name": "\u00c1ncash" }, { "id": "03", "name": "Apur\u00edmac" }, { "id": "04", "name": "Arequipa" }, { "id": "05", "name": "Ayacucho" }, { "id": "06", "name": "Cajamarca" }, { "id": "07", "name": "Callao" }, { "id": "08", "name": "Cusco" }, { "id": "09", "name": "Huancavelica" }, { "id": "10", "name": "Hu\u00e1nuco" }, { "id": "11", "name": "Ica" }, { "id": "12", "name": "Jun\u00edn" }, { "id": "13", "name": "La Libertad" }, { "id": "14", "name": "Lambayeque" }, { "id": "15", "name": "Lima" }, { "id": "16", "name": "Loreto" }, { "id": "17", "name": "Madre de Dios" }, { "id": "18", "name": "Moquegua" }, { "id": "19", "name": "Pasco" }, { "id": "20", "name": "Piura" }, { "id": "21", "name": "Puno" }, { "id": "22", "name": "San Mart\u00edn" }, { "id": "23", "name": "Tacna" }, { "id": "24", "name": "Tumbes" }, { "id": "25", "name": "Ucayali" }];
 
     addOptions("departamento", departamentos_json);
@@ -186,27 +186,56 @@ function addOptions(domElement, array) {
 
 
 
-function cargarPueblos() {
+function cargaProvincias() {
     // Objeto de provincias con pueblos
-    $.getJSON('controller/json_distritos.json', function(data) {
-        var listaPueblos = data;
-        var provincias = document.getElementById('departamento');
-        var pueblos = document.getElementById('distrito');
-        var provinciaSeleccionada = provincias.value
+    $.getJSON('controller/json_provincias.json', function(data) {
+        var listaProvincias = data;
+        var departamentos = document.getElementById('departamento');
+        var provincias = document.getElementById('provincia');
+        var departamentosSeleccionada = departamentos.value
 
-        // Se limpian los pueblos
-        pueblos.innerHTML = '<option  default hidden>Distrito</option>';
+        // Se limpian los provincias
+        provincias.innerHTML = '<option  default hidden>Elige una opcion</option>';
 
 
         // provinciaSeleccionada.sort()
-        listaPueblos.forEach(function(valor, indice, array) {
+        listaProvincias.forEach(function(valor, indice, array) {
 
-            if (provinciaSeleccionada == valor['department_id']) {
+            if (departamentosSeleccionada == valor['department_id']) {
                 let opcion = document.createElement('option')
                 opcion.value = valor['id']
                 opcion.setAttribute('data-path', "." + valor['name'])
                 opcion.text = valor['name']
-                pueblos.add(opcion)
+                provincias.add(opcion)
+            }
+
+        });
+        // if (provinciaSeleccionada !== '') {}
+    });
+}
+
+function cargaDistritos() {
+
+    // Objeto de provincias con pueblos
+    $.getJSON('controller/json_distritos.json', function(data) {
+        var listaDistritos = data;
+        var provincia = document.getElementById('provincia');
+        var distritos = document.getElementById('distrito');
+        var provinciaSeleccionada = provincia.value
+
+        // Se limpian los distritos
+        distritos.innerHTML = '<option  default hidden>Elige una opcion</option>';
+
+
+        // provinciaSeleccionada.sort()
+        listaDistritos.forEach(function(valor, indice, array) {
+            console.log(provinciaSeleccionada);
+            if (provinciaSeleccionada == valor['province_id']) {
+                let opcion = document.createElement('option')
+                opcion.value = valor['id']
+                opcion.setAttribute('data-path', "." + valor['name'])
+                opcion.text = valor['name']
+                distritos.add(opcion)
             }
 
         });
@@ -215,7 +244,7 @@ function cargarPueblos() {
 }
 
 // Iniciar la carga de provincias solo para comprobar que funciona
-cargarProvincias();
+cargarDepartamentos();
 cargarEspecialidades();
 
 const removeAccents = (str) => {
@@ -248,11 +277,12 @@ function guardar() {
 
 function search() {
     var elemento1 = removeAccents($('#departamento').val());
-    var elemento2 = removeAccents($('#distrito').val());
-    var elemento3 = removeAccents($('#especialidad').val());
+    var elemento2 = removeAccents($('#departamento').val());
+    var elemento3 = removeAccents($('#distrito').val());
+    var elemento4 = removeAccents($('#especialidad').val());
 
 
-    var subj = elemento1 + " " + elemento2 + " " + elemento3;
+    var subj = elemento1 + " " + elemento2 + " " + elemento3 + " " + elemento4;
 
     var extra_slug = subj.replace(/\s/g, '-');
     window.location = "busqueda-" + extra_slug;

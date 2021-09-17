@@ -20,7 +20,12 @@
                 </ul>
             </div>
         </div>
+<style>
+html {
+  scroll-behavior: smooth;
+}
 
+</style>
 <header class="text-center header ">
     <nav class="text-center navbar navbar-expand-lg header-nav">
         <div class="navbar-header">
@@ -135,21 +140,19 @@
                     <a href="inicio">inicio </a>
 
                     </li>
+
                     <li class="has-submenu">
-                    <a href="servicios">Nuestros Servicios</a>
+                    <a  href="#section_2" >Nuestros Servicios </a>
 
                     </li>
+                    
                     <li class="has-submenu">
-                    <a href="faqs">Preguntas Frecuentes</a>
+                    <a  href="#section_3" >Preguntas Frecuentes</a>
 
                     </li>
+                    
                     <li class="has-submenu">
-                    <a href="busqueda">Encuentra un Doctor</a>
-
-                    </li>
-                    <li class="has-submenu">
-                    <a href="contacto">Contacto</a>
-
+                    <a href="#section_4">Contacto</a> 
                     </li>
 
                     <li class="login-link">

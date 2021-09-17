@@ -21,7 +21,7 @@
                     $fb = new Facebook\Facebook([
                         'app_id' => '170568131242133',
                         'app_secret' => '2058350975fdcb641245bc2cba3af3a3',
-                        'default_graph_version' => 'v9.0',
+                        'default_graph_version' => 'v12.0',
                     ]);
                     /* LOGIN FACEBOOK CREDENCIALES PACIENTES*/
                     $url_face_login_pacientes = 'https://medicos.stampiza2.com/controller/login_pac_face.controlador.php';
@@ -43,7 +43,7 @@
                     $fb = new Facebook\Facebook([
                         'app_id' => '170568131242133',
                         'app_secret' => '2058350975fdcb641245bc2cba3af3a3',
-                        'default_graph_version' => 'v9.0',
+                        'default_graph_version' => 'v12.0',
                     ]);
 
                     /* REGISTRO FACEBOOK CREDENCIALES MEDICOS*/
@@ -95,7 +95,7 @@
                     $fb = new Facebook\Facebook([
                         'app_id' => '279795450213447',
                         'app_secret' => 'b85df09a5102c240f71707acb1625e9f',
-                        'default_graph_version' => 'v9.0',
+                        'default_graph_version' => 'v12.0',
                     ]);
                      /* LOGIN FACEBOOK CREDENCIALES PACIENTES*/
                     $url_face_login_pacientes = 'http://localhost/socidem/controller/login_pac_face.controlador.php';
@@ -118,7 +118,7 @@
                     $fb = new Facebook\Facebook([
                         'app_id' => '279795450213447',
                         'app_secret' => 'b85df09a5102c240f71707acb1625e9f',
-                        'default_graph_version' => 'v9.0',
+                        'default_graph_version' => 'v12.0',
                     ]);
 
                     /* REGISTRO FACEBOOK CREDENCIALES MEDICOS*/
@@ -157,10 +157,6 @@
         
     } 
 
-    $account_sid = 'ACd6327e8b1e0be96987a5844c28f773d1';
-
-    $auth_token = 'fddf4fd30b907436826e38055d143fab';
-    
-    $twilio_number = "+17175469782"; 
+   
 
 ?>

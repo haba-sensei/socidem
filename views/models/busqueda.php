@@ -101,7 +101,7 @@
 
                         <div class="filter-widget">
                             <h4>Busca por Nombre</h4>
-                            <div class="cal-icon">
+                            <div class="">
                                 <div style="display: none" data-jplist-control="hidden-sort"  data-group="group1" data-path=".doc-name"
                                     data-order="desc" data-type="text" data-clear-btn-id="name-clear-btn">
                                 </div>
@@ -119,10 +119,20 @@
                         <div class="filter-widget">
                             <h4>Busca por Departamento</h4>
                             <div class="">
-                            <select data-jplist-control="select-filter" data-group="group1" data-name="name3" name="departamento" class="form-control" id="departamento" onchange="cargarPueblos();">
+                            <select data-jplist-control="select-filter" data-group="group1" data-name="name3" name="departamento" class="form-control" id="departamento" onchange="cargaProvincias();">
                               <option default hidden>Departamentos</option>
                             </select>
                                  
+                            </div>
+                        </div>
+
+                        <div class="filter-widget">
+                            <h4>Busca por Provincia</h4>
+                            <div class="">
+
+                            <select data-jplist-control="select-filter" data-group="group1" data-name="name5" name="provincia" class="form-control" id="provincia" onchange="cargaDistritos();">
+                              <option default hidden>Provincias</option>
+                          </select>
                             </div>
                         </div>
 
@@ -150,14 +160,15 @@
 
                                     <span class="range-slider-value">
 
-                                        <span data-type="value-1"></span>
+                                        <span data-type="value-2"></span>
 
-                                        <span style="float:right;" class="range-slider-value" data-type="value-2"></span>
+                                        <span style="float:right;" class="range-slider-value" data-type="value-1"></span>
                                     </span>
 
                                     <div class="jplist-slider" data-type="slider"></div>
-                                    <span style="float:left;">Min</span>
-                                    <span style="float:right;">Max</span>
+                                    
+                                    <span style="float:right;">Min</span>
+                                    <span style="float:left;">Max</span>
 
                                 </div>
                                 <?php 

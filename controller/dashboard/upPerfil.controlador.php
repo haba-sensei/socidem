@@ -7,7 +7,9 @@ include '../../model/sessiones.php';
 $especialidad = $_POST['especialidad'];
  
 $correo_old = $correo_;
- 
+
+$foto_cortada = $_POST['foto_crop'];
+  
 $num_colegiatura = $_POST['num_colegiatura'];
 $otros_num_colegiatura = $_POST['otros_nro_colegiatura'];
 $otras_especialidades = $_POST['otras_especialidades'];
@@ -15,6 +17,9 @@ $telefono = $_POST['telefono'];
 
 $url_departament = "../../controller/json_departamentos.json";
 $departamentos_json  = json_decode(file_get_contents($url_departament), true);
+
+$url_provincia = "../../controller/json_provincias.json";
+$provincias_json  = json_decode(file_get_contents($url_provincia), true);
 
 $url_distrito = "../../controller/json_distritos.json";
 $distrito_json  = json_decode(file_get_contents($url_distrito), true);
@@ -26,13 +31,19 @@ foreach($departamentos_json as $d){
    }; 
 }
 
+foreach($provincias_json as $prov){
+   if ($_POST['provincia'] == $prov['id']) {
+     $provincia_name = $prov['name'];
+   }; 
+}
+
 foreach($distrito_json as $dist){
    if ($_POST['distrito'] == $dist['id']) {
      $distrito_name = $dist['name'];
    }; 
 } 
 
-$ubicacion = $departamento_name." ".$distrito_name;
+$ubicacion = $departamento_name." ".$provincia_name." ".$distrito_name;
 $sobre_mi = $_POST['sobre_mi'];
 $idiomas = $_POST['idiomas'];
 $nombre_clinica = $_POST['nombre_clinica'];
@@ -58,41 +69,19 @@ if($check_correo_format == "on"){
    $check_correo = 1;
 }else {
    $check_correo = 0;
-}
-
-$img =  $_FILES['foto']['name'];
-
- 
+} 
 
 
-if( strlen($img) > 0){
-    $errors= array();
-    $foto= date('dmYHis').str_replace(" ", "", basename($_FILES['foto']['name']));
-    $file_name = $_FILES['foto']['name'];
-    $file_size =$_FILES['foto']['size'];
-    $file_tmp =$_FILES['foto']['tmp_name'];
-    $file_type=$_FILES['foto']['type'];
-    
-    
-    $extensions= array("jpeg","jpg","png");
-    
-    if(($extensions)=== false){
-       $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-    }
-    
-    if($file_size > 2097152){
-       $errors[]='File size must be excately 2 MB';
-    }
-    
-    if(empty($errors)==true){
-       move_uploaded_file($file_tmp,"../../views/assets/images/medicos/".$foto);
-       
-    }else{
-       echo ($errors);
-    }
- }else {
-    $foto = "";
- } 
+if( $foto_cortada != null){
+     
+
+$filename_path = md5(time().uniqid()).".png"; 
+$decoded=base64_decode($foto_cortada); 
+
+file_put_contents("../../views/assets/images/medicos/".$filename_path, file_get_contents($foto_cortada));
+
+
+} 
     $BuscaAfil = ejecutarSQL::consultar("select * from medicos where correo='$correo_' ");
    
     $AfilC = mysqli_num_rows($BuscaAfil);
@@ -102,10 +91,10 @@ if( strlen($img) > 0){
         if ($AfilC == 1) {
             consultasSQL::UpdateSQL("medicos", "estado='1'", "correo='$correo_'");
             consultasSQL::UpdateSQL("secretarias", "estado='1'", "cod_med='$codigo_referido_'");
-            if(strlen($img) > 0){
+            if($foto_cortada != null){
 
                consultasSQL::UpdateSQL("perfil", " 
-               foto='$foto',
+               foto='$filename_path',
                telefono='$telefono',
                num_colegiatura='$num_colegiatura',
                especialidad='$especialidad',
@@ -128,7 +117,7 @@ if( strlen($img) > 0){
                "correo='$correo_'");
                
                session_reset();  
-               $_SESSION["foto"] = $foto;
+               $_SESSION["foto"] = $filename_path;
                $_SESSION["especialidad"] = $especialidad;
                $_SESSION["ubicacion"] = $ubicacion;
                $_SESSION["codigo_referido"] =  $codigo_referido_;

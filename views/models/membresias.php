@@ -467,10 +467,7 @@
                                
 
                             </div>
-                            <?php 
-                             if($_SESSION["reg_token_bank"] == "registrado"){ 
-                                 echo '
-                                 <br>
+                            <br>
                                  <small class="" style="color:#008298; font-weight: 600;">Si Tienes un codigo Promocional</small> 
                                  <div class="div_box_promo"> 
                                 
@@ -478,21 +475,20 @@
                                  </div>
                                  
                                  <a class="btn-plan btn-info btn" style="margin-top: -4px;" id="id_btn_val">Pagar Plan</a>
-                                 ';
-                             }else {
-
-                                echo '
-                                <br>
-                                <small class="" style="color:red; font-weight: 600;">Debe Registrar un CCI para Continuar </small>
-                                <br>
-                                <a href="referidos" style="color:#008298; font-weight: 600;" >Ir a Referidos</a>
-                                <div class="div_box_promo">
-                                <input class="form-control "  placeholder="Ingresa tu codigo aqui" type="text" disabled readonly autocomplete="off"> 
-                                </div>
-                                ';
-                             }
-                            
-                            
+                            <?php 
+                             if($_SESSION["reg_token_bank"] == "registrado"){ 
+                                 echo '';
+                             }else { 
+                                // echo '
+                                // <br>
+                                // <small class="" style="color:red; font-weight: 600;">Debe Registrar un CCI para Continuar </small>
+                                // <br>
+                                // <a href="referidos" style="color:#008298; font-weight: 600;" >Ir a Referidos</a>
+                                // <div class="div_box_promo">
+                                // <input class="form-control "  placeholder="Ingresa tu codigo aqui" type="text" disabled readonly autocomplete="off"> 
+                                // </div>
+                                // ';
+                             } 
                             ?>
                            
                            

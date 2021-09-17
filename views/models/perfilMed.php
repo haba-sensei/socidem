@@ -5,7 +5,7 @@
 label.cabinet{
 	    /* display: block; */
         cursor: pointer;
-    width: 26%;
+        width: 40%;
 }
 
 label.cabinet input.file{
@@ -44,26 +44,19 @@ label.cabinet input.file{
                                     <div class="form-group">
                                         <div class="change-avatar">
                                             <div class="profile-img">
-                                                <label class="cabinet center-block">
+                                                <label class="cabinet center-block" >
+                                                <span> Sube tu Foto</span>
                                                 <figure style=" margin: 0 0 -2rem!important;">
                                                 <img src="" class=" img-responsive img-thumbnail" id="preview" />
-                                                <figcaption><i class="fa fa-camera"></i></figcaption>
-                                                </figure>
-                                                <!-- <input type="file" class="item-img file center-block" name="foto" id="foto" /> -->
-                                                </label>
-                                                <input type="file" class="item-img file center-block" name="foto" id="foto" />
-                                                <!-- <img src="" class="gambar img-responsive img-thumbnail" id="item-img-output" alt="User Image"> -->
-                                            </div>
-                                            <!-- <div class="upload-img">
-                                                <div class="change-photo-btn">
-                                                    <span><i class="fa fa-upload"></i> Sube tu Foto</span>
-
-                                                </div>
                                                  
-                                                <input type="file" name="foto" id="foto" class="upload" style="display: none;">
-                                                <small class="form-text text-muted">Solo Imagenes JPG, PNG. Tamaño
-                                                    Maximo 2MB</small>
-                                            </div> -->
+                                                </figure>
+                                                  <input type="file" class="item-img file center-block" name="foto" id="foto" accept="image/*"  /> 
+                                                </label>
+                                                <input type="hidden" class="item-img file center-block" name="foto_crop" id="foto_crop" />
+                                               
+                                                
+                                            </div>
+                                             
 
 
                                         </div>
@@ -85,7 +78,23 @@ label.cabinet input.file{
                                     </div>
                                     <div class="form-group">
                                         <label>Otras Especialidades</label>
-                                        <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Tipea otras Especialidades" name="otras_especialidades" id="otras_especialidades">
+
+                                        <input type="text" data-role="tagsinput"  name="otras_especialidades" id="otras_especialidades">
+                                        
+                                        <select multipledata-role="tagsinput" class="input-tags form-control" id="otras_especialidades_select">
+                                         
+                                        <?php 
+                                        while ($datos_especia = mysqli_fetch_assoc($espeCons)) {  
+
+                                        $nombre_especia = $datos_especia['nombre']; 
+                                            
+                                        echo ' <option value="'.$nombre_especia.'">'.$nombre_especia.'</option>'; 
+
+                                        }   
+                                        ?>
+                                        
+                                        </select>
+                                      
 
                                     </div>
                                 </div>
@@ -102,8 +111,8 @@ label.cabinet input.file{
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Otros Numeros de Colegiatura </label>
-                                        <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Tipea otros numeros de Colegiatura" name="otros_nro_colegiatura" id="otros_nro_colegiatura">
+                                        <label>Otros Numeros de Colegiatura </label> 
+                                        <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Agregar mas" name="otros_nro_colegiatura" id="otros_nro_colegiatura">
                                     </div>
                                 </div>
 
@@ -293,23 +302,32 @@ label.cabinet input.file{
                                         <input type="text" name="nombre_clinica" id="nombre_clinica" class="form-control" autocomplete="off">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label>Departamento <span class="text-danger">*</span></label>
                                     <div class="">
-                                        <select name="departamento" class="form-control" id="departamento" onchange="cargarPueblos();">
-                                            <option default hidden>Departamentos</option>
+                                        <select name="departamento" class="form-control" id="departamento" onchange="cargaProvincias();">
+                                            <option default hidden>Elige una opcion</option>
 
                                         </select>
 
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <label>Provincia <span class="text-danger">*</span></label>
+                                    <div class="">
 
-                                <div class="col-md-6">
+                                        <select name="provincia" class="form-control" id="provincia" onchange="cargaDistritos();">
+                                            <option default hidden>Elige una opcion</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
                                     <label>Distrito <span class="text-danger">*</span></label>
                                     <div class="">
 
                                         <select name="distrito" class="form-control" id="distrito">
-                                            <option default hidden>Distritos</option>
+                                            <option default hidden>Elige una opcion</option>
                                         </select>
                                     </div>
                                 </div>

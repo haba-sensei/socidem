@@ -46,13 +46,14 @@
      uploadCrop.croppie('result', {
          type: 'base64',
          format: 'jpeg',
-         size: { width: 150, height: 200 }
+         backgroundColor: "#ffffff",
+         size: { width: 300, height: 300 }
      }).then(function(resp) {
          $('#preview').attr('src', resp);
 
 
          //  var imageData = canvas.toDataURL('image/jpg');
-         document.getElementsByName("foto")[0].setAttribute("value", resp);
+         document.getElementsByName("foto_crop")[0].setAttribute("value", resp);
 
          $('#cropImagePop').modal('hide');
      });
