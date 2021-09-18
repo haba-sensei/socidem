@@ -52,7 +52,7 @@
 </section>
 <!-- /Home Banner -->
 <!-- Clinic and Specialities -->
-<section class="section section-specialities">
+<section class="section section-specialities" id="section_2">
     <div class="container-fluid">
         <div class="text-center section-header">
             <h2>Nuestras Especialidades</h2>
@@ -118,7 +118,7 @@
 
 
 <!-- Blog Section -->
-<section class="section section-blogs">
+<section class="section section-blogs" id="section_3">
     <div class="container-fluid">
         <!-- Section Header -->
         <div class="text-center section-header">
@@ -230,4 +230,16 @@
         <div class="text-center view-all"> <a href="blog-list.html" class="btn btn-primary">View All</a>
         </div>
     </div>
+</section>
+
+<section class="section section-blogs" id="section_3">
+     <span>section 3</span>
+</section>
+
+<section class="section section-blogs" id="section_4">
+     <span>section 4</span>
+</section>
+
+<section class="section section-blogs" id="section_5">
+     <span>section 5</span>
 </section>

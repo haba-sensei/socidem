@@ -59,19 +59,19 @@ html {
 
                             </li>
                             <li class="has-submenu">
-                            <a href="servicios">Nuestros Servicios</a>
+                            <a href="#section_2" >Nuestros Servicios</a>
 
                             </li>
                             <li class="has-submenu">
-                            <a href="faqs">Preguntas Frecuentes</a>
+                            <a href="#section_3" >Preguntas Frecuentes</a>
 
                             </li>
                             <li class="has-submenu">
-                            <a href="precios">Precios</a>
+                            <a href="#section_4" >Precios</a>
 
                             </li>
                             <li class="has-submenu">
-                            <a href="contacto">Contacto</a>
+                            <a href="#section_5" >Contacto</a>
 
                             </li>
 
@@ -103,17 +103,19 @@ html {
                         <a href="servicios">Nuestros Servicios</a>
 
                         </li>
+                        
                         <li class="has-submenu">
-                        <a href="faqs">Preguntas Frecuentes</a>
+                        <a  href="#section_2" >Nuestros Servicios </a>
 
                         </li>
+
                         <li class="has-submenu">
-                        <a href="busqueda">Encuentra un Doctor</a>
+                        <a  href="#section_3" >Preguntas Frecuentes</a>
 
                         </li>
-                        <li class="has-submenu">
-                        <a href="contacto">Contacto</a>
 
+                        <li class="has-submenu">
+                        <a href="#section_4">Contacto</a> 
                         </li>
 
                         <li class="login-link">

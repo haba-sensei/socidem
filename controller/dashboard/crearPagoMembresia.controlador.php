@@ -73,7 +73,7 @@ $tipo_membresia = "Profesional";
 
 
     $varInsert = consultasSQL::InsertSQL("pagos_membresias", "pagoMembresia, token_medico, cod_pago, monto_pago, token_referido, monto_reducido_token, fecha, estado ", " '$membresia_obj', '$codigo_referido_', '$get_pago_id', '$monto', '$codigo_promocion', '$monto_reducido', '$fecha', '$estado' "); 
-    
+    consultasSQL::UpdateSQL("secretarias", "estado='1'", "cod_med='$codigo_referido_'");
     if($membresia_ == "Gratuito"){
         $tiempo_membresia = $periodo_membresia_ + 14;
     }else {

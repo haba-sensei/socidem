@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use Twilio\Rest\Client;
 
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
+    
    
 
     $nombre_doc = $_POST['nombre_doc'];

@@ -90,7 +90,7 @@ file_put_contents("../../views/assets/images/medicos/".$filename_path, file_get_
 
         if ($AfilC == 1) {
             consultasSQL::UpdateSQL("medicos", "estado='1'", "correo='$correo_'");
-            consultasSQL::UpdateSQL("secretarias", "estado='1'", "cod_med='$codigo_referido_'");
+            
             if($foto_cortada != null){
 
                consultasSQL::UpdateSQL("perfil", " 

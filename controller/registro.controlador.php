@@ -6,13 +6,7 @@ require_once '../vendor/autoload.php';
 require_once '../model/credencialesReg.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use Twilio\Rest\Client;
-
-$account_sid = 'ACd6327e8b1e0be96987a5844c28f773d1';
-
-$auth_token = '9964cadbd02ddb3e171c95f3f3a5db9a';
-
-$twilio_number = "+17175469782"; 
-
+ 
 if (isset($_GET['code'])){
     
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);

@@ -157,6 +157,10 @@
         
     } 
 
-   
+    $account_sid = 'ACd6327e8b1e0be96987a5844c28f773d1';
+
+    $auth_token = 'a56921a1886fe71b1c88083850b6862a';
+    
+    $twilio_number = "+17175469782"; 
 
 ?>

@@ -47,7 +47,7 @@
                                             </div>
                                             <div class="dash-widget-info">
                                                 <h6>Agenda del Dia</h6>
-                                                <h3><?= $totalPacientes  ?></h3>
+                                                <h3><?= $totalAgendaDia_total  ?></h3>
                                                 <p class="text-muted">14 Mar. 2021</p>
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@
                                             </div>
                                             <div class="dash-widget-info">
                                                 <h6>Agenda total</h6>
-                                                <h3><?= $totalPacientes  ?></h3>
+                                                <h3><?= $totalAgendaDia_total  ?></h3>
                                                 <p class="text-muted">Marzo 2021</p>
                                             </div>
                                         </div>
