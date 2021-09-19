@@ -75,7 +75,7 @@
 
 										
 										<h4> <strong>  Cita Agendada  </strong><br> <br><strong>Codigo: <?=$codigoRef ?></strong><br><br> <strong style="text-transform: capitalize;"> <?=$fecha_result  ?> </strong> <br><br></h4>
-										<a href="factura" class="btn btn-primary view-inv-btn">Ver Factura</a>
+										<a href="dashboard" class="btn btn-primary view-inv-btn">Ir al Dashboard</a>
 									</div>
 								</div>
 							</div>

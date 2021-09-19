@@ -14,7 +14,7 @@ if (isset($_GET['code'])){
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email']; // optional
         try {
-        if (isset($_SESSION['facebook_access_token'])) {
+        if (isset($_SESSION['facebook_access_token'])) { 
         $accessToken = $_SESSION['facebook_access_token'];
         } else {
           $accessToken = $helper->getAccessToken();

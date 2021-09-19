@@ -666,77 +666,90 @@ function enviarCCI() {
     });
 }
 
-var img_digitales = new Dropzone(".img_digitales", {
-    autoProcessQueue: false,
-    parallelUploads: 10,
-    acceptedFiles: '.png, .jpeg, .jpg',
-    addRemoveLinks: true,
-    uploadMultiple: true,
-    maxFiles: 5,
-    dictRemoveFileConfirmation: "Estas seguro?",
-    dictCancelUpload: "Cancelar",
-    dictRemoveFile: "Remover",
-    dictDefaultMessage: "Maximo 5 imagenes",
-    init: function() {
-        this.on("success", function(file, responseText) {
+function img_digitales() {
 
-            Swal.fire('AGREGADO CON EXITO', '', 'success');
-            setTimeout(function() { location.reload(); }, 1500);
-            // console.log(responseText);
-        });
-    }
-});
+    var img_digitales = new Dropzone(".img_digitales", {
+        autoProcessQueue: false,
+        parallelUploads: 10,
+        acceptedFiles: '.png, .jpeg, .jpg',
+        addRemoveLinks: true,
+        uploadMultiple: true,
+        maxFiles: 5,
+        dictRemoveFileConfirmation: "Estas seguro?",
+        dictCancelUpload: "Cancelar",
+        dictRemoveFile: "Remover",
+        dictDefaultMessage: "Maximo 5 imagenes",
+        init: function() {
+            this.on("success", function(file, responseText) {
 
-var recetas = new Dropzone(".recetas", {
-    autoProcessQueue: false,
-    parallelUploads: 10,
-    acceptedFiles: '.png, .jpeg, .jpg',
-    addRemoveLinks: true,
-    uploadMultiple: true,
-    maxFiles: 5,
-    dictRemoveFileConfirmation: "Estas seguro?",
-    dictCancelUpload: "Cancelar",
-    dictRemoveFile: "Remover",
-    dictDefaultMessage: "Maximo 5 imagenes",
-    init: function() {
-        this.on("success", function(file, responseText) {
+                Swal.fire('AGREGADO CON EXITO', '', 'success');
+                setTimeout(function() { location.reload(); }, 1500);
+                // console.log(responseText);
+            });
+        }
+    });
 
-            Swal.fire('AGREGADO CON EXITO', '', 'success');
-            setTimeout(function() { location.reload(); }, 1500);
-            // console.log(responseText);
-        });
-    }
-});
+    $('#uploadfiles_img_dig').click(function() {
+        img_digitales.processQueue();
+    });
+}
 
-var pictures = new Dropzone(".pictures", {
-    autoProcessQueue: false,
-    parallelUploads: 10,
-    acceptedFiles: '.png, .jpeg, .jpg',
-    addRemoveLinks: true,
-    uploadMultiple: true,
-    maxFiles: 5,
-    dictRemoveFileConfirmation: "Estas seguro?",
-    dictCancelUpload: "Cancelar",
-    dictRemoveFile: "Remover",
-    dictDefaultMessage: "Maximo 5 imagenes",
-    init: function() {
-        this.on("success", function(file, responseText) {
+function recetas() {
 
-            Swal.fire('AGREGADO CON EXITO', '', 'success');
-            setTimeout(function() { location.reload(); }, 1500);
-            // console.log(responseText);
-        });
-    }
-});
+    var recetas = new Dropzone(".recetas", {
+        autoProcessQueue: false,
+        parallelUploads: 10,
+        acceptedFiles: '.png, .jpeg, .jpg',
+        addRemoveLinks: true,
+        uploadMultiple: true,
+        maxFiles: 5,
+        dictRemoveFileConfirmation: "Estas seguro?",
+        dictCancelUpload: "Cancelar",
+        dictRemoveFile: "Remover",
+        dictDefaultMessage: "Maximo 5 imagenes",
+        init: function() {
+            this.on("success", function(file, responseText) {
 
-$('#uploadfiles_img_dig').click(function() {
-    img_digitales.processQueue();
-});
+                Swal.fire('AGREGADO CON EXITO', '', 'success');
+                setTimeout(function() { location.reload(); }, 1500);
+                // console.log(responseText);
+            });
+        }
+    });
+    $('#uploadfiles_recetas').click(function() {
+        recetas.processQueue();
+    });
 
-$('#uploadfiles_recetas').click(function() {
-    recetas.processQueue();
-});
+}
 
-$('#uploadfiles_pictures').click(function() {
-    pictures.processQueue();
-});
+function pictures() {
+    var pictures = new Dropzone(".pictures", {
+        autoProcessQueue: false,
+        parallelUploads: 10,
+        acceptedFiles: '.png, .jpeg, .jpg',
+        addRemoveLinks: true,
+        uploadMultiple: true,
+        maxFiles: 5,
+        dictRemoveFileConfirmation: "Estas seguro?",
+        dictCancelUpload: "Cancelar",
+        dictRemoveFile: "Remover",
+        dictDefaultMessage: "Maximo 5 imagenes",
+        init: function() {
+            this.on("success", function(file, responseText) {
+
+                Swal.fire('AGREGADO CON EXITO', '', 'success');
+                setTimeout(function() { location.reload(); }, 1500);
+                // console.log(responseText);
+            });
+        }
+    });
+
+    $('#uploadfiles_pictures').click(function() {
+        pictures.processQueue();
+    });
+
+}
+
+img_digitales();
+recetas();
+pictures();

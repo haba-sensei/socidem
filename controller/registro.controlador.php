@@ -24,6 +24,8 @@ if (isset($_GET['code'])){
 
 }else {
 
+   
+
     $nombre = $_POST['nombre-reg'];
     $correo = $_POST['correo-reg'];
     $tel = $_POST['tel-reg'];
@@ -46,21 +48,23 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
     $AfilC = mysqli_num_rows($BuscaAfil);
          
         if ($AfilC > 0 ) {
-            echo '<script> alert("Este correo ya esta registrado"); 	window.location = "../registro"; </script>';
+            echo '<script> alert("Este correo ya esta registrado"); 	window.location = "registro"; </script>';
         } else {
             $code = generate_string(md5(time()), 8);
             $ingreso = date('Y-m-d');
             $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, token_confirm, mail_confirm, last_login, inscripcion, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$code', 0, '$last_login', '$ingreso', '$estado' "); 
-            
-            $client = new Client($account_sid, $auth_token);
-            $client->messages->create('+51'.$tel,
-            array(
-                'from' => $twilio_number,
-                'body' => 'Codigo de Verificacion: '.$code.' '
-            )
-            );
+           
+            if (!isset($_GET['code'])){  
+                $client = new Client($account_sid, $auth_token);
+                $client->messages->create('+51'.$tel,
+                array(
+                    'from' => $twilio_number,
+                    'body' => 'Codigo de Verificacion: '.$code.' '
+                )
+                );
+                $correo_md5 = md5($correo);
+            } 
 
-            $correo_md5 = md5($correo);
             $regHistorial = consultasSQL::InsertSQL("historial_medico", "correo, historia_clinica, analisis_lab, img_digitales, recetas_med", "'$correo_md5', '[]', '[]', '[]', '[]' "); 
 
             if (isset($_GET['code'])){  

@@ -468,26 +468,31 @@
 
                             </div>
                             <br>
-                                 <small class="" style="color:#008298; font-weight: 600;">Si Tienes un codigo Promocional</small> 
+                                
+                            <?php 
+                             if($_SESSION["reg_token_bank"] == "registrado"){ 
+                                 echo ' <small class="" style="color:#008298; font-weight: 600;">Si Tienes un codigo Promocional</small> 
                                  <div class="div_box_promo"> 
                                 
                                  <input class="form-control " id="codigoP" placeholder="Ingresa tu codigo aqui" onkeyup="loaddata()" onchange="loaddata()" name="codigoP" type="text" autocomplete="off"> 
                                  </div>
                                  
-                                 <a class="btn-plan btn-info btn" style="margin-top: -4px;" id="id_btn_val">Pagar Plan</a>
-                            <?php 
-                             if($_SESSION["reg_token_bank"] == "registrado"){ 
-                                 echo '';
+                                 <a class="btn-plan btn-info btn" style="margin-top: -4px;" id="id_btn_val">Pagar Plan</a>';
                              }else { 
-                                // echo '
-                                // <br>
-                                // <small class="" style="color:red; font-weight: 600;">Debe Registrar un CCI para Continuar </small>
-                                // <br>
-                                // <a href="referidos" style="color:#008298; font-weight: 600;" >Ir a Referidos</a>
-                                // <div class="div_box_promo">
-                                // <input class="form-control "  placeholder="Ingresa tu codigo aqui" type="text" disabled readonly autocomplete="off"> 
-                                // </div>
-                                // ';
+                                if($membresia_ == "Profesional"){
+                                    
+                                echo '
+                                <br>
+                                <small class="" style="color:red; font-weight: 600;">Debe Registrar un CCI para Continuar </small>
+                                <br>
+                                <a href="referidos" style="color:#008298; font-weight: 600;" >Ir a Referidos</a>
+                                <div class="div_box_promo">
+                                <input class="form-control "  placeholder="Ingresa tu codigo aqui" type="text" disabled readonly autocomplete="off"> 
+                                </div>
+                                ';
+                                } 
+                                
+                               
                              } 
                             ?>
                            

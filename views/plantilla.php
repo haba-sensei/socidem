@@ -105,6 +105,7 @@ $routes = explode("-", $_GET["ruta"]);
 							$routes[1] == "cita" || 
 							$routes[1] == "usuarios" || 
 							$routes[1] == "historial" || 
+							$routes[1] == "historialMed" || 
 							$routes[1] == "pagosExternos" ||  
 							$routes[1] == "referidosInt" ||
 							$routes[1] == "referidosExt" ||

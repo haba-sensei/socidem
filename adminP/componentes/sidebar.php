@@ -70,6 +70,9 @@
                         <a href="#"><i class="fe fe-document"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;"> 
                             <li> 
+                             <a href="adminDash-historialMed"> <span>Historial de medicos</span></a>
+                            </li>
+                            <li> 
                              <a href="adminDash-historial"> <span>Historial de pagos</span></a>
                             </li>
                             <li> 

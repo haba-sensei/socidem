@@ -16,7 +16,10 @@
 		<script src="adminP/assets/plugins/raphael/raphael.min.js"></script>    
 		<script src="adminP/assets/plugins/morris/morris.min.js"></script>  
 		<script src="adminP/assets/js/chart.morris.js"></script>
-		
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/locales/bootstrap-datepicker.es.min.js" charset="UTF-8"></script> 
+
 		<!-- Custom JS -->
 		<script  src="adminP/assets/js/script.js"></script>
         <script  src="adminP/assets/js/addons.js"></script>
