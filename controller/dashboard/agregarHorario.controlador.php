@@ -23,7 +23,7 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
     switch ($count) {
         case true:
             $valor_unico = md5(uniqid(rand(), true));
-            echo '
+            echo ' 
         
             <div class="col-md-3" style="position: relative; top: 30px;">
           
@@ -188,9 +188,9 @@ while($datos_agenda_medica=mysqli_fetch_assoc($verAgendaMedica)){
     </div>
    
 </div>
-<script >
+<script > 
 $(".init-'.$valor_unico.'").timepicker();
-$(".end-'.$valor_unico.'").timepicker();
+$(".end-'.$valor_unico.'").timepicker(); 
 </script>
 ';  
 

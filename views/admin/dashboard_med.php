@@ -118,7 +118,7 @@
                 .move_to_tomorrow {
                     position: relative;
                     left: 50.3rem !important;
-                    top: 6px;
+                    top: 6px; 
                 }
 
                 .blueClass {
@@ -367,12 +367,17 @@
                                                                     }
                                                                     }
 
+                                                                    if($estado != 2){
+                                                                        echo "<br><a href='javascript:' onclick='modalReAsignarCita(&quot;".$cod_consulta."&quot;)' class='btn btn-sm bg-warning-light'>
+                                                                        <i class='fa fa-calendar-plus'></i> Re Asignar </a>";
+                                                                    } 
+
                                                                     break;
 
                                                                     case 'Presencial':
-                                                                    echo "
-                                                                    <a href='factura-".$cod_consulta."' target='_blank' class='btn btn-sm bg-info-light'>
-                                                                    <i class='fas fa-print'></i> Imprimir </a>";
+                                                                    // echo "
+                                                                    // <a href='factura-".$cod_consulta."' target='_blank' class='btn btn-sm bg-info-light'>
+                                                                    // <i class='fas fa-print'></i> Imprimir </a>";
                                                                     break;
 
 
@@ -396,6 +401,7 @@
 
                                                     </tbody>
                                                 </table>
+
                                             </div>
                                         </div>
                                     </div>
@@ -414,4 +420,34 @@
         </div>
     </div>  </div>
 
+</div>
+
+
+<div class="modal fade" id="reasignar_horario" aria-hidden="true" role="dialog">
+    <div class="modal-dialog  modal-xl" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="container">
+                    <input type="hidden" id="id_cita_val" >
+                    <div class="row">
+
+            
+                        <?php  
+
+                        $track = $codigo_referido_;
+                        echo ' 
+                        <div class="rescalendar" id="rea-'.$track.'"></div> 
+                        <script> cargaCalendar("rea-'.$track.'","'.$codigo_referido_.'", 8, "paciente") </script> 
+                        ';
+
+                        ?>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

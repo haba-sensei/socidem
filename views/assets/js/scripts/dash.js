@@ -36,6 +36,12 @@ function modalDetalle(id) {
 
 }
 
+function modalReAsignarCita(cod) {
+    $('#id_cita_val').val(cod);
+    $('#detalles_cli_agenda').modal('hide');
+    $('#reasignar_horario').modal('show');
+}
+
 function atenderPaciente(id) {
     $.ajax({
         type: "POST",
@@ -156,11 +162,10 @@ function enviarCorreo(id) {
         url: "controller/dashboard/correo.controlador.php",
         data: {
             id: id,
-
         },
         success: function(data) {
 
-            alert(data);
+            Swal.fire(data, '', 'info')
 
         }
     });
@@ -245,6 +250,45 @@ function CrearAgenda(fecha, hora, token) {
 
         }
     });
+}
+
+function procesoCita(a, token, fecha, hora_init, time, type) {
+    var cod_cita = $('#id_cita_val').val();
+
+
+
+    Swal.fire({
+        title: '¿Seguro que desea Reasignar?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: `SI`,
+        denyButtonText: `NO ReAsignar`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'POST',
+                url: 'controller/dashboard/reAsignarAgenda.controlador.php',
+                data: {
+                    cod_cita: cod_cita,
+                    fecha: fecha,
+                    hora_init: hora_init,
+                    time: time,
+                    type: type
+                },
+                success: function(data) {
+                    $('#reasignar_horario').modal('hide');
+                    Swal.fire('Re Asignado con Exito', '', 'success');
+                    cargaCalendar("rea-" + token, token, 8, "paciente");
+                    cargaCalendar("cal-" + token, token, 8, "dash_med");
+
+
+                }
+            });
+        } else if (result.isDenied) {
+            Swal.fire('NO ReAsignado', '', 'error')
+        }
+    })
 }
 
 function elimAgenda(id, token) {

@@ -242,11 +242,11 @@
 
                             switch (tipo_calendario) {
                                 case 'med':
-                                    content = '<a href="javascript:" onclick="AbrirAgenda(&apos;' + date + '&apos; , &apos;' + name + '&apos; )" class="no_data_new"> <i class="fas fa-folder-plus"></i> </a>';
+                                    content = '<a href="javascript:" onclick="AbrirAgenda(&apos;' + date + '&apos; , &apos;' + name + '&apos; )" class="no_data_new"> <i class="fas fa-clock"></i> </a>';
                                     break;
 
                                 case 'dash_med':
-                                    content = '<a href="javascript:"  class="no_data_new_dash_med"> <i class="fas fa-folder-plus"></i> </a>';
+                                    content = '<a href="javascript:"  class="no_data_new_dash_med"> <i class="fas fa-clock"></i> </a>';
                                     break;
 
                                 case 'paciente':

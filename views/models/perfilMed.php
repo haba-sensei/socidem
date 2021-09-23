@@ -170,30 +170,30 @@ label.cabinet input.file{
                             <?php
 
                             if ($_SESSION["reg_token_bank"] != "registrado") {
-                                //     echo '
-                                //     <div class="row form-row">
-                                //     <div class="col-md-6">
-                                //         <div class="ajust_div "  >
+                                    echo '
+                                    <div class="row form-row">
+                                    <div class="col-md-6">
+                                        <div class="ajust_div "  >
 
-                                //         <br>
-                                //         <h4 class="card-title" style="    width: 168%;">Si desea que nos encarguemos de la cobranza a sus pacientes Ingrese su CCI </h4>
-                                //         <br>
-                                //         <div class="centrar">
+                                        <br>
+                                        <h4 class="card-title" style="    width: 168%;">Si desea que nos encarguemos de la cobranza a sus pacientes Ingrese su CCI </h4>
+                                        <br>
+                                        <div class="centrar">
 
-                                //             <input class="form-control input_ref" type="text" id="cci_perfil" placeholder="Codigo CCI min 20 Digitos">
-                                //             <br>
-                                //             <button class="btn btn-info btn_ref " type="button" onclick="enviarCCI()"> Aceptar</button>
-                                //         <br>
-                                //             <small>Código de Cuenta Interbancario</small>
-                                //             <br><br>
-                                //             <h5>Nota: esta acción es obligatoria si desea registrar una membresia </h5>
-                                //         </div>
-                                //         <br>
-                                //     </div>
+                                            <input class="form-control input_ref" type="text" id="cci_perfil" placeholder="Codigo CCI min 20 Digitos">
+                                            <br>
+                                            <button class="btn btn-info btn_ref " type="button" onclick="enviarCCI()"> Aceptar</button>
+                                        <br>
+                                            <small>Código de Cuenta Interbancario</small>
+                                            <br><br>
+                                            <h5>Nota: esta acción es obligatoria si desea registrar una membresia </h5>
+                                        </div>
+                                        <br>
+                                    </div>
 
-                                //     </div>
-                                // </div>
-                                //     ';
+                                    </div>
+                                </div>
+                                    ';
                             }
 
                             ?>

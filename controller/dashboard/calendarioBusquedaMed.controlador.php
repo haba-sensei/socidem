@@ -7,7 +7,7 @@ date_default_timezone_set('America/Lima');
 header("Content-Type: application/json", true);
 
   $id_ref_med = $_POST['id_ref'];
-  $type_med = $_POST['type'];
+  $type_med = $_POST['type']; 
   $token = $codigo_referido_;
   
 
@@ -23,6 +23,10 @@ header("Content-Type: application/json", true);
 while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
   
   $datos_agenda_medica['fecha_start'];
+  
+  $nuevafecha_sdsd = strtotime($datos_agenda_medica['fecha_start']);
+  $nuevafecha_new = date('d/m/Y', $nuevafecha_sdsd);
+
   $datos_agenda_medica['fecha_hora'];
 
  
@@ -32,15 +36,15 @@ while($datos_agenda_medica =mysqli_fetch_assoc($verAgendaMed)){
       $estado = "libre";
           break;
       
-  }
-  $cont = $cont + 1;
+  } 
+  $cont = $cont + 1; 
       $agenda_array = array( 
           'id' => $cont,
           'token' => $token,
           'agenda' => $datos_agenda_medica['cod_consulta'],
           'name' =>  $datos_agenda_medica['fecha_hora'],
           'title' =>  $datos_agenda_medica['fecha_hora'],
-          'startDate' => $datos_agenda_medica['fecha_start'],
+          'startDate' => $nuevafecha_new,
           'customClass' => 'blueClass',  
           'estado' => $estado,
           'tipo' => $datos_agenda_medica['tipo_cita'], 

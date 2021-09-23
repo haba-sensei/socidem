@@ -62,9 +62,9 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
                     'body' => 'Codigo de Verificacion: '.$code.' '
                 )
                 );
-                $correo_md5 = md5($correo);
+              
             } 
-
+            $correo_md5 = md5($correo);
             $regHistorial = consultasSQL::InsertSQL("historial_medico", "correo, historia_clinica, analisis_lab, img_digitales, recetas_med", "'$correo_md5', '[]', '[]', '[]', '[]' "); 
 
             if (isset($_GET['code'])){  

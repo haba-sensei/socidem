@@ -428,7 +428,8 @@
                             <h4>Escribele un comentario al <strong>Dr. <?=$nombre_completo_med ?></strong></h4> 
                             <!-- Write Review Form -->
                             <?php 
-                            if(isset($_SESSION['nombre'])){  
+                            if(isset($_SESSION['nombre']) && $rol_ != 1){  
+
                             ?>
                             <form >
                                 <div class="form-group">

@@ -10,11 +10,12 @@ require '../../vendor/autoload.php';
 
 $id_codigo_agenda = $_POST['id'];
 
-$verAgenda = ejecutarSQL::consultar("SELECT `agenda`.`cod_consulta`, `agenda`.`estado`, `agenda`.`fecha_start`, `agenda`.`fecha_hora`, `agenda`.`paciente` FROM `agenda` WHERE `agenda`.`cod_consulta` = '$id_codigo_agenda'");
+$verAgenda = ejecutarSQL::consultar("SELECT `agenda`.`cod_consulta`, `agenda`.`estado`, `agenda`.`email_usuario`, `agenda`.`fecha_start`, `agenda`.`fecha_hora`, `agenda`.`paciente` FROM `agenda` WHERE `agenda`.`cod_consulta` = '$id_codigo_agenda'");
 
 while($datos_agenda_paciente=mysqli_fetch_assoc($verAgenda)){
     $objPaciente=$datos_agenda_paciente['paciente']; 
 	$estado_cita_dato =$datos_agenda_paciente['estado'];
+	$email_cita_dato =$datos_agenda_paciente['email_usuario'];
 
 	$fecha_start_dato =$datos_agenda_paciente['fecha_start'];
 	$fecha_hora_dato =$datos_agenda_paciente['fecha_hora'];
@@ -40,7 +41,7 @@ switch ($estado_cita_dato) {
 }
 
 $nombre_paciente =  $var_nombre." ".$var_apellido; 
-$correo_paciente = $var_email;
+$correo_paciente = $email_cita_dato;
 $url_cita = "https://medicos.stampiza2.com/lobby-".$id_codigo_agenda;
 $medico_cita = $nombre_;
  
@@ -60,15 +61,14 @@ $fecha_hora_final = $fecha_start_dato." - ".$fecha_hora_dato;
 		$mail->Host       = 'mail.stampiza2.com';                 
 		$mail->SMTPAuth   = true;                                 
 		$mail->Username = "medicos@stampiza2.com";  
-        $mail->Password = "8p;D_eR2~7yz";                          
+		$mail->Password = "9&O^!%r6M?nZ";                                  
 		$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
-		$mail->Port       = 587;                                    
+		$mail->Port       = 587;                 
 	
 		//Recipients
-		$mail->setFrom('haba@stampiza2.com', 'Medicos En Directo ');
-		$mail->addAddress($correo_paciente, 'Paciente');      
-		 
-	 
+		$mail->setFrom('medicos@stampiza2.com',  'Medicos En Directo ');
+		$mail->addAddress('haba.dev.oficial@gmail.com', 'Paciente');       
+		
 		//Content
 		$mail->isHTML(true);                                   
 		$mail->Subject = $subject;

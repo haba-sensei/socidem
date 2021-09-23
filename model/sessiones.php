@@ -11,7 +11,7 @@ error_reporting(E_ALL ^ E_NOTICE);
     $ubicacion_ = $_SESSION["ubicacion"];
     $foto_ =  $_SESSION["foto"];
     $num_colegiatura_ = $_SESSION["num_colegiatura"];
-    $telefono_  = $_SESSION["telefono"];
+    $telefono_  = $_SESSION["telefono"]; 
     $estado_ = $_SESSION["estado"]; 
     $membresia_ = $_SESSION["membresia"]; 
     $periodo_membresia_ = $_SESSION["periodo_membresia"]; 

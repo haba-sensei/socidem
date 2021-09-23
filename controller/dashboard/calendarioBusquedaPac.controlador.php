@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 include '../../model/consulSQL.php';
 include '../../model/sessiones.php';
@@ -10,7 +10,7 @@ header("Content-Type: application/json", true);
 
     $id_ref_med = $_POST['id_ref'];
     //
-    $type_med = $_POST['type'];
+    $type_med = $_POST['type']; 
   //  $id_ref_med = '885de4290058cd230e907b9ecb0da276';
     unset($_SESSION['indices_carga']);
     unset($_SESSION['valor_carga']);

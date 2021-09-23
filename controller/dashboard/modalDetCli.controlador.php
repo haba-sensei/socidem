@@ -52,71 +52,82 @@ if($numCons >= 1){
         <table class="table mb-0 table-hover table-center">
             <thead>
                 <tr>
-                    <th>Paciente</th>
-                    <th>Fecha y Hora</th>
-                    <th>Tipo de Cita</th>
-                    <th>Info Paciente</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
+                <th style="padding: 11px;">Usuario</th>
+                <th >Detalles Cita</th> 
+                <th>Info Paciente</th>
+                <th style="padding-right: 6px;">Estados</th>
+                <th style="padding-right: 10px;">Acciones </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="max-height: fit-content;">
             <tr>
-            <td style="text-transform: capitalize">
-                <h2 class="table-avatar">'.$nombre_paciente.'</h2>
+            <td style="text-transform: capitalize"> 
+            <h2 class="table-avatar"> '.$nombre_paciente.'</h2>
             </td>
-            <td>'.$fecha_format.'<span class="d-block text-info"> '.$fecha_hora.' </span>
-            </td>
-            <td style="text-transform: capitalize">'.$tipo_cita.'</td>
+            <td style="text-transform: capitalize; ">
+            '.$tipo_cita.'
+            <span class="d-block">'.$fecha_format.'  </span>  
+            <span class="d-block text-info">'.$fecha_hora.' </span> 
+            </td> 
             <td> <a href="javascript:" onclick="modalDetalle(&quot;'.$cod_consulta.'&quot;)"
                     class="btn btn-sm bg-success-light">
                     <i class="fas fa-id-card-alt"></i> Ver Info
                 </a></td>
 
-            <td>
-              ';
-                    switch ($objCita_de['status']) {
-                        case "pending":
-                    echo "<span class='badge badge-pill bg-warning-light'>PENDIENTE  </span>";
-                    break;
+                <td  align="left" >
+                <div class="d-block">
+                ';
+                      switch ($objCita_de['status']) {
+                            case "pending":
+                        echo "<span class='badge badge-pill bg-warning-light'>NO PAGADO ";
+                        break;
 
-                        case "approved":
-                            if($estado == 2){
-                                echo "<span class='badge badge-pill bg-danger-light'>CERRADO </span>";
-                            }else {
-                                echo "<span class='badge badge-pill bg-success-light'>APROBADO </span>";
-                            }
-                        
-                    break;
+                            case "approved":
+                                echo "<span class='badge badge-pill bg-success-light'>PAGADO"; 
+                            
+                        break; 
+                            case "404":
+                            echo "<span class='badge badge-pill bg-danger-light'>RECHAZADO";
+                        break;
+                        } 
+                echo ' 
+                    </span>
+                </div>
+                <div class="d-block"> 
+                ';
+                    if($estado == 2){
+                        echo "<span class='badge badge-pill bg-success-light'>ATENDIDO</span>";
+                    }else {
+                        echo "<span class='badge badge-pill bg-danger-light'>NO ATENDIDO</span>";
+                    }
 
-                        case "404":
-                        echo "<span class='badge badge-pill bg-danger-light'>RECHAZADO </span>";
-                    break;
-                    }  
-            echo '    
-            <td class="text-left" style="white-space: nowrap;">
+                echo '   
+                </div>
+                </td>
+              
+                <td class="text-center" style="white-space: nowrap;">
                 <div class="table-action">
-
-                    ';
-
+                <div class="d-block" style="padding-bottom: 6px;">
+                '; 
                     switch ($tipo_cita) {
                     case 'Online':
                     if($estado == 2){
                     echo "
+                   
                     <a href='javascript:' class='btn btn-sm bg-danger-light'>
                     <i class='fa fa-eye-slash' aria-hidden='true'></i> Sala Cerrada  </a>
+                   
                     ";
                     }else {
 
                     $nuevafecha_init = strtotime ( '- 5 minutes' , strtotime ( $fecha_hora ) );
                     $hora_actual_f = date("H:i", $nuevafecha_init);
                     $hora_actual = date("H:i");
-                    $nuevafecha_end = strtotime ($hora_actual);
+                    $nuevafecha_end = strtotime($hora_actual);
 
                     if($nuevafecha_end  >=  $nuevafecha_init ){
-                    echo " <a href='lobby-".$cod_consulta."' onclick='' class='btn btn-sm bg-info-light'>
+                    echo " <a href='lobby-$cod_consulta' onclick='' class='btn btn-sm bg-info-light'>
                     <i class='far fa-eye'></i> Sala Abierta  </a>
-                    
                     ";
                     }else {
                     echo " <a href='javascript:' onclick='' class='btn btn-sm bg-warning-light'>
@@ -125,18 +136,30 @@ if($numCons >= 1){
                     }
                     }
 
+                    if($estado != 2){
+                        echo "<br><a href='javascript:' onclick='modalReAsignarCita(&quot;".$cod_consulta."&quot;)' class='btn btn-sm bg-warning-light'>
+                        <i class='fa fa-calendar-plus'></i> Re Asignar </a>";
+                    } 
+
                     break;
 
                     case 'Presencial':
-                    echo "
-                    <a href='factura-".$cod_consulta."' target='_blank' class='btn btn-sm bg-info-light'>
-                    <i class='fas fa-print'></i> Imprimir </a>";
+                    // echo "
+                    // <a href='factura-".$cod_consulta."' target='_blank' class='btn btn-sm bg-info-light'>
+                    // <i class='fas fa-print'></i> Imprimir </a>";
+                    echo "<br><a href='javascript:' onclick='modalReAsignarCita(&quot;".$cod_consulta."&quot;)' class='btn btn-sm bg-warning-light'>
+                        <i class='fa fa-calendar-plus'></i> Re Asignar </a>";
                     break;
 
 
                     }
 
-                    echo ' 
+                    echo '
+                     </div>
+                    <div class="d-block"> 
+                    <a href="javascript:" onclick="atenderPaciente(&quot;'.$cod_consulta.'&quot;)" class="btn btn-sm bg-primary-light">
+                    <i class="fas fa-handshake" aria-hidden="true"></i> Atendido </a>  
+                    </div> 
                 </div>
             </td>
             </tr>
