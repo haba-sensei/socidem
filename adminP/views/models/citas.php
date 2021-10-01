@@ -12,7 +12,7 @@
             <div class="row">
                 <?php
                
-                include 'adminP\componentes\listCitas.php';
+                include 'adminP/componentes/listCitas.php';
 
                 ?>
             </div>

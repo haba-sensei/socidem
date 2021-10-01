@@ -89,7 +89,13 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
                     $_SESSION['estado'] = $estado;
                     $_SESSION['last_login'] = $last_login;
                 } 
+
+                if(isset($_SESSION['fecha'])){
+                    echo '<script> 	window.location = "../checkout"; </script>';
+                }else {
                     echo '<script> 	window.location = "../inicio"; </script>';
+                }
+                   
             }else {
 
                 
@@ -126,6 +132,7 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
                      
 
                 } 
+ 
                 echo '<script> 	Swal.fire("REGISTRO EXITOSO", "", "info");  setTimeout(function() { window.location = "verificarP"; }, 1500); </script>';
                 
 

@@ -33,8 +33,12 @@ $token_confirm = $_POST['sms_code'];
         
         consultasSQL::UpdateSQL("pacientes", "correo='$correo', mail_confirm='1' ", "correo='$correo'");
 
-
-        echo '<script> 	window.location = "dashboard"; </script>';
+        if(isset($_SESSION['fecha'])){
+            echo '<script> 	window.location = "checkout"; </script>';
+        }else {
+            echo '<script> 	window.location = "dashboard"; </script>';
+        }
+       
     }else {
         echo '<script> 	Swal.fire("TOKEN INVALIDO", "", "info"); </script>';
        

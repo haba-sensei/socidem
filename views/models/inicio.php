@@ -3,7 +3,8 @@
 	switch ($rol_) {
 
 		case 1:
-		 	include 'themes/medicos.php';
+			include 'themes/pacientes.php';
+		 	// include 'themes/medicos.php';
 		break;
 
 		case 2:

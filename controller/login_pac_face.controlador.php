@@ -87,11 +87,23 @@ require_once '../vendor/autoload.php';
                       
                       
                   consultasSQL::UpdateSQL("pacientes", "correo='$correo', last_login='$last_login_up' ", "correo='$correo'");
-                      if (isset($_GET['code'])){ 
-                          echo '<script> 	window.location = "../dashboard"; </script>';
-                      }else{
-                          echo '<script> 	window.location = "dashboard"; </script>';
-                      }
+                  if (isset($_GET['code'])){ 
+                
+                    if(isset($_SESSION['fecha'])){
+                        echo '<script> 	window.location = "../checkout"; </script>';
+                    }else {
+                        echo '<script> 	window.location = "../dashboard"; </script>';
+                    }
+                   
+                }else{
+    
+                    if(isset($_SESSION['fecha'])){
+                        echo '<script> 	window.location = "checkout"; </script>';
+                    }else {
+                        echo '<script> 	window.location = "dashboard"; </script>';
+                    }
+                   
+                }
                     
                     
                     

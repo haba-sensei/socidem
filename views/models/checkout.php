@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-12 col-sm-12">
+                                    <div class="col-md-12 col-sm-12" style="display: none;">
                                     <h4 class="card-title">Elige tu servicio</h4>
                                     <br>
                                         <div style="background-color: #fff; border: 1px solid #dbdbdb; border-radius: 4px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .05);  display: block;  height: 50px;  margin-top: -13px;  padding: 5px 15px 0; transition: border-color .3s; width: 100%;"
@@ -129,6 +129,7 @@
 						?>
                         <!-- Booking Doctor Info -->
                         <div class="booking-doc-info">
+                           
                             <a href="<?="perfil-".$_SESSION['secur']; ?>" class="booking-doc-img">
                                 <img src="views/assets/images/medicos/<?=$foto ?>" alt="User Image">
                             </a>

@@ -46,6 +46,7 @@ $routes = explode("-", $_GET["ruta"]);
 		 if($routes[0] == "inicio" || 
 			$routes[0] == "login" || 
 			$routes[0] == "histCitas" || 
+			$routes[0] == "medicos" || 
 			$routes[0] == "loginAsistance" ||
 			$routes[0] == "salir" || 
 			$routes[0] == "registro" || 
