@@ -159,7 +159,7 @@
 
     $account_sid = 'ACd6327e8b1e0be96987a5844c28f773d1';
 
-    $auth_token = 'c9ef1f7cc61bfe96e2ca343c04f1521b';
+    $auth_token = '8e53e369141e77b348b5fa9d81158d2d';
     
     $twilio_number = "+17175469782"; 
 

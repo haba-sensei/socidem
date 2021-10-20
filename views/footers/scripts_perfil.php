@@ -7,7 +7,7 @@ $(document).ready(function() {
         dataType: "json",
         success: function(data) {
             
-           document.getElementById("preview").src = "views/assets/images/medicos/"+data['foto'];
+          //  document.getElementById("preview").src = "views/assets/images/medicos/"+data['foto'];
             
            $('#nombre').val(data['nombre_completo']);
            $('#correo').val(data['correo']);

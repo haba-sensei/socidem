@@ -124,7 +124,8 @@
                     </div>
 
                     <div class="tab-pane" id="analisis_lab"> 
-
+                    <button type="button" class="btn med_row" onclick="addLab('<?=$get_mail?>')" ><i class="fa fa-plus"></i>
+                            AGREGAR ANALISIS DE LABORATORIO</button>
                         <?php 
                         $analisis_lab = json_decode($objAnalisis_lab, true); 
                         $count = 0;
@@ -147,7 +148,7 @@
                             echo ' 
                             </div>
                             ';
-
+ 
 
                         } 
                        
@@ -156,7 +157,7 @@
                     </div>
 
                     <div class="tab-pane" id="imagenes_digitales">
-                        
+                    <button type="button" onclick="addImgDig('<?=$get_mail?>')" class="btn med_row "><i  class="fa fa-plus"></i> AGREGAR IMAGENES DIGITALES</button>
                             <?php 
                         $img_digitales = json_decode($objImg_digitales, true); 
                         $count = 0;
@@ -188,7 +189,9 @@
                     </div>
 
                     <div class="tab-pane" id="imagenes_recetas">
-                      
+                    <button type="button" class="btn med_row " onclick="addRecetas('<?=$get_mail?>')" ><i
+                                class="fa fa-plus"></i>
+                            AGREGAR RECETAS MEDICAS</button>
 
                             <?php 
                         $recetas = json_decode($objRecetas, true); 

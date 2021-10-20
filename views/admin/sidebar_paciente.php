@@ -59,6 +59,13 @@
                     </li>
 
                     <li>
+                        <a href="perfilPac">
+                            <i class="fas fa-user-cog"></i>
+                            <span>Perfil</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="salir">
                             <i class="fas fa-sign-out-alt"></i>
                             <span>Logout</span>

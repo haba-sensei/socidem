@@ -108,7 +108,7 @@
                        
  
 
-                    </div> 
+                    </div>  
 
                     <div class="tab-pane" id="analisis_lab">
 

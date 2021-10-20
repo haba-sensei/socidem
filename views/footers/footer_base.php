@@ -1,6 +1,6 @@
     <script src="views/assets/js/popper.min.js"></script>
     <script src="views/assets/js/bootstrap.min.js"></script>    
-    <script src="views/assets/js/scripts/crop.js"></script>
+    <!-- <script src="views/assets/js/scripts/crop.js"></script> -->
     <script src="views/assets/js/slick.js"></script>
     <script src="views/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
     <script src="views/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>

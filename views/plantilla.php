@@ -54,6 +54,7 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "faqs" ||  
 			$routes[0] == "busqueda" || 
 			$routes[0] == "perfil" || 
+			$routes[0] == "perfilPac" || 
 			$routes[0] == "pacientes" || 
 			$routes[0] == "perfilMed" || 
 			$routes[0] == "mensajes" || 
@@ -115,7 +116,7 @@ $routes = explode("-", $_GET["ruta"]);
 							$routes[1] == "referidos100" || 
 							$routes[1] == "crearRef" || 
 							$routes[1] == "repMembresias" ||  
-							$routes[1] == "perfil" ||
+							$routes[1] == "perfil" || 
 							$routes[1] == "salir" 
 
 						){
@@ -173,14 +174,14 @@ $routes = explode("-", $_GET["ruta"]);
 		
 		include "views/footers/scripts_dash.php"; 
 		include "views/footers/scripts_perfil.php"; 
-		echo "</body>";
+		echo "</body>"; 
 	break;
 
 	case 'checkout':
 	case 'busqueda':
 	case 'perfil':
 		include 'views/footers/footer_base.php';
-		include "views/footers/scripts_citas.php";
+		include "views/footers/scripts_citas.php"; 
 		include "views/footers/scripts_checkout.php";
 		include "views/footers/footer.php";
 		include "views/footers/modal_onboarding.php";
@@ -199,6 +200,7 @@ $routes = explode("-", $_GET["ruta"]);
 	case 'dashboard':
 	case 'agenda':
 	case 'historial':
+	case 'historialPac':
 		
 		include 'views/footers/footer_base.php';   
 		include "views/footers/footer.php"; 

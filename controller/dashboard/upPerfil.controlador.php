@@ -86,7 +86,7 @@ file_put_contents("../../views/assets/images/medicos/".$filename_path, file_get_
    
     $AfilC = mysqli_num_rows($BuscaAfil);
          
- 
+  
 
         if ($AfilC == 1) {
             consultasSQL::UpdateSQL("medicos", "estado='1'", "correo='$correo_'");

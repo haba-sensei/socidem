@@ -1,29 +1,34 @@
 <?php include 'views/admin/breadcrumb_med.php';
 ?>
-<style>
 
-label.cabinet{
-	    /* display: block; */
+ <!-- CSS -->
+    <link rel="stylesheet" href="views/assets/plugins/imagepicker/demo.css"> 
+    <link rel="stylesheet" href="views/assets/plugins/imagepicker/imgpicker.css">
+ 
+    <script src="views/assets/plugins/imagepicker/jquery.Jcrop.min.js"></script>
+    <script src="views/assets/plugins/imagepicker/jquery.imgpicker.js"></script>
+<style>
+    label.cabinet {
+        /* display: block; */
         cursor: pointer;
         width: 40%;
-}
+    }
 
-label.cabinet input.file{
-	position: relative;
-	height: 100%;
-	width: auto;
-	opacity: 0;
-	-moz-opacity: 0;
-  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
-  margin-top:-30px;
-}
+    label.cabinet input.file {
+        position: relative;
+        height: 100%;
+        width: auto;
+        opacity: 0;
+        -moz-opacity: 0;
+        filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+        margin-top: -30px;
+    }
 
-#upload-demo{
-    width: 100%;
-    height: 300px;
-    padding-bottom: 25px;
-}
-
+    #upload-demo {
+        width: 100%;
+        height: 300px;
+        padding-bottom: 25px;
+    }
 </style>
 
 
@@ -31,10 +36,11 @@ label.cabinet input.file{
     <div class="container-fluid">
 
         <div class="row">
-            <?php require_once 'views/admin/sidebar.php'; ?>
+            <?php require_once 'views/admin/sidebar.php';?>
             <div class="col-md-7 col-lg-8 col-xl-9">
-                <?php include 'views/admin/promo.php'; ?>
-                <form class="theme-form update-Form" action="controller/dashboard/upPerfil.controlador.php" method="post" role="form" data-form="updatePerfil" enctype="multipart/form-data">
+                <?php include 'views/admin/promo.php';?>
+                <form class="theme-form update-Form" action="controller/dashboard/upPerfil.controlador.php" method="post" role="form"
+                    data-form="updatePerfil" enctype="multipart/form-data">
 
                     <div class="card">
                         <div class="card-body">
@@ -43,21 +49,22 @@ label.cabinet input.file{
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="change-avatar">
-                                            <div class="profile-img">
-                                                <label class="cabinet center-block" >
-                                                <span> Sube tu Foto</span>
-                                                <figure style=" margin: 0 0 -2rem!important;">
-                                                <img src="" class=" img-responsive img-thumbnail" id="preview" />
+
+                                            <div class="clearfix content">
+                                                <?php 
+                                                 if($foto_ == ""){
+                                                    $foto_ = "//gravatar.com/avatar/0?d=mm&s=200";
+                                                    $url_img_med = "";
+                                                }else {
+                                                    $url_img_med = "views/assets/images/medicos/";
+                                                } 
                                                  
-                                                </figure>
-                                                  <input type="file" class="item-img file center-block" name="foto" id="foto" accept="image/*"  /> 
-                                                </label>
-                                                <input type="hidden" class="item-img file center-block" name="foto_crop" id="foto_crop" />
-                                               
-                                                
+                                                ?>
+                                                <img src="<?=$url_img_med.$foto_?>" alt="User Image" id="avatar2" width="200"> <br>
+
+                                                <button type="button" class="btn-sm btn-primary submit-btn" data-ip-modal="#avatarModal" style="margin-left: 26px; margin-top: 15px;">Elige una Imagen</button>
                                             </div>
                                              
-
 
                                         </div>
                                     </div>
@@ -65,7 +72,8 @@ label.cabinet input.file{
                                 <div class=" col-md-6">
                                     <div class="form-group">
                                         <label>Nombre Completo </label>
-                                        <input type="text" name="nombre" id="nombre" class="form-control " style="text-transform: capitalize;" disabled readonly>
+                                        <input type="text" name="nombre" id="nombre" class="form-control " style="text-transform: capitalize;"
+                                            disabled readonly>
                                     </div>
                                 </div>
 
@@ -73,28 +81,29 @@ label.cabinet input.file{
                                 <div class=" col-md-6">
                                     <div class="form-group">
                                         <label>Especialidad Principal </label>
-                                        <input type="text" name="especialidad" id="especialidad" class="form-control " style="text-transform: capitalize;" readonly>
+                                        <input type="text" name="especialidad" id="especialidad" class="form-control "
+                                            style="text-transform: capitalize;" readonly>
 
                                     </div>
                                     <div class="form-group">
                                         <label>Otras Especialidades</label>
 
-                                        <input type="text" data-role="tagsinput"  name="otras_especialidades" id="otras_especialidades">
-                                        
+                                        <input type="text" data-role="tagsinput" name="otras_especialidades" id="otras_especialidades">
+
                                         <select multipledata-role="tagsinput" class="input-tags form-control" id="otras_especialidades_select">
-                                         
-                                        <?php 
-                                        while ($datos_especia = mysqli_fetch_assoc($espeCons)) {  
 
-                                        $nombre_especia = $datos_especia['nombre']; 
-                                            
-                                        echo ' <option value="'.$nombre_especia.'">'.$nombre_especia.'</option>'; 
+                                            <?php
+while ($datos_especia = mysqli_fetch_assoc($espeCons)) {
 
-                                        }   
-                                        ?>
-                                        
+    $nombre_especia = $datos_especia['nombre'];
+
+    echo ' <option value="' . $nombre_especia . '">' . $nombre_especia . '</option>';
+
+}
+?>
+
                                         </select>
-                                      
+
 
                                     </div>
                                 </div>
@@ -103,16 +112,19 @@ label.cabinet input.file{
                                     <div class="form-group">
                                         <label>Numero de Colegiatura </label>
                                         <div style="display: inline-flex;">
-                                            <input type="text" class="form-control " id="type_colegiatura_perfil" name="type_colegiatura_perfil" style="text-transform: capitalize; width: 65%; margin-right: 18px;" readonly autocomplete="off">
-                                            <input type="text" name="num_colegiatura" id="num_colegiatura" class="form-control " style="text-transform: capitalize; width: 30%" readonly>
+                                            <input type="text" class="form-control " id="type_colegiatura_perfil" name="type_colegiatura_perfil"
+                                                style="text-transform: capitalize; width: 65%; margin-right: 18px;" readonly autocomplete="off">
+                                            <input type="text" name="num_colegiatura" id="num_colegiatura" class="form-control "
+                                                style="text-transform: capitalize; width: 30%" readonly>
 
                                         </div>
 
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Otros Numeros de Colegiatura </label> 
-                                        <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Agregar mas" name="otros_nro_colegiatura" id="otros_nro_colegiatura">
+                                        <label>Otros Numeros de Colegiatura </label>
+                                        <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Agregar mas"
+                                            name="otros_nro_colegiatura" id="otros_nro_colegiatura">
                                     </div>
                                 </div>
 
@@ -124,7 +136,8 @@ label.cabinet input.file{
                                 <div class=" col-md-6">
                                     <div class="form-group">
                                         <label>Telefono</label>
-                                        <input type="text" name="telefono" id="telefono" class="form-control " style="text-transform: capitalize;" readonly>
+                                        <input type="text" name="telefono" id="telefono" class="form-control " style="text-transform: capitalize;"
+                                            readonly>
                                         <input type="checkbox" name="check_tel" id="check_tel">
                                         <label for="check_tel">Publicar</label>
                                     </div>
@@ -147,7 +160,8 @@ label.cabinet input.file{
                                     <div class="row custom_price_cont" id="custom_price_cont">
                                         <div class="col-md-10">
                                             <label>Consulta Online <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="precio_online" name="precio_online" placeholder="20.00" autocomplete="off">
+                                            <input type="text" class="form-control" id="precio_online" name="precio_online" placeholder="20.00"
+                                                autocomplete="off">
                                             <small class="form-text text-muted">Precio Expresado en Soles ( 000.00 )</small>
                                         </div>
                                     </div>
@@ -158,7 +172,8 @@ label.cabinet input.file{
                                     <div class="row custom_price_cont" id="custom_price_cont">
                                         <div class="col-md-10">
                                             <label>Consulta Presencial <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="precio_consulta" name="precio_consulta" placeholder="20.00" autocomplete="off">
+                                            <input type="text" class="form-control" id="precio_consulta" name="precio_consulta" placeholder="20.00"
+                                                autocomplete="off">
                                             <small class="form-text text-muted">Precio Expresado en Soles ( 000.00 )</small>
                                         </div>
                                     </div>
@@ -169,8 +184,8 @@ label.cabinet input.file{
 
                             <?php
 
-                            if ($_SESSION["reg_token_bank"] != "registrado") {
-                                    echo '
+if ($_SESSION["reg_token_bank"] != "registrado") {
+    echo '
                                     <div class="row form-row">
                                     <div class="col-md-6">
                                         <div class="ajust_div "  >
@@ -194,9 +209,9 @@ label.cabinet input.file{
                                     </div>
                                 </div>
                                     ';
-                            }
+}
 
-                            ?>
+?>
                             <br>
                             <br>
 
@@ -204,12 +219,14 @@ label.cabinet input.file{
                             <div class="membership-info">
                                 <div class="row form-row membership-cont">
                                     <div class="col-12 col-md-10 col-lg-5">
-                                        <button type="button" class="btn med_row" onclick="addPic2('fotos')"><i class="fa fa-plus"></i> Agregar Fotos </button>
+                                        <button type="button" class="btn med_row" onclick="addPic2('fotos')"><i class="fa fa-plus"></i> Agregar Fotos
+                                        </button>
                                         <br>
                                         <div id="preview_fotos" style="display: inline-flex;"></div>
                                     </div>
 
-                                    <span class=""> <br>Una imagen vale mas que mil palabras. Añada fotos para mostrar las ventajas de su consultorio, modernos
+                                    <span class=""> <br>Una imagen vale mas que mil palabras. Añada fotos para mostrar las ventajas de su consultorio,
+                                        modernos
                                         equipos o comodidad de su sala de espera.</span>
                                 </div>
                             </div>
@@ -221,11 +238,13 @@ label.cabinet input.file{
                             <div class="membership-info">
                                 <div class="row form-row membership-cont">
                                     <div class="col-12 col-md-10 col-lg-5">
-                                        <button type="button" class="btn med_row" onclick="addPic2('cert')"><i class="fa fa-plus"></i> Agregar Fotos </button>
+                                        <button type="button" class="btn med_row" onclick="addPic2('cert')"><i class="fa fa-plus"></i> Agregar Fotos
+                                        </button>
                                         <br>
                                         <div id="preview_cert" style="display: inline-flex;"></div>
                                     </div>
-                                    <span class=""> <br>La experiencia del especialista es uno de los factores mas importantes para 7 de cada 10 pacientes. Al subir sus
+                                    <span class=""> <br>La experiencia del especialista es uno de los factores mas importantes para 7 de cada 10
+                                        pacientes. Al subir sus
                                         certificado que confirmen sus conocimientos y habilidades confirmara la confianza de sus pacientes.</span>
                                 </div>
                             </div>
@@ -237,11 +256,13 @@ label.cabinet input.file{
                             <div class="membership-info">
                                 <div class="row form-row membership-cont">
                                     <div class="col-12 col-md-10 col-lg-5">
-                                        <button type="button" class="btn med_row" onclick="addPic2('form')"><i class="fa fa-plus"></i> Agregar Fotos </button>
+                                        <button type="button" class="btn med_row" onclick="addPic2('form')"><i class="fa fa-plus"></i> Agregar Fotos
+                                        </button>
                                         <br>
                                         <div id="preview_form" style="display: inline-flex;"></div>
                                     </div>
-                                    <span class=""> <br>Para muchos pacientes la formación del medico es tan importante como la experiencia profesional. Asegúrese de
+                                    <span class=""> <br>Para muchos pacientes la formación del medico es tan importante como la experiencia
+                                        profesional. Asegúrese de
                                         subir información de los estudios universitarios realizados.</span>
                                     </span>
                                 </div>
@@ -349,7 +370,8 @@ label.cabinet input.file{
                             <h4 class="card-title">Servicios <span class="text-danger">*</span></h4>
                             <div class="form-group">
 
-                                <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Tipea tus Servicios" name="services" id="services">
+                                <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Tipea tus Servicios"
+                                    name="services" id="services">
                                 <small class="form-text text-muted">Nota: Recomendamos un maximo de 3 servicios.</small>
                             </div>
                             <br>
@@ -361,7 +383,8 @@ label.cabinet input.file{
                             <div class="membership-info">
                                 <div class="row form-row membership-cont">
                                     <div class="col-12 col-md-10 col-lg-5">
-                                        <button type="button" class="btn med_row" onclick="addPic2('premios')"><i class="fa fa-plus"></i> Agregar Fotos </button>
+                                        <button type="button" class="btn med_row" onclick="addPic2('premios')"><i class="fa fa-plus"></i> Agregar
+                                            Fotos </button>
                                         <br>
                                         <div id="preview_premios" style="display: inline-flex;"></div>
                                     </div>
@@ -385,7 +408,8 @@ label.cabinet input.file{
                                     <div class="col-md-6 ">
                                         <div class="form-group">
 
-                                            <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Tipea tus Idiomas" name="idiomas" id="idiomas">
+                                            <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Tipea tus Idiomas"
+                                                name="idiomas" id="idiomas">
 
                                         </div>
                                     </div>
@@ -402,7 +426,7 @@ label.cabinet input.file{
                                     <div class="col-12 col-md-10 col-lg-5">
                                         <div class="form-group">
 
-                                            <input type="text" value="<?= $membresia_ ?>" class="form-control" readonly>
+                                            <input type="text" value="<?=$membresia_?>" class="form-control" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -414,7 +438,7 @@ label.cabinet input.file{
 
 
 
-                          
+
 
 
 
@@ -439,5 +463,92 @@ label.cabinet input.file{
 </div>
 
 
- 
+    <div class="ip-modal" id="avatarModal">
+    <div class="ip-modal-dialog">
+    <div class="ip-modal-content">
+    <div class="ip-modal-header">
+    <a class="ip-close" title="Close">&times;</a>
+    <h4 class="ip-modal-title">Sube una Imagen</h4>
+    </div>
+    <div class="ip-modal-body">
+    <div class="btn btn-primary ip-upload">Buscar Imagen <input type="file" name="file"
+            class="ip-file"></div>
+    <button type="button" class="btn btn-primary ip-webcam">Webcam</button>
+    <button type="button" class="btn btn-info ip-edit">Editar</button>
+    <button type="button" class="btn btn-danger ip-delete">Eliminar</button>
 
+    <div class="alert ip-alert"></div>
+    <div class="ip-info">Para cortar y ajustar la imagen debe arrastrar el cuadro y luego click en guardar imagen   </div>
+    <div class="ip-preview"></div>
+    <div class="ip-rotate">
+        <button type="button" class="btn btn-default ip-rotate-ccw"
+            title="Rotate counter-clockwise"><i class="icon-ccw"></i></button>
+        <button type="button" class="btn btn-default ip-rotate-cw" title="Rotate clockwise"><i
+                class="icon-cw"></i></button>
+    </div>
+    <div class="ip-progress">
+        <div class="text">Subiendo</div>
+        <div class="progress progress-striped active">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+    </div>
+    <div class="ip-modal-footer">
+    <div class="ip-actions">
+        <button type="button" class="btn btn-primary submit-btn ip-save">Guardar Imagen</button>
+        <button type="button" class="btn btn-primary submit-btn ip-capture">Capture</button>
+        <button type="button" class="btn btn-danger submit-btn ip-cancel">Cancel</button>
+    </div>
+    <button type="button" class="btn btn-default ip-close">Close</button>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    <script>
+        $(function() {
+            var time = function() {
+                return '?' + new Date().getTime()
+            };
+
+            // Avatar setup
+            $('#avatarModal').imgPicker({
+                url: 'model/upload_avatar.php',
+                aspectRatio: 1,
+                deleteComplete: function() {
+                    $('#avatar2').attr('src', '//gravatar.com/avatar/0?d=mm&s=150');
+                    this.modal('hide');
+                },
+                uploadSuccess: function(image) {
+                    // Calculate the default selection for the cropper
+                    var select = (image.width > image.height) ? [(image.width - image.height) / 2, 0, image.height, image.height] : [0, (image.height - image.width) / 2, image.width, image.width];
+
+                    this.options.setSelect = select;
+                },
+                cropSuccess: function(image) {
+                     
+                    $('#avatar2').attr('src', image.versions.avatar.url + time());
+                    this.modal('hide');
+                    $.ajax({
+                    type: 'POST',
+                    url: 'model/save_avatar.php',
+                    data: {'image_name' : image.name},
+                    success: function(data) {
+                  
+                }
+                    });
+                     
+                }
+            });
+
+            // Demo only
+            $('.navbar-toggle').on('click', function() {
+                $('.navbar-nav').toggleClass('navbar-collapse')
+            });
+            $(window).resize(function(e) {
+                if ($(document).width() >= 430) $('.navbar-nav').removeClass('navbar-collapse')
+            });
+        });
+    </script>
