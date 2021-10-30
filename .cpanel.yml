@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/vlrrywof/public_html/medicos/
+    - export DEPLOYPATH=/home/medico47/public_html/
     - /bin/cp -R * $DEPLOYPATH
     - cp .htaccess $DEPLOYPATH
