@@ -18,7 +18,7 @@
                              
                              <form class="theme-form Login-Form" action="controller/sms_confirm_m.controlador.php" method="post" role="form" data-form="registro">
                                  <div class="form-group form-focus">
-                                     <input type="text" name="sms_code"  class="form-control floating" autocomplete="off"> 
+                                     <input type="text" name="sms_code" value="<?=$_SESSION['codigo_validacion']?>" class="form-control floating" autocomplete="off"> 
                                      <label class="focus-label">SMS 8 digitos</label>
                                  </div> 
 

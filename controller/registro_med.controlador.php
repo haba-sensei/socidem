@@ -47,7 +47,10 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
             $code = generate_string(md5(time()), 8);
             $pass_asistance = md5($cod_referido);
 
+            //! SE CAMBIO EL VALOR 0 QUE ES EL DEFAULT POR 1 TANTO PARA SMS CONFIRM Y MAIL CONFIRM LOS ULTIMOS VALORES 1 1
             $regAfil = consultasSQL::InsertSQL("medicos", "nombre_completo, correo, pass, last_login, rol, estado, membresia, periodo_membresia, token_confirm, mail_confirm", "'$nombre_doc', '$correo_doc', '$pass_doc', '$last_login_doc', '$rol_doc', '$estado_doc', 'Gratuito', 0, '$code', 0"); 
+            //! HACIENDO QUE PASE LA VALIDACION DE SMS DE TWILIO
+            
             $regPerfil = consultasSQL::InsertSQL("perfil", "correo, foto, telefono, tipo_colegiado_doc, num_colegiatura, especialidad, servicios, titulo, universidad, años, ubicacion, sobre_mi, nombre_clinica, direccion_clinica, codigo_referido", "'$correo_doc', '$foto_doc', '$telefono_doc', '$tipo_colegiado_doc', '$num_colegiado_doc', '$especialidad_doc', '', '', '', '', '$ciudad_doc', '', '', '', '$cod_referido'"); 
             $regCodigosPromo = consultasSQL::InsertSQL("codigos_promo", "codigo, tipo, cantidad, porcentaje, status", "'$cod_referido', 'medico', 0, 20, 0"); 
             $regAgenda = consultasSQL::InsertSQL("agenda_medica", "cod_medico, agenda, estado", "'$cod_referido', '[]', '1'"); 
@@ -56,50 +59,50 @@ if (!$correo_doc == "" && !$pass_doc == "" &&  !$nombre_doc == "" &&  !$ciudad_d
             
             
             $valor_codigo = $url_base."controller/mail_med_confirm.controlador.php?code=".$code;
- 
-            $client = new Client($account_sid, $auth_token);
-            $client->messages->create('+51'.$telefono_doc.'',
-            array(
-                'from' => $twilio_number,
-                'body' => 'Codigo de Verificacion: '.$code.' '
-            )
-            );
+            //! CODIGO SMS
+            // $client = new Client($account_sid, $auth_token);
+            // $client->messages->create('+51'.$telefono_doc.'',
+            // array(
+            //     'from' => $twilio_number,
+            //     'body' => 'Codigo de Verificacion: '.$code.' '
+            // )
+            // );
             
             if (isset($_GET['code'])){ 
                 echo '<script> 	window.location = "../perfilMed"; </script>';
             }else { 
 
-            include 'plantillaCorreo.php';
+            // include 'plantillaCorreo.php';
             
-            $mail = new PHPMailer(true);
+            // $mail = new PHPMailer(true);
             
-            try {
+            // try {
                     
-                $mail->isSMTP();                                            
-                $mail->Host       = 'mail.insitesoluciones.com';                 
-                $mail->SMTPAuth   = true;                                 
-                $mail->Username = "medicos_no_reply@insitesoluciones.com";  
-                $mail->Password = ")u6ukzT@kioQ";                         
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
-                $mail->Port       = 587;                                    
+            //     $mail->isSMTP();                                            
+            //     $mail->Host       = 'mail.insitesoluciones.com';                 
+            //     $mail->SMTPAuth   = true;                                 
+            //     $mail->Username = "medicos_no_reply@insitesoluciones.com";  
+            //     $mail->Password = ")u6ukzT@kioQ";                         
+            //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+            //     $mail->Port       = 587;                                    
 
-                //Recipients
-                $mail->setFrom('medicos_no_reply@insitesoluciones.com', 'Medicos En Directo ');
-                $mail->addAddress($correo_doc, 'Externo');      
+            //     //Recipients
+            //     $mail->setFrom('medicos_no_reply@insitesoluciones.com', 'Medicos En Directo ');
+            //     $mail->addAddress($correo_doc, 'Externo');      
 
 
-                //Content
-                $mail->isHTML(true);                                   
-                $mail->Subject = "Confirmacion de mail ";
-                $mail->Body    = $body;
-                $mail->AltBody = "Enviado desde Medicos en Directo.";
+            //     //Content
+            //     $mail->isHTML(true);                                   
+            //     $mail->Subject = "Confirmacion de mail ";
+            //     $mail->Body    = $body;
+            //     $mail->AltBody = "Enviado desde Medicos en Directo.";
 
-                $mail->send();
+            //     $mail->send();
                 
-            } catch (Exception $e) {
+            // } catch (Exception $e) {
                
-            }
-            
+            // }
+            $_SESSION['codigo_validacion'] = $code;
             echo '<script> 	Swal.fire("REGISTRO EXITOSO", "", "info");  setTimeout(function() { window.location = "verificarM"; }, 1500); </script>';
            
             }

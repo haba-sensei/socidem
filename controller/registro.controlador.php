@@ -50,20 +50,24 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
         if ($AfilC > 0 ) {
             echo '<script> alert("Este correo ya esta registrado"); 	window.location = "registro"; </script>';
         } else {
+            // $code = generate_string(md5(time()), 8);
             $code = generate_string(md5(time()), 8);
             $ingreso = date('Y-m-d');
+
+            
             $regAfil = consultasSQL::InsertSQL("pacientes", "correo, pass, nombre, telefono, rol, token_confirm, mail_confirm, last_login, inscripcion, estado", "'$correo', '$pass', '$nombre', '$tel', '$rol', '$code', 0, '$last_login', '$ingreso', '$estado' "); 
            
-            if (!isset($_GET['code'])){  
-                $client = new Client($account_sid, $auth_token);
-                $client->messages->create('+51'.$tel,
-                array(
-                    'from' => $twilio_number,
-                    'body' => 'Codigo de Verificacion: '.$code.' '
-                )
-                );
+            //! CODIGO PARA ENVIAR SMSS TWILIO
+            // if (!isset($_GET['code'])){  
+            //     $client = new Client($account_sid, $auth_token);
+            //     $client->messages->create('+51'.$tel,
+            //     array(
+            //         'from' => $twilio_number,
+            //         'body' => 'Codigo de Verificacion: '.$code.' '
+            //     )
+            //     );
               
-            } 
+            // } 
             $correo_md5 = md5($correo);
             $regHistorial = consultasSQL::InsertSQL("historial_medico", "correo, historia_clinica, analisis_lab, img_digitales, recetas_med", "'$correo_md5', '[]', '[]', '[]', '[]' "); 
 
@@ -99,40 +103,40 @@ if (!$correo == "" && !$pass == "" &&  !$nombre == ""  && !$tel == "" && !$rol =
             }else {
 
                 
-                $valor_codigo = $url_base."controller/mail_confirm.controlador.php?code=".$code;
+                // $valor_codigo = $url_base."controller/mail_confirm.controlador.php?code=".$code;
                 
-                include 'plantillaCorreo.php';
+                // include 'plantillaCorreo.php';
                 
-                $mail = new PHPMailer(true);
+                // $mail = new PHPMailer(true);
                 
-                try {
+                // try {
                         
-                    $mail->isSMTP();                                            
-                    $mail->Host       = 'mail.insitesoluciones.com';                 
-                    $mail->SMTPAuth   = true;                                 
-                    $mail->Username = "medicos_no_reply@insitesoluciones.com";  
-                    $mail->Password = ")u6ukzT@kioQ";                                  
-                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
-                    $mail->Port       = 587;                                    
+                //     $mail->isSMTP();                                            
+                //     $mail->Host       = 'mail.insitesoluciones.com';                 
+                //     $mail->SMTPAuth   = true;                                 
+                //     $mail->Username = "medicos_no_reply@insitesoluciones.com";  
+                //     $mail->Password = ")u6ukzT@kioQ";                                  
+                //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
+                //     $mail->Port       = 587;                                    
 
-                    //Recipients
-                    $mail->setFrom('medicos_no_reply@insitesoluciones.com', 'Medicos En Directo ');
-                    $mail->addAddress($correo, 'Externo');      
+                //     //Recipients
+                //     $mail->setFrom('medicos_no_reply@insitesoluciones.com', 'Medicos En Directo ');
+                //     $mail->addAddress($correo, 'Externo');      
 
 
-                    //Content
-                    $mail->isHTML(true);                                   
-                    $mail->Subject = "Confirmacion de mail ";
-                    $mail->Body    = $body;
-                    $mail->AltBody = "Enviado desde Medicos en Directo.";
+                //     //Content
+                //     $mail->isHTML(true);                                   
+                //     $mail->Subject = "Confirmacion de mail ";
+                //     $mail->Body    = $body;
+                //     $mail->AltBody = "Enviado desde Medicos en Directo.";
 
-                    $mail->send();
+                //     $mail->send();
                     
-                } catch (Exception $e) {
+                // } catch (Exception $e) {
                      
 
-                } 
- 
+                // } 
+                $_SESSION['codigo_validacion'] = $code;
                 echo '<script> 	Swal.fire("REGISTRO EXITOSO", "", "info");  setTimeout(function() { window.location = "verificarP"; }, 1500); </script>';
                 
 
