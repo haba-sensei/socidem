@@ -31,7 +31,7 @@
                                     <label class="focus-label">Password</label>
                                 </div>
                                 <div class="text-right">
-                                    <a class="forgot-link" href="forgot-password.html">Perdida de Password?</a>
+                                    <a class="forgot-link" href="passForgot">Perdida de Password?</a>
                                 </div>
                                 
                                 <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Ingresar</button>

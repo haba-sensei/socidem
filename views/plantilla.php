@@ -74,6 +74,8 @@ $routes = explode("-", $_GET["ruta"]);
 			$routes[0] == "cita" || 
 			$routes[0] == "agenda" || 
 			$routes[0] == "test" || 
+			$routes[0] == "passForgot" || 
+			$routes[0] == "resetPassMessage" || 
 			$routes[0] == "lobby" || 
 			$routes[0] == "checkout" || 
 			$routes[0] == "checkoutmed" || 
