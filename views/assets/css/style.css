@@ -3141,9 +3141,15 @@ html.menu-opened body {
     font-weight: 600;
 }
 
-.search-btn {
+
+/* .search-btn {
     width: 100%;
     margin-top: 15px;
+} */
+
+.search-btn {
+    width: 98%;
+    margin-left: 15px;
 }
 
 .search-box-1 .search-btn {
@@ -9758,4 +9764,12 @@ ul.benifits-col li i {
     .fc-header-toolbar .fc-right {
         margin-bottom: 10px;
     }
+}
+
+
+}
+.fc-header-toolbar .fc-right {
+    margin-bottom: 10px;
+}
+
 }

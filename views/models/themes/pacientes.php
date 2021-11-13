@@ -241,18 +241,20 @@
                       <div class="tab-content">
                           <div class="tab-pane fade show active pills-contet-home">
                               <form>
-                                  <div class="row mb-4">
-                                      <div class="col-md-3">
+                                  <div class="mb-4 row">
+                                      <!-- <div class="col-md-3">
                                           <div class="form-outline">
                                               <input type="text" id="form3Example1" class="form-control" placeholder="Nombre" style="border-radius:0px;" />
                                           </div>
-                                      </div>
-                                      <div class="col-md-3">
-                                          <div class="form-outline ">
-                                              <input type="text" id="form3Example1" class="form-control" placeholder="Especialidades" style="border-radius:0px;" />
-                                          </div>
-                                      </div>
-                                      <button type="button" class="btn btn-success" style="background-color: #008298; border: none;">Buscar</button>
+                                      </div> -->
+                                      <div class="form-group col-md-3">
+                          <select name="especialidad" class="form-control" id="especialidad">
+                              <option default hidden>Especialidades</option>
+
+                          </select>
+                          <span class="form-text">Eliga una espeacialidad</span>
+                      </div> 
+                                      <button type="button" class="btn btn-success" onclick="search()" style="background-color: #008298;     height: 46px; border: none;">Buscar</button>
                                   </div>
                                   <div>
                                       <p class="h3 comentario" style="color: white;">Consulte con médicos expertos, obtenga un plan <br> de tratamiento y recetas si es necesario</p>
@@ -261,8 +263,8 @@
                           </div>
                           <div class="tab-pane fade pills-contet-profile">
                               <form>
-                                  <div class="row mb-4">
-                                      <div class="col-md-3">
+                                  <div class="mb-4 row">
+                                      <!-- <div class="col-md-3">
                                           <div class="form-outline">
                                               <input type="text" id="form3Example1" class="form-control" placeholder="Nombre" style="border-radius:0px;" />
                                           </div>
@@ -271,17 +273,49 @@
                                           <div class="form-outline ">
                                               <input type="text" id="form3Example1" class="form-control" placeholder="Especialidades" style="border-radius:0px;" />
                                           </div>
-                                      </div>
-                                      <div class="col-md-3">
+                                      </div> -->
+                                      <!-- <div class="col-md-3">
                                           <div class="form-outline ">
                                               <select class="form-control">
                                                   <option value="1">Lima</option>
                                                   <option value="2">San Borja</option>
                                               </select>
                                           </div>
-                                      </div>
-                                      <button type="button" class="btn btn-success" style="background-color: #008298; border: none;">Buscar</button>
-                                  </div>
+                                      </div> -->
+                                       
+                                      <!-- <button type="button" class="btn btn-success" style="background-color: #008298; border: none;">Buscar</button> -->
+                                      <div class="form-group col-md-3">
+                          <select name="departamento" class="form-control" id="departamento" onchange="cargaProvincias();">
+                              <option default hidden>Departamentos</option>
+                          </select>
+                          <span class="form-text">Eliga un departamento</span>
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <select name="provincia" class="form-control" id="provincia" onchange="cargaDistritos();">
+                        <option default hidden>Provincias</option>
+                        </select>
+                          <span class="form-text">Eliga una provincia</span>
+                      </div>
+
+                      <div class="form-group col-md-3">
+                          <select name="distrito" class="form-control" id="distrito">
+                              <option default hidden>Distritos</option>
+                          </select>
+                          <span class="form-text">Eliga un distrito</span>
+                      </div>
+
+                      <div class="form-group col-md-3">
+                          <select name="especialidad" class="form-control" id="especialidad">
+                              <option default hidden>Especialidades</option>
+
+                          </select>
+                          <span class="form-text">Eliga una espeacialidad</span>
+                      </div> 
+                      <button type="button" class="mt-0 btn btn-primary search-btn" onclick="search()"><i class="fas fa-search"></i>
+                          <span>Buscar</span></button>
+                                  
+                                    </div>
                                   <div>
                                       <p class="h3 comentario" style="color: white;">Consulte con médicos expertos, obtenga un plan <br> de tratamiento y recetas si es necesario</p>
                                   </div>
@@ -577,7 +611,7 @@
               <p class="h3 vide">Prueba nuestro video consulta</p>
               <center>
                   <img src="views/assets/images/mios/laptop.jpg.png" class="img-fluid" alt="Responsive image">
-                  <img src="views/assets/images/mios/osito.gif" alt="video con el doctor" class="video_doc img-fluid rounded mx-auto d-block">
+                  <img src="views/assets/images/mios/osito.gif" alt="video con el doctor" class="mx-auto rounded video_doc img-fluid d-block">
               </center>
               <div class="text-center">
                   <button type="button" class="btn btn-secondary start"><a href="https://meet.google.com/tbf-wnug-edx">Iniciar</a></button>
@@ -633,7 +667,7 @@
                       <div class="card">
                           <div class="card-header" id="headingOne">
                               <h2 class="mb-0">
-                                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  <button class="text-left btn btn-link btn-block" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                       ¿Qué problemas de salud puedo consultar pro video consulta?
                                   </button>
                               </h2>
@@ -650,7 +684,7 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                       ¿Puedo instalar Médicos en Directo en mi <br> celular?
                                   </button>
                               </h2>
@@ -672,7 +706,7 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                       ¿Por qué debo ingresar mi número telefónico?
                                   </button>
                               </h2>
@@ -688,7 +722,7 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                                       ¿cuánto dura una consulta por video consulta al médico?
                                   </button>
                               </h2>
@@ -706,7 +740,7 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
                                       ¿Se pueden cargar, fotos, pruebas clínicas o informes?
                                   </button>
                               </h2>
@@ -722,7 +756,7 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
                                       ¿Dónde y cómo se guarda mi historia clínica?
                                   </button>
                               </h2>
@@ -740,7 +774,7 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
                                       ¿Cuánto cuesta el servicio de consulta presencial o video consulta?
                                   </button>
                               </h2>
@@ -756,7 +790,7 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                                       ¿Cómo pago la consulta presencial o video consulta al médico?
                                   </button>
                               </h2>
