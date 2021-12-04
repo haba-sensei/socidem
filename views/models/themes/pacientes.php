@@ -1,226 +1,228 @@
   <!-- Home Banner -->
   <style>
-      .section-search {
-          background-image: url("views/assets/images/mios/fondo3.jpg");
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          min-height: 0;
-      }
+.section-search {
+    background-image: url("views/assets/images/mios/fondo3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 0;
+}
 
-      .banner-wrapper {
-          margin: 0 auto;
-          max-width: 1044px !important;
-          width: 100%;
-      }
+.banner-wrapper {
+    margin: 0 auto;
+    max-width: 1044px !important;
+    width: 100%;
+}
 
-      .opcion {
-          font-size: 13px;
-      }
+.opcion {
+    font-size: 13px;
+}
 
-      .nav-tabs {
-          border: none;
-          background: none;
-      }
+.nav-tabs {
+    border: none;
+    background: none;
+}
 
-      .nav-tabs>li>a {
-          margin-right: 10px;
-      }
+.nav-tabs>li>a {
+    margin-right: 10px;
+}
 
-      .rese {
-          color: white;
-      }
+.rese {
+    color: white;
+}
 
-      .servicios {
-          color: #23C3D4;
-      }
+.servicios {
+    color: #23C3D4;
+}
 
-      .category-box>div>img {
-          width: 100px;
-          height: 80px;
-      }
+.category-box>div>img {
+    width: 100px;
+    height: 80px;
+}
 
-      .lapopt {
-          background-image: url("views/assets/images/mios/fondo_laptop.jpg");
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-      }
+.lapopt {
+    background-image: url("views/assets/images/mios/fondo_laptop.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
 
-      .vide {
-          color: white;
-      }
-      center{
-          position: relative;
-      }
-      .video_doc{
-          width: 56.8%;
-          height: 80%;
-          position: absolute;
-          right: 21.6%;
-          top: 5%;
-      }
+.vide {
+    color: white;
+}
 
-      .start {
-          background-color: #23C3D4;
-          border-radius: 0px;
-          border: none;
-          padding: 20px 30px 20px 30px;
-      }
+center {
+    position: relative;
+}
 
-      .section_4 {
-          background-image: url("views/assets/images/mios/fondocarrusel.jpg");
-          padding: 60px;
-      }
+.video_doc {
+    width: 56.8%;
+    height: 80%;
+    position: absolute;
+    right: 21.6%;
+    top: 5%;
+}
 
-      #selecione {
-          display: none;
-      }
+.start {
+    background-color: #23C3D4;
+    border-radius: 0px;
+    border: none;
+    padding: 20px 30px 20px 30px;
+}
 
-      #selecione2 {
-          display: none;
-      }
+.section_4 {
+    background-image: url("views/assets/images/mios/fondocarrusel.jpg");
+    padding: 60px;
+}
 
-      #selecione3 {
-          display: none;
-      }
+#selecione {
+    display: none;
+}
 
-      #selecione4 {
-          display: none;
-      }
+#selecione2 {
+    display: none;
+}
 
-      #selecione5 {
-          display: none;
-      }
+#selecione3 {
+    display: none;
+}
 
-      #selecione6 {
-          display: none;
-      }
+#selecione4 {
+    display: none;
+}
 
-      #selecione7 {
-          display: none;
-      }
+#selecione5 {
+    display: none;
+}
 
-      #selecione8 {
-          display: none;
-      }
+#selecione6 {
+    display: none;
+}
 
-      #selecione9 {
-          display: none;
-      }
+#selecione7 {
+    display: none;
+}
 
-      #selecione10 {
-          display: none;
-      }
+#selecione8 {
+    display: none;
+}
 
-      #selecione11 {
-          display: none;
-      }
+#selecione9 {
+    display: none;
+}
 
-      #selecione12 {
-          display: none;
-      }
+#selecione10 {
+    display: none;
+}
 
-      /*carrusel*/
-      .slider {
-          width: 800px;
-          height: 100px;
-          overflow: hidden;
-      }
+#selecione11 {
+    display: none;
+}
 
-      .slides {
-          width: 500%;
-          height: 100px;
-          display: flex;
-      }
+#selecione12 {
+    display: none;
+}
 
-      .slides input {
-          display: none;
-      }
+/*carrusel*/
+.slider {
+    width: 800px;
+    height: 100px;
+    overflow: hidden;
+}
 
-      .slide {
-          width: 20%;
-          transition: 2s;
-      }
+.slides {
+    width: 500%;
+    height: 100px;
+    display: flex;
+}
 
-      .slide p {
-          width: 800px;
-          height: 200px;
-      }
+.slides input {
+    display: none;
+}
 
-      /* la navegacion en forma manual */
-      .navegation-manual {
-          position: absolute;
-          width: 800px;
-          margin-top: -40px;
-          display: flex;
-          justify-content: center;
-      }
+.slide {
+    width: 20%;
+    transition: 2s;
+}
 
-      .manual-btn {
-          border: 2px solid gray;
-          padding: 5px;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: 1s;
-      }
+.slide p {
+    width: 800px;
+    height: 200px;
+}
 
-      .manual-btn:not(:last-child) {
-          margin-right: 40px;
-      }
+/* la navegacion en forma manual */
+.navegation-manual {
+    position: absolute;
+    width: 800px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
 
-      .manual-btn:hover {
-          background: gray;
-      }
+.manual-btn {
+    border: 2px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
 
-      #radio1:checked~.first {
-          margin-left: 0;
-      }
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
 
-      #radio2:checked~.first {
-          margin-left: -20%;
-      }
+.manual-btn:hover {
+    background: gray;
+}
 
-      #radio3:checked~.first {
-          margin-left: -40%;
-      }
+#radio1:checked~.first {
+    margin-left: 0;
+}
 
-      /*forma automatica*/
-      .navigation-auto {
-          position: absolute;
-          display: flex;
-          width: 800px;
-          justify-content: center;
-          margin-top: 460px;
+#radio2:checked~.first {
+    margin-left: -20%;
+}
 
-      }
+#radio3:checked~.first {
+    margin-left: -40%;
+}
 
-      .navigation-auto div {
-          border: 2px solid black;
-          border: 5px;
-          border-radius: 10px;
-          transition: 1s;
-      }
+/*forma automatica*/
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    width: 800px;
+    justify-content: center;
+    margin-top: 460px;
 
-      .navigation-auto div:not(:last-child) {
-          margin-right: 40px;
-      }
+}
 
-      .radio1:checked~.navigation-auto .auto-btn1 {
-          background: grey;
-      }
+.navigation-auto div {
+    border: 2px solid black;
+    border: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
 
-      .radio2:checked~.navigation-auto .auto-btn2 {
-          background: grey;
-      }
+.navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+}
 
-      .radio3:checked~.navigation-auto .auto-btn3 {
-          background: grey;
-      }
+.radio1:checked~.navigation-auto .auto-btn1 {
+    background: grey;
+}
 
-      .preguntas {
-          color: white;
-      }
+.radio2:checked~.navigation-auto .auto-btn2 {
+    background: grey;
+}
+
+.radio3:checked~.navigation-auto .auto-btn3 {
+    background: grey;
+}
+
+.preguntas {
+    color: white;
+}
   </style>
   <section class="section section-search" id="section_1">
       <div class="container-fluid">
@@ -230,11 +232,13 @@
                   <div class="botones">
                       <ul id="myTab" class="nav nav-tabs" role="tablist">
                           <li class="nav-item" role="presentation">
-                              <a class=" btn btn-light nav-link active opcion" id="pills-home-tab" href="#pills-home" data-toggle="tab" data-target=".pills-contet-home">
+                              <a class=" btn btn-light nav-link active opcion" id="pills-home-tab" href="#pills-home" data-toggle="tab"
+                                  data-target=".pills-contet-home">
                                   <img src="views/assets/images/mios/video.png" alt=""> Online</a>
                           </li>
                           <li class="nav-item" role="presentation">
-                              <a class=" btn btn-outline-light nav-link opcion" id="pills-profile-tab" href="#pills-profile" data-toggle="tab" data-target=".pills-contet-profile">
+                              <a class=" btn btn-outline-light nav-link opcion" id="pills-profile-tab" href="#pills-profile" data-toggle="tab"
+                                  data-target=".pills-contet-profile">
                                   <img src="views/assets/images/mios/ubicacion2.png" alt="" width="24">Visita Presencial</a>
                           </li>
                       </ul>
@@ -248,16 +252,18 @@
                                           </div>
                                       </div> -->
                                       <div class="form-group col-md-3">
-                          <select name="especialidad" class="form-control" id="especialidad">
-                              <option default hidden>Especialidades</option>
+                                          <select name="especialidad" class="form-control" id="especialidad">
+                                              <option default hidden>Especialidades</option>
 
-                          </select>
-                          <span class="form-text">Eliga una espeacialidad</span>
-                      </div> 
-                                      <button type="button" class="btn btn-success" onclick="search()" style="background-color: #008298;     height: 46px; border: none;">Buscar</button>
+                                          </select>
+                                          <span class="form-text">Eliga una espeacialidad</span>
+                                      </div>
+                                      <button type="button" class="btn btn-success" onclick="search()"
+                                          style="background-color: #008298;     height: 46px; border: none;">Buscar</button>
                                   </div>
                                   <div>
-                                      <p class="h3 comentario" style="color: white;">Consulte con médicos expertos, obtenga un plan <br> de tratamiento y recetas si es necesario</p>
+                                      <p class="h3 comentario" style="color: white;">Consulte con médicos expertos, obtenga un plan <br> de
+                                          tratamiento y recetas si es necesario</p>
                                   </div>
                               </form>
                           </div>
@@ -282,42 +288,43 @@
                                               </select>
                                           </div>
                                       </div> -->
-                                       
+
                                       <!-- <button type="button" class="btn btn-success" style="background-color: #008298; border: none;">Buscar</button> -->
                                       <div class="form-group col-md-3">
-                          <select name="departamento" class="form-control" id="departamento" onchange="cargaProvincias();">
-                              <option default hidden>Departamentos</option>
-                          </select>
-                          <span class="form-text">Eliga un departamento</span>
-                      </div>
+                                          <select name="departamento" class="form-control" id="departamento" onchange="cargaProvincias();">
+                                              <option default hidden>Departamentos</option>
+                                          </select>
+                                          <span class="form-text">Eliga un departamento</span>
+                                      </div>
 
-                      <div class="form-group col-md-3">
-                        <select name="provincia" class="form-control" id="provincia" onchange="cargaDistritos();">
-                        <option default hidden>Provincias</option>
-                        </select>
-                          <span class="form-text">Eliga una provincia</span>
-                      </div>
+                                      <div class="form-group col-md-3">
+                                          <select name="provincia" class="form-control" id="provincia" onchange="cargaDistritos();">
+                                              <option default hidden>Provincias</option>
+                                          </select>
+                                          <span class="form-text">Eliga una provincia</span>
+                                      </div>
 
-                      <div class="form-group col-md-3">
-                          <select name="distrito" class="form-control" id="distrito">
-                              <option default hidden>Distritos</option>
-                          </select>
-                          <span class="form-text">Eliga un distrito</span>
-                      </div>
+                                      <div class="form-group col-md-3">
+                                          <select name="distrito" class="form-control" id="distrito">
+                                              <option default hidden>Distritos</option>
+                                          </select>
+                                          <span class="form-text">Eliga un distrito</span>
+                                      </div>
 
-                      <div class="form-group col-md-3">
-                          <select name="especialidad" class="form-control" id="especialidad">
-                              <option default hidden>Especialidades</option>
+                                      <div class="form-group col-md-3">
+                                          <select name="especialidad2" class="form-control" id="especialidad2">
+                                              <option default hidden>Especialidades</option>
 
-                          </select>
-                          <span class="form-text">Eliga una espeacialidad</span>
-                      </div> 
-                      <button type="button" class="mt-0 btn btn-primary search-btn" onclick="search()"><i class="fas fa-search"></i>
-                          <span>Buscar</span></button>
-                                  
-                                    </div>
+                                          </select>
+                                          <span class="form-text">Eliga una espeacialidad</span>
+                                      </div>
+                                      <button type="button" class="mt-0 btn btn-primary search-btn" onclick="search2()"><i class="fas fa-search"></i>
+                                          <span>Buscar</span></button>
+
+                                  </div>
                                   <div>
-                                      <p class="h3 comentario" style="color: white;">Consulte con médicos expertos, obtenga un plan <br> de tratamiento y recetas si es necesario</p>
+                                      <p class="h3 comentario" style="color: white;">Consulte con médicos expertos, obtenga un plan <br> de
+                                          tratamiento y recetas si es necesario</p>
                                   </div>
                               </form>
                           </div>
@@ -636,7 +643,8 @@
                           <p>! Experiencia absolutamente maravillosa ! el médico fue cortes y profesional!</p>
                       </div>
                       <div class="slide">
-                          <p>Me encanto la eficiencia y la simplicidad, pude completar mi video consulta fácilmente y recibí mi receta inmediatamente</p>
+                          <p>Me encanto la eficiencia y la simplicidad, pude completar mi video consulta fácilmente y recibí mi receta inmediatamente
+                          </p>
                       </div>
                       <div class="slide">
                           <p>Muy buenos profesionales atención de primera y sin complicaciones</p>
@@ -667,7 +675,8 @@
                       <div class="card">
                           <div class="card-header" id="headingOne">
                               <h2 class="mb-0">
-                                  <button class="text-left btn btn-link btn-block" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  <button class="text-left btn btn-link btn-block" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                      aria-expanded="true" aria-controls="collapseOne">
                                       ¿Qué problemas de salud puedo consultar pro video consulta?
                                   </button>
                               </h2>
@@ -675,7 +684,10 @@
 
                           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                               <div class="card-body">
-                                  Puedes plantear a nuestros médicos la mayor parte de las consultas que realizarías de forma presencial. El médico evaluará cada caso y decidirá si el caso a consultar puede ser resuelto vía tele consulta o si requiere atención presencial. En ambos casos de atenciones, el médico podrá gestionar toda la información médica incluyendo la historia clínica y visualización de archivos desde nuestra plataforma.
+                                  Puedes plantear a nuestros médicos la mayor parte de las consultas que realizarías de forma presencial. El médico
+                                  evaluará cada caso y decidirá si el caso a consultar puede ser resuelto vía tele consulta o si requiere atención
+                                  presencial. En ambos casos de atenciones, el médico podrá gestionar toda la información médica incluyendo la
+                                  historia clínica y visualización de archivos desde nuestra plataforma.
                               </div>
                           </div>
                       </div>
@@ -684,16 +696,19 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse"
+                                      data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                       ¿Puedo instalar Médicos en Directo en mi <br> celular?
                                   </button>
                               </h2>
                           </div>
                           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                               <div class="card-body">
-                                  En su celular busque medicosendirecto.com en su navegador al abrir la página le preguntara si quiere agregarlo a su página de inicio acepte y se instalara en su celular.
+                                  En su celular busque medicosendirecto.com en su navegador al abrir la página le preguntara si quiere agregarlo a su
+                                  página de inicio acepte y se instalara en su celular.
                                   ¿Qué necesito tener para usar médicos en directo en mi computadora, laptop o celular?
-                                  En las computadoras personales o laptops necesita internet, cámara y micrófono regularmente incorporados y conexión a internet.
+                                  En las computadoras personales o laptops necesita internet, cámara y micrófono regularmente incorporados y conexión
+                                  a internet.
                                   En el celular solo conexión a internet.
 
                               </div>
@@ -706,14 +721,16 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse"
+                                      data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                       ¿Por qué debo ingresar mi número telefónico?
                                   </button>
                               </h2>
                           </div>
                           <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                               <div class="card-body">
-                                  Si su visita se interrumpe por algún motivo, el medico puede usar ese número telefónico para devolverle la llamada y finalizar su cita.
+                                  Si su visita se interrumpe por algún motivo, el medico puede usar ese número telefónico para devolverle la llamada y
+                                  finalizar su cita.
                               </div>
                           </div>
                       </div>
@@ -722,7 +739,8 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse"
+                                      data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                                       ¿cuánto dura una consulta por video consulta al médico?
                                   </button>
                               </h2>
@@ -740,14 +758,17 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse"
+                                      data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
                                       ¿Se pueden cargar, fotos, pruebas clínicas o informes?
                                   </button>
                               </h2>
                           </div>
                           <div id="collapsefive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                               <div class="card-body">
-                                  Sí. Nuestra plataforma médica permite subir y guardar fotos, documentos con resultados de pruebas o análisis clínicos para una valoración más completa de cada caso. Esta documentación quedará vinculada a la historia clínica electrónica.
+                                  Sí. Nuestra plataforma médica permite subir y guardar fotos, documentos con resultados de pruebas o análisis
+                                  clínicos para una valoración más completa de cada caso. Esta documentación quedará vinculada a la historia clínica
+                                  electrónica.
                               </div>
                           </div>
                       </div>
@@ -756,14 +777,16 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse"
+                                      data-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
                                       ¿Dónde y cómo se guarda mi historia clínica?
                                   </button>
                               </h2>
                           </div>
                           <div id="collapsesix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                               <div class="card-body">
-                                  Todos los datos de la historia clínica se encuentran encriptados en la nube donde se guarda y gestiona el acceso solo por el Doctor elegido.
+                                  Todos los datos de la historia clínica se encuentran encriptados en la nube donde se guarda y gestiona el acceso
+                                  solo por el Doctor elegido.
                               </div>
                           </div>
                       </div>
@@ -774,14 +797,16 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse"
+                                      data-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
                                       ¿Cuánto cuesta el servicio de consulta presencial o video consulta?
                                   </button>
                               </h2>
                           </div>
                           <div id="collapseseven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                               <div class="card-body">
-                                  El costo de cada atención, sea presencial o por video consulta, está establecido por cada profesional médico. Este valor esta visible en el perfil de cada profesional disponible publicado en nuestra plataforma.
+                                  El costo de cada atención, sea presencial o por video consulta, está establecido por cada profesional médico. Este
+                                  valor esta visible en el perfil de cada profesional disponible publicado en nuestra plataforma.
                               </div>
                           </div>
                       </div>
@@ -790,7 +815,8 @@
                       <div class="card">
                           <div class="card-header" id="headingTwo">
                               <h2 class="mb-0">
-                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                  <button class="text-left btn btn-link btn-block collapsed" type="button" data-toggle="collapse"
+                                      data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                                       ¿Cómo pago la consulta presencial o video consulta al médico?
                                   </button>
                               </h2>
@@ -798,15 +824,22 @@
                           <div id="collapseEight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                               <div class="card-body">
                                   Hay dos modalidades
-                                  A.-al momento de hacer la reserva de la cita le solicitaremos el pago a través de la pasarela de pago segura de Mercado Pago donde puede usar los siguientes medios de pago:
+                                  A.-al momento de hacer la reserva de la cita le solicitaremos el pago a través de la pasarela de pago segura de
+                                  Mercado Pago donde puede usar los siguientes medios de pago:
                                   1.- Tarjetas de crédito o divito Visa y MasterCard.
-                                  2.- Pago en efectivo en agentes bancarios (al momento de con firmar la cita le enviaran un código para que pueda ir a pagar al agente bancario que le sea más cómodo) BCP, BBVA Continental, Interbank, Scotiabank y pago efectivo.
-                                  3.-En efectivo por banca por internet, al momento de pagar le dirán como hacerlo online, no necesita hacer colas en una agencia bancaria, BCP, BBVA Continental, Interbank y Scotiabank.
-                                  B.- Los médicos pueden optar por cobrar directamente las consultas en este caso siga las instrucciones que están en el perfil del facultativo.
+                                  2.- Pago en efectivo en agentes bancarios (al momento de con firmar la cita le enviaran un código para que pueda ir
+                                  a pagar al agente bancario que le sea más cómodo) BCP, BBVA Continental, Interbank, Scotiabank y pago efectivo.
+                                  3.-En efectivo por banca por internet, al momento de pagar le dirán como hacerlo online, no necesita hacer colas en
+                                  una agencia bancaria, BCP, BBVA Continental, Interbank y Scotiabank.
+                                  B.- Los médicos pueden optar por cobrar directamente las consultas en este caso siga las instrucciones que están en
+                                  el perfil del facultativo.
                                   No he recibido el correo electrónico con un enlace para activar mi cuenta.
-                                  Consulta la carpeta Spam de su bandeja de entrada. Puede ser que esté ahí, ya que a veces los emails automáticos llegan a dicha carpeta
+                                  Consulta la carpeta Spam de su bandeja de entrada. Puede ser que esté ahí, ya que a veces los emails automáticos
+                                  llegan a dicha carpeta
                                   No puedo acceder a mi cuenta / No recuerdo mi contraseña
-                                  Cuando esto ocurre asegúrate en primer lugar de que la dirección de correo electrónico con la que has intentado acceder es la misma que con la que te registraste. Si es así, utiliza la opción de la recordar contraseña para recibir un email con las instrucciones para recuperarla y poder iniciar sesión.
+                                  Cuando esto ocurre asegúrate en primer lugar de que la dirección de correo electrónico con la que has intentado
+                                  acceder es la misma que con la que te registraste. Si es así, utiliza la opción de la recordar contraseña para
+                                  recibir un email con las instrucciones para recuperarla y poder iniciar sesión.
 
                               </div>
                           </div>
@@ -817,123 +850,123 @@
       </div>
   </section>
   <script>
-      $(document).ready(function() {
-          $('#myTab a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-              let target = $(e.target).data('target');
-              console.log(target);
-              $(target)
-                  .addClass('active show')
-                  .siblings('.tab-pane.active')
-                  .removeClass('active show')
-          });
-      });
-      // Mostrar
-      function mostrar() {
-          document.getElementById('selecione').style.display = 'block';
-      }
+$(document).ready(function() {
+    $('#myTab a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+        let target = $(e.target).data('target');
+        console.log(target);
+        $(target)
+            .addClass('active show')
+            .siblings('.tab-pane.active')
+            .removeClass('active show')
+    });
+});
+// Mostrar
+function mostrar() {
+    document.getElementById('selecione').style.display = 'block';
+}
 
-      function mostrar2() {
-          document.getElementById('selecione2').style.display = 'block';
-      }
+function mostrar2() {
+    document.getElementById('selecione2').style.display = 'block';
+}
 
-      function mostrar3() {
-          document.getElementById('selecione3').style.display = 'block';
-      }
+function mostrar3() {
+    document.getElementById('selecione3').style.display = 'block';
+}
 
-      function mostrar4() {
-          document.getElementById('selecione4').style.display = 'block';
-      }
+function mostrar4() {
+    document.getElementById('selecione4').style.display = 'block';
+}
 
-      function mostrar5() {
-          document.getElementById('selecione5').style.display = 'block';
-      }
+function mostrar5() {
+    document.getElementById('selecione5').style.display = 'block';
+}
 
-      function mostrar6() {
-          document.getElementById('selecione6').style.display = 'block';
-      }
+function mostrar6() {
+    document.getElementById('selecione6').style.display = 'block';
+}
 
-      function mostrar7() {
-          document.getElementById('selecione7').style.display = 'block';
-      }
+function mostrar7() {
+    document.getElementById('selecione7').style.display = 'block';
+}
 
-      function mostrar8() {
-          document.getElementById('selecione8').style.display = 'block';
-      }
+function mostrar8() {
+    document.getElementById('selecione8').style.display = 'block';
+}
 
-      function mostrar9() {
-          document.getElementById('selecione9').style.display = 'block';
-      }
+function mostrar9() {
+    document.getElementById('selecione9').style.display = 'block';
+}
 
-      function mostrar10() {
-          document.getElementById('selecione10').style.display = 'block';
-      }
+function mostrar10() {
+    document.getElementById('selecione10').style.display = 'block';
+}
 
-      function mostrar11() {
-          document.getElementById('selecione11').style.display = 'block';
-      }
+function mostrar11() {
+    document.getElementById('selecione11').style.display = 'block';
+}
 
-      function mostrar12() {
-          document.getElementById('selecione12').style.display = 'block';
-      }
-      // Ocultar
-      function ocultar() {
-          document.getElementById('selecione').style.display = 'none';
-      }
+function mostrar12() {
+    document.getElementById('selecione12').style.display = 'block';
+}
+// Ocultar
+function ocultar() {
+    document.getElementById('selecione').style.display = 'none';
+}
 
-      function ocultar2() {
-          document.getElementById('selecione2').style.display = 'none';
-      }
+function ocultar2() {
+    document.getElementById('selecione2').style.display = 'none';
+}
 
-      function ocultar3() {
-          document.getElementById('selecione3').style.display = 'none';
-      }
+function ocultar3() {
+    document.getElementById('selecione3').style.display = 'none';
+}
 
-      function ocultar4() {
-          document.getElementById('selecione4').style.display = 'none';
-      }
+function ocultar4() {
+    document.getElementById('selecione4').style.display = 'none';
+}
 
-      function ocultar5() {
-          document.getElementById('selecione5').style.display = 'none';
-      }
+function ocultar5() {
+    document.getElementById('selecione5').style.display = 'none';
+}
 
-      function ocultar6() {
-          document.getElementById('selecione6').style.display = 'none';
-      }
+function ocultar6() {
+    document.getElementById('selecione6').style.display = 'none';
+}
 
-      function ocultar7() {
-          document.getElementById('selecione7').style.display = 'none';
-      }
+function ocultar7() {
+    document.getElementById('selecione7').style.display = 'none';
+}
 
-      function ocultar8() {
-          document.getElementById('selecione8').style.display = 'none';
-      }
+function ocultar8() {
+    document.getElementById('selecione8').style.display = 'none';
+}
 
-      function ocultar9() {
-          document.getElementById('selecione9').style.display = 'none';
-      }
+function ocultar9() {
+    document.getElementById('selecione9').style.display = 'none';
+}
 
-      function ocultar10() {
-          document.getElementById('selecione10').style.display = 'none';
-      }
+function ocultar10() {
+    document.getElementById('selecione10').style.display = 'none';
+}
 
-      function ocultar11() {
-          document.getElementById('selecione11').style.display = 'none';
-      }
+function ocultar11() {
+    document.getElementById('selecione11').style.display = 'none';
+}
 
-      function ocultar12() {
-          document.getElementById('selecione12').style.display = 'none';
-      }
-      //carrusel
-      var counter = 1;
-      setInterval(function() {
-          document.getElementById('radio' + counter).checked = true;
-          counter++;
-          if (counter > 3) {
-              counter = 1;
-          }
-          divText: [
-              '<svg width="50" height="50" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>',
-              '<svg width="50" height="50" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>'
-          ]
-      }, 5000)
+function ocultar12() {
+    document.getElementById('selecione12').style.display = 'none';
+}
+//carrusel
+var counter = 1;
+setInterval(function() {
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if (counter > 3) {
+        counter = 1;
+    }
+    divText: [
+        '<svg width="50" height="50" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>',
+        '<svg width="50" height="50" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>'
+    ]
+}, 5000)
   </script>

@@ -156,17 +156,33 @@ function cargarEspecialidades() {
 
         var selector = document.getElementsByName("especialidad")[0];
 
+
         data.nombre.forEach(function(valor, indice, array) {
-
-
             var opcion = document.createElement("option");
             opcion.text = valor;
             opcion.value = data.id[indice];
             selector.add(opcion);
         });
     });
-
 }
+
+function cargarEspecialidades2() {
+
+    $.getJSON('controller/dashboard/json_especialidades.controlador.php', function(data) {
+
+        var selector = document.getElementsByName("especialidad")[0];
+        var selector2 = document.getElementsByName("especialidad2")[0];
+
+        data.nombre.forEach(function(valor, indice, array) {
+            var opcion = document.createElement("option");
+            opcion.text = valor;
+            opcion.value = data.id[indice];
+            selector.add(opcion);
+            selector2.add(opcion);
+        });
+    });
+}
+
 
 
 
@@ -246,6 +262,7 @@ function cargaDistritos() {
 // Iniciar la carga de provincias solo para comprobar que funciona
 cargarDepartamentos();
 cargarEspecialidades();
+cargarEspecialidades2();
 
 const removeAccents = (str) => {
     string = str.replace(/\s/g, '-');
@@ -277,9 +294,23 @@ function guardar() {
 
 function search() {
     var elemento1 = removeAccents($('#departamento').val());
-    var elemento2 = removeAccents($('#departamento').val());
+    var elemento2 = removeAccents($('#provincia').val());
     var elemento3 = removeAccents($('#distrito').val());
     var elemento4 = removeAccents($('#especialidad').val());
+
+
+    var subj = elemento1 + " " + elemento2 + " " + elemento3 + " " + elemento4;
+
+    var extra_slug = subj.replace(/\s/g, '-');
+    window.location = "busqueda-" + extra_slug;
+
+}
+
+function search2() {
+    var elemento1 = removeAccents($('#departamento').val());
+    var elemento2 = removeAccents($('#provincia').val());
+    var elemento3 = removeAccents($('#distrito').val());
+    var elemento4 = removeAccents($('#especialidad2').val());
 
 
     var subj = elemento1 + " " + elemento2 + " " + elemento3 + " " + elemento4;
