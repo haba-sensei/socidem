@@ -131,7 +131,7 @@ switch ($tipo_cita_paciente) {
                   </div>
               </div>
               <div class="col-12 col-sm-6">
-   
+    
   
               
           
@@ -198,4 +198,3 @@ switch ($tipo_cita_paciente) {
  
     
 // ';
-

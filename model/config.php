@@ -10,7 +10,7 @@
     /* FILTRO SEGUN EL TIPO DE ENTORNO */
     switch ($enviroment) {
         case 'LIVE':
-            $url_base = 'https://medicos.stampiza2.com/';
+            $url_base = 'https://medicosendirecto.com/';
             $conectame = "LIVE";
            
             /* FILTRO SEGUN EL TIPO DE ELEMENTO */
@@ -24,17 +24,17 @@
                         'default_graph_version' => 'v12.0',
                     ]);
                     /* LOGIN FACEBOOK CREDENCIALES PACIENTES*/
-                    $url_face_login_pacientes = 'https://medicos.stampiza2.com/controller/login_pac_face.controlador.php';
+                    $url_face_login_pacientes = 'https://medicosendirecto.com/controller/login_pac_face.controlador.php';
                     
                     /* LOGIN FACEBOOK CREDENCIALES MEDICOS*/
-                    $url_face_login_medicos = 'https://medicos.stampiza2.com/controller/login_med_face.controlador.php';
+                    $url_face_login_medicos = 'https://medicosendirecto.com/controller/login_med_face.controlador.php';
                     
                     /* GOOGLE ENV */
                     
                     $clientID = '603911200914-ellpcvv7oq5udaqvlv3rsa061tt1lpke.apps.googleusercontent.com';
                     $clientSecret = 'hTYH2tgPkblehXzAf-CD7o63';
-                    $redirectUri_login_paciente = 'https://medicos.stampiza2.com/controller/login.controlador.php';
-                    $redirectUri_login_medico = 'https://medicos.stampiza2.com/controller/login_med.controlador.php';
+                    $redirectUri_login_paciente = 'https://medicosendirecto.com/controller/login.controlador.php';
+                    $redirectUri_login_medico = 'https://medicosendirecto.com/controller/login_med.controlador.php';
                     
                 break;
                 
@@ -47,12 +47,12 @@
                     ]);
 
                     /* REGISTRO FACEBOOK CREDENCIALES MEDICOS*/
-                    $url_face_reg_pacientes = 'https://medicos.stampiza2.com/controller/registro_face.controlador.php';
+                    $url_face_reg_pacientes = 'https://medicosendirecto.com/controller/registro_face.controlador.php';
 
                      /* GOOGLE ENV */
                     $clientID = '603911200914-ellpcvv7oq5udaqvlv3rsa061tt1lpke.apps.googleusercontent.com';
                     $clientSecret = 'hTYH2tgPkblehXzAf-CD7o63';  
-                    $redirectUri_registro_paciente = 'https://medicos.stampiza2.com/controller/registro.controlador.php';
+                    $redirectUri_registro_paciente = 'https://medicosendirecto.com/controller/registro.controlador.php';
  
 
                 break;
@@ -60,9 +60,9 @@
                 case 'MP_AGENDA':
                     
                     $preference->back_urls = array(
-                        "success" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoCita.controlador.php",
-                        "failure" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoCita.controlador.php", 
-                        "pending" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoCita.controlador.php"
+                        "success" => "https://medicosendirecto.com/controller/dashboard/crearPagoCita.controlador.php",
+                        "failure" => "https://medicosendirecto.com/controller/dashboard/crearPagoCita.controlador.php", 
+                        "pending" => "https://medicosendirecto.com/controller/dashboard/crearPagoCita.controlador.php"
                     );
 
                 break;
@@ -70,9 +70,9 @@
                 case 'MP_MEMBRESIA':
                     
                     $preference->back_urls = array(
-                        "success" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoMembresia.controlador.php",
-                        "failure" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoMembresia.controlador.php", 
-                        "pending" => "https://medicos.stampiza2.com/controller/dashboard/crearPagoMembresia.controlador.php"
+                        "success" => "https://medicosendirecto.com/controller/dashboard/crearPagoMembresia.controlador.php",
+                        "failure" => "https://medicosendirecto.com/controller/dashboard/crearPagoMembresia.controlador.php", 
+                        "pending" => "https://medicosendirecto.com/controller/dashboard/crearPagoMembresia.controlador.php"
                     );
 
                 break;
